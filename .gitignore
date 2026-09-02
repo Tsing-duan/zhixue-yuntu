@@ -1,0 +1,63 @@
+# Java
+**/target/
+**/*.class
+**/.idea/
+**/*.iml
+**/.mvn/
+**/.classpath
+**/.factorypath
+**/.project
+**/.settings/
+
+# Node
+**/node_modules/
+**/dist/
+**/.vite/
+**/.vscode/
+
+# 日志
+**/logs/
+**/*.log
+/.run/
+
+# 本机/备份文件
+**/*.code-workspace
+sql/backups/
+
+# 环境配置
+# **/application-dev.yml
+# **/application.yml
+**/.env
+!**/.env.example
+**/.env.local
+**/.env.*.local
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 公开作品库：运行时上传与历史交付物不进入版本库
+learn_server-master/file/
+learn_server-master/video/
+learn_server-master/img/*
+!learn_server-master/img/avatars/
+learn_server-master/img/avatars/*
+!learn_server-master/img/avatars/zhixue-default.png
+!learn_server-master/img/avatars/zhixue-admin-default.png
+!learn_server-master/img/avatars/zhixue-student-default.png
+!learn_server-master/img/avatars/zhixue-teacher-default.png
+!learn_server-master/img/avatars/zhixue-admin.png
+
+sql/archive/
+sql/backups/
+uft-login-prep/
+defect-report/
+test-summary-report/
+*.docx
+*.pdf
+*.zip
+*.bak
+
+# 原仓库审计与历史材料不复制到新基线
+PORTFOLIO_AUDIT.md
+PORTFOLIO_P0_PUBLIC_SAFETY_REPORT.md

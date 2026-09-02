@@ -1,0 +1,22 @@
+<svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cloud" x1="18" y1="26" x2="78" y2="70" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#123E8D"/>
+      <stop offset="0.53" stop-color="#1675CD"/>
+      <stop offset="1" stop-color="#21B9B3"/>
+    </linearGradient>
+    <linearGradient id="book" x1="32" y1="33" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#164A9E"/>
+      <stop offset="1" stop-color="#18B8B3"/>
+    </linearGradient>
+  </defs>
+  <path d="M24 66H20C12.8 66 7 60.2 7 53C7 46.4 11.9 40.9 18.3 40.1C20.6 28 31.3 19 44 19C55.6 19 65.5 26.4 69 36.8C70.7 36.3 72.5 36 74.4 36C82.5 36 89 42.5 89 50.6C89 58.4 82.9 64.8 75.2 65.2H72" stroke="url(#cloud)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M31 36.5L47 44.4V68L31 61.8V36.5Z" fill="url(#book)"/>
+  <path d="M65 36.5L49 44.4V68L65 61.8V36.5Z" fill="url(#book)" opacity="0.9"/>
+  <path d="M47 44.4L31 36.5M49 44.4L65 36.5M48 44.4V68" stroke="white" stroke-width="2.4" stroke-linejoin="round"/>
+  <path d="M48 68C48 68 38.6 70.4 38.6 74.8C38.6 79.2 58.4 78.9 58.4 84.2" stroke="url(#cloud)" stroke-width="3.8" stroke-linecap="round"/>
+  <circle cx="38" cy="48" r="1.8" fill="white"/>
+  <path d="M38 49.8V57.5L42 61.5" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
+  <circle cx="58.5" cy="48" r="1.8" fill="white"/>
+  <path d="M58.5 49.8V59" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,276 @@
+/* ========== 记笔记/编辑笔记页面样式 - 高端版 ========== */
+
+.addArticle {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+/* ========== 主内容区域 ========== */
+.addArticle-content {
+    width: 100%;
+    min-height: 88%;
+    display: flex;
+    justify-content: center;
+    padding: 0 24px;
+    position: relative;
+}
+
+/* 背景装饰 */
+.addArticle-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60%;
+    height: 500px;
+    background: radial-gradient(circle, rgba(32, 180, 134, 0.03) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ========== 表单容器 ========== */
+.addArticle-form {
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 32px;
+    margin-bottom: 60px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ========== 页面标题 ========== */
+.addArticle-title {
+    font-size: 32px;
+    font-weight: 700;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', 'PingFang SC', sans-serif;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 28px;
+}
+
+.addArticle-title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 28px;
+    background: linear-gradient(135deg, #20B486, #58C7A4);
+    border-radius: 4px;
+}
+
+.addArticle-title::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 20px;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #20B486, transparent);
+    border-radius: 3px;
+}
+
+/* ========== 表单列表容器 ========== */
+.addArticle-list {
+    background: #ffffff;
+    border-radius: 28px;
+    border: 1px solid rgba(226, 232, 240, 0.6);
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.08);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ========== 表单项卡片 ========== */
+.addArticle-item {
+    background: #f8fafc;
+    border-radius: 20px;
+    margin-bottom: 24px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid #eef2f8;
+}
+
+.addArticle-item:hover {
+    border-color: #20B486;
+    box-shadow: 0 4px 12px rgba(32, 180, 134, 0.08);
+}
+
+.addArticle-item > div:first-child {
+    padding: 14px 20px;
+    background: #ffffff;
+    font-weight: 600;
+    color: #1e293b;
+    border-bottom: 1px solid #eef2f8;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* 不同表单项的图标 */
+.addArticle-item:nth-child(1) > div:first-child::before {
+    content: '📌';
+    font-size: 16px;
+}
+
+.addArticle-item:nth-child(2) > div:first-child::before {
+    content: '📋';
+    font-size: 16px;
+}
+
+.addArticle-item:nth-child(3) > div:first-child::before {
+    content: '✏️';
+    font-size: 16px;
+}
+
+.addArticle-item > div:last-child {
+    padding: 20px;
+}
+
+/* ========== 表单元素样式 ========== */
+.el-input__inner,
+.el-textarea__inner {
+    border-radius: 14px;
+    border: 1.5px solid #e2e8f0;
+    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    font-size: 14px;
+}
+
+.el-input__inner:focus,
+.el-textarea__inner:focus {
+    border-color: #20B486;
+    box-shadow: 0 0 0 4px rgba(32, 180, 134, 0.12);
+}
+
+/* 富文本编辑器样式 */
+.quill-editor {
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.quill-editor .ql-container {
+    min-height: 400px;
+    font-size: 14px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+}
+
+.quill-editor .ql-toolbar {
+    border: 1.5px solid #e2e8f0;
+    border-bottom: none;
+    border-radius: 14px 14px 0 0;
+    background: #f8fafc;
+}
+
+.quill-editor .ql-container {
+    border: 1.5px solid #e2e8f0;
+    border-top: none;
+    border-radius: 0 0 14px 14px;
+}
+
+.quill-editor .ql-editor {
+    min-height: 400px;
+}
+
+/* 提交按钮 */
+.addArticle-list > div:last-child {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+.addArticle-list .el-button {
+    min-width: 160px;
+    padding: 12px 32px;
+    border-radius: 40px;
+    font-weight: 600;
+    font-size: 15px;
+    background: linear-gradient(135deg, #20B486, #58C7A4);
+    border: none;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.addArticle-list .el-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(32, 180, 134, 0.3);
+}
+
+/* ========== 响应式设计 ========== */
+@media (max-width: 1024px) {
+    .addArticle-form {
+        max-width: 900px;
+    }
+    
+    .addArticle-title {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 768px) {
+    .addArticle-content {
+        padding: 0 16px;
+    }
+    
+    .addArticle-list {
+        padding: 20px;
+    }
+    
+    .addArticle-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    
+    .addArticle-item > div:first-child {
+        padding: 12px 16px;
+        font-size: 14px;
+    }
+    
+    .addArticle-item > div:last-child {
+        padding: 16px;
+    }
+    
+    .quill-editor .ql-editor {
+        min-height: 300px;
+    }
+    
+    .quill-editor .ql-container {
+        min-height: 300px;
+    }
+    
+    .addArticle-list .el-button {
+        min-width: 140px;
+        padding: 10px 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .addArticle-title {
+        font-size: 20px;
+    }
+    
+    .addArticle-list {
+        padding: 16px;
+    }
+    
+    .addArticle-item {
+        margin-bottom: 16px;
+    }
+    
+    .addArticle-item > div:first-child {
+        padding: 10px 14px;
+        font-size: 13px;
+    }
+    
+    .addArticle-item > div:last-child {
+        padding: 14px;
+    }
+}

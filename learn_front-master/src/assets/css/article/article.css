@@ -1,0 +1,497 @@
+/* ========== 笔记页面样式 - 高端版 ========== */
+
+.article {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+/* ========== 主内容区域 ========== */
+.article-page-content {
+    width: 100%;
+    min-height: 88%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 24px;
+    position: relative;
+}
+
+/* 背景装饰 */
+.article-page-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60%;
+    height: 500px;
+    background: radial-gradient(circle, rgba(32, 180, 134, 0.03) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ========== 搜索区域样式 ========== */
+.article-page-search {
+    width: 100%;
+    max-width: 1280px;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    border-radius: 28px;
+    padding: 24px 28px 24px 28px;
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(226, 232, 240, 0.6);
+    margin-top: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    position: relative;
+    z-index: 1;
+}
+
+.article-page-search > div {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', 'PingFang SC', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #1e293b;
+}
+
+.article-page-search > div > div:first-child {
+    white-space: nowrap;
+    color: #475569;
+}
+
+.article-page-search .el-input {
+    width: 200px;
+}
+
+.article-page-search .el-input__inner {
+    height: 42px;
+    border-radius: 14px;
+    border: 1.5px solid #e2e8f0;
+    background: #ffffff;
+    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    font-size: 14px;
+}
+
+.article-page-search .el-input__inner:focus {
+    border-color: #20B486;
+    box-shadow: 0 0 0 4px rgba(32, 180, 134, 0.12);
+}
+
+/* 按钮区域 */
+.article-page-btns {
+    display: flex;
+    gap: 14px;
+    margin-left: auto;
+}
+
+/* ========== 页面标题 ========== */
+.article-page-title {
+    width: 100%;
+    max-width: 1280px;
+    margin-top: 48px;
+    margin-bottom: 28px;
+    font-size: 32px;
+    font-weight: 700;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', 'PingFang SC', sans-serif;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    position: relative;
+    padding-left: 20px;
+}
+
+.article-page-title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 28px;
+    background: linear-gradient(135deg, #20B486, #58C7A4);
+    border-radius: 4px;
+}
+
+.article-page-title::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 20px;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #20B486, transparent);
+    border-radius: 3px;
+}
+
+/* ========== 笔记列表网格 ========== */
+.article-page-list {
+    width: 100%;
+    max-width: 1280px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    margin-top: 20px;
+}
+
+/* 笔记卡片 */
+.article-page-item {
+    background: #ffffff;
+    border-radius: 24px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    border: 1px solid rgba(226, 232, 240, 0.6);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    cursor: pointer;
+    position: relative;
+    padding: 24px;
+}
+
+.article-page-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #20B486, #58C7A4, #20B486);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.article-page-item:hover::before {
+    opacity: 1;
+}
+
+.article-page-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 24px 48px -12px rgba(32, 180, 134, 0.2);
+    border-color: rgba(32, 180, 134, 0.3);
+}
+
+/* 笔记图标 */
+.article-page-image {
+    position: absolute;
+    right: 24px;
+    top: 24px;
+}
+
+.article-page-image img {
+    width: 48px;
+    height: 48px;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.article-page-item:hover .article-page-image img {
+    opacity: 1;
+}
+
+/* 用户信息区域 */
+.article-page-user {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.article-page-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #20B486;
+    box-shadow: 0 4px 12px rgba(32, 180, 134, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.article-page-item:hover .article-page-avatar {
+    transform: scale(1.05);
+}
+
+.article-page-username {
+    flex: 1;
+}
+
+.article-page-username div:first-child {
+    font-size: 13px;
+    color: #8a8a9e;
+    margin-bottom: 6px;
+    letter-spacing: 0.3px;
+}
+
+.article-page-username div:last-child {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0f172a;
+    letter-spacing: -0.3px;
+    line-height: 1.4;
+}
+
+/* 笔记内容 - 纯CSS方案（无警告） */
+.article-page-font {
+    font-size: 14px;
+    color: #475569;
+    line-height: 1.7;
+    max-height: 95.2px; /* 14 * 1.7 * 4 = 95.2px */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 8px;
+    padding-right: 60px;
+    word-break: break-word;
+}
+
+/* ========== 分页样式 ========== */
+.article-page-fenye {
+    margin-top: 48px;
+    margin-bottom: 40px;
+    width: 100%;
+    max-width: 1280px;
+    display: flex;
+    justify-content: center;
+}
+
+.article-page-fenye .el-pagination {
+    padding: 0;
+}
+
+.article-page-fenye .el-pagination .el-pager li {
+    border-radius: 14px;
+    margin: 0 6px;
+    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    font-weight: 500;
+    background: transparent;
+    border: 1px solid #e2e8f0;
+    min-width: 40px;
+    height: 40px;
+    line-height: 38px;
+}
+
+.article-page-fenye .el-pagination .el-pager li.active {
+    background: linear-gradient(135deg, #20B486, #58C7A4);
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 4px 12px rgba(32, 180, 134, 0.3);
+}
+
+.article-page-fenye .el-pagination .el-pager li:hover:not(.active) {
+    background: rgba(32, 180, 134, 0.1);
+    color: #20B486;
+    border-color: #20B486;
+}
+
+.article-page-fenye .el-pagination button {
+    border-radius: 14px;
+    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    background: transparent;
+    border: 1px solid #e2e8f0;
+    width: 40px;
+    height: 40px;
+}
+
+.article-page-fenye .el-pagination button:hover {
+    background: rgba(32, 180, 134, 0.1);
+    color: #20B486;
+    border-color: #20B486;
+}
+
+/* ========== 底部装饰图 ========== */
+.article-page-bottom {
+    width: 100%;
+    max-width: 1280px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.article-page-bottom img {
+    width: 60%;
+    max-width: 500px;
+    height: auto;
+    opacity: 0.5;
+    transition: all 0.4s ease;
+    filter: grayscale(0.3);
+}
+
+.article-page-bottom img:hover {
+    opacity: 0.8;
+    filter: grayscale(0);
+    transform: scale(1.02);
+}
+
+/* ========== 按钮样式 ========== */
+.el-button--primary.is-plain {
+    background: transparent;
+    border-color: #20B486;
+    color: #20B486;
+    border-radius: 24px;
+    padding: 8px 20px;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+.el-button--primary.is-plain:hover {
+    background: linear-gradient(135deg, #20B486, #58C7A4);
+    border-color: transparent;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(32, 180, 134, 0.3);
+}
+
+.el-button--warning.is-plain {
+    background: transparent;
+    border-color: #f59e0b;
+    color: #f59e0b;
+    border-radius: 24px;
+    padding: 8px 20px;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+.el-button--warning.is-plain:hover {
+    background: linear-gradient(135deg, #f59e0b, #fbbf24);
+    border-color: transparent;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
+}
+
+/* ========== 空状态样式 ========== */
+.article-page-list:empty::after {
+    content: '暂无笔记数据';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 300px;
+    font-size: 16px;
+    color: #94a3b8;
+    background: #ffffff;
+    border-radius: 24px;
+    grid-column: span 2;
+}
+
+/* ========== 响应式设计 ========== */
+@media (max-width: 1024px) {
+    .article-page-search {
+        flex-wrap: wrap;
+    }
+    
+    .article-page-search > div {
+        width: calc(50% - 8px);
+    }
+    
+    .article-page-search .el-input {
+        width: 100%;
+    }
+    
+    .article-page-btns {
+        margin-left: 0;
+        width: 100%;
+        justify-content: center;
+        margin-top: 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    .article-page-content {
+        padding: 0 16px;
+    }
+    
+    .article-page-search {
+        padding: 20px;
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .article-page-search > div {
+        width: 100%;
+    }
+    
+    .article-page-title {
+        font-size: 24px;
+        margin-top: 36px;
+    }
+    
+    .article-page-list {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 20px;
+    }
+    
+    .article-page-list:empty::after {
+        grid-column: span 1;
+    }
+    
+    .article-page-item {
+        padding: 20px;
+    }
+    
+    .article-page-username div:last-child {
+        font-size: 16px;
+    }
+    
+    .article-page-font {
+        font-size: 13px;
+        padding-right: 50px;
+        max-height: 88.4px;
+    }
+    
+    .article-page-image img {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .article-page-fenye .el-pagination .el-pager li {
+        min-width: 36px;
+        height: 36px;
+        line-height: 34px;
+        margin: 0 4px;
+    }
+    
+    .article-page-fenye .el-pagination button {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .article-page-bottom img {
+        width: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    .article-page-title {
+        font-size: 20px;
+    }
+    
+    .article-page-avatar {
+        width: 44px;
+        height: 44px;
+    }
+    
+    .article-page-username div:last-child {
+        font-size: 14px;
+    }
+    
+    .article-page-font {
+        font-size: 12px;
+        padding-right: 40px;
+        max-height: 81.6px;
+    }
+    
+    .article-page-image img {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .article-page-bottom img {
+        width: 100%;
+    }
+}

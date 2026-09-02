@@ -1,0 +1,183 @@
+/* ========== 错题集页面额外样式 ========== */
+
+/* 折叠面板样式 */
+.el-collapse {
+    width: 100%;
+    max-width: 1280px;
+    margin: 32px auto 0;
+    border: none;
+    background: transparent;
+}
+
+.el-collapse-item {
+    background: #ffffff;
+    border-radius: 24px !important;
+    border: 1px solid rgba(226, 232, 240, 0.6);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    margin-bottom: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.el-collapse-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(32, 180, 134, 0.08);
+    border-color: rgba(32, 180, 134, 0.3);
+}
+
+.el-collapse-item__header {
+    background: #f8fafc;
+    border: none;
+    padding: 18px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1e293b;
+    border-radius: 24px 24px 0 0;
+    transition: all 0.3s ease;
+}
+
+.el-collapse-item__header:hover {
+    background: rgba(32, 180, 134, 0.05);
+    color: #20B486;
+}
+
+.el-collapse-item__wrap {
+    border: none;
+    background: #ffffff;
+    border-radius: 0 0 24px 24px;
+}
+
+.el-collapse-item__content {
+    padding: 0;
+}
+
+/* 错题集内部的题目列表 */
+.assignInfo-list {
+    background: transparent;
+    box-shadow: none;
+    padding: 20px;
+    margin-bottom: 0;
+}
+
+/* 错题集题目卡片 */
+.assignInfo-item {
+    position: relative;
+    padding: 14px 16px 18px;
+    margin-bottom: 18px;
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.85);
+    border-radius: 16px;
+}
+
+.assignInfo-item:last-child {
+    margin-bottom: 0;
+}
+
+/* 错误答案高亮：使用块级背景，避免左侧红线贯穿题目列表 */
+.assignInfo-item.wrong-item {
+    border-color: rgba(252, 165, 165, 0.45);
+    background: linear-gradient(90deg, rgba(254, 242, 242, 0.75) 0%, #ffffff 52%);
+}
+
+.assignInfo-item.correct-item {
+    border-color: rgba(32, 180, 134, 0.18);
+}
+
+/* 错误标记 */
+.wrong-badge {
+    display: inline-block;
+    background: #fee2e2;
+    color: #dc2626;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    margin-left: 12px;
+}
+
+/* 正确答案标记 */
+.correct-badge {
+    display: inline-block;
+    background: #e8f5ed;
+    color: #20B486;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    margin-left: 12px;
+}
+
+/* 错题统计卡片 */
+.wrong-stats {
+    width: 100%;
+    max-width: 1280px;
+    background: linear-gradient(135deg, #f0f9f4 0%, #e8f5ed 100%);
+    border-radius: 24px;
+    padding: 24px 32px;
+    margin: 32px auto 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    border: 1px solid rgba(32, 180, 134, 0.2);
+}
+
+.wrong-stats-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.wrong-stats-left i {
+    font-size: 48px;
+    color: #20B486;
+}
+
+.wrong-stats-left .stats-info h3 {
+    font-size: 14px;
+    font-weight: 500;
+    color: #64748b;
+    margin-bottom: 4px;
+}
+
+.wrong-stats-left .stats-info .stats-number {
+    font-size: 32px;
+    font-weight: 800;
+    color: #20B486;
+}
+
+.wrong-stats-right {
+    color: #64748b;
+    font-size: 14px;
+}
+
+.wrong-stats-right p {
+    margin: 4px 0;
+}
+
+.wrong-stats-right i {
+    color: #f59e0b;
+    margin-right: 4px;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+    .el-collapse-item__header {
+        padding: 14px 18px;
+        font-size: 14px;
+    }
+    
+    .assignInfo-list {
+        padding: 12px;
+    }
+    
+    .wrong-stats {
+        padding: 16px 20px;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .wrong-stats-left {
+        flex-direction: column;
+        text-align: center;
+    }
+}
