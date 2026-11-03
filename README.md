@@ -25,23 +25,9 @@ AI 功能接入 DeepSeek，服务端处理调用额度、输入长度和冷却�
 
 ## 本地运行
 
-已验证环境：Java 17、Maven 3.9、MySQL 8.4、Redis，以及 Node.js 26 / npm 11。仓库尚未锁定 Node 版本，因此其他版本需要重新验证。
+需要 Java 17、Maven、MySQL、Redis 和 Node.js。当前启动脚本按 macOS + Temurin 17 配置，具体版本、目录和操作步骤见[本地运行指南](docs/local-development.md)。
 
-1. 启动本地 MySQL 和 Redis。当前后端开发配置使用 `localhost:3306/online_learn`、MySQL `root` 用户和 `127.0.0.1:6379` Redis；先创建名为 `online_learn` 的全新专用 Demo 库。
-2. 依次向该库导入两份 SQL。首份脚本会删除并重建已有表，禁止用于已有业务库：
-
-   ```sh
-   mysql -u root -p -e 'CREATE DATABASE `online_learn` CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;'
-   mysql -u root -p online_learn < sql/portfolio-demo.sql
-   mysql -u root -p online_learn < sql/migrate-ai-data-agent.sql
-   ```
-
-3. 由 `.env.example` 生成权限受限的本地 `.env`，设置 `DB_PASSWORD`、不少于 32 字符的 `JWT_SECRET` 和可选 DeepSeek 凭据；`.env` 不得提交。
-4. 在两套前端目录分别执行标准 `npm ci`；启动脚本不会自动安装依赖或导入数据库。
-5. 执行 `bash scripts/start-demo.sh`；学生端为 `http://localhost:3001/login`，教师/管理端为 `http://localhost:3000/login`。
-6. 演示结束执行 `bash scripts/stop-demo.sh`。当前 launcher 假设 macOS Temurin 17 的本机安装布局，其他环境需要单独验证。
-
-无 DeepSeek 凭据时非 AI 功能仍可启动，生成型 AI 会返回明确的“未配置”错误。Demo 使用合成账号，账号凭据不放在公开仓库。
+**演示 SQL 会删除并重建同名表，请只使用全新、可丢弃的数据库，不要导入已有业务库。**
 
 ## 项目状态
 
