@@ -5,58 +5,58 @@
       <!-- 搜索区域 -->
       <div class="task-page-search">
         <div class="task-search-item">
-          <div>课程名称</div>
+          <div>{{ $t("课程名称") }}</div>
           <div>
             <el-input 
-              size="mini" 
+              size="small"
               v-model="search.name" 
-              placeholder="输入课程名称"
+              :placeholder="$t('输入课程名称')"
               clearable
             ></el-input>
           </div>
         </div>
         <div class="task-search-item">
-          <div>教师名称</div>
+          <div>{{ $t("教师名称") }}</div>
           <div>
             <el-input 
-              size="mini" 
+              size="small"
               v-model="search.teacherName" 
-              placeholder="输入教师名称"
+              :placeholder="$t('输入教师名称')"
               clearable
             ></el-input>
           </div>
         </div>
         <div class="task-search-item">
-          <div>专业名称</div>
+          <div>{{ $t("专业名称") }}</div>
           <div>
             <el-input 
-              size="mini" 
+              size="small"
               v-model="search.major" 
-              placeholder="输入专业名称"
+              :placeholder="$t('输入专业名称')"
               clearable
             ></el-input>
           </div>
         </div>
         <div class="task-search-item">
-          <div>简介内容</div>
+          <div>{{ $t("简介内容") }}</div>
           <div>
             <el-input 
-              size="mini" 
+              size="small"
               v-model="search.taskDescribe" 
-              placeholder="输入课程简介"
+              :placeholder="$t('输入课程简介')"
               clearable
             ></el-input>
           </div>
         </div>
         <div class="task-search-item">
-          <el-button icon="el-icon-search" size="mini" type="primary" plain @click="searchPage()">搜索课程</el-button>
-          <el-button icon="el-icon-refresh" size="mini" type="warning" plain @click="refresh()">重置筛选</el-button>
+          <el-button  size="small" type="primary" plain @click="searchPage()"><template #icon><i class="el-icon-search" aria-hidden="true"></i></template>{{ $t("搜索课程") }}</el-button>
+          <el-button  size="small" type="warning" plain @click="refresh()"><template #icon><i class="el-icon-refresh" aria-hidden="true"></i></template>{{ $t("重置筛选") }}</el-button>
         </div>
         <div class="task-search-item">
-          <span>热门分类</span>
+          <span>{{ $t("热门分类") }}</span>
           <span 
             class="task-search-type" 
-            @click="searchClass(item.name)" 
+            @click="searchClass($demoSource(item, 'name'))" 
             v-for="(item,index) in classification" 
             :key="index"
             :class="{ 'active-type': search.classification === item.name }"
@@ -66,9 +66,7 @@
       
       <!-- 课程列表标题 -->
       <div class="task-font">
-        <i class="title-icon el-icon-reading"></i>
-        探索精品课程
-        <span class="task-font-count">共 {{ total }} 门课程</span>
+        <i class="title-icon el-icon-reading"></i>{{ $t("探索精品课程") }}<span class="task-font-count">{{ $t("共") }}{{ total }}{{ $t("门课程") }}</span>
       </div>
       
       <!-- 课程网格 -->
@@ -80,23 +78,21 @@
           class="task-page-item"
         >
           <div class="task-page-image">
-            <img :src="$store.state.HOST + item.image" :alt="item.name" loading="lazy">
+            <img v-if="item.image" :src="$config.HOST + item.image" :alt="item.name" loading="lazy">
           </div>
           <div class="task-card-body">
-            <div class="task-card-label">{{item.classification || '精品课程'}}</div>
+            <div class="task-card-label">{{item.classification || $t("精品课程")}}</div>
             <h3>{{item.name}}</h3>
-            <p>{{item.taskDescribe || '暂无简介'}}</p>
+            <p>{{item.taskDescribe || $t("暂无简介")}}</p>
             <div class="task-card-meta">
-              <span><i class="el-icon-user"></i>{{item.teacherName || '暂未设置'}}</span>
-              <span><i class="el-icon-collection-tag"></i>{{item.major || '通用方向'}}</span>
+              <span><i class="el-icon-user"></i>{{item.teacherName || $t("暂未设置")}}</span>
+              <span><i class="el-icon-collection-tag"></i>{{item.major || $t("通用方向")}}</span>
             </div>
           </div>
           <div class="task-card-footer">
-            <span><i class="el-icon-user"></i>{{item.num || 0}} 人学习</span>
-            <span><i class="el-icon-star-off"></i>{{item.favorCount || 0}} 收藏</span>
-            <el-button @click.stop="toTaskInfo(item.id)" size="mini" type="success" plain>
-              查看课程
-            </el-button>
+            <span><i class="el-icon-user"></i>{{item.num || 0}}{{ $t("人学习") }}</span>
+            <span><i class="el-icon-star-off"></i>{{item.favorCount || 0}}{{ $t("收藏") }}</span>
+            <el-button @click.stop="toTaskInfo(item.id)" size="small" type="success" plain>{{ $t("查看课程") }}</el-button>
           </div>
         </div>
       </div>
@@ -105,7 +101,7 @@
       <div class="task-page-fenye" v-if="total > 12">
         <el-pagination
           background
-          :page-size="search.pageSize"
+          v-model:page-size="search.pageSize"
           layout="prev, pager, next"
           @current-change="handleCurrentChange"
           :total="total">
@@ -123,9 +119,11 @@
 </template>
 
 <script>
+import { t } from '@/i18n'
+
 import { getApeTaskPage, getApeClassificationList } from '../../api/api' 
-import headerPage from "../../components/header/header"
-import bottomPage from "../../components/bottom/bottom"
+import headerPage from "../../components/header/header.vue"
+import bottomPage from "../../components/bottom/bottom.vue"
 
 export default {
   name: 'Task',
@@ -168,13 +166,13 @@ export default {
           this.total = res.data.total
         } else {
           this.$notify.error({
-            title: '错误',
+            get title() { return t("错误") },
             message: res.message
           });
         }
       }).catch(() => {
         this.$notify.error({
-          title: '错误',
+          get title() { return t("错误") },
           message: '获取课程列表失败，请稍后重试'
         });
       })
@@ -207,11 +205,11 @@ export default {
           this.classification = res.data
         } else {
           this.$notify.error({
-            title: '错误',
+            get title() { return t("错误") },
             message: res.message
           });
         }
-      })
+      }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false })
     }
   },
   mounted() {

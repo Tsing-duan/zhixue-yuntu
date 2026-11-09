@@ -5,12 +5,12 @@
         <img
           class="brand-logo"
           src="../../assets/image/operation.png"
-          alt="管理后台"
+          :alt="$t('管理后台')"
         />
       </div>
       <div class="brand-copy" v-show="!isCollapse">
-        <div class="brand-title">智学云途</div>
-        <div class="brand-subtitle">管理后台</div>
+        <div class="brand-title">{{ $t("智学云途") }}</div>
+        <div class="brand-subtitle">{{ $t("管理后台") }}</div>
       </div>
     </div>
     <el-menu
@@ -21,7 +21,7 @@
       :unique-opened="true"
       background-color="#f7f7f5"
       :text-color="textColor"
-      :default-active="this.$route.path + '@' + this.$route.name"
+      :default-active="this.$route.path + '@' + (this.$route.meta.title || this.$route.name)"
       active-text-color="#1f1f1f"
     >
       <span v-for="(item, index) in displayMenus" :key="index">
@@ -31,76 +31,77 @@
         >
           <span class="menu-dot"></span>
           <i :class="item.icon"></i>
-          <span slot="title">{{ item.menuName }}</span>
+          <template #title><span >{{ $t(item.menuName) }}</span></template>
         </el-menu-item>
-        <el-submenu v-if="item.menuType == 0" :index="index + ''">
-          <template slot="title">
+        <el-sub-menu v-if="item.menuType == 0" :index="index + ''">
+          <template #title>
             <span class="menu-dot"></span>
             <i :class="item.icon"></i>
-            <span v-if="!isCollapse">{{ item.menuName }}</span>
+            <span v-if="!isCollapse">{{ $t(item.menuName) }}</span>
           </template>
           <span v-for="(element, subscript) in item.child" :key="subscript">
-            <el-submenu
+            <el-sub-menu
               v-if="element.menuType == 0"
               :index="index + '-' + subscript"
             >
-              <template slot="title">
+              <template #title>
                 <i :class="element.icon"></i>
-                <span>{{ element.menuName }}</span>
+                <span>{{ $t(element.menuName) }}</span>
               </template>
-              <el-menu-item
-                v-for="(one, sub) in element.child"
+              <template v-for="(one, sub) in element.child"><el-menu-item
+
                 v-if="one.menuType == 1"
                 :index="one.routeUrl + '@' + one.menuName"
               >
                 <span class="menu-dot"></span>
                 <i :class="one.icon"></i>
-                <span slot="title">{{ one.menuName }}</span>
-              </el-menu-item>
-            </el-submenu>
+                <template #title><span >{{ $t(one.menuName) }}</span></template>
+              </el-menu-item></template>
+            </el-sub-menu>
             <el-menu-item
               v-if="element.menuType == 1"
               :index="element.routeUrl + '@' + element.menuName"
             >
               <span class="menu-dot"></span>
               <i :class="element.icon"></i>
-              <span slot="title">{{ element.menuName }}</span>
+              <template #title><span >{{ $t(element.menuName) }}</span></template>
             </el-menu-item>
           </span>
-        </el-submenu>
+        </el-sub-menu>
       </span>
     </el-menu>
     <!-- AI 数据整理入口 -->
     <div class="ai-entry" @click="goAiData">
       <i class="el-icon-cpu"></i>
-      <span v-show="!isCollapse">AI 数据整理</span>
+      <span v-show="!isCollapse">{{ $t("AI 数据整理") }}</span>
     </div>
   </el-aside>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState } from "pinia";
+import { useMenuStore, useSessionStore } from "@/store";
 export default {
   name: "asside",
   data() {
     return {
-      isCollapse: false,
+      isCollapse: window.innerWidth < 768,
       textColor: "#595959",
     };
   },
   computed: {
-    ...mapState({
-      activeMenuArrary: (state) => state.menu.activeMenuArrary,
-      displayMenus: (state) => state.menu.displayMenus,
+    ...mapState(useMenuStore, {
+      activeMenuArrary: (state) => state.activeMenuArrary,
+      displayMenus: (state) => state.displayMenus,
     }),
   },
   methods: {
     goAiData() {
       this.$router.push('/aiData')
-      this.$store.commit('menu/setActiveMenu', '/aiData')
+      this.$menus.setActiveMenu('/aiData')
       const found = this.activeMenuArrary.some(m => m.url === '/aiData')
       if (!found) {
-        this.$store.commit('menu/addActiveMenu', { name: 'AI数据整理', url: '/aiData' })
+        this.$menus.addActiveMenu({ name: 'AI数据整理', url: '/aiData' })
       }
     },
     handleSelect(key) {
@@ -108,7 +109,7 @@ export default {
       this.$router.push({
         path: menu[0],
       });
-      this.$store.commit("menu/setActiveMenu", menu[0]);
+      this.$menus.setActiveMenu(menu[0]);
       for (let i = 0; i < this.activeMenuArrary.length; i++) {
         if (this.activeMenuArrary[i].url == menu[0]) {
           return;
@@ -118,7 +119,7 @@ export default {
         name: menu[1],
         url: menu[0],
       };
-      this.$store.commit("menu/addActiveMenu", param);
+      this.$menus.addActiveMenu(param);
     },
   },
   created() {},
@@ -127,17 +128,17 @@ export default {
     this.$bus.$on("collapse", (res) => {
       this.isCollapse = res;
     });
-    this.$store.commit("menu/setActiveMenu", this.$route.path);
+    this.$menus.setActiveMenu(this.$route.fullPath);
     for (let i = 0; i < this.activeMenuArrary.length; i++) {
-      if (this.activeMenuArrary[i].url == this.$route.path) {
+      if (this.activeMenuArrary[i].url == this.$route.fullPath) {
         return;
       }
     }
     var param = {
-      name: this.$route.name,
-      url: this.$route.path,
+      name: (this.$route.meta.title || this.$route.name),
+      url: this.$route.fullPath,
     };
-    this.$store.commit("menu/addActiveMenu", param);
+    this.$menus.addActiveMenu(param);
   },
 };
 </script>
@@ -243,7 +244,7 @@ export default {
 }
 
 .notion-menu:deep(.el-menu-item),
-.notion-menu:deep(.el-submenu__title) {
+.notion-menu:deep(.el-sub-menu__title) {
   height: 40px !important;
   line-height: 40px !important;
   border-radius: 9px;
@@ -254,20 +255,20 @@ export default {
 }
 
 .notion-menu:deep(.el-menu-item i),
-.notion-menu:deep(.el-submenu__title i) {
+.notion-menu:deep(.el-sub-menu__title i) {
   color: #8a95a3;
   margin-right: 10px;
   transition: all 0.2s ease;
 }
 
 .notion-menu:deep(.el-menu-item:hover),
-.notion-menu:deep(.el-submenu__title:hover) {
+.notion-menu:deep(.el-sub-menu__title:hover) {
   background-color: #f1f5f9 !important;
   color: #1f2937 !important;
 }
 
 .notion-menu:deep(.el-menu-item:hover i),
-.notion-menu:deep(.el-submenu__title:hover i) {
+.notion-menu:deep(.el-sub-menu__title:hover i) {
   color: #2563eb;
 }
 
@@ -282,26 +283,26 @@ export default {
   color: #2563eb;
 }
 
-.notion-menu:deep(.el-submenu .el-menu-item) {
+.notion-menu:deep(.el-sub-menu .el-menu-item) {
   background: transparent !important;
   padding-left: 38px !important;
 }
 
-.notion-menu:deep(.el-submenu .el-submenu__title) {
+.notion-menu:deep(.el-sub-menu .el-sub-menu__title) {
   background: transparent !important;
 }
 
-.notion-menu:deep(.el-submenu .el-menu) {
+.notion-menu:deep(.el-sub-menu .el-menu) {
   background: transparent !important;
 }
 
-.notion-menu:deep(.el-submenu .el-submenu__icon-arrow) {
+.notion-menu:deep(.el-sub-menu .el-sub-menu__icon-arrow) {
   color: #9aa4b2;
   margin-top: -6px;
 }
 
 .notion-menu:deep(.el-menu--collapse .el-menu-item),
-.notion-menu:deep(.el-menu--collapse .el-submenu__title) {
+.notion-menu:deep(.el-menu--collapse .el-sub-menu__title) {
   padding: 0 !important;
   justify-content: center;
 }
@@ -322,11 +323,11 @@ export default {
 }
 
 .notion-menu:deep(.el-menu-item),
-.notion-menu:deep(.el-submenu) {
+.notion-menu:deep(.el-sub-menu) {
   animation: menuFadeSlide 0.32s ease both;
 }
 
-.notion-menu:deep(.el-submenu .el-menu-item) {
+.notion-menu:deep(.el-sub-menu .el-menu-item) {
   animation-duration: 0.26s;
 }
 

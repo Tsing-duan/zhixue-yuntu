@@ -1,0 +1,1001 @@
+智学云途|Zhixue Cloud
+让每一步学习更清晰|A clearer path through learning
+留言反馈|Feedback
+公告|Announcements
+关于项目|About this project
+个人中心|My profile
+补充导航|More navigation
+智学云途主页|Zhixue home
+导航|Menu
+关闭导航菜单|Close navigation
+打开导航菜单|Open navigation
+主导航|Main navigation
+账号菜单|Account menu
+我的课程|My courses
+收藏课程|Saved courses
+记笔记|Write a note
+我的作业|My assignments
+我的笔记|My notes
+收藏笔记|Saved notes
+错题集|Mistake review
+退出登陆|Sign out
+主页|Home
+课程|Courses
+教师|Teachers
+考试|Exams
+笔记|Notes
+讨论|Discussions
+留言|Messages
+关于|About
+AI教学助手|AI teaching assistant
+AI学习助手|AI study assistant
+退出成功|Signed out
+当前文件数量超出上传限制|Too many files selected
+仅支持 JPG、PNG、WebP、GIF、BMP 格式的图片|Use a JPG, PNG, WebP, GIF or BMP image
+上传图片单张大小不能超过2MB|Each image must be no larger than 2 MB
+账号不能为空|Enter your account name
+账号长度为6-10位，且只能包含字母、数字、下划线|Use 6–10 letters, numbers or underscores
+密码不能为空|Enter your password
+密码长度为6-10位|Use a password of 6–10 characters
+密码至少包含字母和数字|Include both letters and numbers
+登录已失效，请重新登录|Your session expired. Please sign in again.
+会话已失效|Session expired
+权限不足，无法访问该功能|You do not have access to this feature
+请求超时，请稍后重试|Request timed out. Please try again.
+请求失败，请检查网络连接|Request failed. Check your connection.
+权限不足，无法上传文件|You do not have permission to upload files
+上传失败，请检查网络后重试|Upload failed. Check your connection and try again.
+智学云途品牌标记|Zhixue Cloud logo
+作者|Authors
+学校|School
+院系|Department
+专业|Major
+智学云途 © 2026|Zhixue Cloud © 2026
+计算机学院|School of Computer Science
+软件工程|Software Engineering
+智学云途 · 小智|Xiaozhi · Zhixue Cloud
+教学助手|Teaching assistant
+学习助手|Study assistant
+最近|Recent
+加载中|Loading
+正在加载历史结果|Loading previous results
+生成后会出现在这里|Your generated results will appear here
+删除|Delete
+生成于|Generated
+刚刚|Just now
+收起设置|Hide settings
+调整后重新生成|Adjust and regenerate
+全部已报名课程|All enrolled courses
+关联课程|Related course
+计划周期|Plan duration
+每周小时|Hours per week
+例如：两周内补齐 Java 基础并完成章节作业|For example: Review Java fundamentals and finish chapter assignments in two weeks
+学习目标|Learning goal
+例如：每天最多 1 小时，周末可以安排复盘|For example: Up to one hour a day, with review at weekends
+额外要求|Additional requirements
+例如：找出最薄弱的知识点并安排订正|For example: Identify weak concepts and plan corrections
+分析目标|Analysis goal
+全选|Select all
+取消全选|Clear selection
+已选|Selected
+道|questions
+答|Answer
+正确|Correct
+暂无错题记录，继续保持！|No mistakes recorded. Keep going!
+加载错题列表中...|Loading mistake review…
+选择课程，可不选|Choose a course (optional)
+课时分钟|Lesson length (minutes)
+例如：大一学生|For example: First-year students
+授课对象|Audience
+例如：面向对象封装与继承|For example: Encapsulation and inheritance
+备课主题|Lesson topic
+例如：学生能够解释核心概念，并独立完成基础练习|For example: Students can explain key concepts and complete basic exercises independently
+教学目标|Teaching goals
+全部相关课程|All related courses
+例如：突出章节主线、重点难点和复习清单|For example: Highlight chapter connections, key concepts and a review checklist
+总结侧重点|Summary focus
+历史结果|Previous results
+结果|Result
+复制|Copy
+学习问答|Study Q&A
+也可以直接提问；需要参考上方结果时，请把相关内容带入问题。|Ask a question directly. Include relevant material above if you want the answer to refer to it.
+收起问答|Hide Q&A
+开始提问|Ask a question
+输入问题，Enter 发送，Shift+Enter 换行|Type a question. Enter to send; Shift+Enter for a new line.
+发送|Send
+两周内跟上课程进度，并把薄弱章节补齐|Catch up with my courses in two weeks and review weaker chapters
+每天安排可执行的小任务，包含复习和错题巩固|Plan manageable daily tasks, including review and mistake practice
+找出我最薄弱的知识点，并给出订正和复习步骤|Identify my weakest concepts and suggest correction and review steps
+结合当前课程章节设计一节课|Design a lesson around the current course chapters
+平台课程学生|Students taking this course
+让学生理解核心概念，并能完成基础练习|Help students understand key concepts and complete basic exercises
+突出课程主线、章节知识图谱、重点难点和复习建议|Highlight course themes, chapter connections, key concepts and review advice
+生成中|Generating
+新建方案|New plan
+生成方案|Generate plan
+学习计划|Study plan
+AI 辅助学习|AI-assisted study
+按课程进度安排学习节奏|Plan your study around course progress
+结合已报名课程、章节观看和作业完成情况，生成阶段目标与每日行动清单。|Use enrolled courses, chapter viewing and assignment progress to create goals and daily tasks.
+错题分析|Mistake analysis
+AI 辅助复习|AI-assisted review
+分析错题原因并安排巩固|Understand mistakes and plan practice
+读取错题集中的作业与考试错题，归纳薄弱点、错误类型和订正路径，教师可用于班级诊断。|Review assignment and exam mistakes to identify weak concepts, error types and correction steps.
+备课助手|Lesson planning
+AI 辅助教学|AI-assisted teaching
+生成课堂流程与教学设计|Outline activities and lesson structure
+基于课程章节、题目和教师输入，生成教学目标、课堂活动和课后作业建议。|Use chapters, questions and teacher input to suggest objectives, activities and assignments.
+课程总结|Course summary
+AI 辅助整理|AI-assisted organization
+提炼课程主线和复习重点|Connect course themes and review priorities
+把课程简介、章节和作业概况整理成可复盘的课程总结。|Organize the course description, chapters and assignment overview into a review summary.
+可以继续追问备课、教学活动、课程总结或学生问题。|Ask about lesson planning, activities, course summaries or student questions.
+可以继续追问学习计划、课程内容、作业思路或错题订正。|Ask about study plans, course content, assignment approaches or corrections.
+如何设计一节课的导入环节？|How can I design a lesson introduction?
+怎样用提问检查学生是否理解？|How can questions help check student understanding?
+如何把学习目标拆成每天的小任务？|How can I turn a study goal into daily tasks?
+整理错题时应该记录哪些内容？|What should I record when reviewing mistakes?
+AI 历史加载失败，不影响重新生成|Previous AI results could not load. You can still generate a new result.
+每周可投入时间|Weekly time available
+学生希望|Student request
+课时长度|Lesson length
+未命名课程|Untitled course
+生成失败，请重试|Generation failed. Please try again.
+网络请求失败，请稍后重试|Network request failed. Please try again later.
+已复制|Copied
+复制失败，请手动选择文本|Copy failed. Please select and copy the text manually.
+AI 服务返回异常|The AI service returned an unexpected response
+网络请求失败，请检查网络连接后重试|Request failed. Check your connection and try again.
+AI 聊天历史加载失败，不影响继续提问|Chat history could not load. You can still ask a new question.
+确定删除这条 AI 结果吗？|Delete this AI result?
+提示|Notice
+取消|Cancel
+已删除|Deleted
+确定删除这条聊天记录吗？|Delete this chat record?
+标题|Title
+笔记标题|Note title
+所属课程|Course
+摘要|Summary
+笔记摘要|Note summary
+内容|Content
+发布笔记|Publish note
+在这里写下你的笔记内容...|Write your note here…
+错误|Error
+发布成功，请等待管理员审核|Submitted. Awaiting administrator review.
+发布失败，请稍后重试|Could not publish. Please try again.
+上传成功|Uploaded
+笔记名称|Note title
+课程名称|Course name
+搜索笔记|Search notes
+重置筛选|Reset filters
+精选笔记|Explore notes
+共|Total
+篇笔记|notes
+笔记图标|Note icon
+收藏|Save
+正文|Content
+发表评论|Add a comment
+分享你的想法或见解...|Share your thoughts…
+提交评论|Post comment
+学员评论|Student comments
+还没有评论，快来发表第一条评论吧！|No comments yet. Share the first one.
+取消收藏成功|Removed from saved items
+收藏成功|Saved
+评论内容|Comment
+评论成功|Comment posted
+编辑笔记|Edit note
+保存修改|Save changes
+在这里编辑你的笔记内容...|Edit your note here…
+修改成功，请等待管理员审核|Changes submitted. Awaiting administrator review.
+修改失败，请稍后重试|Could not save changes. Please try again.
+参数错误|Invalid parameters
+篇收藏|saved notes
+章节作业|Chapter assignment
+已提交|Submitted
+未提交|Not submitted
+总分|Total points
+分|points
+得分|Score
+单选题|Single choice
+多选题|Multiple choice
+填空题|Fill in the blank
+判断题|True or false
+正确答案|Correct answer
+答案|Answer
+提交作业|Submit assignment
+确定要提交作业内容吗？提交后将无法修改！|Submit this assignment? You cannot change it after submission.
+提交提醒|Confirm submission
+确定提交|Submit
+提交成功|Submitted
+提交失败，请稍后重试|Submission failed. Please try again.
+个作业|assignments
+暂无作业|No assignments yet
+完成课程学习后，作业会在这里显示|Assignments will appear here as you work through your courses
+错题本|Mistake notebook
+道错题待巩固|mistakes to review
+错题本会自动收录你做错的题目|Questions you answered incorrectly are added automatically
+反复练习，巩固薄弱知识点|Practice to strengthen weaker concepts
+掌握后可继续学习新内容|Continue to new material when you feel confident
+删除错题|Remove mistake
+太棒了！暂无错题|No mistakes to review!
+继续保持，你的努力没有白费|Keep up your steady progress
+未知课程|Unknown course
+未知章节|Unknown chapter
+错题已更新|Mistake updated
+确定要从错题本中删除这道题吗？|Remove this question from your mistake notebook?
+删除提醒|Confirm deletion
+确定删除|Delete
+错题已删除|Mistake removed
+登陆账号|Login account
+用户名|Username
+邮箱地址|Email address
+邮箱|Email
+手机号码|Phone number
+联系电话|Contact number
+男|Male
+女|Female
+性别|Gender
+请选择或输入院校|Select or enter a school
+院校|School
+请选择或输入专业|Select or enter a major
+上次修改密码|Last password change
+更换头像|Change avatar
+修改密码|Change password
+旧密码|Current password
+新密码|New password
+确认密码|Confirm password
+请再次输入新密码|Enter your new password again
+请输入正确的11位手机号码|Enter a valid 11-digit phone number
+长度在 2 到 20 个字符|Use 2–20 characters
+请输入正确的邮箱地址|Enter a valid email address
+两次输入的新密码不一致|The new passwords do not match
+成功|Success
+密码修改成功，请重新登录|Password changed. Please sign in again.
+保存成功|Saved
+头像上传成功|Avatar uploaded
+返回首页|Back to home
+哎呀。看来你拐错弯了。|This page could not be found.
+返回上一页|Go back
+讨论交流|Discussions
+个话题|topics
+发起讨论|Start a discussion
+讨论标题|Discussion title
+把你的问题或观点写清楚，提交后等待管理员审核|Describe your question or viewpoint. Posts are reviewed before publication.
+讨论内容|Discussion content
+提交|Submit
+标题长度在 2 到 80 个字符|Use a title of 2–80 characters
+内容长度在 5 到 800 个字符|Use 5–800 characters
+提交成功，请等待管理员审核|Submitted for administrator review
+发表回复|Add a reply
+分享你的观点...|Share your viewpoint…
+发布回复|Post reply
+回复列表|Replies
+条回复|replies
+还没有回复，快来发表第一条回复吧！|No replies yet. Add the first one.
+在这里，一起学习|A place to learn together
+选一门想学的课，也看看同学们留下的笔记与问题。|Choose a course and explore notes and questions shared by fellow learners.
+今天想学点什么？|What would you like to learn?
+输入课程名称|Enter a course name
+搜索|Search
+两位同学在图书馆阅读、做笔记的校园插画|Campus illustration of two students reading and taking notes in a library
+一起读书，一起讨论|Read together. Learn together.
+接下来学什么？|What’s next?
+常用入口|Quick links
+把好奇心带进课堂|Bring your curiosity to class
+从一门课程开始|Start with a course
+全部课程|All courses
+课程暂时加载失败|Courses could not load
+课程封面|Course cover
+课程探索|Explore courses
+打开课程，了解章节与学习内容。|Open this course to explore its chapters and materials.
+授课教师待补充|Teacher information pending
+还没有可浏览的课程|No courses available yet
+前往课程页|Browse courses
+按专业探索|Explore by major
+认识授课老师|Meet your teachers
+查看教师介绍|View teacher profiles
+教师暂时加载失败|Teacher profiles could not load
+暂无可展示的教师介绍|No teacher profiles available yet
+学习遇到卡点时|When you need a hand
+AI 教学助手|AI teaching assistant
+AI 学习助手|AI study assistant
+整理错题、制定学习计划，或梳理一门课程的重点。|Review mistakes, build a study plan or connect the key ideas in a course.
+打开学习助手|Open study assistant
+让学习有来有往|Learn and share
+看看同学们的分享|From fellow learners
+最新笔记|Latest notes
+全部笔记|All notes
+笔记暂时加载失败|Notes could not load
+重新加载|Try again
+打开笔记，查看完整内容|Open this note to read more
+还没有笔记|No notes yet
+分享你的学习笔记|Share a study note
+去讨论区交流学习中的问题|Discuss your study questions
+一起聊聊|Join the conversation
+全部讨论|All discussions
+带着问题来，也把你的思路分享给同学。|Bring a question or share an approach with fellow learners.
+讨论暂时加载失败|Discussions could not load
+还没有公开讨论|No public discussions yet
+进入讨论区，分享一个问题|Visit discussions and share a question
+刚弄懂的知识，也可能帮到别人。|Something you just learned could help someone else.
+写一篇学习笔记|Write a study note
+同学|Learner
+，欢迎回来|, welcome back
+发现课程|Discover courses
+探索课程与学习方向|Explore courses and subjects
+参加考试|Take an exam
+查看考试安排|View exam schedules
+错题复盘|Review mistakes
+整理薄弱知识点|Work on weaker concepts
+学习笔记|Study notes
+记录和浏览笔记|Write and explore notes
+让学习管理更智能，让学习过程更清晰|Organize your learning. See your progress.
+学习账号|Student account
+密码|Password
+登录中...|Signing in…
+登录|Sign in
+注册学生账号|Create a student account
+管理端 / 教师入口|Teacher / administrator sign-in
+用户账号|Account name
+用户密码|Password
+登陆成功|Signed in
+登录失败，请检查网络连接|Sign-in failed. Check your connection.
+发布留言|Send a message
+写下你想说的话，我们会尽快回复...|Write your message here…
+清空内容|Clear
+我的留言|My messages
+条留言|messages
+回复内容|Reply
+暂无回复，请耐心等待|No reply yet
+留言成功，请等待回复|Message sent. Awaiting a reply.
+留言失败，请稍后重试|Could not send the message. Please try again.
+公告列表|Announcements
+条公告|announcements
+请选择公告查看内容|Select an announcement to read it
+暂无已发布公告|No published announcements
+发布提问|Ask a question
+描述你在学习中遇到的问题，老师会尽快为你解答...|Describe your question for your teacher…
+提交提问|Submit question
+我的答疑|My questions
+条提问|questions
+教师回复|Teacher reply
+提问成功，请等待教师回复|Question submitted. Awaiting your teacher’s reply.
+提问失败，请稍后重试|Could not submit the question. Please try again.
+仅面向学生注册，教师请由管理端进入|Student registration only. Teachers use the management sign-in.
+账号|Account
+返回登录|Back to sign-in
+两次输入的密码不一致|The passwords do not match
+名|Name
+注册成功|Account created
+讲师|Teacher
+视频进度|Video progress
+作业进度|Assignment progress
+综合得分|Overall score
+学习评级|Learning rating
+章节名称|Chapter name
+视频状态|Video status
+作业状态|Assignment status
+已完成|Completed
+未完成|Incomplete
+无作业|No assignment
+未开始|Not started
+不及格|Below pass mark
+及格|Pass
+良好|Good
+优秀|Excellent
+教师名称|Teacher name
+输入教师名称|Enter a teacher name
+专业名称|Major name
+输入专业名称|Enter a major
+简介内容|Description
+输入课程简介|Enter a course description
+搜索课程|Search courses
+热门分类|Course categories
+探索精品课程|Explore courses
+门课程|courses
+精品课程|Course
+暂无简介|No description yet
+暂未设置|Not set
+通用方向|General studies
+人学习|learners
+查看课程|View course
+课程详情|Course details
+已收藏|Saved
+课程章节|Course chapters
+学习人数|Learners
+收藏人数|Saves
+专业方向|Subject area
+通用课程|General course
+课程分类|Category
+未分类|Uncategorized
+综合权重|Score weighting
+本章节暂无视频，可继续查看作业或课件|This chapter has no video. You can still view its assignment or materials.
+选择右侧章节开始学习|Choose a chapter to start learning
+课程答疑|Course Q&A
+讲师主页|Teacher profile
+课程笔记|Course notes
+下载课件|Download materials
+学习进度|Learning progress
+课程介绍|About the course
+你将收获|What you can learn
+课程目录|Course outline
+个章节|chapters
+课程视频|Course video
+暂无视频|No video available
+含作业|Assignment included
+课件|Materials
+暂无章节内容|No chapters yet
+分享你的学习心得、疑问或建议...|Share your reflections, questions or suggestions…
+课程简介正在完善中，请先查看章节目录和学习资料。|A description is not yet available. Explore the outline and materials.
+系统进阶|In-depth course
+完整入门|Introductory course
+轻量课程|Short course
+继续学习|Continue learning
+未通过，重新报名|Not approved — enroll again
+报名审核中|Enrollment under review
+报名学习|Enroll
+已加入课程|Enrolled
+未通过|Not approved
+等待审核|Awaiting review
+未报名|Not enrolled
+建立知识框架|Build a knowledge framework
+按章节推进学习，先理解主线，再补充细节。|Work through chapters, starting with the main ideas before the details.
+跟随视频实践|Practice with videos
+通过课程视频和课件，把知识点落到具体操作。|Use videos and materials to put concepts into practice.
+作业巩固反馈|Practice and feedback
+通过章节作业、考试和错题记录检验掌握程度。|Check your understanding with assignments, exams and mistake review.
+沉淀学习笔记|Keep learning notes
+结合评论、答疑和笔记，把学习过程留下来。|Capture your learning through comments, questions and notes.
+报名课程通过后才能进行答疑|Your enrollment must be approved before you can ask course questions
+报名课程通过后才能发表评论|Your enrollment must be approved before you can comment
+请先报名课程|Please enroll in this course first
+报名课程通过后才能下载课件|Your enrollment must be approved before you can download materials
+请先选择章节再下载课件|Choose a chapter before downloading materials
+该章节暂无课件|This chapter has no downloadable materials
+报名课程通过后才能观看视频|Your enrollment must be approved before you can watch videos
+课程已报名，但暂无章节内容|You are enrolled, but this course has no chapters yet
+报名正在审核中，请耐心等待教师通过|Your enrollment is awaiting teacher approval
+报名成功，请等待教师通过|Enrollment submitted for teacher approval
+报名课程通过后才能完成作业|Your enrollment must be approved before you can submit assignments
+请先选择课程章节|Choose a course chapter first
+该章节暂未发布作业|This chapter has no published assignment
+搜索教师|Search teachers
+学校分类|Schools
+优秀教师团队|Meet the teachers
+位教师|teachers
+课程讲师|Course teacher
+暂无学校|School not provided
+查看教师介绍与开设课程|View teacher profiles and courses
+查看详情|View details
+课程列表|Courses
+注册|Register
+登陆|Sign in
+欢迎你的加入！|Welcome aboard!
+入驻信息|Teacher registration
+姓名|Name
+联系方式|Contact details
+国家|Country
+中国|China
+日本|Japan
+韩国|South Korea
+美国|United States
+俄罗斯|Russia
+印度|India
+巴西|Brazil
+新加坡|Singapore
+加拿大|Canada
+职称|Academic title
+初级讲师|Junior lecturer
+中级讲师|Lecturer
+高级讲师|Senior lecturer
+副教授|Associate professor
+教授|Professor
+院士|Academician
+年龄|Age
+生日|Date of birth
+教龄|Teaching experience
+地址|Address
+资质|Qualifications
+自我介绍|Introduction
+入驻|Register
+出生日期|Date of birth
+请上传教学资质|Upload your teaching qualifications
+入驻成功,请等待平台审核|Registration submitted for review
+考试图标|Exam icon
+我的考试|My exams
+场|exams
+考前须知|Before the exam
+注意事项|Important notes
+考试中心|Exam center
+场考试|exams
+考试名称|Exam name
+发布讲师|Teacher
+考试时长|Duration
+分钟|minutes
+开始时间|Start time
+截止时间|Deadline
+考试进度|Exam progress
+成绩|Grade
+开始考试|Start exam
+继续考试|Continue exam
+进行中|In progress
+进入补考|Take retake
+可补考|Retake available
+已截止|Closed
+剩余时间|Time remaining
+小时|hours
+秒|seconds
+考试进行中|Exam in progress
+简答题|Short answer
+论述题|Essay
+提交试卷|Submit exam
+确定要提交考试内容吗？提交后将无法修改！|Submit your exam? You cannot change answers after submission.
+交卷提醒|Confirm exam submission
+继续答题|Keep working
+考试时间已到，系统自动提交试卷...|Time is up. Submitting your exam…
+交卷成功|Exam submitted
+截止|Closed
+考试时间还剩十分钟|Ten minutes remaining
+考试时间还剩五分钟|Five minutes remaining
+当前考试暂不能参加|This exam is not currently available
+正在交卷，请稍候...|Submitting your exam. Please wait…
+当前考试正在进行中，离开页面将自动交卷且无法继续修改，是否强制离开？|Leaving this page will submit your current exam. You will not be able to change it. Leave anyway?
+关闭考试提醒|Leave exam?
+强制交卷并离开|Submit and leave
+管理后台|Management
+AI 数据整理|AI insights
+AI数据整理|AI insights
+智学云途 · 管理端|Zhixue Cloud · Management
+搜索菜单或内容|Search menus or content
+消息中心|Messages
+系统公告|Announcements
+账号中心|Account
+锁屏|Lock screen
+退出|Sign out
+待回复答疑|Questions awaiting replies
+未读消息|Unread messages
+答疑|Q&A
+答疑管理|Manage Q&A
+消息|Messages
+消息管理|Manage messages
+公告管理|Manage announcements
+已为你打开公告列表|Announcement list opened
+请输入|Enter
+的旧密码| current password
+的新密码| new password
+请再次输入|Enter again
+密码修改成功|Password changed
+请选择|Select
+备注|Notes
+文字内容|Text content
+课程id|Course ID
+视频|Video
+点击上传|Upload
+名称|Name
+分类|Category
+上级部门|Parent department
+部门名称|Department name
+显示顺序|Display order
+负责人|Contact person
+联系邮箱|Contact email
+部门状态|Department status
+正常|Active
+停用|Disabled
+字典编码|Dictionary code
+字典标签|Dictionary label
+字典排序|Dictionary order
+字典键值|Dictionary value
+样式属性|CSS class
+回显样式|Display style
+状态|Status
+论坛|Discussion
+表名称|Table name
+表描述|Table description
+查询|Search
+重置|Reset
+导入|Import
+警告|Warning
+请选择最少一条数据!|Select at least one record
+复制名称|Copy name
+复制代码|Copy code
+代码预览|Code preview
+复制成功|Copied
+基本信息|Basic information
+字段信息|Fields
+生成信息|Generation settings
+实体类名称|Entity class name
+字段名称|Field name
+字段描述|Field description
+字段类型|Field type
+Java属性|Java property
+Java类型|Java type
+插入|Insert
+编辑|Edit
+列表|List
+查询方式|Query type
+必填|Required
+文本框|Text field
+文本域|Text area
+下拉框|Select
+单选框|Radio button
+日期控件|Date picker
+显示类型|Display type
+字典类型|Dictionary type
+生成模板|Template
+单表（增删改查）|Single table (CRUD)
+生成在哪个java包下，例如 com.ape.apeadmin|Java package, for example com.ape.apeadmin
+生成包路径|Package path
+可理解为子系统名，例如 system|Subsystem name, for example system
+生成模块名|Module name
+可理解为功能英文名，例如 user|Feature name in English, for example user
+生成业务名|Business name
+用作类描述，例如 用户|Class description, for example User
+生成功能名|Feature description
+编辑生成|Edit generation settings
+题目|Question
+序号|Order
+类型|Type
+单选|Single choice
+多选|Multiple choice
+填空|Fill in the blank
+判断|True or false
+题目内容|Question content
+选项|Option
+选项内容|Option content
+请输入答案（多选多个答案用英文逗号分隔）|Enter answers; separate multiple answers with commas
+分数|Points
+作业|Assignment
+请完善选项|Complete the options
+请完善选项内容|Complete the option content
+专业表|Major
+上级菜单|Parent menu
+菜单类型|Menu type
+目录|Directory
+菜单|Menu
+按钮|Button
+菜单图标|Menu icon
+图标|Icon
+菜单名称|Menu name
+显示排序|Display order
+控制器中定义的权限字符，如：@PreAuthorize(`@ss.hasRole('admin')`)|Permission defined in the controller, e.g. @PreAuthorize(`@ss.hasRole('admin')`)
+权限字符|Permission string
+访问的路由地址，如：`user`，如外网地址需内链访问则以`http(s)://`开头|Route path, e.g. user. External URLs start with http(s)://.
+路由地址|Route URL
+访问的组件路径，如：`system/user/index`，默认在`views`目录下|Component path relative to views, e.g. system/user/index
+组件路径|Component path
+路由路径|Route path
+访问路由的默认传递参数|Default route parameters
+路由参数|Route parameters
+选择是外链则路由地址需要以`http(s)://`开头|External link URLs must start with http(s)://
+是否外链|External link
+是|Yes
+否|No
+选择隐藏则路由将不会出现在侧边栏，但仍然可以访问|Hidden routes remain accessible but do not appear in the sidebar
+显示状态|Visibility
+显示|Visible
+隐藏|Hidden
+选择停用则路由将不会出现在侧边栏，也不能被访问|Disabled routes are hidden from the sidebar and cannot be accessed
+菜单状态|Menu status
+组件地址|Component path
+权限标识|Permission
+提问内容|Question
+回复|Reply
+留言表|Message
+公告类型|Announcement type
+通知|Notice
+关闭|Close
+通知公告|Announcement
+参数名称|Parameter name
+参数键名|Parameter key
+参数键值|Parameter value
+系统内置|Built-in
+参数|Parameter
+岗位名称|Position name
+岗位编码|Position code
+岗位顺序|Position order
+岗位状态|Position status
+岗位|Position
+用户昵称|Display name
+角色名称|Role name
+用户名称|User name
+角色顺序|Role order
+菜单权限|Menu permissions
+暂无数据|No data
+角色|Role
+学校表|School
+学校名称|School name
+学生昵称|Student display name
+学生密码|Student password
+学生|Student
+课程占比|Score weighting
+请输入视频和作业分数所占比例|Enter the weighting for video and assignment scores
+所属专业|Major
+所属分类|Category
+封面|Cover
+课程描述|Course description
+请输入视频和作业分数占比|Enter the weighting for video and assignment scores
+请上传封面图片|Upload a cover image
+教师昵称|Teacher display name
+教师密码|Teacher password
+工作年限|Years of experience
+教学资质|Teaching qualifications
+教师介绍|Teacher introduction
+问答|Q&A
+计算(需人工阅卷)|Calculation (manual grading)
+得分点|Scoring point
+关键词|Keyword
+考试题目|Exam questions
+请完善得分点分数|Complete the points for each scoring criterion
+请完善得分点关键词|Complete the keywords for each scoring criterion
+用户性别|Gender
+归属部门|Department
+用户|User
+登陆密码|Login password
+菜单加载失败，请重新登录|Menus could not load. Please sign in again.
+菜单路由为空或重复|Menu route is empty or duplicated
+登录身份已变化，请重新登录|Your sign-in identity changed. Please sign in again.
+字典获取错误，请稍后重试|Dictionaries could not load. Please try again.
+字典值获取错误，请稍后重试|Dictionary values could not load. Please try again.
+哎呀。你没有访问权限。|You do not have access to this page.
+返回登陆页|Back to sign-in
+请输入密码验证|Enter your password to unlock
+验证通过|Unlocked
+近7天输入 tokens|Input tokens · last 7 days
+近7天输出 tokens|Output tokens · last 7 days
+近7天总计 tokens|Total tokens · last 7 days
+近7天成功生成次数|Successful generations · last 7 days
+近7天预估费用|Estimated cost · last 7 days
+报名人数|Enrollments
+章节数|Chapters
+作业题目|Assignment questions
+已提交人次|Submissions
+考试数|Exams
+参与人数|Participants
+平均分 /|Average score /
+及格率（≥60%）|Pass rate (≥60%)
+及格/总人数|Passed / participants
+平台运营周报|Platform weekly report
+汇总用户、课程、考试、内容等全平台数据，AI 生成运营分析报告。|Use platform user, course, exam and content data to generate an AI-assisted operational report.
+生成周报|Generate report
+课程健康度诊断|Course health review
+分析课程选课率、学习进度、作业完成度和考试表现。|Review enrollments, learning progress, assignment completion and exam performance.
+选择课程|Select a course
+生成诊断|Generate review
+考试质量分析|Exam quality review
+分析考试成绩分布、题目难度、常见错误类型。|Review score distributions, question difficulty and common errors.
+选择考试|Select an exam
+生成分析|Generate analysis
+历史记录|History
+正在加载历史|Loading history
+暂无历史记录|No history yet
+近7天 Token 用量趋势|Token usage · last 7 days
+— 健康度概览|— Health overview
+考试总分|Total exam points
+选择课程后自动显示健康度图表|Select a course to view its health charts
+— 成绩分析|— Grade analysis
+选择考试后自动显示成绩图表|Select an exam to view grade charts
+未配置估算|Cost estimate not configured
+全平台数据概览与趋势分析|Platform overview and trend analysis
+选课、进度、作业、考试表现|Enrollment, progress, assignments and exam performance
+成绩分布、题目难度、错误类型|Score distributions, question difficulty and error types
+历史记录加载失败，不影响重新生成|History could not load. You can still generate a new result.
+确定删除这条 AI 历史记录吗？|Delete this AI history record?
+删除确认|Confirm deletion
+输入|Input
+输出|Output
+已提交作业|Submitted assignments
+未提交作业|Unsubmitted assignments
+关联考试|Related exams
+审核通过|Approved
+待审核|Pending review
+新增|Add
+修改|Edit
+通过|Approve
+创建者|Created by
+创建时间|Created at
+审核未通过|Not approved
+评论|Comments
+确认|Confirm
+确认删除选中的数据？|Delete the selected records?
+操作|Actions
+审核成功|Review saved
+确定删除选中的|Delete the selected
+条数据?|records?
+确定|Confirm
+删除成功|Deleted
+评论人|Commenter
+评论时间|Commented at
+登陆IP|Sign-in IP
+登陆时间|Sign-in time
+上次修改密码时间|Last password change
+保存|Save
+修改头像|Change avatar
+请输入正确的联系电话|Enter a valid contact number
+学习情况|Learning progress
+学生姓名|Student name
+展开/折叠|Expand / collapse
+排序|Order
+讨论名字|Discussion title
+至|to
+开始日期|Start date
+结束日期|End date
+实体|Entity
+更新时间|Updated at
+预览|Preview
+同步|Sync
+同步成功|Synced
+用户数量|Users
+查看用户列表|View users
+学生数量|Students
+查看全部|View all
+教师数量|Teachers
+课程 列表|Courses
+课程学生数量统计|Enrollments by course
+学生性别占比|Students by gender
+学生性别分析|Student gender breakdown
+用户管理|User management
+用户列表|Users
+课程管理|Course management
+学生管理|Student management
+教师管理|Teacher management
+教师工作台|Teacher workspace
+把时间留给教学|Make time for teaching
+管理课程、安排考试，从今天要做的事开始。|Manage courses and exams, starting with what you need to do today.
+个人资料|Profile
+管理课程|Manage courses
+维护课程、章节与课程作业|Maintain courses, chapters and assignments
+安排考试|Schedule exams
+管理试卷与考试安排|Manage papers and exam schedules
+考试管理|Exam management
+整理教学资料|Organize teaching materials
+使用 AI 辅助整理内容|Use AI to organize content
+教学常用操作|Teaching shortcuts
+课程概览|Course overview
+查看课程及选课人数；作业管理请进入课程章节。|View courses and enrollments. Open course chapters to manage assignments.
+进入课程管理|Open course management
+查看补充统计与日历|Show additional statistics and calendar
+以下为系统提供的教师视角统计，不代表待完成任务。|These are teacher-view statistics, not a list of pending tasks.
+学生数量(折线)|Students (line chart)
+学生数量(柱状)|Students (bar chart)
+教师课程管理|Teacher course management
+统计数据加载失败，请刷新重试|Statistics could not load. Refresh and try again.
+获取统计数据异常|Statistics error
+网络请求失败|Network request failed
+性别分析数据加载失败|Gender breakdown could not load
+获取性别分析异常|Gender analysis error
+任务统计数据加载失败|Course statistics could not load
+获取任务统计异常|Course statistics error
+任务列表数据加载失败|Course list could not load
+获取任务列表异常|Course list error
+一站式在线教育管理平台|Online learning and teaching management
+确定删除选中的数据?|Delete the selected records?
+公告标题|Announcement title
+操作人员|Operator
+创建人|Created by
+参数键|Parameter key
+参数值|Parameter value
+角色状态|Role status
+学生名称|Student name
+重置密码|Reset password
+重置成功|Reset completed
+考试得分|Exam score
+视频得分|Video score
+作业得分|Assignment score
+上架|Publish
+下架|Unpublish
+已上架|Published
+已下架|Unpublished
+章节|Chapters
+评论列表|Comments
+学生列表|Students
+笔记管理|Note management
+章节管理|Chapter management
+上架成功|Published
+下架成功|Unpublished
+报名状态|Enrollment status
+教师姓名|Teacher name
+不通过|Reject
+操作成功|Completed
+学生笔记管理|Student note management
+教师章节管理|Teacher chapter management
+手机号|Phone number
+审核|Review
+阅卷|Grade exam
+问答题|Short-answer question
+计算题|Calculation question
+已授权补考|Retake authorized
+已交卷|Submitted
+确认重置|Confirm reset
+确定要重置该学生的考试吗？此操作将清空该学生的所有答卷，不可恢复。|Reset this student's exam? All their answers will be permanently removed.
+阅卷成功|Grading saved
+考试已重置，已授权补考|Exam reset and retake authorized
+部门|Department
+字典|Dictionary
+讨论名称|Discussion title
+分)|points)
+书本上有这样一段话：“教育的意义在于让人明白作为人类社会中的一员所应承担的责任与义务。|Education helps us understand our responsibilities as members of society.
+只有当一个人明白了自己的责任与义务，才能成为对社会有用的人，只有完成了自己的责任与义务，|Understanding and fulfilling those responsibilities helps us contribute to others.
+才能最终成为真正有用的人。|Learning can help us make that contribution.
+1、请提前进行基础设备检测，包括鼠标、键盘、显示器或其他硬件设备；|1. Check your mouse, keyboard, display and other equipment before the exam.
+2、请拔掉U盘、移动硬盘或其他与考试无关的外接设备；|2. Disconnect USB drives and other devices unrelated to the exam.
+3、如果您使用的是移动电脑，请确保电源连接正常；|3. If using a laptop, check its power connection.
+4、请确保系统内未开启与考试无关的非必要软件；|4. Close software that is not needed for the exam.
+5、请确保当前使用的是谷歌浏览器，且页面（浏览器）是最大化状态；|5. Use Google Chrome with the browser window maximized.
+6、考试过程中，如非特殊要求，请勿执行任何会导致考试页面失焦的操作。|6. Unless instructed otherwise, keep focus on the exam page.
+7、考试过程中，请勿修改浏览器和页面的大小；|7. Do not resize the browser or page during the exam.
+8、有些考试可能会禁用复制粘贴功能；|8. Some exams may disable copying and pasting.
+9、如果有考试开启了防作弊视频监控，请提前完成摄像头检测工作；|9. If the exam uses video monitoring, check your camera beforehand.
+10、考试过程中请保持面部处于监控画面中心位置；|10. Keep your face centered if video monitoring is required.
+11、如遇技术问题，请及时联系监考教师；|11. Contact your invigilator if you experience technical problems.
+12、祝您考试顺利，取得好成绩！|12. Good luck with your exam.
+6、考试过程中，请勿执行任何会导致考试页面失焦的操作。|6. Keep focus on the exam page throughout the exam.
+9、如有视频监控，请保持面部处于画面中心位置；|9. If video monitoring is used, keep your face centered.
+10、考试结束后，系统将自动提交试卷；|10. Your exam will be submitted automatically when time runs out.
+11、祝您考试顺利，取得好成绩！|11. Good luck with your exam.
+演示环境|Demo environment
+演示内容为示例，不代表真实用户活动|Example content, not real user activity
+界面语言|Interface language
+中文|中文
+English|English
+未配置模型|Model not configured
+条待回复答疑|questions awaiting replies
+条未读消息|unread messages
+AI 服务未配置，请联系管理员设置 DEEPSEEK_API_KEY 环境变量。|AI is not configured. Ask an administrator to set DEEPSEEK_API_KEY.
+AI 生成功能已关闭，请联系管理员。|AI generation is disabled. Please contact an administrator.
+AI 用量保护暂时不可用，请稍后再试。|AI usage protection is temporarily unavailable. Please try again later.
+已有 AI 请求正在生成，请等待完成后再试。|An AI request is already running. Wait for it to finish.
+AI 请求过于频繁，请稍后再试。|AI requests are too frequent. Please wait before trying again.
+今日 AI 请求次数已达上限，请明天再试。|You have reached today's AI request limit. Please try again tomorrow.
+今日 AI 剩余额度不足，请缩小资料范围或明天再试。|Insufficient AI budget today. Use less reference material or try tomorrow.
+AI 请求未能处理，请检查输入或稍后再试。|The AI request could not be processed. Check your input or try again later.
+参考资料过多，请选择更少的课程或错题后重试。|Too much reference material. Select fewer courses or questions.
+课程不存在或无权访问|This course does not exist or you do not have access
+错题选择无效，请重新选择。|Invalid question selection. Please select again.
+一次最多分析 20 道错题，请分批选择。|Select up to 20 questions per analysis.
+AI 服务响应超时，请稍后再试。|The AI service timed out. Please try again later.
+AI 服务暂时不可用，请稍后再试。|The AI service is temporarily unavailable. Please try again later.
+请先登录后再使用 AI 助手|Sign in to use the AI assistant
+首页|Home
+教师首页|Teacher workspace
+学校管理|Schools
+专业管理|Majors
+留言管理|Feedback
+讨论管理|Discussions
+系统设置|Settings
+系统工具|System tools
+人|
+条待回复答疑| questions awaiting a reply
+条未读消息| unread messages
+学生数量(折线)|Students (line)
+学生数量(柱状)|Students (bar)
+学生性别分析|Student gender distribution
+已提交作业|Submitted assignments
+未提交作业|Unsubmitted assignments
+关联考试|Linked exams
+男|Male
+女|Female
+未知|Unknown
+课程考试管理|Course exams
+角色管理|Roles
+菜单管理|Menus
+字典管理|Dictionaries
+参数设置|Parameters
+考试错题|Exam mistakes
+
+切换侧栏|Toggle sidebar
+代码生成|Code generator
+至|to
+开始日期|Start date
+结束日期|End date
+控制器中定义的权限字符，如：@PreAuthorize(`@ss.hasRole('admin')`)|Role identifier defined by the server authorization rules, such as admin
+访问的路由地址，如：`user`，如外网地址需内链访问则以`http(s)://`开头|Route path, such as user. External URLs start with http(s)://
+访问的组件路径，如：`system/user/index`，默认在`views`目录下|Component path under views, such as system/user/index
+访问路由的默认传递参数|Default route parameters
+选择是外链则路由地址需要以`http(s)://`开头|External links require a URL starting with http(s)://
+选择隐藏则路由将不会出现在侧边栏，但仍然可以访问|Hidden routes do not appear in the sidebar but remain accessible
+选择停用则路由将不会出现在侧边栏，也不能被访问|Disabled routes do not appear in the sidebar and cannot be opened
+生成在哪个java包下，例如 com.ape.apeadmin|Target Java package, for example com.ape.apeadmin
+可理解为子系统名，例如 system|Subsystem name, for example system
+可理解为功能英文名，例如 user|Feature name in English, for example user
+用作类描述，例如 用户|Class description, for example User
+确认重置|Confirm reset

@@ -3,11 +3,7 @@
     <headerPage></headerPage>
     <div class="notice-page-content">
       <!-- 页面标题 -->
-      <div class="notice-page-title">
-        我的作业
-        <span style="font-size: 14px; color: #94a3b8; margin-left: 12px; font-weight: normal;">
-          共 {{ data.length }} 个作业
-        </span>
+      <div class="notice-page-title">{{ $t("我的作业") }}<span style="font-size: 14px; color: #94a3b8; margin-left: 12px; font-weight: normal;">{{ $t("共") }}{{ data.length }}{{ $t("个作业") }}</span>
       </div>
       
       <!-- 作业列表 -->
@@ -20,7 +16,7 @@
         >
           <div>
             <i class="el-icon-news" style="margin-right: 12px; color: #f59e0b;"></i>
-            {{index + 1}}. {{item.taskName + ' - ' + item.chapterName + ' - 章节作业'}}
+            {{index + 1}}. {{item.taskName + ' - ' + item.chapterName + $t("- 章节作业")}}
           </div>
           <div>
             <i class="el-icon-top-right"></i>
@@ -31,8 +27,8 @@
       <!-- 空状态 -->
       <div v-if="data.length === 0" class="notice-page-empty">
         <i class="el-icon-folder-checked"></i>
-        <p>暂无作业</p>
-        <span>完成课程学习后，作业会在这里显示</span>
+        <p>{{ $t("暂无作业") }}</p>
+        <span>{{ $t("完成课程学习后，作业会在这里显示") }}</span>
       </div>
       
       <!-- 底部装饰 -->
@@ -45,9 +41,11 @@
 </template>
 
 <script>
+import { t } from '@/i18n'
+
 import { getMyApeHomework } from "../../api/api"
-import headerPage from "../../components/header/header"
-import bottomPage from "../../components/bottom/bottom"
+import headerPage from "../../components/header/header.vue"
+import bottomPage from "../../components/bottom/bottom.vue"
 
 export default {
   name: 'MyAssign',
@@ -69,7 +67,7 @@ export default {
           this.data = res.data
         }
       }).catch(() => {
-        this.$notify.error({ title: '错误', message: '获取作业列表失败' })
+        this.$notify.error({ get title() { return t("错误") }, get message() { return t("获取作业列表失败") } })
       }).finally(() => {
         this.loading = false
       })

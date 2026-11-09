@@ -5,40 +5,36 @@
       <!-- 搜索区域 -->
       <div class="article-page-search">
         <div>
-          <div>笔记名称：</div>
+          <div>{{ $t("笔记名称：") }}</div>
           <div>
             <el-input 
-              size="mini" 
+              size="small"
               v-model="title" 
-              placeholder="请输入笔记名称"
+              :placeholder="$t('请输入笔记名称')"
               clearable
             ></el-input>
           </div>
         </div>
         <div>
-          <div>课程名称：</div>
+          <div>{{ $t("课程名称：") }}</div>
           <div>
             <el-input 
-              size="mini" 
+              size="small"
               v-model="taskName" 
-              placeholder="请输入课程名称"
+              :placeholder="$t('请输入课程名称')"
               clearable
             ></el-input>
           </div>
         </div>
         <div class="article-page-btns">
-          <el-button icon="el-icon-search" size="mini" type="primary" plain @click="searchPage()">搜索笔记</el-button>
-          <el-button icon="el-icon-refresh" size="mini" type="warning" plain @click="refresh()">重置筛选</el-button>
+          <el-button  size="small" type="primary" plain @click="searchPage()"><template #icon><i class="el-icon-search" aria-hidden="true"></i></template>{{ $t("搜索笔记") }}</el-button>
+          <el-button  size="small" type="warning" plain @click="refresh()"><template #icon><i class="el-icon-refresh" aria-hidden="true"></i></template>{{ $t("重置筛选") }}</el-button>
         </div>
       </div>
       
       <!-- 页面标题 -->
       <div class="article-page-title">
-        <i class="title-icon el-icon-notebook-2"></i>
-        精选笔记
-        <span style="font-size: 14px; color: #94a3b8; margin-left: 12px; font-weight: normal;">
-          共 {{ total }} 篇笔记
-        </span>
+        <i class="title-icon el-icon-notebook-2"></i>{{ $t("精选笔记") }}<span style="font-size: 14px; color: #94a3b8; margin-left: 12px; font-weight: normal;">{{ $t("共") }}{{ total }}{{ $t("篇笔记") }}</span>
       </div>
       
       <!-- 笔记列表网格 -->
@@ -50,7 +46,7 @@
           class="article-page-item"
         >
           <div class="article-page-image">
-            <img src="../../assets/image/index/Vector (1).png" alt="笔记图标">
+            <img src="../../assets/image/index/Vector (1).png" :alt="$t('笔记图标')">
           </div>
           <div class="article-page-user">
             <img
@@ -73,7 +69,7 @@
       <div class="article-page-fenye" v-if="total > 10">
         <el-pagination
           background
-          :page-size="pageSize"
+          v-model:page-size="pageSize"
           layout="prev, pager, next"
           @current-change="handleCurrentChange"
           :total="total">
@@ -90,9 +86,11 @@
 </template>
 
 <script>
+import { t } from '@/i18n'
+
 import { getApeArticlePage } from '../../api/api' 
-import headerPage from "../../components/header/header"
-import bottomPage from "../../components/bottom/bottom"
+import headerPage from "../../components/header/header.vue"
+import bottomPage from "../../components/bottom/bottom.vue"
 
 export default {
   name: 'Article',
@@ -130,13 +128,13 @@ export default {
           this.total = res.data.total
         } else {
           this.$notify.error({
-            title: '错误',
+            get title() { return t("错误") },
             message: res.message
           });
         }
       }).catch(() => {
         this.$notify.error({
-          title: '错误',
+          get title() { return t("错误") },
           message: '获取笔记列表失败，请稍后重试'
         });
       })

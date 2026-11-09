@@ -76,7 +76,7 @@ public class WebLogAspect {
             HttpServletRequest request = servletContainer.getRequest();
             String logTemplate = "请求响应异常->URL:{}, Method:{}, IP:{}, Params:{}, Class:{}.{}, ExInfo: {}";
             String params = isAiRequest(request) ? "[AI请求内容已脱敏]" : sanitizeLogText(getParameterInfo(joinPoint));
-            log.error(logTemplate, request.getRequestURL(), request.getMethod(), request.getRemoteAddr(), params, joinPoint.getSignature().getDeclaringTypeName(), joinPoint.getSignature().getName(), ex.getMessage());
+            log.error(logTemplate, request.getRequestURL(), request.getMethod(), request.getRemoteAddr(), params, joinPoint.getSignature().getDeclaringTypeName(), joinPoint.getSignature().getName(), isAiRequest(request) ? ex.getClass().getSimpleName() : sanitizeLogText(ex.getMessage()));
         }
     }
 

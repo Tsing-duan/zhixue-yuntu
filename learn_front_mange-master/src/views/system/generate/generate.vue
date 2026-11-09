@@ -4,47 +4,47 @@
         <div class="search">
             <el-row :gutter="10" style="padding:10px">
                 <el-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8">
-                    <span class="search-title">表名称:</span>
+                    <span class="search-title">{{ $t("表名称:") }}</span>
                     <el-input
                         style="margin-top:10px"
-                        size="mini"
-                        placeholder="请输入表名称"
+                        size="small"
+                        :placeholder="$t('请输入表名称')"
                         v-model="search.tableName">
                     </el-input>
                 </el-col>
                 <el-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8">
-                    <span class="search-title">表描述:</span>
+                    <span class="search-title">{{ $t("表描述:") }}</span>
                     <el-input
                         style="margin-top:10px"
-                        size="mini"
-                        placeholder="请输入表描述"
+                        size="small"
+                        :placeholder="$t('请输入表描述')"
                         v-model="search.tableComment">
                     </el-input>
                 </el-col>
                 <el-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8">
-                    <span class="search-title">创建时间:</span>
-                    <el-date-picker size="mini"
+                    <span class="search-title">{{ $t("创建时间:") }}</span>
+                    <el-date-picker size="small"
                       style="margin-top:10px"
                       v-model="time"
                       type="daterange"
-                      range-separator="至"
+                      :range-separator="$t('至')"
                       format="yyyy-MM-dd" 
                       value-format="yyyy-MM-dd" 
-                      start-placeholder="开始日期"
-                      end-placeholder="结束日期">
+                      :start-placeholder="$t('开始日期')"
+                      :end-placeholder="$t('结束日期')">
                     </el-date-picker>
                 </el-col>
                 <el-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8">
-                    <el-button style="margin-top:10px" size="mini" icon="el-icon-search" type="primary" @click="searchPage">查询</el-button>
-                    <el-button style="margin-top:10px" size="mini" icon="el-icon-refresh" @click="refresh">重置</el-button>
+                    <el-button style="margin-top:10px" size="small"  type="primary" @click="searchPage"><template #icon><i class="el-icon-search" aria-hidden="true"></i></template>{{ $t("查询") }}</el-button>
+                    <el-button style="margin-top:10px" size="small"  @click="refresh"><template #icon><i class="el-icon-refresh" aria-hidden="true"></i></template>{{ $t("重置") }}</el-button>
                 </el-col>
             </el-row>
         </div>
         <div class="table">
             <el-row class="action-toolbar">
-                <el-button class="action-btn btn-create" size="mini" icon="el-icon-plus" @click="addGen">导入</el-button>
-                <el-button :class="['action-btn', 'btn-edit', { 'btn-edit-active': update.length == 1 }]" :disabled="update.length != 1 ?true:false" size="mini" icon="el-icon-edit" @click="updateGenBtn">修改</el-button>
-                <el-button class="action-btn btn-delete" :disabled="remove.length <= 0 ?true:false" size="mini" icon="el-icon-delete" @click="deleteDateBtn">删除</el-button>
+                <el-button class="action-btn btn-create" size="small"  @click="addGen"><template #icon><i class="el-icon-plus" aria-hidden="true"></i></template>{{ $t("导入") }}</el-button>
+                <el-button :class="['action-btn', 'btn-edit', { 'btn-edit-active': update.length == 1 }]" :disabled="update.length != 1 ?true:false" size="small"  @click="updateGenBtn"><template #icon><i class="el-icon-edit" aria-hidden="true"></i></template>{{ $t("修改") }}</el-button>
+                <el-button class="action-btn btn-delete" :disabled="remove.length <= 0 ?true:false" size="small"  @click="deleteDateBtn"><template #icon><i class="el-icon-delete" aria-hidden="true"></i></template>{{ $t("删除") }}</el-button>
                 <!-- <el-button type="warning" size="mini" icon="el-icon-download" plain>导出</el-button> -->
             </el-row>
             <el-table
@@ -70,51 +70,51 @@
             </el-table-column>
             <el-table-column
               prop="tableName"
-              label="表名称"
+              :label="$t('表名称')"
               width="150"
               >
             </el-table-column>
             <el-table-column
               prop="tableComment"
-              label="表描述"
+              :label="$t('表描述')"
               width="150"
               >
             </el-table-column>
             <el-table-column
               prop="className"
-              label="实体"
+              :label="$t('实体')"
               width="150"
               >
             </el-table-column>
             <el-table-column
               prop="createTime"
-              label="创建时间"
+              :label="$t('创建时间')"
               width="180"
               >
             </el-table-column>
              <el-table-column
               prop="updateTime"
-              label="更新时间"
+              :label="$t('更新时间')"
               width="180"
               >
             </el-table-column>
             <el-table-column
-              label="操作"
+              :label="$t('操作')"
               >
-              <template slot-scope="scope">
-                <el-button class="row-action-btn row-info-btn" size="mini" icon="el-icon-view" @click="previewGen(scope.row.id)">预览</el-button>
-                <el-button class="row-action-btn row-primary-btn" size="mini" icon="el-icon-refresh" @click="syncColumn(scope.row.id)">同步</el-button>
-                <el-button class="row-action-btn row-edit-btn" size="mini" icon="el-icon-edit" @click="updateGen(scope.row.id)">修改</el-button>
+              <template #default="scope">
+                <el-button class="row-action-btn row-info-btn" size="small"  @click="previewGen(scope.row.id)"><template #icon><i class="el-icon-view" aria-hidden="true"></i></template>{{ $t("预览") }}</el-button>
+                <el-button class="row-action-btn row-primary-btn" size="small"  @click="syncColumn(scope.row.id)"><template #icon><i class="el-icon-refresh" aria-hidden="true"></i></template>{{ $t("同步") }}</el-button>
+                <el-button class="row-action-btn row-edit-btn" size="small"  @click="updateGen(scope.row.id)"><template #icon><i class="el-icon-edit" aria-hidden="true"></i></template>{{ $t("修改") }}</el-button>
                 <el-popconfirm
                   style="margin-left:5px"
                   confirm-button-text='确认'
                   cancel-button-text='取消'
-                  icon="el-icon-info"
+
                   icon-color="red"
-                  title="确认删除选中的数据？"
+                  :title="$t('确认删除选中的数据？')"
                   @confirm="deleteDate(scope.row.id)"
-                >
-                  <el-button class="row-action-btn row-delete-btn" size="mini" slot="reference" icon="el-icon-delete">删除</el-button>
+                ><template #icon><i class="el-icon-info" aria-hidden="true"></i></template>
+                  <template #reference><el-button class="row-action-btn row-delete-btn" size="small"  ><template #icon><i class="el-icon-delete" aria-hidden="true"></i></template>{{ $t("删除") }}</el-button></template>
                 </el-popconfirm>
               </template>
             </el-table-column>
@@ -123,8 +123,8 @@
             background
             layout="total, sizes, prev, pager, next, jumper"
             :page-sizes="[10, 20, 50, 100]"
-            :page-size="search.pageSize"
-            :current-page="search.pageNumber"
+            v-model:page-size="search.pageSize"
+            v-model:current-page="search.pageNumber"
             @size-change="handleSizeChange"
             @current-change="handleCurrentChange"
             :total="total">
@@ -135,14 +135,16 @@
         <update-gen @updateGenFalse="updateGenFalse" :updateId = "updateId" :updateGenVisible = "updateGenVisible"></update-gen>
         <preview-gen @previewGenFalse="previewGenFalse" :updateId = "updateId" :previewGenVisible = "previewGenVisible"></preview-gen>
     </div>
-  </div>
+
 </template>
 
 <script>
+import { t } from '@/i18n'
+
   import {getGenPage,removeGen,syncTableAndColumns} from '../../../api/api' 
-  import addGen from '../../../components/system/generate/addGenerate'
-  import updateGen from '../../../components/system/generate/updateGenerate'
-  import previewGen from '../../../components/system/generate/genPreview'
+  import addGen from '../../../components/system/generate/addGenerate.vue'
+  import updateGen from '../../../components/system/generate/updateGenerate.vue'
+  import previewGen from '../../../components/system/generate/genPreview.vue'
   export default {
     data() {
       return{
@@ -188,11 +190,11 @@
             this.loading = false
           } else {
             this.$notify.error({
-              title: '错误',
+              get title() { return t("错误") },
               message: res.message
             });
           }
-        })
+        }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false })
       },
       refresh() {
         this.search.tableName = ""
@@ -251,19 +253,19 @@
           if(res.code == 1000) {
             this.$message({
               type: 'success',
-              message: '同步成功!'
+              get message() { return t("同步成功!") }
             });
             this.query()
           } else {
             this.$notify.error({
-              title: '错误',
+              get title() { return t("错误") },
               message: res.message
             });
           }
-        })
+        }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false })
       },
       deleteDateBtn() {
-        this.$confirm('确定删除选中的'+ this.remove.length +'条数据?', '提示', {
+        this.$confirm(t("确定删除选中的")+ this.remove.length +t("条数据?"), t("提示"), {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
@@ -278,17 +280,17 @@
             if(res.code == 1000) {
               this.$message({
                 type: 'success',
-                message: '删除成功!'
+                get message() { return t("删除成功!") }
               });
               this.pageNumber = 1
               this.query()
             } else {
               this.$notify.error({
-                title: '错误',
+                get title() { return t("错误") },
                 message: res.message
               });
             }
-          })
+          }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false })
       },
     },
     created() {
@@ -468,78 +470,69 @@
   .el-dialog {
     border-radius: 12px!important;
   }
-  ::v-deep .el-input__inner,
-  ::v-deep .el-date-editor .el-input__inner {
+  :deep(.el-input__inner), :deep(.el-date-editor .el-input__inner) {
     border-radius: 10px;
     border-color: #dfdfda;
     color: #3f3f3c;
     background: #ffffff;
   }
-  ::v-deep .el-input__inner:focus,
-  ::v-deep .el-date-editor .el-input__inner:focus {
+  :deep(.el-input__inner:focus), :deep(.el-date-editor .el-input__inner:focus) {
     border-color: #bdbdb6;
   }
-  ::v-deep .el-table {
+  :deep(.el-table) {
     background: transparent;
   }
-  ::v-deep .el-table th.el-table__cell {
+  :deep(.el-table th.el-table__cell) {
     background: #f1f1ee !important;
   }
-  ::v-deep .el-table td.el-table__cell,
-  ::v-deep .el-table tr {
+  :deep(.el-table td.el-table__cell), :deep(.el-table tr) {
     background: transparent;
   }
-  ::v-deep .el-table--striped .el-table__body tr.el-table__row--striped td.el-table__cell {
+  :deep(.el-table--striped .el-table__body tr.el-table__row--striped td.el-table__cell) {
     background: #f8f8f6;
   }
-  ::v-deep .el-button--primary {
+  :deep(.el-button--primary) {
     background: #2f3437;
     border-color: #2f3437;
   }
-  ::v-deep .el-button--primary:hover,
-  ::v-deep .el-button--primary:focus {
+  :deep(.el-button--primary:hover), :deep(.el-button--primary:focus) {
     background: #3a4044;
     border-color: #3a4044;
   }
-  ::v-deep .el-button--success {
+  :deep(.el-button--success) {
     background: #f3f3f0;
     border-color: #d9d9d4;
     color: #3f3f3c;
   }
-  ::v-deep .el-button--success:hover,
-  ::v-deep .el-button--success:focus {
+  :deep(.el-button--success:hover), :deep(.el-button--success:focus) {
     background: #ebebe7;
     border-color: #cfcfc8;
     color: #2f2f2c;
   }
-  ::v-deep .el-button--danger {
+  :deep(.el-button--danger) {
     background: #fff5f5;
     border-color: #efc9c9;
     color: #b54747;
   }
-  ::v-deep .el-button--danger:hover,
-  ::v-deep .el-button--danger:focus {
+  :deep(.el-button--danger:hover), :deep(.el-button--danger:focus) {
     background: #ffefef;
     border-color: #e8b2b2;
   }
-  ::v-deep .el-button--info {
+  :deep(.el-button--info) {
     background: #f1f1ee;
     border-color: #d8d8d2;
     color: #5b5b56;
   }
-  ::v-deep .el-button--info:hover,
-  ::v-deep .el-button--info:focus {
+  :deep(.el-button--info:hover), :deep(.el-button--info:focus) {
     background: #e9e9e5;
     border-color: #c7c7c0;
     color: #42423f;
   }
-  ::v-deep .el-pagination.is-background .el-pager li,
-  ::v-deep .el-pagination.is-background .btn-next,
-  ::v-deep .el-pagination.is-background .btn-prev {
+  :deep(.el-pagination.is-background .el-pager li), :deep(.el-pagination.is-background .btn-next), :deep(.el-pagination.is-background .btn-prev) {
     background: #f3f3f0;
     color: #585854;
   }
-  ::v-deep .el-pagination.is-background .el-pager li.active {
+  :deep(.el-pagination.is-background .el-pager li.active) {
     background: #2f3437;
     color: #ffffff;
   }

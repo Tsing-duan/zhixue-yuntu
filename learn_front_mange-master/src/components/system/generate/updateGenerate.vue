@@ -1,42 +1,42 @@
 <template>
 <div>
-  <el-dialog title="编辑生成" width="65%" :destroy-on-close="true" :visible.sync="updateGenVisible" :before-close="handleClose">
+  <el-dialog append-to-body :title="$t('编辑生成')" width="65%" :destroy-on-close="true" :model-value="updateGenVisible" :before-close="handleClose">
     <el-tabs v-model="activeName">
-      <el-tab-pane label="基本信息" name="first">
+      <el-tab-pane :label="$t('基本信息')" name="first">
       </el-tab-pane>
-      <el-tab-pane label="字段信息" name="second">
+      <el-tab-pane :label="$t('字段信息')" name="second">
       </el-tab-pane>
-      <el-tab-pane label="生成信息" name="third">
+      <el-tab-pane :label="$t('生成信息')" name="third">
       </el-tab-pane>
     </el-tabs>
     <el-form v-show="activeName == 'first'" :model="form">
       <el-row :gutter="10">
         <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-            <span class="search-title">表名称:</span>
+            <span class="search-title">{{ $t("表名称:") }}</span>
             <el-form-item prop="tableName" style="margin-bottom:0">
-              <el-input v-model="form.tableName" size="mini" placeholder="请输入表名称" autocomplete="off"></el-input>
+              <el-input v-model="form.tableName" size="small" :placeholder="$t('请输入表名称')" autocomplete="off"></el-input>
             </el-form-item>
         </el-col>
         <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-            <span class="search-title">表描述:</span>
+            <span class="search-title">{{ $t("表描述:") }}</span>
             <el-form-item prop="tableComment" style="margin-bottom:0">
-              <el-input v-model="form.tableComment" size="mini" placeholder="请输入表描述" autocomplete="off"></el-input>
+              <el-input v-model="form.tableComment" size="small" :placeholder="$t('请输入表描述')" autocomplete="off"></el-input>
             </el-form-item>
         </el-col>
         <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-            <span class="search-title">实体类名称:</span>
+            <span class="search-title">{{ $t("实体类名称:") }}</span>
             <el-form-item prop="className" style="margin-bottom:0">
-              <el-input v-model="form.className" size="mini" placeholder="请输入实体类名称" autocomplete="off"></el-input>
+              <el-input v-model="form.className" size="small" :placeholder="$t('请输入实体类名称')" autocomplete="off"></el-input>
             </el-form-item>
         </el-col>
         <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-            <span class="search-title">作者:</span>
+            <span class="search-title">{{ $t("作者:") }}</span>
             <el-form-item prop="functionAuthor" style="margin-bottom:0">
-              <el-input v-model="form.functionAuthor" size="mini" placeholder="请输入作者" autocomplete="off"></el-input>
+              <el-input v-model="form.functionAuthor" size="small" :placeholder="$t('请输入作者')" autocomplete="off"></el-input>
             </el-form-item>
         </el-col>
         <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
-            <span class="search-title">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;备注:</span>
+            <span class="search-title">{{ $t("备注:") }}</span>
             <el-input type="textarea" v-model="form.remark"></el-input>
         </el-col>
       </el-row>
@@ -62,30 +62,30 @@
         </el-table-column>
         <el-table-column
         prop="columnName"
-        label="字段名称"
+        :label="$t('字段名称')"
         >
         </el-table-column>
         <el-table-column
         prop="columnComment"
-        label="字段描述"
+        :label="$t('字段描述')"
         >
         </el-table-column>
         <el-table-column
         prop="columnType"
-        label="字段类型"
+        :label="$t('字段类型')"
         >
         </el-table-column>
         <el-table-column
         prop="javaField"
-        label="Java属性"
+        :label="$t('Java属性')"
         >
         </el-table-column>
         <el-table-column
         prop="javaType"
-        label="Java类型"
+        :label="$t('Java类型')"
         >
-          <template slot-scope="scope">
-              <el-select size="mini" v-model="column[scope.$index].javaType" placeholder="请选择">
+          <template #default="scope">
+              <el-select size="small" v-model="column[scope.$index].javaType" :placeholder="$t('请选择')">
                   <el-option label="Long" value="Long"></el-option>
                   <el-option label="String" value="String"></el-option>
                   <el-option label="Integer" value="Integer"></el-option>
@@ -98,46 +98,46 @@
         </el-table-column>
         <el-table-column
         prop="isInsert"
-        label="插入"
+        :label="$t('插入')"
         width=40
         >
-          <template slot-scope="scope">
+          <template #default="scope">
             <el-checkbox true-label="1" false-label="0" v-model="column[scope.$index].isInsert"></el-checkbox>
           </template>
         </el-table-column>
         <el-table-column
         prop="isEdit"
-        label="编辑"
+        :label="$t('编辑')"
         width=40
         >
-          <template slot-scope="scope">
+          <template #default="scope">
             <el-checkbox true-label="1" false-label="0" v-model="column[scope.$index].isEdit"></el-checkbox>
           </template>
         </el-table-column>
         <el-table-column
         prop="isList"
-        label="列表"
+        :label="$t('列表')"
         width=40
         >
-          <template slot-scope="scope">
+          <template #default="scope">
             <el-checkbox true-label="1" false-label="0" v-model="column[scope.$index].isList"></el-checkbox>
           </template>
         </el-table-column>
         <el-table-column
         prop="isQuery"
-        label="查询"
+        :label="$t('查询')"
         width=40
         >
-          <template slot-scope="scope">
+          <template #default="scope">
             <el-checkbox true-label="1" false-label="0" v-model="column[scope.$index].isQuery"></el-checkbox>
           </template>
         </el-table-column>
         <el-table-column
         prop="queryType"
-        label="查询方式"
+        :label="$t('查询方式')"
         >
-          <template slot-scope="scope">
-              <el-select size="mini" v-model="column[scope.$index].queryType" placeholder="请选择">
+          <template #default="scope">
+              <el-select size="small" v-model="column[scope.$index].queryType" :placeholder="$t('请选择')">
                   <el-option label="=" value="EQ"></el-option>
                   <el-option label="!=" value="NE"></el-option>
                   <el-option label=">" value="GT"></el-option>
@@ -151,33 +151,33 @@
         </el-table-column>
         <el-table-column
         prop="isRequired"
-        label="必填"
+        :label="$t('必填')"
         width=40
         >
-          <template slot-scope="scope">
+          <template #default="scope">
             <el-checkbox true-label="1" false-label="0" v-model="column[scope.$index].isRequired"></el-checkbox>
           </template>
         </el-table-column>
         <el-table-column
         prop="htmlType"
-        label="显示类型"
+        :label="$t('显示类型')"
         >
-            <template slot-scope="scope">
-              <el-select size="mini" v-model="column[scope.$index].htmlType" placeholder="请选择">
-                  <el-option label="文本框" value="文本框"></el-option>
-                  <el-option label="文本域" value="文本域"></el-option>
-                  <el-option label="下拉框" value="下拉框"></el-option>
-                  <el-option label="单选框" value="单选框"></el-option>
-                  <el-option label="日期控件" value="日期控件"></el-option>
+            <template #default="scope">
+              <el-select size="small" v-model="column[scope.$index].htmlType" :placeholder="$t('请选择')">
+                  <el-option :label="$t('文本框')" value="文本框"></el-option>
+                  <el-option :label="$t('文本域')" value="文本域"></el-option>
+                  <el-option :label="$t('下拉框')" value="下拉框"></el-option>
+                  <el-option :label="$t('单选框')" value="单选框"></el-option>
+                  <el-option :label="$t('日期控件')" value="日期控件"></el-option>
               </el-select>
             </template>
         </el-table-column>
         <el-table-column
         prop="dictType"
-        label="字典类型"
+        :label="$t('字典类型')"
         >
-          <template slot-scope="scope">
-            <el-select size="mini" clearable v-model="column[scope.$index].dictType" placeholder="请选择">
+          <template #default="scope">
+            <el-select size="small" clearable v-model="column[scope.$index].dictType" :placeholder="$t('请选择')">
                 <el-option v-for="(item,index) in dict" :key="index" :label="item.dictCode" :value="item.dictCode"></el-option>
             </el-select>
           </template>
@@ -187,11 +187,11 @@
     <el-form v-show="activeName == 'third'" :model="form">
       <el-row :gutter="10">
         <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-            <span class="search-title">生成模板:</span>
+            <span class="search-title">{{ $t("生成模板:") }}</span>
             <el-form-item prop="tplCategory" style="margin-bottom:0">
-              <el-select size="mini" v-model="form.tplCategory" placeholder="请选择">
+              <el-select size="small" v-model="form.tplCategory" :placeholder="$t('请选择')">
                   <el-option
-                    label="单表（增删改查）"
+                    :label="$t('单表（增删改查）')"
                     value="crud">
                   </el-option>
               </el-select>
@@ -199,59 +199,53 @@
         </el-col>
         <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
             <span class="search-title">
-                <el-tooltip class="item" effect="dark" content="生成在哪个java包下，例如 com.ape.apeadmin" placement="top-start">
+                <el-tooltip class="item" effect="dark" :content="$t('生成在哪个java包下，例如 com.ape.apeadmin')" placement="top-start">
                     <i class="el-icon-question"></i>
-                </el-tooltip>
-                生成包路径:
-            </span>
+                </el-tooltip>{{ $t("生成包路径:") }}</span>
             <el-form-item prop="packageName" style="margin-bottom:0">
-                <el-input v-model="form.packageName" size="mini" placeholder="请输入生成包路径" autocomplete="off"></el-input>
+                <el-input v-model="form.packageName" size="small" :placeholder="$t('请输入生成包路径')" autocomplete="off"></el-input>
             </el-form-item>
         </el-col>
         <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
             <span class="search-title">
-                <el-tooltip class="item" effect="dark" content="可理解为子系统名，例如 system" placement="top-start">
+                <el-tooltip class="item" effect="dark" :content="$t('可理解为子系统名，例如 system')" placement="top-start">
                     <i class="el-icon-question"></i>
-                </el-tooltip>
-                生成模块名:
-            </span>
+                </el-tooltip>{{ $t("生成模块名:") }}</span>
             <el-form-item prop="moduleName" style="margin-bottom:0">
-                <el-input v-model="form.moduleName" size="mini" placeholder="请输入生成模块名" autocomplete="off"></el-input>
+                <el-input v-model="form.moduleName" size="small" :placeholder="$t('请输入生成模块名')" autocomplete="off"></el-input>
             </el-form-item>
         </el-col>
         <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
             <span class="search-title">
-                <el-tooltip class="item" effect="dark" content="可理解为功能英文名，例如 user" placement="top-start">
+                <el-tooltip class="item" effect="dark" :content="$t('可理解为功能英文名，例如 user')" placement="top-start">
                     <i class="el-icon-question"></i>
-                </el-tooltip>
-                生成业务名:
-            </span>
+                </el-tooltip>{{ $t("生成业务名:") }}</span>
             <el-form-item prop="businessName" style="margin-bottom:0">
-                <el-input v-model="form.businessName" size="mini" placeholder="请输入生成业务名" autocomplete="off"></el-input>
+                <el-input v-model="form.businessName" size="small" :placeholder="$t('请输入生成业务名')" autocomplete="off"></el-input>
             </el-form-item>
         </el-col>
         <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
             <span class="search-title">
-                <el-tooltip class="item" effect="dark" content="用作类描述，例如 用户" placement="top-start">
+                <el-tooltip class="item" effect="dark" :content="$t('用作类描述，例如 用户')" placement="top-start">
                     <i class="el-icon-question"></i>
-                </el-tooltip>
-                生成功能名:
-            </span>
+                </el-tooltip>{{ $t("生成功能名:") }}</span>
             <el-form-item prop="functionName" style="margin-bottom:0">
-                <el-input v-model="form.functionName" size="mini" placeholder="请输入生成功能名" autocomplete="off"></el-input>
+                <el-input v-model="form.functionName" size="small" :placeholder="$t('请输入生成功能名')" autocomplete="off"></el-input>
             </el-form-item>
         </el-col>
       </el-row>
     </el-form>
-    <div slot="footer" class="dialog-footer">
-      <el-button size="mini" type="primary" @click="submit">确 定</el-button>
-      <el-button size="mini" @click="handleClose">取 消</el-button>
-    </div>
+    <template #footer><div  class="dialog-footer">
+      <el-button size="small" type="primary" @click="submit">{{ $t("确 定") }}</el-button>
+      <el-button size="small" @click="handleClose">{{ $t("取 消") }}</el-button>
+    </div></template>
   </el-dialog>
 </div>
 </template>
 
 <script>
+import { t } from '@/i18n'
+
   import {editGen,getGenById,getDictTypeList} from '../../../api/api'
   export default {
     data() {
@@ -281,74 +275,74 @@
       submit() {
         if(!this.form.tableName) {
             this.$notify.error({
-              title: '错误',
-              message: "请输入表名称"
+              get title() { return t("错误") },
+              get message() { return t("请输入表名称") }
             });
             return;
         }
         if(!this.form.tableComment) {
             this.$notify.error({
-              title: '错误',
-              message: "请输入表描述"
+              get title() { return t("错误") },
+              get message() { return t("请输入表描述") }
             });
             return;
         }
         if(!this.form.className) {
             this.$notify.error({
-              title: '错误',
-              message: "请输入实体类名称"
+              get title() { return t("错误") },
+              get message() { return t("请输入实体类名称") }
             });
             return;
         }
         if(!this.form.functionAuthor) {
             this.$notify.error({
-              title: '错误',
-              message: "请输入作者"
+              get title() { return t("错误") },
+              get message() { return t("请输入作者") }
             });
             return;
         }
         if(!this.form.packageName) {
             this.$notify.error({
-              title: '错误',
-              message: "请输入生成包路径"
+              get title() { return t("错误") },
+              get message() { return t("请输入生成包路径") }
             });
             return;
         }
         if(!this.form.moduleName) {
             this.$notify.error({
-              title: '错误',
-              message: "请输入生成模块名"
+              get title() { return t("错误") },
+              get message() { return t("请输入生成模块名") }
             });
             return;
         }
         if(!this.form.businessName) {
             this.$notify.error({
-              title: '错误',
-              message: "请输入生成业务名"
+              get title() { return t("错误") },
+              get message() { return t("请输入生成业务名") }
             });
             return;
         }
         if(!this.form.functionName) {
             this.$notify.error({
-              title: '错误',
-              message: "请输入生成功能名"
+              get title() { return t("错误") },
+              get message() { return t("请输入生成功能名") }
             });
             return;
         }
         editGen({apeGenTable: this.form,columns: this.column}).then(res => {
           if(res.code == 1000) {
             this.$notify.success({
-              title: '成功',
-              message: "保存成功"
+              get title() { return t("成功") },
+              get message() { return t("保存成功") }
             });
             this.handleClose();
           } else {
             this.$notify.error({
-              title: '错误',
+              get title() { return t("错误") },
               message: res.message
             });
           }
-        })
+        }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false })
       },
       handleClose() {
         this.$emit("updateGenFalse")
@@ -371,21 +365,21 @@
               }
             } else {
               this.$notify.error({
-                title: '错误',
+                get title() { return t("错误") },
                 message: res.message
               });
             }
-          })
+          }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false })
           getDictTypeList().then(res => {
             if(res.code == 1000) {
               this.dict = res.data
             } else {
               this.$notify.error({
-                title: '错误',
+                get title() { return t("错误") },
                 message: res.message
               });
             }
-          })
+          }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false })
         } 
       }
     }

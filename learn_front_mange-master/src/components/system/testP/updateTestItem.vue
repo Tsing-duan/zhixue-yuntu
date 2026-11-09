@@ -1,72 +1,72 @@
 <template>
   <div>
-    <el-dialog
-      title="编辑考试题目"
+    <el-dialog append-to-body
+      :title="$t('编辑考试题目')"
       width="40%"
-      custom-class="notion-dialog"
+      class="notion-dialog"
       :destroy-on-close="true"
-      :visible.sync="updateVisible"
+      :model-value="updateVisible"
       :before-close="handleClose"
     >
       <el-form :model="form" :rules="rules" ref="ruleForm">
         <el-row :gutter="10">
           <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
-            <span class="search-title"> 题目: </span>
+            <span class="search-title">{{ $t("题目:") }}</span>
             <div style="width: 100%">
               <el-form-item prop="title" style="margin-bottom: 0">
                 <el-input
                   v-model="form.title"
-                  size="mini"
-                  placeholder="请输入题目"
+                  size="small"
+                  :placeholder="$t('请输入题目')"
                   autocomplete="off"
                 ></el-input>
               </el-form-item>
             </div>
           </el-col>
           <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
-            <span class="search-title"> 序号: </span>
+            <span class="search-title">{{ $t("序号:") }}</span>
             <div style="width: 100%">
               <el-form-item prop="sort" style="margin-bottom: 0">
                 <el-input
                   type="number"
                   v-model="form.sort"
-                  size="mini"
-                  placeholder="请输入序号"
+                  size="small"
+                  :placeholder="$t('请输入序号')"
                   autocomplete="off"
                 ></el-input>
               </el-form-item>
             </div>
           </el-col>
           <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
-            <span class="search-title"> 类型: </span>
+            <span class="search-title">{{ $t("类型:") }}</span>
             <div style="width: 100%">
               <el-form-item prop="type" style="margin-bottom: 0">
                 <el-select
                   clearable
                   style="margin-top: 10px"
-                  size="mini"
+                  size="small"
                   v-model="form.type"
-                  placeholder="请选择"
+                  :placeholder="$t('请选择')"
                 >
-                  <el-option label="单选" value="0"> </el-option>
-                  <el-option label="多选" value="1"> </el-option>
-                  <el-option label="填空" value="2"> </el-option>
-                  <el-option label="判断" value="3"> </el-option>
-                  <el-option label="问答" value="4"> </el-option>
-                  <el-option label="计算(需人工阅卷)" value="5"> </el-option>
+                  <el-option :label="$t('单选')" value="0"> </el-option>
+                  <el-option :label="$t('多选')" value="1"> </el-option>
+                  <el-option :label="$t('填空')" value="2"> </el-option>
+                  <el-option :label="$t('判断')" value="3"> </el-option>
+                  <el-option :label="$t('问答')" value="4"> </el-option>
+                  <el-option :label="$t('计算(需人工阅卷)')" value="5"> </el-option>
                 </el-select>
               </el-form-item>
             </div>
           </el-col>
           <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
-            <span class="search-title"> 分数: </span>
+            <span class="search-title">{{ $t("分数:") }}</span>
             <div style="width: 100%">
               <el-form-item prop="score" style="margin-bottom: 0">
                 <el-input
                   type="number"
                   v-model="form.score"
-                  size="mini"
-                  placeholder="请输入分数"
+                  size="small"
+                  :placeholder="$t('请输入分数')"
                   autocomplete="off"
                 ></el-input>
               </el-form-item>
@@ -80,7 +80,7 @@
             :lg="24"
             :xl="24"
           >
-            <span class="search-title"> 得分点: </span>
+            <span class="search-title">{{ $t("得分点:") }}</span>
             <div style="width: 100%">
               <el-form-item prop="content" style="margin-bottom: 0">
                 <div
@@ -91,15 +91,15 @@
                   <div style="width: 100px; margin-right: 10px">
                     <el-input
                       v-model="item.value"
-                      size="mini"
-                      placeholder="分数"
+                      size="small"
+                      :placeholder="$t('分数')"
                       autocomplete="off"
                     ></el-input>
                   </div>
                   <el-input
                     v-model="item.option"
-                    size="mini"
-                    placeholder="关键词"
+                    size="small"
+                    :placeholder="$t('关键词')"
                     autocomplete="off"
                   ></el-input>
                   <div
@@ -121,14 +121,14 @@
             </div>
           </el-col>
           <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
-            <span class="search-title"> 答案: </span>
+            <span class="search-title">{{ $t("答案:") }}</span>
             <div style="width: 100%">
               <el-form-item prop="answer" style="margin-bottom: 0">
                 <el-input
                   type="textarea"
                   v-model="form.answer"
-                  size="mini"
-                  placeholder="请输入答案（多选多个答案用英文逗号分隔）"
+                  size="small"
+                  :placeholder="$t('请输入答案（多选多个答案用英文逗号分隔）')"
                   autocomplete="off"
                 ></el-input>
               </el-form-item>
@@ -142,7 +142,7 @@
             :lg="24"
             :xl="24"
           >
-            <span class="search-title"> 题目内容: </span>
+            <span class="search-title">{{ $t("题目内容:") }}</span>
             <div style="width: 100%">
               <el-form-item prop="content" style="margin-bottom: 0">
                 <div
@@ -153,15 +153,15 @@
                   <div style="width: 100px; margin-right: 10px">
                     <el-input
                       v-model="item.value"
-                      size="mini"
-                      placeholder="选项"
+                      size="small"
+                      :placeholder="$t('选项')"
                       autocomplete="off"
                     ></el-input>
                   </div>
                   <el-input
                     v-model="item.option"
-                    size="mini"
-                    placeholder="选项内容"
+                    size="small"
+                    :placeholder="$t('选项内容')"
                     autocomplete="off"
                   ></el-input>
                   <div
@@ -190,14 +190,14 @@
             :lg="24"
             :xl="24"
           >
-            <span class="search-title"> 备注: </span>
+            <span class="search-title">{{ $t("备注:") }}</span>
             <div style="width: 100%">
               <el-form-item prop="remark" style="margin-bottom: 0">
                 <el-input
                   type="textarea"
                   v-model="form.remark"
-                  size="mini"
-                  placeholder="请输入备注"
+                  size="small"
+                  :placeholder="$t('请输入备注')"
                   autocomplete="off"
                 ></el-input>
               </el-form-item>
@@ -205,23 +205,25 @@
           </el-col>
         </el-row>
       </el-form>
-      <div slot="footer" class="dialog-footer">
+      <template #footer><div  class="dialog-footer">
         <el-button
           class="notion-primary-btn"
-          size="mini"
+          size="small"
           type="primary"
           @click="submit"
-          >确 定</el-button
+          >{{ $t("确 定") }}</el-button
         >
-        <el-button class="notion-ghost-btn" size="mini" @click="handleClose"
-          >取 消</el-button
+        <el-button class="notion-ghost-btn" size="small" @click="handleClose"
+          >{{ $t("取 消") }}</el-button
         >
-      </div>
+      </div></template>
     </el-dialog>
   </div>
 </template>
 
 <script>
+import { t } from '@/i18n'
+
 import { editApeTestItem, getApeTestItemById } from "../../../api/api";
 export default {
   data() {
@@ -251,11 +253,11 @@ export default {
         remark: "",
       },
       rules: {
-        title: [{ required: true, message: "请输入题目", trigger: "blur" }],
-        sort: [{ required: true, message: "请输入序号", trigger: "blur" }],
-        score: [{ required: true, message: "请输入分数", trigger: "blur" }],
-        answer: [{ required: true, message: "请输入答案", trigger: "blur" }],
-        type: [{ required: true, message: "请选择类型", trigger: "blur" }],
+        title: [{ required: true, get message() { return t("请输入题目") }, trigger: "blur" }],
+        sort: [{ required: true, get message() { return t("请输入序号") }, trigger: "blur" }],
+        score: [{ required: true, get message() { return t("请输入分数") }, trigger: "blur" }],
+        answer: [{ required: true, get message() { return t("请输入答案") }, trigger: "blur" }],
+        type: [{ required: true, get message() { return t("请选择类型") }, trigger: "blur" }],
       },
     };
   },
@@ -289,14 +291,14 @@ export default {
               const element = this.content[index];
               if (!element.value) {
                 this.$message({
-                  message: "请完善选项",
+                  get message() { return t("请完善选项") },
                   type: "warning",
                 });
                 return;
               }
               if (!element.option) {
                 this.$message({
-                  message: "请完善选项内容",
+                  get message() { return t("请完善选项内容") },
                   type: "warning",
                 });
                 return;
@@ -311,14 +313,14 @@ export default {
               const element = this.keyword[index];
               if (!element.value) {
                 this.$message({
-                  message: "请完善得分点分数",
+                  get message() { return t("请完善得分点分数") },
                   type: "warning",
                 });
                 return;
               }
               if (!element.option) {
                 this.$message({
-                  message: "请完善得分点关键词",
+                  get message() { return t("请完善得分点关键词") },
                   type: "warning",
                 });
                 return;
@@ -332,17 +334,17 @@ export default {
           editApeTestItem(this.form).then((res) => {
             if (res.code == 1000) {
               this.$notify.success({
-                title: "成功",
-                message: "保存成功",
+                get title() { return t("成功") },
+                get message() { return t("保存成功") },
               });
               this.handleClose();
             } else {
               this.$notify.error({
-                title: "错误",
+                get title() { return t("错误") },
                 message: res.message,
               });
             }
-          });
+          }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false });
         } else {
           return false;
         }
@@ -381,11 +383,11 @@ export default {
             }
           } else {
             this.$notify.error({
-              title: "错误",
+              get title() { return t("错误") },
               message: res.message,
             });
           }
-        });
+        }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false });
       }
     },
   },
@@ -393,28 +395,28 @@ export default {
 </script>
 
 <style scoped>
-::v-deep .notion-dialog {
+:deep(.notion-dialog) {
   border-radius: 12px;
   border: 1px solid #e8e8e5;
   box-shadow: 0 8px 30px rgba(15, 15, 15, 0.08);
   background: #fcfcfb;
   overflow: hidden;
 }
-::v-deep .notion-dialog .el-dialog__header {
+:deep(.notion-dialog .el-dialog__header) {
   padding: 16px 20px;
   border-bottom: 1px solid #ecece8;
   background: #f7f7f5;
 }
-::v-deep .notion-dialog .el-dialog__title {
+:deep(.notion-dialog .el-dialog__title) {
   color: #2f2f2c;
   font-size: 16px;
   font-weight: 600;
 }
-::v-deep .notion-dialog .el-dialog__body {
+:deep(.notion-dialog .el-dialog__body) {
   padding: 16px 20px 10px;
   background: #fcfcfb;
 }
-::v-deep .notion-dialog .el-dialog__footer {
+:deep(.notion-dialog .el-dialog__footer) {
   padding: 12px 20px 16px;
   border-top: 1px solid #ecece8;
   background: #f9f9f8;
@@ -470,21 +472,19 @@ export default {
   border-color: #cecec7;
   color: #2f2f2c;
 }
-::v-deep .el-input__inner,
-::v-deep .el-textarea__inner {
+:deep(.el-input__inner), :deep(.el-textarea__inner) {
   border-radius: 8px;
   border-color: #deded8;
   color: #3f3f3c;
   background: #ffffff;
 }
-::v-deep .el-input__inner:focus,
-::v-deep .el-textarea__inner:focus {
+:deep(.el-input__inner:focus), :deep(.el-textarea__inner:focus) {
   border-color: #bdbdb6;
 }
-::v-deep .el-select {
+:deep(.el-select) {
   width: 100%;
 }
-::v-deep .el-form-item__error {
+:deep(.el-form-item__error) {
   color: #c04a4a;
 }
 .el-tree {

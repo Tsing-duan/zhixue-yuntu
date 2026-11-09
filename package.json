@@ -1,0 +1,17 @@
+{
+  "name": "zhixue-modernization-verification",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:e2e": "python3 scripts/prepare-acceptance-fixtures.py && playwright test",
+    "test:inventory": "node scripts/check-migration-inventory.mjs"
+  },
+  "engines": {
+    "node": "26.12.0",
+    "npm": "11.20.0"
+  },
+  "packageManager": "npm@11.20.0",
+  "devDependencies": {
+    "@playwright/test": "^1.56.1"
+  }
+}

@@ -1,16 +1,16 @@
 <template>
 <div>
-  <el-dialog title="新增菜单" width="40%" :destroy-on-close="true" :visible.sync="addMenuVisible" :before-close="handleClose">
+  <el-dialog append-to-body :title="$t('新增菜单')" width="40%" :destroy-on-close="true" :model-value="addMenuVisible" :before-close="handleClose">
     <el-form :model="form" :rules="rules" ref="ruleForm">
       <el-row :gutter="10">
         <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-            <span class="search-title">上级菜单:</span>
+            <span class="search-title">{{ $t("上级菜单:") }}</span>
             <el-form-item prop="menuName" style="margin-bottom:0">
                 <el-cascader
                     :disabled="disable"
-                    :value="parentId"
+                    :model-value="parentId"
                     @change="handleChange"
-                    size="mini"
+                    size="small"
                     :options="dropData"
                     :props="{ checkStrictly: true,value:'id',label:'menuName',children:'children' }"
                     clearable>
@@ -18,138 +18,126 @@
             </el-form-item>
         </el-col>
         <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-            <span class="search-title">菜单类型:</span>
+            <span class="search-title">{{ $t("菜单类型:") }}</span>
             <el-form-item prop="menuType" style="margin-bottom:0">
                 <el-radio-group style="margin-top:1px;height:40px;display:flex;align-items: center" v-model="form.menuType">
-                  <el-radio style="margin-right:10px" label="0">目录</el-radio>
-                  <el-radio style="margin-right:10px" label="1">菜单</el-radio>
-                  <el-radio style="margin-right:10px" label="2">按钮</el-radio>
+                  <el-radio style="margin-right:10px" value="0">{{ $t("目录") }}</el-radio>
+                  <el-radio style="margin-right:10px" value="1">{{ $t("菜单") }}</el-radio>
+                  <el-radio style="margin-right:10px" value="2">{{ $t("按钮") }}</el-radio>
                 </el-radio-group>
             </el-form-item>
         </el-col>
         <el-col v-if="form.menuType != 2" :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-            <span class="search-title">菜单图标:</span>
+            <span class="search-title">{{ $t("菜单图标:") }}</span>
             <el-form-item prop="icon" style="margin-bottom:0">
-                <el-autocomplete  size="mini"
+                <el-autocomplete  size="small"
                     popper-class="my-autocomplete"
                     v-model="form.icon"
                     :fetch-suggestions="querySearch"
-                    placeholder="请选择图标">
-                    <template slot-scope="{ item }">
+                    :placeholder="$t('请选择图标')">
+                    <template #default="{ item }">
                       <div style="text-align:center"><i :class="item.value"></i></div>
                     </template>
                 </el-autocomplete>
             </el-form-item>
         </el-col>
         <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-            <span class="search-title">菜单名称:</span>
+            <span class="search-title">{{ $t("菜单名称:") }}</span>
             <el-form-item prop="menuName" style="margin-bottom:0">
-                <el-input v-model="form.menuName" size="mini" placeholder="请输入菜单名称" autocomplete="off"></el-input>
+                <el-input v-model="form.menuName" size="small" :placeholder="$t('请输入菜单名称')" autocomplete="off"></el-input>
             </el-form-item>
         </el-col>
         <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-            <span class="search-title">显示排序:</span>
+            <span class="search-title">{{ $t("显示排序:") }}</span>
             <el-form-item prop="orderNum" style="margin-bottom:0">
-              <el-input-number size="mini" v-model="form.orderNum" :min="1"  label="显示排序"></el-input-number>
+              <el-input-number size="small" v-model="form.orderNum" :min="1"  :label="$t('显示排序')"></el-input-number>
             </el-form-item>
         </el-col>
         <el-col v-if="form.menuType != 0" :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
             <span class="search-title">
-                <el-tooltip class="item" effect="dark" content="控制器中定义的权限字符，如：@PreAuthorize(`@ss.hasRole('admin')`)" placement="top-start">
+                <el-tooltip class="item" effect="dark" :content="$t('控制器中定义的权限字符，如：@PreAuthorize(`@ss.hasRole(\'admin\')`)')" placement="top-start">
                     <i class="el-icon-question"></i>
-                </el-tooltip>
-                权限字符:
-                </span>
+                </el-tooltip>{{ $t("权限字符:") }}</span>
             <el-form-item prop="perms" style="margin-bottom:0">
-                <el-input v-model="form.perms" size="mini" placeholder="请输入权限字符" autocomplete="off"></el-input>
+                <el-input v-model="form.perms" size="small" :placeholder="$t('请输入权限字符')" autocomplete="off"></el-input>
             </el-form-item>
         </el-col>
         <el-col v-if="form.menuType != 2" :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
             <span class="search-title">
-                <el-tooltip class="item" effect="dark" content="访问的路由地址，如：`user`，如外网地址需内链访问则以`http(s)://`开头" placement="top-start">
+                <el-tooltip class="item" effect="dark" :content="$t('访问的路由地址，如：`user`，如外网地址需内链访问则以`http(s)://`开头')" placement="top-start">
                     <i class="el-icon-question"></i>
-                </el-tooltip>
-                路由地址:
-            </span>
+                </el-tooltip>{{ $t("路由地址:") }}</span>
             <el-form-item prop="routeUrl" style="margin-bottom:0">
-                <el-input v-model="form.routeUrl" size="mini" placeholder="请输入路由地址" autocomplete="off"></el-input>
+                <el-input v-model="form.routeUrl" size="small" :placeholder="$t('请输入路由地址')" autocomplete="off"></el-input>
             </el-form-item>
         </el-col>
         <el-col v-if="form.menuType == 1" :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
             <span class="search-title">
-                <el-tooltip class="item" effect="dark" content="访问的组件路径，如：`system/user/index`，默认在`views`目录下" placement="top-start">
+                <el-tooltip class="item" effect="dark" :content="$t('访问的组件路径，如：`system/user/index`，默认在`views`目录下')" placement="top-start">
                     <i class="el-icon-question"></i>
-                </el-tooltip>
-                组件路径:
-            </span>
+                </el-tooltip>{{ $t("组件路径:") }}</span>
             <el-form-item prop="componentUrl" style="margin-bottom:0">
-                <el-input v-model="form.componentUrl" size="mini" placeholder="请输入路由路径" autocomplete="off"></el-input>
+                <el-input v-model="form.componentUrl" size="small" :placeholder="$t('请输入路由路径')" autocomplete="off"></el-input>
             </el-form-item>
         </el-col>
         <el-col v-if="form.menuType == 1" :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
             <span class="search-title">
-                <el-tooltip class="item" effect="dark" content="访问路由的默认传递参数" placement="top-start">
+                <el-tooltip class="item" effect="dark" :content="$t('访问路由的默认传递参数')" placement="top-start">
                     <i class="el-icon-question"></i>
-                </el-tooltip>
-                路由参数:
-            </span>
+                </el-tooltip>{{ $t("路由参数:") }}</span>
             <el-form-item prop="param" style="margin-bottom:0">
-                <el-input v-model="form.param" size="mini" placeholder="请输入路由参数" autocomplete="off"></el-input>
+                <el-input v-model="form.param" size="small" :placeholder="$t('请输入路由参数')" autocomplete="off"></el-input>
             </el-form-item>
         </el-col>
         <el-col v-if="form.menuType != 2" :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
             <span class="search-title">
-                <el-tooltip class="item" effect="dark" content="选择是外链则路由地址需要以`http(s)://`开头" placement="top-start">
+                <el-tooltip class="item" effect="dark" :content="$t('选择是外链则路由地址需要以`http(s)://`开头')" placement="top-start">
                     <i class="el-icon-question"></i>
-                </el-tooltip>
-                是否外链:
-            </span>
+                </el-tooltip>{{ $t("是否外链:") }}</span>
             <el-form-item prop="target" style="margin-bottom:0">
                 <el-radio-group style="margin-top:1px;height:40px;display:flex;align-items: center" v-model="form.target">
-                    <el-radio label="0">是</el-radio>
-                    <el-radio label="1">否</el-radio>
+                    <el-radio value="0">{{ $t("是") }}</el-radio>
+                    <el-radio value="1">{{ $t("否") }}</el-radio>
                 </el-radio-group>
             </el-form-item>
         </el-col>
         <el-col v-if="form.menuType != 2" :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
             <span class="search-title">
-                <el-tooltip class="item" effect="dark" content="选择隐藏则路由将不会出现在侧边栏，但仍然可以访问" placement="top-start">
+                <el-tooltip class="item" effect="dark" :content="$t('选择隐藏则路由将不会出现在侧边栏，但仍然可以访问')" placement="top-start">
                     <i class="el-icon-question"></i>
-                </el-tooltip>
-                显示状态:
-            </span>
+                </el-tooltip>{{ $t("显示状态:") }}</span>
             <el-form-item prop="visible" style="margin-bottom:0">
                 <el-radio-group style="margin-top:1px;height:40px;display:flex;align-items: center" v-model="form.visible">
-                    <el-radio label="0">显示</el-radio>
-                    <el-radio label="1">隐藏</el-radio>
+                    <el-radio value="0">{{ $t("显示") }}</el-radio>
+                    <el-radio value="1">{{ $t("隐藏") }}</el-radio>
                 </el-radio-group>
             </el-form-item>
         </el-col>
         <el-col v-if="form.menuType != 2" :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
             <span class="search-title">
-                <el-tooltip class="item" effect="dark" content="选择停用则路由将不会出现在侧边栏，也不能被访问" placement="top-start">
+                <el-tooltip class="item" effect="dark" :content="$t('选择停用则路由将不会出现在侧边栏，也不能被访问')" placement="top-start">
                     <i class="el-icon-question"></i>
-                </el-tooltip>
-                菜单状态:
-            </span>
+                </el-tooltip>{{ $t("菜单状态:") }}</span>
             <el-form-item prop="status" style="margin-bottom:0">
                 <el-radio-group style="margin-top:1px;height:40px;display:flex;align-items: center" v-model="form.status">
-                    <el-radio label="0">正常</el-radio>
-                    <el-radio label="1">停用</el-radio>
+                    <el-radio value="0">{{ $t("正常") }}</el-radio>
+                    <el-radio value="1">{{ $t("停用") }}</el-radio>
                 </el-radio-group>
             </el-form-item>
         </el-col>
       </el-row>
     </el-form>
-    <div slot="footer" class="dialog-footer">
-      <el-button size="mini" type="primary" @click="submit">确 定</el-button>
-      <el-button size="mini" @click="handleClose">取 消</el-button>
-    </div>
+    <template #footer><div  class="dialog-footer">
+      <el-button size="small" type="primary" @click="submit">{{ $t("确 定") }}</el-button>
+      <el-button size="small" @click="handleClose">{{ $t("取 消") }}</el-button>
+    </div></template>
   </el-dialog>
 </div>
 </template>
 
 <script>
+import { t } from '@/i18n'
+
   import {saveMenu} from '../../../api/api'
   export default {
     data() {
@@ -172,16 +160,16 @@
         },
         rules: {
           menuName: [
-            { required: true, message: '请输入菜单名称', trigger: 'blur' },
+            { required: true, get message() { return t("请输入菜单名称") }, trigger: 'blur' },
           ],
           routeUrl: [
-            { required: true, message: '请输入路由地址', trigger: 'blur' },
+            { required: true, get message() { return t("请输入路由地址") }, trigger: 'blur' },
           ],
           componentUrl: [
-            { required: true, message: '请输入组件地址', trigger: 'blur' },
+            { required: true, get message() { return t("请输入组件地址") }, trigger: 'blur' },
           ],
           perms: [
-            { required: true, message: '请输入权限标识', trigger: 'blur' },
+            { required: true, get message() { return t("请输入权限标识") }, trigger: 'blur' },
           ],
         },
         restaurants: [
@@ -484,17 +472,17 @@
             saveMenu(this.form).then(res => {
               if(res.code == 1000) {
                 this.$notify.success({
-                  title: '成功',
-                  message: "保存成功"
+                  get title() { return t("成功") },
+                  get message() { return t("保存成功") }
                 });
                 this.handleClose();
               } else {
                 this.$notify.error({
-                  title: '错误',
+                  get title() { return t("错误") },
                   message: res.message
                 });
               }
-            })
+            }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false })
         } else {
           return false;
         }

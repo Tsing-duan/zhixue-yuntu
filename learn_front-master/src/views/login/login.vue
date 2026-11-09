@@ -1,5 +1,6 @@
 <template>
   <div class="login-page">
+    <div class="login-language"><LanguageSwitch /></div>
     <div class="paper-noise"></div>
 
     <div class="login-shell">
@@ -16,34 +17,34 @@
             <img
               class="brand-logo"
               src="../../assets/image/brand/zhixue-mark.svg"
-              alt="智学云途"
+              :alt="$t('智学云途')"
             />
-            <h2>智学云途</h2>
-            <p class="slogan-text">让学习管理更智能，让学习过程更清晰</p>
+            <h2>{{ $t("智学云途") }}</h2>
+            <p class="slogan-text">{{ $t("让学习管理更智能，让学习过程更清晰") }}</p>
           </div>
 
           <div class="login-input">
             <el-form-item prop="username">
               <div class="input-row">
-                <label>学习账号</label>
+                <label>{{ $t("学习账号") }}</label>
                 <el-input
-                  prefix-icon="el-icon-user"
+
                   v-model="userInfo.username"
-                  placeholder="请输入学习账号"
-                  @keyup.enter.native="toLogin"
-                ></el-input>
+                  :placeholder="$t('请输入学习账号')"
+                  @keyup.enter="toLogin"
+                ><template #prefix><i class="el-icon-user" aria-hidden="true"></i></template></el-input>
               </div>
             </el-form-item>
             <el-form-item prop="password">
               <div class="input-row">
-                <label>密码</label>
+                <label>{{ $t("密码") }}</label>
                 <el-input
-                  prefix-icon="el-icon-lock"
-                  placeholder="请输入密码"
+
+                  :placeholder="$t('请输入密码')"
                   v-model="userInfo.password"
                   show-password
-                  @keyup.enter.native="toLogin"
-                ></el-input>
+                  @keyup.enter="toLogin"
+                ><template #prefix><i class="el-icon-lock" aria-hidden="true"></i></template></el-input>
               </div>
             </el-form-item>
           </div>
@@ -52,17 +53,15 @@
             <div class="button-row">
               <el-button class="login-btn" type="primary" @click="toLogin()"
                 :loading="loading" :disabled="loading"
-                ><i v-if="!loading" class="el-icon-cloudy"></i>{{ loading ? '登录中...' : '登录' }}</el-button
+                ><i v-if="!loading" class="el-icon-cloudy"></i>{{ loading ? $t("登录中...") : $t("登录") }}</el-button
               >
               <el-button class="register-btn" type="info" @click="toRegister()"
-                ><i class="el-icon-user"></i>注册学生账号</el-button
+                ><i class="el-icon-user"></i>{{ $t("注册学生账号") }}</el-button
               >
             </div>
           </el-form-item>
           <a class="manager-entry" :href="managerLoginUrl" target="_blank" rel="noopener">
-            <img src="../../assets/image/brand/zhixue-mark.svg" alt="" />
-            管理端 / 教师入口
-          </a>
+            <img src="../../assets/image/brand/zhixue-mark.svg" alt="" />{{ $t("管理端 / 教师入口") }}</a>
         </el-form>
       </div>
     </div>
@@ -70,6 +69,8 @@
 </template>
 
 <script>
+import { t } from '@/i18n'
+
 import { login, getUser } from "../../api/api";
 
 export default {
@@ -81,8 +82,8 @@ export default {
         password: "",
       },
       rules: {
-        username: [{ required: true, message: "请输入用户账号", trigger: "blur" }],
-        password: [{ required: true, message: "请输入用户密码", trigger: "blur" }],
+        username: [{ required: true, get message() { return t("请输入用户账号") }, trigger: "blur" }],
+        password: [{ required: true, get message() { return t("请输入用户密码") }, trigger: "blur" }],
       },
     };
   },
@@ -91,7 +92,7 @@ export default {
   },
   computed: {
     managerLoginUrl() {
-      return `${window.location.protocol}//${window.location.hostname}:3000/`;
+      return `${window.location.protocol}//${window.location.hostname}:${import.meta.env.VITE_ADMIN_PORT || '3000'}/`;
     },
   },
   methods: {
@@ -110,13 +111,13 @@ export default {
         login(params).then((res) => {
           if (res.code == 1000) {
             this.$message({
-              message: "登陆成功",
+              get message() { return t("登陆成功") },
               type: "success",
               duration: 1200,
               showClose: true,
             });
             var token = res.data.token;
-            window.localStorage.setItem("user_token", token);
+            this.$session.setToken(token);
             var that = this;
             this.getUserInfo().then(() => {
               that.$router.push("/");
@@ -128,7 +129,7 @@ export default {
             this.loading = false;
           }
         }).catch(() => {
-          this.$message.error("登录失败，请检查网络连接");
+          this.$message.error(t("登录失败，请检查网络连接"));
           this.loading = false;
         });
       });
@@ -136,9 +137,9 @@ export default {
     getUserInfo() {
       return getUser().then((res) => {
         if (res.code == 1000) {
-          window.localStorage.setItem("user_info", JSON.stringify(res.data));
+          this.$session.setUser(JSON.stringify(res.data));
         }
-      });
+      }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false });
     },
   },
   created() {},
@@ -299,10 +300,10 @@ export default {
 .login-input .el-form-item:last-of-type {
   margin-bottom: 0; /* No margin for the last input item */
 }
-.login-input ::v-deep .el-input {
+.login-input :deep(.el-input) {
   width: 100%;
 }
-.login-input ::v-deep .el-input__inner {
+.login-input :deep(.el-input__inner) {
   border-radius: 10px;
   background: #fbfbfa;
   border: 1px solid var(--line-strong);
@@ -311,12 +312,12 @@ export default {
   font-weight: 500;
   transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
-.login-input ::v-deep .el-input__inner:focus {
+.login-input :deep(.el-input__inner:focus) {
   border-color: #8c8c8c;
   box-shadow: 0 0 0 3px rgba(23, 23, 23, 0.08);
   background: #fff;
 }
-.login-input ::v-deep .el-input__prefix i {
+.login-input :deep(.el-input__prefix i) {
   color: #9a9a9a;
 }
 
@@ -352,3 +353,5 @@ export default {
   }
 }
 </style>
+
+<style scoped>.login-language{position:absolute;right:20px;top:16px;z-index:10}</style>

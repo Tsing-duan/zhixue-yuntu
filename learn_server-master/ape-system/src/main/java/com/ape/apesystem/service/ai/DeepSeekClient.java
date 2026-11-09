@@ -21,6 +21,8 @@ public class DeepSeekClient {
     private static final String REQUIRED_MODEL = "deepseek-v4-flash";
     private static final String REQUIRED_REASONING_EFFORT = "high";
 
+    @Value("${deepseek.enabled:true}")
+    private boolean enabled = true;
     private final String apiKey;
     private final String baseUrl;
     private final String model;
@@ -44,8 +46,8 @@ public class DeepSeekClient {
         this.model = requireExact(trim(model), REQUIRED_MODEL, "DeepSeek model");
         this.reasoningEffort = requireExact(trim(reasoningEffort), REQUIRED_REASONING_EFFORT,
                 "DeepSeek reasoning effort");
-        if (maxTokens <= 0 || connectTimeoutMs <= 0 || readTimeoutMs <= 0) {
-            throw new IllegalArgumentException("DeepSeek token and timeout settings must be positive");
+        if (maxTokens <= 0 || maxTokens > 8192 || connectTimeoutMs <= 0 || connectTimeoutMs > 30000 || readTimeoutMs <= 0 || readTimeoutMs > 180000) {
+            throw new IllegalArgumentException("DeepSeek settings require max tokens 1–8192, connect timeout 1–30000ms, read timeout 1–180000ms");
         }
         this.maxTokens = maxTokens;
         this.connectTimeoutMs = connectTimeoutMs;
@@ -54,6 +56,7 @@ public class DeepSeekClient {
     }
 
     public AiGenerationResult generate(String systemPrompt, String userMessage) {
+        if (!enabled) return AiGenerationResult.failure(AiGenerationResult.ErrorType.NOT_CONFIGURED, "AI 生成功能已关闭，请联系管理员。");
         if (apiKey.isEmpty()) {
             return AiGenerationResult.failure(AiGenerationResult.ErrorType.NOT_CONFIGURED,
                     "AI 服务未配置，请联系管理员设置 DEEPSEEK_API_KEY 环境变量。");

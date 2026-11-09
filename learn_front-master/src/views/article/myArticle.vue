@@ -4,11 +4,7 @@
     <div class="article-page-content">
       <!-- 页面标题 -->
       <div class="article-page-title">
-        <i class="title-icon el-icon-notebook-2"></i>
-        我的笔记
-        <span style="font-size: 14px; color: #94a3b8; margin-left: 12px; font-weight: normal;">
-          共 {{ total }} 篇笔记
-        </span>
+        <i class="title-icon el-icon-notebook-2"></i>{{ $t("我的笔记") }}<span style="font-size: 14px; color: #94a3b8; margin-left: 12px; font-weight: normal;">{{ $t("共") }}{{ total }}{{ $t("篇笔记") }}</span>
       </div>
       
       <!-- 笔记列表网格 -->
@@ -20,7 +16,7 @@
           class="article-page-item"
         >
           <div class="article-page-image">
-            <img src="../../assets/image/index/Vector (1).png" alt="笔记图标">
+            <img src="../../assets/image/index/Vector (1).png" :alt="$t('笔记图标')">
           </div>
           <div class="article-page-user">
             <img
@@ -43,7 +39,7 @@
       <div class="article-page-fenye" v-if="total > 10">
         <el-pagination
           background
-          :page-size="pageSize"
+          v-model:page-size="pageSize"
           layout="prev, pager, next"
           @current-change="handleCurrentChange"
           :total="total">
@@ -60,9 +56,11 @@
 </template>
 
 <script>
+import { t } from '@/i18n'
+
 import { getApeArticlePage } from '../../api/api' 
-import headerPage from "../../components/header/header"
-import bottomPage from "../../components/bottom/bottom"
+import headerPage from "../../components/header/header.vue"
+import bottomPage from "../../components/bottom/bottom.vue"
 
 export default {
   name: 'MyArticle',
@@ -95,13 +93,13 @@ export default {
           this.total = res.data.total
         } else {
           this.$notify.error({
-            title: '错误',
+            get title() { return t("错误") },
             message: res.message
           });
         }
       }).catch(() => {
         this.$notify.error({
-          title: '错误',
+          get title() { return t("错误") },
           message: '获取笔记列表失败，请稍后重试'
         });
       })
@@ -117,7 +115,7 @@ export default {
   },
   mounted() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    this.user = JSON.parse(window.localStorage.getItem("user_info"))
+    this.user = this.$demo(JSON.parse(window.localStorage.getItem("user_info")))
     this.query()
   }
 }

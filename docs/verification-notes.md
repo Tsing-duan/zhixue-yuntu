@@ -1,24 +1,31 @@
 # 验证记录与已知问题
 
+**简体中文** · [English](verification-notes.en.md)
 
-仓库保留了后续修改时的验证报告，以下是报告记录的结果，不代表每次提交后都已重新测试，也不代表线上性能或教学效果。
+以下区分本次更新的验证和保留的历史记录。构建、单元测试、本机浏览器体验、真实供应商调用和生产验收不是同一件事。
 
-- [后端与 AI 验证](../PORTFOLIO_DEEPSEEK_V4_FLASH_E2E_REPORT.md#regression)：后端测试 63/63。
-- [依赖与构建](../PORTFOLIO_DEPENDENCY_AUDIT_REPORT.md#regression)：6 个 Maven 模块通过；[两套前端安装与构建](../PORTFOLIO_DEPENDENCY_AUDIT_REPORT.md#reproducibility)通过；[该次检查未发现 critical 依赖漏洞](../PORTFOLIO_DEPENDENCY_AUDIT_REPORT.md#vulnerability-triage)，仍有下述构建链风险。
-- [运行基线](../PORTFOLIO_RUNTIME_BASELINE_REPORT.md#fresh-database-bootstrap)：空库初始化、Redis 和后端启动，以及[三角色登录与权限检查](../PORTFOLIO_RUNTIME_BASELINE_REPORT.md#three-role-authorization-smoke)。
-- [浏览器测试](../PORTFOLIO_BROWSER_E2E_REPORT.md)：三角色主要流程、401/403 和资源归属检查。
+## 2026-11-09 更新
 
-AI 真实接口测试只覆盖学生错题分析与教师课程健康度，共 2 次成功调用；其余 4 个生成入口使用模拟服务进行请求与响应测试。真实测试记录中没有 Provider 失败或重试，连续提交也被冷却规则拦截。这些结果只说明当次调用和拦截流程正常，不能用于证明所有题目上的回答质量。详情见 [AI 调用记录](../PORTFOLIO_DEEPSEEK_V4_FLASH_E2E_REPORT.md#real-call-budget)和[处理流程](ai-vertical-slice.md)。
+- 两端 `vue-tsc` 与 Vite 生产构建通过；仍有大 bundle 提示，不代表已完成性能优化。
+- 学生端 14 项、管理端 20 项单元测试通过，涵盖会话、编辑器、国际化示例/自填内容及原始提交值保护。
+- 后端 87 项测试通过，包含六类 AI 入口、权限、参数边界、mock Provider、关闭/未配置分支、日志脱敏和输出语言要求。
+- 独立本机预览进行了 51 个页面入口、24 组双语布局、3 组偏好保留和 16 组真实 Chromium 100%–200% 缩放检查；另验证空态/失败区别、自填表单保留、专业筛选和窄屏编辑弹窗。
+- 学生查看教师和公告所需的旧 403 已由最小字段只读接口修复。真实本机角色回归确认学生/教师不能执行管理员写入；管理员权限保留，隐藏教师/未发布公告不对学生开放。
+- 本次未发起真实 DeepSeek 调用。模型名称、余额、供应商可用性、实际回答语言和质量没有重新验收。
 
-公开快照发布前还对 Demo SQL 的 36 张表、三角色关系和最小教学数据做过静态检查；该轮没有重新导入 MySQL，实际空库运行结果以运行基线报告为准。
+本机截图、原始日志、运行数据库和私有材料不随此次代码更新公开。浏览器证据基于隔离合成数据，不代表所有公开部署环境均可直接复现。测试脚本保留在 `scripts/`；凭据由本地环境提供。关于页额外检查中文/英文及手机、平板、桌面，使用真实原图比例，不添加邮箱。
 
-## 当前限制
+## 保留的历史证据
 
+- [后端与 AI 记录](../PORTFOLIO_DEEPSEEK_V4_FLASH_E2E_REPORT.md)：此前 63 项测试及两次真实供应商成功调用，仅覆盖学生错题分析与教师课程健康度。
+- [依赖与构建记录](../PORTFOLIO_DEPENDENCY_AUDIT_REPORT.md)、[运行基线](../PORTFOLIO_RUNTIME_BASELINE_REPORT.md)、[旧浏览器流程](../PORTFOLIO_BROWSER_E2E_REPORT.md)是历史快照，不代表本次重新执行其中每一项。
+- 旧报告中的 Vue 2 EOL、Vue CLI 和动态路由 warning 描述旧版本。当前运行时已迁移为 Vue 3 / Vite / Router 4，Node/npm 版本已锁定；不能把旧 audit 结果当作当前依赖安全保证。
 
-- Vue 2 已 EOL；Vue CLI / webpack 构建链仍有经裁决为 dev/build-only 的 audit high。
-- Vue Router 动态路由 API 与重复命名路由仍有 warning。
-- Node 版本尚未通过 `.nvmrc`、Volta 或 `engines` 完全锁定。
-- 文章、论坛等非主要演示流程的 ownership 尚未完成第二轮逐接口治理，尚不能确认全站接口都完成了同样的权限检查。
-- 当前 JWT/Redis 滑动会话尚未逐请求严格比较来路 token 与缓存 token；现有证据覆盖身份失效、角色矩阵与 401/403 语义，不代表已经覆盖全部 token 安全风险。
+## 范围与限制
 
-
+- 没有逐个穷举全部详情、上传、交卷及增删改弹窗，也没有做负载或生产部署验收。
+- 文章/论坛等次要路径的 ownership、完整 JWT/token 攻击面仍需进一步审查。
+- 角色与资源归属导致的 403 是预期授权拒绝；界面隐藏不是安全边界。
+- 真实用户原创内容、可编辑菜单/角色/字典配置及旧 AI 历史保留原文。少量旧后端错题分组和缺少记录 ID 的图表标签仍为原始文字；不宣称全量数据已双语化。
+- AI 输出须由使用者判断；提示词与关键词检查不能保证模型始终遵守边界，token 估算也不是货币预算上限。
+- 当前只适配官方 DeepSeek 的固定协议。Mock 通过不能替代真实供应商验收。

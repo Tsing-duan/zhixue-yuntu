@@ -18,17 +18,17 @@
       <!-- 发布讨论内容 -->
       <div class="articleInfo-bottom">
         <div class="articleInfo-comment">
-          <div class="articleInfo-comment-font">发表回复</div>
+          <div class="articleInfo-comment-font">{{ $t("发表回复") }}</div>
           <div class="articleInfo-comment-content">
             <el-input 
               type="textarea" 
               resize="none" 
               rows="5" 
               v-model="content" 
-              placeholder="分享你的观点..."
+              :placeholder="$t('分享你的观点...')"
             ></el-input>
             <div class="articleInfo-comment-btn">
-              <el-button @click="saveApeForumItem" size="mini" type="success" plain>发布回复</el-button>
+              <el-button @click="saveApeForumItem" size="small" type="success" plain>{{ $t("发布回复") }}</el-button>
             </div>
           </div>
         </div>
@@ -37,14 +37,10 @@
       <!-- 回复列表 -->
       <div class="articleInfo-bottom">
         <div class="articleInfo-comment">
-          <div class="articleInfo-comment-font">
-            回复列表
-            <span style="font-size: 14px; color: #94a3b8; margin-left: 8px; font-weight: normal;">
-              共 {{ forumList.length }} 条回复
-            </span>
+          <div class="articleInfo-comment-font">{{ $t("回复列表") }}<span style="font-size: 14px; color: #94a3b8; margin-left: 8px; font-weight: normal;">{{ $t("共") }}{{ forumList.length }}{{ $t("条回复") }}</span>
           </div>
           <div v-if="forumList.length <= 0" class="articleInfo-comment-empty">
-            <el-empty description="还没有回复，快来发表第一条回复吧！"></el-empty>
+            <el-empty :description="$t('还没有回复，快来发表第一条回复吧！')"></el-empty>
           </div>
           <div v-if="forumList.length > 0" class="articleInfo-comment-list">
             <div v-for="(item,index) in forumList" :key="index">
@@ -94,9 +90,11 @@
 </template>
 
 <script>
+import { t } from '@/i18n'
+
 import { getApeForumById, getApeForumItemList, saveApeForumItem } from '../../api/api' 
-import headerPage from "../../components/header/header"
-import bottomPage from "../../components/bottom/bottom"
+import headerPage from "../../components/header/header.vue"
+import bottomPage from "../../components/bottom/bottom.vue"
 
 export default {
   name: 'ForumInfo',
@@ -118,7 +116,7 @@ export default {
       if (!this.content.trim()) {
         this.$message({
           type: 'warning',
-          message: '请输入讨论内容'
+          get message() { return t("请输入讨论内容") }
         });
         return
       }
@@ -130,13 +128,13 @@ export default {
         if (res.code == 1000) {
           this.$message({
             type: 'success',
-            message: '提交成功，请等待管理员审核'
+            get message() { return t("提交成功，请等待管理员审核") }
           });
           this.content = ""
           this.getApeForumItemList()
         }
       }).catch(() => {
-        this.$message.error('发布失败，请稍后重试')
+        this.$message.error(t("发布失败，请稍后重试"))
       })
     },
     getApeForumById() {
@@ -145,7 +143,7 @@ export default {
           this.forum = res.data
         }
       }).catch(() => {
-        this.$message.error('获取讨论信息失败')
+        this.$message.error(t("获取讨论信息失败"))
       })
     },
     getApeForumItemList() {
@@ -158,7 +156,7 @@ export default {
           this.forumList = res.data
         }
       }).catch(() => {
-        this.$message.error('获取回复列表失败')
+        this.$message.error(t("获取回复列表失败"))
       })
     }
   },
@@ -167,7 +165,7 @@ export default {
     this.id = this.$route.query.id
     this.getApeForumById()
     this.getApeForumItemList()
-    this.user = JSON.parse(window.localStorage.getItem("user_info"))
+    this.user = this.$demo(JSON.parse(window.localStorage.getItem("user_info")))
   }
 }
 </script>

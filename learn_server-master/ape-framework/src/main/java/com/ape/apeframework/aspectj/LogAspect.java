@@ -92,7 +92,7 @@ public class LogAspect {
             }
             if (e != null) {
                 operLog.setState(BusinessStatus.FAIL.ordinal());
-                operLog.setErrorMsg(StringUtils.substring(e.getMessage(), 0, 2000));
+                operLog.setErrorMsg(isAiRequest(request) ? e.getClass().getSimpleName() : StringUtils.substring(e.getMessage(), 0, 2000));
             }
             // 设置方法名称
             String className = joinPoint.getTarget().getClass().getName();
@@ -105,8 +105,7 @@ public class LogAspect {
             // 保存数据库
             eventPublisher.publishEvent(new LogEvent(operLog));
         } catch (Exception exp) {
-            log.error("异常信息:{}", exp.getMessage());
-            exp.printStackTrace();
+            log.error("操作日志记录失败: {}", exp.getClass().getSimpleName());
         }
     }
 

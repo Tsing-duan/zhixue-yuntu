@@ -1,15 +1,13 @@
 <template>
 <div> 
-  <el-dialog title="新增笔记" width="40%" :destroy-on-close="true" :visible.sync="addVisible" :before-close="handleClose">
+  <el-dialog append-to-body :title="$t('新增笔记')" width="40%" :destroy-on-close="true" :model-value="addVisible" :before-close="handleClose">
     <el-form :model="form" :rules="rules" ref="ruleForm">
       <el-row :gutter="10">
         <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
-            <span class="search-title">
-                所属课程:
-                </span>
+            <span class="search-title">{{ $t("所属课程:") }}</span>
                 <div style="width:100%">
                     <el-form-item prop="taskId" style="margin-bottom:0">
-                        <el-select :disabled="type == 0 ? true:false" clearable style="margin-top:10px" size="mini" v-model="form.taskId" placeholder="请选择">
+                        <el-select :disabled="type == 0 ? true:false" clearable style="margin-top:10px" size="small" v-model="form.taskId" :placeholder="$t('请选择')">
                             <el-option v-for="(item,index) in task" :key="index"
                                 :label="item.name"
                                 :value="item.id">
@@ -19,34 +17,28 @@
                 </div>
         </el-col>
         <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
-            <span class="search-title">
-                标题:
-                </span>
+            <span class="search-title">{{ $t("标题:") }}</span>
                 <div style="width:100%">
                   <el-form-item prop="title" style="margin-bottom:0">
-                      <el-input v-model="form.title" size="mini" placeholder="请输入标题" autocomplete="off"></el-input>
+                      <el-input v-model="form.title" size="small" :placeholder="$t('请输入标题')" autocomplete="off"></el-input>
                   </el-form-item>
                 </div>
         </el-col>
         <el-col style="margin-top:25px" :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
-            <span class="search-title">
-                摘要:
-                </span>
+            <span class="search-title">{{ $t("摘要:") }}</span>
                 <div style="width:100%">
                   <el-form-item prop="articleDesc" style="margin-bottom:0">
-                      <el-input type="textarea" v-model="form.articleDesc" size="mini" placeholder="请输入摘要" autocomplete="off"></el-input>
+                      <el-input type="textarea" v-model="form.articleDesc" size="small" :placeholder="$t('请输入摘要')" autocomplete="off"></el-input>
                   </el-form-item>
                 </div>
         </el-col>
         <el-col style="margin-top:25px" :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
-            <span class="search-title">
-                内容:
-                </span>
+            <span class="search-title">{{ $t("内容:") }}</span>
                 <div style="width:100%">
                   <el-form-item prop="content" style="margin-bottom:0">
                     <quill-editor ref="myQuillEditor" :options="editorOption"
                     v-model="form.content"/>
-                    <el-upload class="Quill-uploader" :show-file-list="false" accept="image/*" v-show="0" ref="updateUpload" :multiple="false" :action="uploadImageUrl()"
+                    <el-upload :on-error="$uploadError" class="Quill-uploader" :show-file-list="false" accept="image/*" v-show="0" ref="updateUpload" :multiple="false" :action="uploadImageUrl()"
                         :headers="uploadHeaders()"
                         :on-success="handleQillSuccess">
                     </el-upload>
@@ -54,26 +46,26 @@
                 </div>
         </el-col>
         <el-col style="margin-top:25px" :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
-            <span class="search-title">
-                备注:
-                </span>
+            <span class="search-title">{{ $t("备注:") }}</span>
                 <div style="width:100%">
                   <el-form-item prop="remark" style="margin-bottom:0">
-                      <el-input type="textarea" v-model="form.remark" size="mini" placeholder="请输入备注" autocomplete="off"></el-input>
+                      <el-input type="textarea" v-model="form.remark" size="small" :placeholder="$t('请输入备注')" autocomplete="off"></el-input>
                   </el-form-item>
                 </div>
         </el-col>
       </el-row>
     </el-form>
-    <div slot="footer" class="dialog-footer">
-      <el-button size="mini" type="primary" @click="submit">确 定</el-button>
-      <el-button size="mini" @click="handleClose">取 消</el-button>
-    </div>
+    <template #footer><div  class="dialog-footer">
+      <el-button size="small" type="primary" @click="submit">{{ $t("确 定") }}</el-button>
+      <el-button size="small" @click="handleClose">{{ $t("取 消") }}</el-button>
+    </div></template>
   </el-dialog>
 </div>
 </template>
 
 <script>
+import { t } from '@/i18n'
+
   import { mixin } from '../../../minix/index';
   import {saveApeArticle,getApeTaskList,getApeTaskByTeacherId} from '../../../api/api'
   export default {
@@ -81,7 +73,7 @@
     data() {
       return{
         editorOption: {
-          placeholder: "请输入文字内容",
+          get placeholder() { return t("请输入文字内容") },
           modules: { 
             toolbar: {
                 container: [
@@ -129,16 +121,16 @@
         task: [],
         rules: { 
           taskId: [
-            { required: true, message: '请选择课程', trigger: 'blur' },
+            { required: true, get message() { return t("请选择课程") }, trigger: 'blur' },
           ],
           title: [
-            { required: true, message: '请输入标题', trigger: 'blur' },
+            { required: true, get message() { return t("请输入标题") }, trigger: 'blur' },
           ],
           articleDesc: [
-            { required: true, message: '请输入摘要', trigger: 'blur' },
+            { required: true, get message() { return t("请输入摘要") }, trigger: 'blur' },
           ],
           content: [
-            { required: true, message: '请输入笔记内容', trigger: 'blur' },
+            { required: true, get message() { return t("请输入笔记内容") }, trigger: 'blur' },
           ],
         },
       }
@@ -151,17 +143,17 @@
             saveApeArticle(this.form).then(res => {
               if(res.code == 1000) {
                 this.$notify.success({
-                  title: '成功',
-                  message: "保存成功"
+                  get title() { return t("成功") },
+                  get message() { return t("保存成功") }
                 });
                 this.handleClose();
               } else {
                 this.$notify.error({
-                  title: '错误',
+                  get title() { return t("错误") },
                   message: res.message
                 });
               }
-            })
+            }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false })
           } else {
             return false;
           }
@@ -171,12 +163,12 @@
           let _this = this;
           if(res.code == 1000){
               _this.$notify({
-                  title: '上传成功',
+                  get title() { return t("上传成功") },
                   type: 'success'
               });
-              let imgurl = this.$store.state.configure.HOST + res.message
+              let imgurl = this.$config.HOST + res.message
               let quill = this.$refs.myQuillEditor.quill
-              let position = quill.getSelection().index
+              let position = (quill.getSelection(true)?.index ?? Math.max(0, quill.getLength() - 1))
               quill.insertEmbed(position, 'image', imgurl)
               quill.setSelection(position + 1)
           }else{
@@ -204,11 +196,11 @@
                 this.task = res.data;
               } else {
                 this.$notify.error({
-                  title: '错误',
+                  get title() { return t("错误") },
                   message: res.message
                 });
               }
-          })
+          }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false })
       },
       getApeTaskByTeacherId() {
         getApeTaskByTeacherId().then(res => {
@@ -216,11 +208,11 @@
                 this.task = res.data;
               } else {
                 this.$notify.error({
-                  title: '错误',
+                  get title() { return t("错误") },
                   message: res.message
                 });
               }
-          })
+          }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false })
       },
     },
     created() {

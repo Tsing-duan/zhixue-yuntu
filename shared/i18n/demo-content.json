@@ -1,0 +1,3049 @@
+{
+  "1697436716646531073": {
+    "major": {
+      "original": "Demo Faculty",
+      "zh-CN": "演示专业：学习与实践",
+      "en": "Demo Major: Learning and Practice"
+    },
+    "remark": {
+      "original": "Synthetic portfolio fixture",
+      "zh-CN": "演示账号介绍，用于体验平台功能。",
+      "en": "Demo account profile for exploring platform features."
+    },
+    "school": {
+      "original": "Portfolio Demo School",
+      "zh-CN": "演示学校",
+      "en": "Demo School"
+    },
+    "userName": {
+      "original": "Portfolio Demo Admin 01",
+      "zh-CN": "演示管理员",
+      "en": "Demo Administrator"
+    }
+  },
+  "769dc998d617bff4e30c4bde94f37e90": {
+    "major": {
+      "original": "Demo Major",
+      "zh-CN": "演示专业：学习与实践",
+      "en": "Demo Major: Learning and Practice"
+    },
+    "remark": {
+      "original": "Synthetic portfolio fixture",
+      "zh-CN": "演示账号介绍，用于体验平台功能。",
+      "en": "Demo account profile for exploring platform features."
+    },
+    "school": {
+      "original": "Portfolio Demo School",
+      "zh-CN": "演示学校",
+      "en": "Demo School"
+    },
+    "userName": {
+      "original": "Portfolio Demo Student 01",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    }
+  },
+  "c864ceb6e258c75d183ba54a2033bd77": {
+    "major": {
+      "original": "Demo Faculty",
+      "zh-CN": "演示专业：学习与实践",
+      "en": "Demo Major: Learning and Practice"
+    },
+    "remark": {
+      "original": "Synthetic portfolio fixture",
+      "zh-CN": "演示账号介绍，用于体验平台功能。",
+      "en": "Demo account profile for exploring platform features."
+    },
+    "school": {
+      "original": "Portfolio Demo School",
+      "zh-CN": "演示学校",
+      "en": "Demo School"
+    },
+    "userName": {
+      "original": "Portfolio Demo Teacher 01",
+      "zh-CN": "演示教师 01",
+      "en": "Demo Teacher 01"
+    }
+  },
+  "1729751427215790082": {
+    "name": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    },
+    "major": {
+      "original": "Demo Major",
+      "zh-CN": "演示专业：学习与实践",
+      "en": "Demo Major: Learning and Practice"
+    },
+    "teacherName": {
+      "original": "Portfolio Demo Teacher 01",
+      "zh-CN": "演示教师 01",
+      "en": "Demo Teacher 01"
+    },
+    "taskDescribe": {
+      "original": "Synthetic course fixture for private recruitment demonstration.",
+      "zh-CN": "用于体验课程、章节和作业流程的演示内容，不代表真实教学活动。",
+      "en": "Example content for exploring courses, chapters and assignments; not real teaching activity."
+    },
+    "classification": {
+      "original": "Demo Classification",
+      "zh-CN": "演示分类：基础课程",
+      "en": "Demo Category: Fundamentals"
+    }
+  },
+  "2118681665743106049": {
+    "name": {
+      "original": "Migration 1793968043125",
+      "zh-CN": "演示课程 2：课程探索",
+      "en": "Demo Course 2: Course Discovery"
+    },
+    "major": {
+      "original": "Demo Major",
+      "zh-CN": "演示专业：学习与实践",
+      "en": "Demo Major: Learning and Practice"
+    },
+    "teacherName": {
+      "original": "Portfolio Demo Teacher 01",
+      "zh-CN": "演示教师 01",
+      "en": "Demo Teacher 01"
+    },
+    "taskDescribe": {
+      "original": "Synthetic migration course",
+      "zh-CN": "用于体验课程、章节和作业流程的演示内容，不代表真实教学活动。",
+      "en": "Example content for exploring courses, chapters and assignments; not real teaching activity."
+    },
+    "classification": {
+      "original": "Demo Classification",
+      "zh-CN": "演示分类：基础课程",
+      "en": "Demo Category: Fundamentals"
+    }
+  },
+  "2118682031981342721": {
+    "name": {
+      "original": "Migration 1793968130369",
+      "zh-CN": "演示课程 3：课程探索",
+      "en": "Demo Course 3: Course Discovery"
+    },
+    "major": {
+      "original": "Demo Major",
+      "zh-CN": "演示专业：学习与实践",
+      "en": "Demo Major: Learning and Practice"
+    },
+    "teacherName": {
+      "original": "Portfolio Demo Teacher 01",
+      "zh-CN": "演示教师 01",
+      "en": "Demo Teacher 01"
+    },
+    "taskDescribe": {
+      "original": "Synthetic migration course",
+      "zh-CN": "用于体验课程、章节和作业流程的演示内容，不代表真实教学活动。",
+      "en": "Example content for exploring courses, chapters and assignments; not real teaching activity."
+    },
+    "classification": {
+      "original": "Demo Classification",
+      "zh-CN": "演示分类：基础课程",
+      "en": "Demo Category: Fundamentals"
+    }
+  },
+  "2118682201561247746": {
+    "name": {
+      "original": "Migration 1793968170875",
+      "zh-CN": "演示课程 4：课程探索",
+      "en": "Demo Course 4: Course Discovery"
+    },
+    "major": {
+      "original": "Demo Major",
+      "zh-CN": "演示专业：学习与实践",
+      "en": "Demo Major: Learning and Practice"
+    },
+    "teacherName": {
+      "original": "Portfolio Demo Teacher 01",
+      "zh-CN": "演示教师 01",
+      "en": "Demo Teacher 01"
+    },
+    "taskDescribe": {
+      "original": "Synthetic migration course",
+      "zh-CN": "用于体验课程、章节和作业流程的演示内容，不代表真实教学活动。",
+      "en": "Example content for exploring courses, chapters and assignments; not real teaching activity."
+    },
+    "classification": {
+      "original": "Demo Classification",
+      "zh-CN": "演示分类：基础课程",
+      "en": "Demo Category: Fundamentals"
+    }
+  },
+  "2118682872847020034": {
+    "name": {
+      "original": "Migration 1793968330947",
+      "zh-CN": "演示课程 5：课程探索",
+      "en": "Demo Course 5: Course Discovery"
+    },
+    "major": {
+      "original": "Demo Major",
+      "zh-CN": "演示专业：学习与实践",
+      "en": "Demo Major: Learning and Practice"
+    },
+    "teacherName": {
+      "original": "Portfolio Demo Teacher 01",
+      "zh-CN": "演示教师 01",
+      "en": "Demo Teacher 01"
+    },
+    "taskDescribe": {
+      "original": "Synthetic migration course",
+      "zh-CN": "用于体验课程、章节和作业流程的演示内容，不代表真实教学活动。",
+      "en": "Example content for exploring courses, chapters and assignments; not real teaching activity."
+    },
+    "classification": {
+      "original": "Demo Classification",
+      "zh-CN": "演示分类：基础课程",
+      "en": "Demo Category: Fundamentals"
+    }
+  },
+  "2118683516148396034": {
+    "name": {
+      "original": "Migration 1793968484638",
+      "zh-CN": "演示课程 6：课程探索",
+      "en": "Demo Course 6: Course Discovery"
+    },
+    "major": {
+      "original": "Demo Major",
+      "zh-CN": "演示专业：学习与实践",
+      "en": "Demo Major: Learning and Practice"
+    },
+    "teacherName": {
+      "original": "Portfolio Demo Teacher 01",
+      "zh-CN": "演示教师 01",
+      "en": "Demo Teacher 01"
+    },
+    "taskDescribe": {
+      "original": "Synthetic migration course",
+      "zh-CN": "用于体验课程、章节和作业流程的演示内容，不代表真实教学活动。",
+      "en": "Example content for exploring courses, chapters and assignments; not real teaching activity."
+    },
+    "classification": {
+      "original": "Demo Classification",
+      "zh-CN": "演示分类：基础课程",
+      "en": "Demo Category: Fundamentals"
+    }
+  },
+  "2118685571097309186": {
+    "name": {
+      "original": "Migration 1793968974543",
+      "zh-CN": "演示课程 7：课程探索",
+      "en": "Demo Course 7: Course Discovery"
+    },
+    "major": {
+      "original": "Demo Major",
+      "zh-CN": "演示专业：学习与实践",
+      "en": "Demo Major: Learning and Practice"
+    },
+    "teacherName": {
+      "original": "Portfolio Demo Teacher 01",
+      "zh-CN": "演示教师 01",
+      "en": "Demo Teacher 01"
+    },
+    "taskDescribe": {
+      "original": "Synthetic migration course",
+      "zh-CN": "用于体验课程、章节和作业流程的演示内容，不代表真实教学活动。",
+      "en": "Example content for exploring courses, chapters and assignments; not real teaching activity."
+    },
+    "classification": {
+      "original": "Demo Classification",
+      "zh-CN": "演示分类：基础课程",
+      "en": "Demo Category: Fundamentals"
+    }
+  },
+  "2118686444468842498": {
+    "name": {
+      "original": "Migration 1793969182790",
+      "zh-CN": "演示课程 8：课程探索",
+      "en": "Demo Course 8: Course Discovery"
+    },
+    "major": {
+      "original": "Demo Major",
+      "zh-CN": "演示专业：学习与实践",
+      "en": "Demo Major: Learning and Practice"
+    },
+    "teacherName": {
+      "original": "Portfolio Demo Teacher 01",
+      "zh-CN": "演示教师 01",
+      "en": "Demo Teacher 01"
+    },
+    "taskDescribe": {
+      "original": "Synthetic migration course",
+      "zh-CN": "用于体验课程、章节和作业流程的演示内容，不代表真实教学活动。",
+      "en": "Example content for exploring courses, chapters and assignments; not real teaching activity."
+    },
+    "classification": {
+      "original": "Demo Classification",
+      "zh-CN": "演示分类：基础课程",
+      "en": "Demo Category: Fundamentals"
+    }
+  },
+  "2118687458647355394": {
+    "name": {
+      "original": "Migration 1793969424492",
+      "zh-CN": "演示课程 9：课程探索",
+      "en": "Demo Course 9: Course Discovery"
+    },
+    "major": {
+      "original": "Demo Major",
+      "zh-CN": "演示专业：学习与实践",
+      "en": "Demo Major: Learning and Practice"
+    },
+    "teacherName": {
+      "original": "Portfolio Demo Teacher 01",
+      "zh-CN": "演示教师 01",
+      "en": "Demo Teacher 01"
+    },
+    "taskDescribe": {
+      "original": "Synthetic migration course",
+      "zh-CN": "用于体验课程、章节和作业流程的演示内容，不代表真实教学活动。",
+      "en": "Example content for exploring courses, chapters and assignments; not real teaching activity."
+    },
+    "classification": {
+      "original": "Demo Classification",
+      "zh-CN": "演示分类：基础课程",
+      "en": "Demo Category: Fundamentals"
+    }
+  },
+  "2118688366705782785": {
+    "name": {
+      "original": "Migration 1793969641518",
+      "zh-CN": "演示课程 10：课程探索",
+      "en": "Demo Course 10: Course Discovery"
+    },
+    "major": {
+      "original": "Demo Major",
+      "zh-CN": "演示专业：学习与实践",
+      "en": "Demo Major: Learning and Practice"
+    },
+    "teacherName": {
+      "original": "Portfolio Demo Teacher 01",
+      "zh-CN": "演示教师 01",
+      "en": "Demo Teacher 01"
+    },
+    "taskDescribe": {
+      "original": "Synthetic migration course",
+      "zh-CN": "用于体验课程、章节和作业流程的演示内容，不代表真实教学活动。",
+      "en": "Example content for exploring courses, chapters and assignments; not real teaching activity."
+    },
+    "classification": {
+      "original": "Demo Classification",
+      "zh-CN": "演示分类：基础课程",
+      "en": "Demo Category: Fundamentals"
+    }
+  },
+  "2118688838065860610": {
+    "name": {
+      "original": "Migration 1793969753543",
+      "zh-CN": "演示课程 11：课程探索",
+      "en": "Demo Course 11: Course Discovery"
+    },
+    "major": {
+      "original": "Demo Major",
+      "zh-CN": "演示专业：学习与实践",
+      "en": "Demo Major: Learning and Practice"
+    },
+    "teacherName": {
+      "original": "Portfolio Demo Teacher 01",
+      "zh-CN": "演示教师 01",
+      "en": "Demo Teacher 01"
+    },
+    "taskDescribe": {
+      "original": "Synthetic migration course",
+      "zh-CN": "用于体验课程、章节和作业流程的演示内容，不代表真实教学活动。",
+      "en": "Example content for exploring courses, chapters and assignments; not real teaching activity."
+    },
+    "classification": {
+      "original": "Demo Classification",
+      "zh-CN": "演示分类：基础课程",
+      "en": "Demo Category: Fundamentals"
+    }
+  },
+  "2118689523733901314": {
+    "name": {
+      "original": "Migration 1793969917737",
+      "zh-CN": "演示课程 12：课程探索",
+      "en": "Demo Course 12: Course Discovery"
+    },
+    "major": {
+      "original": "Demo Major",
+      "zh-CN": "演示专业：学习与实践",
+      "en": "Demo Major: Learning and Practice"
+    },
+    "teacherName": {
+      "original": "Portfolio Demo Teacher 01",
+      "zh-CN": "演示教师 01",
+      "en": "Demo Teacher 01"
+    },
+    "taskDescribe": {
+      "original": "Synthetic migration course",
+      "zh-CN": "用于体验课程、章节和作业流程的演示内容，不代表真实教学活动。",
+      "en": "Example content for exploring courses, chapters and assignments; not real teaching activity."
+    },
+    "classification": {
+      "original": "Demo Classification",
+      "zh-CN": "演示分类：基础课程",
+      "en": "Demo Category: Fundamentals"
+    }
+  },
+  "2118690229031284738": {
+    "name": {
+      "original": "Migration 1793970085158",
+      "zh-CN": "演示课程 13：课程探索",
+      "en": "Demo Course 13: Course Discovery"
+    },
+    "major": {
+      "original": "Demo Major",
+      "zh-CN": "演示专业：学习与实践",
+      "en": "Demo Major: Learning and Practice"
+    },
+    "teacherName": {
+      "original": "Portfolio Demo Teacher 01",
+      "zh-CN": "演示教师 01",
+      "en": "Demo Teacher 01"
+    },
+    "taskDescribe": {
+      "original": "Synthetic migration course",
+      "zh-CN": "用于体验课程、章节和作业流程的演示内容，不代表真实教学活动。",
+      "en": "Example content for exploring courses, chapters and assignments; not real teaching activity."
+    },
+    "classification": {
+      "original": "Demo Classification",
+      "zh-CN": "演示分类：基础课程",
+      "en": "Demo Category: Fundamentals"
+    }
+  },
+  "mig-foreign-0cc851c5": {
+    "name": {
+      "original": "Foreign ownership canary",
+      "zh-CN": "演示课程 14：课程探索",
+      "en": "Demo Course 14: Course Discovery"
+    },
+    "major": {
+      "original": "Demo Major",
+      "zh-CN": "演示专业：学习与实践",
+      "en": "Demo Major: Learning and Practice"
+    },
+    "teacherName": {
+      "original": "Synthetic foreign teacher",
+      "zh-CN": "演示教师 01",
+      "en": "Demo Teacher 01"
+    },
+    "taskDescribe": {
+      "original": "Synthetic course fixture for private recruitment demonstration.",
+      "zh-CN": "用于体验课程、章节和作业流程的演示内容，不代表真实教学活动。",
+      "en": "Example content for exploring courses, chapters and assignments; not real teaching activity."
+    },
+    "classification": {
+      "original": "Demo Classification",
+      "zh-CN": "演示分类：基础课程",
+      "en": "Demo Category: Fundamentals"
+    }
+  },
+  "mig-foreign-138718dc": {
+    "name": {
+      "original": "Foreign ownership canary",
+      "zh-CN": "演示课程 15：课程探索",
+      "en": "Demo Course 15: Course Discovery"
+    },
+    "major": {
+      "original": "Demo Major",
+      "zh-CN": "演示专业：学习与实践",
+      "en": "Demo Major: Learning and Practice"
+    },
+    "teacherName": {
+      "original": "Synthetic foreign teacher",
+      "zh-CN": "演示教师 01",
+      "en": "Demo Teacher 01"
+    },
+    "taskDescribe": {
+      "original": "Synthetic course fixture for private recruitment demonstration.",
+      "zh-CN": "用于体验课程、章节和作业流程的演示内容，不代表真实教学活动。",
+      "en": "Example content for exploring courses, chapters and assignments; not real teaching activity."
+    },
+    "classification": {
+      "original": "Demo Classification",
+      "zh-CN": "演示分类：基础课程",
+      "en": "Demo Category: Fundamentals"
+    }
+  },
+  "mig-foreign-1c41dfe6": {
+    "name": {
+      "original": "Foreign ownership canary",
+      "zh-CN": "演示课程 16：课程探索",
+      "en": "Demo Course 16: Course Discovery"
+    },
+    "major": {
+      "original": "Demo Major",
+      "zh-CN": "演示专业：学习与实践",
+      "en": "Demo Major: Learning and Practice"
+    },
+    "teacherName": {
+      "original": "Synthetic foreign teacher",
+      "zh-CN": "演示教师 01",
+      "en": "Demo Teacher 01"
+    },
+    "taskDescribe": {
+      "original": "Synthetic course fixture for private recruitment demonstration.",
+      "zh-CN": "用于体验课程、章节和作业流程的演示内容，不代表真实教学活动。",
+      "en": "Example content for exploring courses, chapters and assignments; not real teaching activity."
+    },
+    "classification": {
+      "original": "Demo Classification",
+      "zh-CN": "演示分类：基础课程",
+      "en": "Demo Category: Fundamentals"
+    }
+  },
+  "mig-foreign-230e0623": {
+    "name": {
+      "original": "Foreign ownership canary",
+      "zh-CN": "演示课程 17：课程探索",
+      "en": "Demo Course 17: Course Discovery"
+    },
+    "major": {
+      "original": "Demo Major",
+      "zh-CN": "演示专业：学习与实践",
+      "en": "Demo Major: Learning and Practice"
+    },
+    "teacherName": {
+      "original": "Synthetic foreign teacher",
+      "zh-CN": "演示教师 01",
+      "en": "Demo Teacher 01"
+    },
+    "taskDescribe": {
+      "original": "Synthetic course fixture for private recruitment demonstration.",
+      "zh-CN": "用于体验课程、章节和作业流程的演示内容，不代表真实教学活动。",
+      "en": "Example content for exploring courses, chapters and assignments; not real teaching activity."
+    },
+    "classification": {
+      "original": "Demo Classification",
+      "zh-CN": "演示分类：基础课程",
+      "en": "Demo Category: Fundamentals"
+    }
+  },
+  "mig-foreign-82b24e6c": {
+    "name": {
+      "original": "Foreign ownership canary",
+      "zh-CN": "演示课程 18：课程探索",
+      "en": "Demo Course 18: Course Discovery"
+    },
+    "major": {
+      "original": "Demo Major",
+      "zh-CN": "演示专业：学习与实践",
+      "en": "Demo Major: Learning and Practice"
+    },
+    "teacherName": {
+      "original": "Synthetic foreign teacher",
+      "zh-CN": "演示教师 01",
+      "en": "Demo Teacher 01"
+    },
+    "taskDescribe": {
+      "original": "Synthetic course fixture for private recruitment demonstration.",
+      "zh-CN": "用于体验课程、章节和作业流程的演示内容，不代表真实教学活动。",
+      "en": "Example content for exploring courses, chapters and assignments; not real teaching activity."
+    },
+    "classification": {
+      "original": "Demo Classification",
+      "zh-CN": "演示分类：基础课程",
+      "en": "Demo Category: Fundamentals"
+    }
+  },
+  "mig-foreign-978e846f": {
+    "name": {
+      "original": "Foreign ownership canary",
+      "zh-CN": "演示课程 19：课程探索",
+      "en": "Demo Course 19: Course Discovery"
+    },
+    "major": {
+      "original": "Demo Major",
+      "zh-CN": "演示专业：学习与实践",
+      "en": "Demo Major: Learning and Practice"
+    },
+    "teacherName": {
+      "original": "Synthetic foreign teacher",
+      "zh-CN": "演示教师 01",
+      "en": "Demo Teacher 01"
+    },
+    "taskDescribe": {
+      "original": "Synthetic course fixture for private recruitment demonstration.",
+      "zh-CN": "用于体验课程、章节和作业流程的演示内容，不代表真实教学活动。",
+      "en": "Example content for exploring courses, chapters and assignments; not real teaching activity."
+    },
+    "classification": {
+      "original": "Demo Classification",
+      "zh-CN": "演示分类：基础课程",
+      "en": "Demo Category: Fundamentals"
+    }
+  },
+  "mig-foreign-ebfcbeb9": {
+    "name": {
+      "original": "Foreign ownership canary",
+      "zh-CN": "演示课程 20：课程探索",
+      "en": "Demo Course 20: Course Discovery"
+    },
+    "major": {
+      "original": "Demo Major",
+      "zh-CN": "演示专业：学习与实践",
+      "en": "Demo Major: Learning and Practice"
+    },
+    "teacherName": {
+      "original": "Synthetic foreign teacher",
+      "zh-CN": "演示教师 01",
+      "en": "Demo Teacher 01"
+    },
+    "taskDescribe": {
+      "original": "Synthetic course fixture for private recruitment demonstration.",
+      "zh-CN": "用于体验课程、章节和作业流程的演示内容，不代表真实教学活动。",
+      "en": "Example content for exploring courses, chapters and assignments; not real teaching activity."
+    },
+    "classification": {
+      "original": "Demo Classification",
+      "zh-CN": "演示分类：基础课程",
+      "en": "Demo Category: Fundamentals"
+    }
+  },
+  "1730032800929447937": {
+    "name": {
+      "original": "Portfolio Demo Chapter",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "remark": {
+      "original": "Synthetic portfolio fixture",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-chapter-chromium-0cc851c5": {
+    "name": {
+      "original": "Migration chapter chromium 0cc851c5",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "remark": {
+      "original": "Synthetic portfolio fixture",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-chapter-chromium-138718dc": {
+    "name": {
+      "original": "Migration chapter chromium 138718dc",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "remark": {
+      "original": "Synthetic portfolio fixture",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-chapter-chromium-1c41dfe6": {
+    "name": {
+      "original": "Migration chapter chromium 1c41dfe6",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "remark": {
+      "original": "Synthetic portfolio fixture",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-chapter-chromium-230e0623": {
+    "name": {
+      "original": "Migration chapter chromium",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "remark": {
+      "original": "Synthetic portfolio fixture",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-chapter-chromium-82b24e6c": {
+    "name": {
+      "original": "Migration chapter chromium 82b24e6c",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "remark": {
+      "original": "Synthetic portfolio fixture",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-chapter-chromium-978e846f": {
+    "name": {
+      "original": "Migration chapter chromium 978e846f",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "remark": {
+      "original": "Synthetic portfolio fixture",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-chapter-chromium-ebfcbeb9": {
+    "name": {
+      "original": "Migration chapter chromium",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "remark": {
+      "original": "Synthetic portfolio fixture",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-chapter-firefox-0cc851c5": {
+    "name": {
+      "original": "Migration chapter firefox 0cc851c5",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "remark": {
+      "original": "Synthetic portfolio fixture",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-chapter-firefox-138718dc": {
+    "name": {
+      "original": "Migration chapter firefox 138718dc",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "remark": {
+      "original": "Synthetic portfolio fixture",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-chapter-firefox-1c41dfe6": {
+    "name": {
+      "original": "Migration chapter firefox 1c41dfe6",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "remark": {
+      "original": "Synthetic portfolio fixture",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-chapter-firefox-230e0623": {
+    "name": {
+      "original": "Migration chapter firefox",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "remark": {
+      "original": "Synthetic portfolio fixture",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-chapter-firefox-82b24e6c": {
+    "name": {
+      "original": "Migration chapter firefox 82b24e6c",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "remark": {
+      "original": "Synthetic portfolio fixture",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-chapter-firefox-978e846f": {
+    "name": {
+      "original": "Migration chapter firefox 978e846f",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "remark": {
+      "original": "Synthetic portfolio fixture",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-chapter-firefox-ebfcbeb9": {
+    "name": {
+      "original": "Migration chapter firefox",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "remark": {
+      "original": "Synthetic portfolio fixture",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-chapter-webkit-0cc851c5": {
+    "name": {
+      "original": "Migration chapter webkit 0cc851c5",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "remark": {
+      "original": "Synthetic portfolio fixture",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-chapter-webkit-138718dc": {
+    "name": {
+      "original": "Migration chapter webkit 138718dc",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "remark": {
+      "original": "Synthetic portfolio fixture",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-chapter-webkit-1c41dfe6": {
+    "name": {
+      "original": "Migration chapter webkit 1c41dfe6",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "remark": {
+      "original": "Synthetic portfolio fixture",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-chapter-webkit-230e0623": {
+    "name": {
+      "original": "Migration chapter webkit",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "remark": {
+      "original": "Synthetic portfolio fixture",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-chapter-webkit-82b24e6c": {
+    "name": {
+      "original": "Migration chapter webkit 82b24e6c",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "remark": {
+      "original": "Synthetic portfolio fixture",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-chapter-webkit-978e846f": {
+    "name": {
+      "original": "Migration chapter webkit 978e846f",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "remark": {
+      "original": "Synthetic portfolio fixture",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-chapter-webkit-ebfcbeb9": {
+    "name": {
+      "original": "Migration chapter webkit",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "remark": {
+      "original": "Synthetic portfolio fixture",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "2118676116561473538": {
+    "title": {
+      "original": "Migration 1793966723927",
+      "zh-CN": "演示笔记 1：整理学习思路",
+      "en": "Demo Note 1: Organizing Study Ideas"
+    },
+    "createBy": {
+      "original": "Portfolio Demo Student 01",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    },
+    "articleDesc": {
+      "original": "Synthetic legacy HTML",
+      "zh-CN": "示例：用笔记记录重点、疑问与下一步行动。",
+      "en": "Example: record key ideas, questions and next steps."
+    }
+  },
+  "2118677131977306113": {
+    "title": {
+      "original": "Migration 1793966966030",
+      "zh-CN": "演示笔记 2：整理学习思路",
+      "en": "Demo Note 2: Organizing Study Ideas"
+    },
+    "createBy": {
+      "original": "Portfolio Demo Student 01",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    },
+    "articleDesc": {
+      "original": "Synthetic legacy HTML",
+      "zh-CN": "示例：用笔记记录重点、疑问与下一步行动。",
+      "en": "Example: record key ideas, questions and next steps."
+    }
+  },
+  "2118677497611563009": {
+    "title": {
+      "original": "Migration 1793967053206",
+      "zh-CN": "演示笔记 3：整理学习思路",
+      "en": "Demo Note 3: Organizing Study Ideas"
+    },
+    "createBy": {
+      "original": "Portfolio Demo Student 01",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    },
+    "articleDesc": {
+      "original": "Synthetic legacy HTML",
+      "zh-CN": "示例：用笔记记录重点、疑问与下一步行动。",
+      "en": "Example: record key ideas, questions and next steps."
+    }
+  },
+  "2118681983411302402": {
+    "title": {
+      "original": "Migration 1793968122698",
+      "zh-CN": "演示笔记 4：整理学习思路",
+      "en": "Demo Note 4: Organizing Study Ideas"
+    },
+    "createBy": {
+      "original": "Portfolio Demo Student 01",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    },
+    "articleDesc": {
+      "original": "Synthetic legacy HTML",
+      "zh-CN": "示例：用笔记记录重点、疑问与下一步行动。",
+      "en": "Example: record key ideas, questions and next steps."
+    }
+  },
+  "2118682750096519169": {
+    "title": {
+      "original": "Migration 1793968305492",
+      "zh-CN": "演示笔记 5：整理学习思路",
+      "en": "Demo Note 5: Organizing Study Ideas"
+    },
+    "createBy": {
+      "original": "Portfolio Demo Student 01",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    },
+    "articleDesc": {
+      "original": "Synthetic legacy HTML",
+      "zh-CN": "示例：用笔记记录重点、疑问与下一步行动。",
+      "en": "Example: record key ideas, questions and next steps."
+    }
+  },
+  "2118683354470559746": {
+    "title": {
+      "original": "Migration 1793968449588",
+      "zh-CN": "演示笔记 6：整理学习思路",
+      "en": "Demo Note 6: Organizing Study Ideas"
+    },
+    "createBy": {
+      "original": "Portfolio Demo Student 01",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    },
+    "articleDesc": {
+      "original": "Synthetic legacy HTML",
+      "zh-CN": "示例：用笔记记录重点、疑问与下一步行动。",
+      "en": "Example: record key ideas, questions and next steps."
+    }
+  },
+  "2118685389735604225": {
+    "title": {
+      "original": "Migration 1793968934830",
+      "zh-CN": "演示笔记 7：整理学习思路",
+      "en": "Demo Note 7: Organizing Study Ideas"
+    },
+    "createBy": {
+      "original": "Portfolio Demo Student 01",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    },
+    "articleDesc": {
+      "original": "Synthetic legacy HTML",
+      "zh-CN": "示例：用笔记记录重点、疑问与下一步行动。",
+      "en": "Example: record key ideas, questions and next steps."
+    }
+  },
+  "2118686198783291393": {
+    "title": {
+      "original": "Migration 1793969127722",
+      "zh-CN": "演示笔记 8：整理学习思路",
+      "en": "Demo Note 8: Organizing Study Ideas"
+    },
+    "createBy": {
+      "original": "Portfolio Demo Student 01",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    },
+    "articleDesc": {
+      "original": "Synthetic legacy HTML",
+      "zh-CN": "示例：用笔记记录重点、疑问与下一步行动。",
+      "en": "Example: record key ideas, questions and next steps."
+    }
+  },
+  "2118687243567640578": {
+    "title": {
+      "original": "Migration 1793969376806",
+      "zh-CN": "演示笔记 9：整理学习思路",
+      "en": "Demo Note 9: Organizing Study Ideas"
+    },
+    "createBy": {
+      "original": "Portfolio Demo Student 01",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    },
+    "articleDesc": {
+      "original": "Synthetic legacy HTML",
+      "zh-CN": "示例：用笔记记录重点、疑问与下一步行动。",
+      "en": "Example: record key ideas, questions and next steps."
+    }
+  },
+  "2118688294526005250": {
+    "title": {
+      "original": "Migration 1793969627390",
+      "zh-CN": "演示笔记 10：整理学习思路",
+      "en": "Demo Note 10: Organizing Study Ideas"
+    },
+    "createBy": {
+      "original": "Portfolio Demo Student 01",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    },
+    "articleDesc": {
+      "original": "Synthetic legacy HTML",
+      "zh-CN": "示例：用笔记记录重点、疑问与下一步行动。",
+      "en": "Example: record key ideas, questions and next steps."
+    }
+  },
+  "2118688671166115841": {
+    "title": {
+      "original": "Migration 1793969717189",
+      "zh-CN": "演示笔记 11：整理学习思路",
+      "en": "Demo Note 11: Organizing Study Ideas"
+    },
+    "createBy": {
+      "original": "Portfolio Demo Student 01",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    },
+    "articleDesc": {
+      "original": "Synthetic legacy HTML",
+      "zh-CN": "示例：用笔记记录重点、疑问与下一步行动。",
+      "en": "Example: record key ideas, questions and next steps."
+    }
+  },
+  "2118689347849957378": {
+    "title": {
+      "original": "Migration 1793969878520",
+      "zh-CN": "演示笔记 12：整理学习思路",
+      "en": "Demo Note 12: Organizing Study Ideas"
+    },
+    "createBy": {
+      "original": "Portfolio Demo Student 01",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    },
+    "articleDesc": {
+      "original": "Synthetic legacy HTML",
+      "zh-CN": "示例：用笔记记录重点、疑问与下一步行动。",
+      "en": "Example: record key ideas, questions and next steps."
+    }
+  },
+  "2118690049510879233": {
+    "title": {
+      "original": "Migration 1793970045813",
+      "zh-CN": "演示笔记 13：整理学习思路",
+      "en": "Demo Note 13: Organizing Study Ideas"
+    },
+    "createBy": {
+      "original": "Portfolio Demo Student 01",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    },
+    "articleDesc": {
+      "original": "Synthetic legacy HTML",
+      "zh-CN": "示例：用笔记记录重点、疑问与下一步行动。",
+      "en": "Example: record key ideas, questions and next steps."
+    }
+  },
+  "mig-article-0cc851c5": {
+    "title": {
+      "original": "Migration public article",
+      "zh-CN": "演示笔记 14：整理学习思路",
+      "en": "Demo Note 14: Organizing Study Ideas"
+    },
+    "content": {
+      "original": "<p>Public synthetic content</p>",
+      "zh-CN": "<p>这是一篇演示笔记。可以先记录课程主线，再写下疑问，最后安排一次复习。</p>",
+      "en": "<p>This is a demo note. Start with the main ideas, record questions, and schedule a review.</p>"
+    },
+    "createBy": {
+      "original": "portfolio-demo",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    },
+    "articleDesc": {
+      "original": "Synthetic article",
+      "zh-CN": "示例：用笔记记录重点、疑问与下一步行动。",
+      "en": "Example: record key ideas, questions and next steps."
+    }
+  },
+  "mig-article-138718dc": {
+    "title": {
+      "original": "Migration public article",
+      "zh-CN": "演示笔记 15：整理学习思路",
+      "en": "Demo Note 15: Organizing Study Ideas"
+    },
+    "content": {
+      "original": "<p>Public synthetic content</p>",
+      "zh-CN": "<p>这是一篇演示笔记。可以先记录课程主线，再写下疑问，最后安排一次复习。</p>",
+      "en": "<p>This is a demo note. Start with the main ideas, record questions, and schedule a review.</p>"
+    },
+    "createBy": {
+      "original": "portfolio-demo",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    },
+    "articleDesc": {
+      "original": "Synthetic article",
+      "zh-CN": "示例：用笔记记录重点、疑问与下一步行动。",
+      "en": "Example: record key ideas, questions and next steps."
+    }
+  },
+  "mig-article-1c41dfe6": {
+    "title": {
+      "original": "Migration public article",
+      "zh-CN": "演示笔记 16：整理学习思路",
+      "en": "Demo Note 16: Organizing Study Ideas"
+    },
+    "content": {
+      "original": "<p>Public synthetic content</p>",
+      "zh-CN": "<p>这是一篇演示笔记。可以先记录课程主线，再写下疑问，最后安排一次复习。</p>",
+      "en": "<p>This is a demo note. Start with the main ideas, record questions, and schedule a review.</p>"
+    },
+    "createBy": {
+      "original": "portfolio-demo",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    },
+    "articleDesc": {
+      "original": "Synthetic article",
+      "zh-CN": "示例：用笔记记录重点、疑问与下一步行动。",
+      "en": "Example: record key ideas, questions and next steps."
+    }
+  },
+  "mig-article-82b24e6c": {
+    "title": {
+      "original": "Migration public article",
+      "zh-CN": "演示笔记 17：整理学习思路",
+      "en": "Demo Note 17: Organizing Study Ideas"
+    },
+    "content": {
+      "original": "<p>Public synthetic content</p>",
+      "zh-CN": "<p>这是一篇演示笔记。可以先记录课程主线，再写下疑问，最后安排一次复习。</p>",
+      "en": "<p>This is a demo note. Start with the main ideas, record questions, and schedule a review.</p>"
+    },
+    "createBy": {
+      "original": "portfolio-demo",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    },
+    "articleDesc": {
+      "original": "Synthetic article",
+      "zh-CN": "示例：用笔记记录重点、疑问与下一步行动。",
+      "en": "Example: record key ideas, questions and next steps."
+    }
+  },
+  "mig-article-978e846f": {
+    "title": {
+      "original": "Migration public article",
+      "zh-CN": "演示笔记 18：整理学习思路",
+      "en": "Demo Note 18: Organizing Study Ideas"
+    },
+    "content": {
+      "original": "<p>Public synthetic content</p>",
+      "zh-CN": "<p>这是一篇演示笔记。可以先记录课程主线，再写下疑问，最后安排一次复习。</p>",
+      "en": "<p>This is a demo note. Start with the main ideas, record questions, and schedule a review.</p>"
+    },
+    "createBy": {
+      "original": "portfolio-demo",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    },
+    "articleDesc": {
+      "original": "Synthetic article",
+      "zh-CN": "示例：用笔记记录重点、疑问与下一步行动。",
+      "en": "Example: record key ideas, questions and next steps."
+    }
+  },
+  "mig-forum-0cc851c5": {
+    "name": {
+      "original": "Migration public discussion",
+      "zh-CN": "演示讨论 1：如何安排每周学习？",
+      "en": "Demo Discussion 1: Planning a Study Week"
+    },
+    "content": {
+      "original": "Synthetic discussion",
+      "zh-CN": "这是用于体验讨论功能的示例问题：你会怎样安排课程学习、做笔记和复习的时间？",
+      "en": "This demo question illustrates discussions: how would you divide time between courses, notes and review?"
+    },
+    "createBy": {
+      "original": "portfolio-demo",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    }
+  },
+  "mig-forum-138718dc": {
+    "name": {
+      "original": "Migration public discussion",
+      "zh-CN": "演示讨论 2：如何安排每周学习？",
+      "en": "Demo Discussion 2: Planning a Study Week"
+    },
+    "content": {
+      "original": "Synthetic discussion",
+      "zh-CN": "这是用于体验讨论功能的示例问题：你会怎样安排课程学习、做笔记和复习的时间？",
+      "en": "This demo question illustrates discussions: how would you divide time between courses, notes and review?"
+    },
+    "createBy": {
+      "original": "portfolio-demo",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    }
+  },
+  "mig-forum-1c41dfe6": {
+    "name": {
+      "original": "Migration public discussion",
+      "zh-CN": "演示讨论 3：如何安排每周学习？",
+      "en": "Demo Discussion 3: Planning a Study Week"
+    },
+    "content": {
+      "original": "Synthetic discussion",
+      "zh-CN": "这是用于体验讨论功能的示例问题：你会怎样安排课程学习、做笔记和复习的时间？",
+      "en": "This demo question illustrates discussions: how would you divide time between courses, notes and review?"
+    },
+    "createBy": {
+      "original": "portfolio-demo",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    }
+  },
+  "mig-forum-82b24e6c": {
+    "name": {
+      "original": "Migration public discussion",
+      "zh-CN": "演示讨论 4：如何安排每周学习？",
+      "en": "Demo Discussion 4: Planning a Study Week"
+    },
+    "content": {
+      "original": "Synthetic discussion",
+      "zh-CN": "这是用于体验讨论功能的示例问题：你会怎样安排课程学习、做笔记和复习的时间？",
+      "en": "This demo question illustrates discussions: how would you divide time between courses, notes and review?"
+    },
+    "createBy": {
+      "original": "portfolio-demo",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    }
+  },
+  "mig-forum-978e846f": {
+    "name": {
+      "original": "Migration public discussion",
+      "zh-CN": "演示讨论 5：如何安排每周学习？",
+      "en": "Demo Discussion 5: Planning a Study Week"
+    },
+    "content": {
+      "original": "Synthetic discussion",
+      "zh-CN": "这是用于体验讨论功能的示例问题：你会怎样安排课程学习、做笔记和复习的时间？",
+      "en": "This demo question illustrates discussions: how would you divide time between courses, notes and review?"
+    },
+    "createBy": {
+      "original": "portfolio-demo",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    }
+  },
+  "1730068371957653506": {
+    "name": {
+      "original": "Portfolio Demo Exam",
+      "zh-CN": "演示考试 1：基础练习",
+      "en": "Demo Exam 1: Basic Practice"
+    },
+    "createBy": {
+      "original": "portfolio-demo",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "2118681683979939841": {
+    "name": {
+      "original": "Migration 1793968043125",
+      "zh-CN": "演示考试 2：基础练习",
+      "en": "Demo Exam 2: Basic Practice"
+    },
+    "createBy": {
+      "original": "Portfolio Demo Teacher 01",
+      "zh-CN": "演示教师 01",
+      "en": "Demo Teacher 01"
+    },
+    "taskName": {
+      "original": "Migration 1793968043125",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "2118682219567394818": {
+    "name": {
+      "original": "Migration 1793968170875",
+      "zh-CN": "演示考试 3：基础练习",
+      "en": "Demo Exam 3: Basic Practice"
+    },
+    "createBy": {
+      "original": "Portfolio Demo Teacher 01",
+      "zh-CN": "演示教师 01",
+      "en": "Demo Teacher 01"
+    },
+    "taskName": {
+      "original": "Migration 1793968170875",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "2118682891079659522": {
+    "name": {
+      "original": "Migration 1793968330947",
+      "zh-CN": "演示考试 4：基础练习",
+      "en": "Demo Exam 4: Basic Practice"
+    },
+    "createBy": {
+      "original": "Portfolio Demo Teacher 01",
+      "zh-CN": "演示教师 01",
+      "en": "Demo Teacher 01"
+    },
+    "taskName": {
+      "original": "Migration 1793968330947",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "2118683533739307009": {
+    "name": {
+      "original": "Migration 1793968484638",
+      "zh-CN": "演示考试 5：基础练习",
+      "en": "Demo Exam 5: Basic Practice"
+    },
+    "createBy": {
+      "original": "Portfolio Demo Teacher 01",
+      "zh-CN": "演示教师 01",
+      "en": "Demo Teacher 01"
+    },
+    "taskName": {
+      "original": "Migration 1793968484638",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "2118685589816487938": {
+    "name": {
+      "original": "Migration 1793968974543",
+      "zh-CN": "演示考试 6：基础练习",
+      "en": "Demo Exam 6: Basic Practice"
+    },
+    "createBy": {
+      "original": "Portfolio Demo Teacher 01",
+      "zh-CN": "演示教师 01",
+      "en": "Demo Teacher 01"
+    },
+    "taskName": {
+      "original": "Migration 1793968974543",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "2118686465973039106": {
+    "name": {
+      "original": "Migration 1793969182790",
+      "zh-CN": "演示考试 7：基础练习",
+      "en": "Demo Exam 7: Basic Practice"
+    },
+    "createBy": {
+      "original": "Portfolio Demo Teacher 01",
+      "zh-CN": "演示教师 01",
+      "en": "Demo Teacher 01"
+    },
+    "taskName": {
+      "original": "Migration 1793969182790",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "2118687479744704514": {
+    "name": {
+      "original": "Migration 1793969424492",
+      "zh-CN": "演示考试 8：基础练习",
+      "en": "Demo Exam 8: Basic Practice"
+    },
+    "createBy": {
+      "original": "Portfolio Demo Teacher 01",
+      "zh-CN": "演示教师 01",
+      "en": "Demo Teacher 01"
+    },
+    "taskName": {
+      "original": "Migration 1793969424492",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "2118688389178863617": {
+    "name": {
+      "original": "Migration 1793969641518",
+      "zh-CN": "演示考试 9：基础练习",
+      "en": "Demo Exam 9: Basic Practice"
+    },
+    "createBy": {
+      "original": "Portfolio Demo Teacher 01",
+      "zh-CN": "演示教师 01",
+      "en": "Demo Teacher 01"
+    },
+    "taskName": {
+      "original": "Migration 1793969641518",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "2118688856881508353": {
+    "name": {
+      "original": "Migration 1793969753543",
+      "zh-CN": "演示考试 10：基础练习",
+      "en": "Demo Exam 10: Basic Practice"
+    },
+    "createBy": {
+      "original": "Portfolio Demo Teacher 01",
+      "zh-CN": "演示教师 01",
+      "en": "Demo Teacher 01"
+    },
+    "taskName": {
+      "original": "Migration 1793969753543",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "2118689546362171394": {
+    "name": {
+      "original": "Migration 1793969917737",
+      "zh-CN": "演示考试 11：基础练习",
+      "en": "Demo Exam 11: Basic Practice"
+    },
+    "createBy": {
+      "original": "Portfolio Demo Teacher 01",
+      "zh-CN": "演示教师 01",
+      "en": "Demo Teacher 01"
+    },
+    "taskName": {
+      "original": "Migration 1793969917737",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "2118690248048259073": {
+    "name": {
+      "original": "Migration 1793970085158",
+      "zh-CN": "演示考试 12：基础练习",
+      "en": "Demo Exam 12: Basic Practice"
+    },
+    "createBy": {
+      "original": "Portfolio Demo Teacher 01",
+      "zh-CN": "演示教师 01",
+      "en": "Demo Teacher 01"
+    },
+    "taskName": {
+      "original": "Migration 1793970085158",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-exam-chromium-0cc851c5": {
+    "name": {
+      "original": "Migration exam chromium",
+      "zh-CN": "演示考试 13：基础练习",
+      "en": "Demo Exam 13: Basic Practice"
+    },
+    "createBy": {
+      "original": "portfolio-demo",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-exam-chromium-138718dc": {
+    "name": {
+      "original": "Migration exam chromium",
+      "zh-CN": "演示考试 14：基础练习",
+      "en": "Demo Exam 14: Basic Practice"
+    },
+    "createBy": {
+      "original": "portfolio-demo",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-exam-chromium-1c41dfe6": {
+    "name": {
+      "original": "Migration exam chromium",
+      "zh-CN": "演示考试 15：基础练习",
+      "en": "Demo Exam 15: Basic Practice"
+    },
+    "createBy": {
+      "original": "portfolio-demo",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-exam-chromium-230e0623": {
+    "name": {
+      "original": "Migration exam chromium",
+      "zh-CN": "演示考试 16：基础练习",
+      "en": "Demo Exam 16: Basic Practice"
+    },
+    "createBy": {
+      "original": "portfolio-demo",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-exam-chromium-82b24e6c": {
+    "name": {
+      "original": "Migration exam chromium",
+      "zh-CN": "演示考试 17：基础练习",
+      "en": "Demo Exam 17: Basic Practice"
+    },
+    "createBy": {
+      "original": "portfolio-demo",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-exam-chromium-978e846f": {
+    "name": {
+      "original": "Migration exam chromium",
+      "zh-CN": "演示考试 18：基础练习",
+      "en": "Demo Exam 18: Basic Practice"
+    },
+    "createBy": {
+      "original": "portfolio-demo",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-exam-chromium-ebfcbeb9": {
+    "name": {
+      "original": "Migration exam chromium",
+      "zh-CN": "演示考试 19：基础练习",
+      "en": "Demo Exam 19: Basic Practice"
+    },
+    "createBy": {
+      "original": "portfolio-demo",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-exam-firefox-0cc851c5": {
+    "name": {
+      "original": "Migration exam firefox",
+      "zh-CN": "演示考试 20：基础练习",
+      "en": "Demo Exam 20: Basic Practice"
+    },
+    "createBy": {
+      "original": "portfolio-demo",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-exam-firefox-138718dc": {
+    "name": {
+      "original": "Migration exam firefox",
+      "zh-CN": "演示考试 21：基础练习",
+      "en": "Demo Exam 21: Basic Practice"
+    },
+    "createBy": {
+      "original": "portfolio-demo",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-exam-firefox-1c41dfe6": {
+    "name": {
+      "original": "Migration exam firefox",
+      "zh-CN": "演示考试 22：基础练习",
+      "en": "Demo Exam 22: Basic Practice"
+    },
+    "createBy": {
+      "original": "portfolio-demo",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-exam-firefox-230e0623": {
+    "name": {
+      "original": "Migration exam firefox",
+      "zh-CN": "演示考试 23：基础练习",
+      "en": "Demo Exam 23: Basic Practice"
+    },
+    "createBy": {
+      "original": "portfolio-demo",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-exam-firefox-82b24e6c": {
+    "name": {
+      "original": "Migration exam firefox",
+      "zh-CN": "演示考试 24：基础练习",
+      "en": "Demo Exam 24: Basic Practice"
+    },
+    "createBy": {
+      "original": "portfolio-demo",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-exam-firefox-978e846f": {
+    "name": {
+      "original": "Migration exam firefox",
+      "zh-CN": "演示考试 25：基础练习",
+      "en": "Demo Exam 25: Basic Practice"
+    },
+    "createBy": {
+      "original": "portfolio-demo",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-exam-firefox-ebfcbeb9": {
+    "name": {
+      "original": "Migration exam firefox",
+      "zh-CN": "演示考试 26：基础练习",
+      "en": "Demo Exam 26: Basic Practice"
+    },
+    "createBy": {
+      "original": "portfolio-demo",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-exam-webkit-0cc851c5": {
+    "name": {
+      "original": "Migration exam webkit",
+      "zh-CN": "演示考试 27：基础练习",
+      "en": "Demo Exam 27: Basic Practice"
+    },
+    "createBy": {
+      "original": "portfolio-demo",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-exam-webkit-138718dc": {
+    "name": {
+      "original": "Migration exam webkit",
+      "zh-CN": "演示考试 28：基础练习",
+      "en": "Demo Exam 28: Basic Practice"
+    },
+    "createBy": {
+      "original": "portfolio-demo",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-exam-webkit-1c41dfe6": {
+    "name": {
+      "original": "Migration exam webkit",
+      "zh-CN": "演示考试 29：基础练习",
+      "en": "Demo Exam 29: Basic Practice"
+    },
+    "createBy": {
+      "original": "portfolio-demo",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-exam-webkit-230e0623": {
+    "name": {
+      "original": "Migration exam webkit",
+      "zh-CN": "演示考试 30：基础练习",
+      "en": "Demo Exam 30: Basic Practice"
+    },
+    "createBy": {
+      "original": "portfolio-demo",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-exam-webkit-82b24e6c": {
+    "name": {
+      "original": "Migration exam webkit",
+      "zh-CN": "演示考试 31：基础练习",
+      "en": "Demo Exam 31: Basic Practice"
+    },
+    "createBy": {
+      "original": "portfolio-demo",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-exam-webkit-978e846f": {
+    "name": {
+      "original": "Migration exam webkit",
+      "zh-CN": "演示考试 32：基础练习",
+      "en": "Demo Exam 32: Basic Practice"
+    },
+    "createBy": {
+      "original": "portfolio-demo",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "mig-exam-webkit-ebfcbeb9": {
+    "name": {
+      "original": "Migration exam webkit",
+      "zh-CN": "演示考试 33：基础练习",
+      "en": "Demo Exam 33: Basic Practice"
+    },
+    "createBy": {
+      "original": "portfolio-demo",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    }
+  },
+  "1730038492058910721": {
+    "taskName": {
+      "original": "Portfolio Demo Course",
+      "zh-CN": "演示课程：学习与实践",
+      "en": "Demo Course: Learning and Practice"
+    },
+    "userName": {
+      "original": "Portfolio Demo Student 01",
+      "zh-CN": "演示学生 01",
+      "en": "Demo Student 01"
+    },
+    "teacherName": {
+      "original": "Portfolio Demo Teacher 01",
+      "zh-CN": "演示教师 01",
+      "en": "Demo Teacher 01"
+    }
+  },
+  "1725131293429145602": {
+    "name": {
+      "original": "Demo Major",
+      "zh-CN": "演示专业：学习与实践",
+      "en": "Demo Major: Learning and Practice"
+    }
+  },
+  "1725410802936901634": {
+    "name": {
+      "original": "Demo Classification",
+      "zh-CN": "演示分类：基础课程",
+      "en": "Demo Category: Fundamentals"
+    }
+  },
+  "2118676071405596674": {
+    "name": {
+      "original": "Migration 1793966712346",
+      "zh-CN": "演示学校",
+      "en": "Demo School"
+    }
+  },
+  "1730040079170961409": {
+    "title": {
+      "original": "Which option is the correct demo answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    },
+    "chapterName": {
+      "original": "Portfolio Demo Chapter",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "2118681674609864706": {
+    "title": {
+      "original": "Migration 1793968043125",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "chapterName": {
+      "original": "Portfolio Demo Chapter",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "2118682210293788673": {
+    "title": {
+      "original": "Migration 1793968170875",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "chapterName": {
+      "original": "Portfolio Demo Chapter",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "2118682881831219202": {
+    "title": {
+      "original": "Migration 1793968330947",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "chapterName": {
+      "original": "Portfolio Demo Chapter",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "2118683522347577346": {
+    "title": {
+      "original": "Migration 1793968484638",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "chapterName": {
+      "original": "Portfolio Demo Chapter",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "2118685579792101378": {
+    "title": {
+      "original": "Migration 1793968974543",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "chapterName": {
+      "original": "Portfolio Demo Chapter",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "2118686454526783489": {
+    "title": {
+      "original": "Migration 1793969182790",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "chapterName": {
+      "original": "Portfolio Demo Chapter",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "2118687469367996417": {
+    "title": {
+      "original": "Migration 1793969424492",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "chapterName": {
+      "original": "Portfolio Demo Chapter",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "2118688378328199170": {
+    "title": {
+      "original": "Migration 1793969641518",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "chapterName": {
+      "original": "Portfolio Demo Chapter",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "2118688847926669313": {
+    "title": {
+      "original": "Migration 1793969753543",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "chapterName": {
+      "original": "Portfolio Demo Chapter",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "2118689535297597442": {
+    "title": {
+      "original": "Migration 1793969917737",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "chapterName": {
+      "original": "Portfolio Demo Chapter",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "2118690238862733313": {
+    "title": {
+      "original": "Migration 1793970085158",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "chapterName": {
+      "original": "Portfolio Demo Chapter",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "mig-homework-chromium-0cc851c5": {
+    "title": {
+      "original": "Which option is the correct demo answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    },
+    "chapterName": {
+      "original": "Migration chapter chromium 0cc851c5",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "mig-homework-chromium-138718dc": {
+    "title": {
+      "original": "Which option is the correct demo answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    },
+    "chapterName": {
+      "original": "Migration chapter chromium 138718dc",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "mig-homework-chromium-1c41dfe6": {
+    "title": {
+      "original": "Which option is the correct demo answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    },
+    "chapterName": {
+      "original": "Migration chapter chromium 1c41dfe6",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "mig-homework-chromium-230e0623": {
+    "title": {
+      "original": "Which option is the correct demo answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    },
+    "chapterName": {
+      "original": "Migration chapter chromium",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "mig-homework-chromium-82b24e6c": {
+    "title": {
+      "original": "Which option is the correct demo answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    },
+    "chapterName": {
+      "original": "Migration chapter chromium 82b24e6c",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "mig-homework-chromium-978e846f": {
+    "title": {
+      "original": "Which option is the correct demo answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    },
+    "chapterName": {
+      "original": "Migration chapter chromium 978e846f",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "mig-homework-chromium-ebfcbeb9": {
+    "title": {
+      "original": "Which option is the correct demo answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    },
+    "chapterName": {
+      "original": "Migration chapter chromium",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "mig-homework-firefox-0cc851c5": {
+    "title": {
+      "original": "Which option is the correct demo answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    },
+    "chapterName": {
+      "original": "Migration chapter firefox 0cc851c5",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "mig-homework-firefox-138718dc": {
+    "title": {
+      "original": "Which option is the correct demo answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    },
+    "chapterName": {
+      "original": "Migration chapter firefox 138718dc",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "mig-homework-firefox-1c41dfe6": {
+    "title": {
+      "original": "Which option is the correct demo answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    },
+    "chapterName": {
+      "original": "Migration chapter firefox 1c41dfe6",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "mig-homework-firefox-230e0623": {
+    "title": {
+      "original": "Which option is the correct demo answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    },
+    "chapterName": {
+      "original": "Migration chapter firefox",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "mig-homework-firefox-82b24e6c": {
+    "title": {
+      "original": "Which option is the correct demo answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    },
+    "chapterName": {
+      "original": "Migration chapter firefox 82b24e6c",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "mig-homework-firefox-978e846f": {
+    "title": {
+      "original": "Which option is the correct demo answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    },
+    "chapterName": {
+      "original": "Migration chapter firefox 978e846f",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "mig-homework-firefox-ebfcbeb9": {
+    "title": {
+      "original": "Which option is the correct demo answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    },
+    "chapterName": {
+      "original": "Migration chapter firefox",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "mig-homework-webkit-0cc851c5": {
+    "title": {
+      "original": "Which option is the correct demo answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    },
+    "chapterName": {
+      "original": "Migration chapter webkit 0cc851c5",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "mig-homework-webkit-138718dc": {
+    "title": {
+      "original": "Which option is the correct demo answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    },
+    "chapterName": {
+      "original": "Migration chapter webkit 138718dc",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "mig-homework-webkit-1c41dfe6": {
+    "title": {
+      "original": "Which option is the correct demo answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    },
+    "chapterName": {
+      "original": "Migration chapter webkit 1c41dfe6",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "mig-homework-webkit-230e0623": {
+    "title": {
+      "original": "Which option is the correct demo answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    },
+    "chapterName": {
+      "original": "Migration chapter webkit",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "mig-homework-webkit-82b24e6c": {
+    "title": {
+      "original": "Which option is the correct demo answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    },
+    "chapterName": {
+      "original": "Migration chapter webkit 82b24e6c",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "mig-homework-webkit-978e846f": {
+    "title": {
+      "original": "Which option is the correct demo answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    },
+    "chapterName": {
+      "original": "Migration chapter webkit 978e846f",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "mig-homework-webkit-ebfcbeb9": {
+    "title": {
+      "original": "Which option is the correct demo answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    },
+    "chapterName": {
+      "original": "Migration chapter webkit",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "1730598904719826945": {
+    "title": {
+      "original": "Which option is the correct demo answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    },
+    "chapterName": {
+      "original": "Portfolio Demo Chapter",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "2118677148590944258": {
+    "title": {
+      "original": "Which option is the correct demo answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    },
+    "chapterName": {
+      "original": "Migration chapter chromium",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "2118677513679941634": {
+    "title": {
+      "original": "Which option is the correct demo answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    },
+    "chapterName": {
+      "original": "Migration chapter chromium 0cc851c5",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "2118682766936649730": {
+    "title": {
+      "original": "Which option is the correct demo answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    },
+    "chapterName": {
+      "original": "Migration chapter chromium 138718dc",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "2118683410145751042": {
+    "title": {
+      "original": "Which option is the correct demo answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    },
+    "chapterName": {
+      "original": "Migration chapter firefox 138718dc",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "2118685416713367553": {
+    "title": {
+      "original": "Which option is the correct demo answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    },
+    "chapterName": {
+      "original": "Migration chapter chromium 82b24e6c",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "2118686246153760769": {
+    "title": {
+      "original": "Which option is the correct demo answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    },
+    "chapterName": {
+      "original": "Migration chapter firefox 82b24e6c",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "2118687287842713602": {
+    "title": {
+      "original": "Which option is the correct demo answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    },
+    "chapterName": {
+      "original": "Migration chapter webkit 82b24e6c",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "2118688326117502978": {
+    "title": {
+      "original": "Which option is the correct demo answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    },
+    "chapterName": {
+      "original": "Migration chapter firefox 978e846f",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "2118688703126712321": {
+    "title": {
+      "original": "Which option is the correct demo answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    },
+    "chapterName": {
+      "original": "Migration chapter chromium 1c41dfe6",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "2118689383686090753": {
+    "title": {
+      "original": "Which option is the correct demo answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    },
+    "chapterName": {
+      "original": "Migration chapter firefox 1c41dfe6",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "2118690083568627714": {
+    "title": {
+      "original": "Which option is the correct demo answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    },
+    "chapterName": {
+      "original": "Migration chapter webkit 1c41dfe6",
+      "zh-CN": "演示章节：开始学习",
+      "en": "Demo Chapter: Getting Started"
+    }
+  },
+  "mig-item-chromium-0cc851c5": {
+    "title": {
+      "original": "Which option is the correct demo exam answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    }
+  },
+  "mig-item-chromium-138718dc": {
+    "title": {
+      "original": "Which option is the correct demo exam answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    }
+  },
+  "mig-item-chromium-1c41dfe6": {
+    "title": {
+      "original": "Which option is the correct demo exam answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    }
+  },
+  "mig-item-chromium-230e0623": {
+    "title": {
+      "original": "Which option is the correct demo exam answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    }
+  },
+  "mig-item-chromium-82b24e6c": {
+    "title": {
+      "original": "Which option is the correct demo exam answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    }
+  },
+  "mig-item-chromium-978e846f": {
+    "title": {
+      "original": "Which option is the correct demo exam answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    }
+  },
+  "mig-item-chromium-ebfcbeb9": {
+    "title": {
+      "original": "Which option is the correct demo exam answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    }
+  },
+  "mig-item-firefox-0cc851c5": {
+    "title": {
+      "original": "Which option is the correct demo exam answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    }
+  },
+  "mig-item-firefox-138718dc": {
+    "title": {
+      "original": "Which option is the correct demo exam answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    }
+  },
+  "mig-item-firefox-1c41dfe6": {
+    "title": {
+      "original": "Which option is the correct demo exam answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    }
+  },
+  "mig-item-firefox-230e0623": {
+    "title": {
+      "original": "Which option is the correct demo exam answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    }
+  },
+  "mig-item-firefox-82b24e6c": {
+    "title": {
+      "original": "Which option is the correct demo exam answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    }
+  },
+  "mig-item-firefox-978e846f": {
+    "title": {
+      "original": "Which option is the correct demo exam answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    }
+  },
+  "mig-item-firefox-ebfcbeb9": {
+    "title": {
+      "original": "Which option is the correct demo exam answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    }
+  },
+  "mig-item-webkit-0cc851c5": {
+    "title": {
+      "original": "Which option is the correct demo exam answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    }
+  },
+  "mig-item-webkit-138718dc": {
+    "title": {
+      "original": "Which option is the correct demo exam answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    }
+  },
+  "mig-item-webkit-1c41dfe6": {
+    "title": {
+      "original": "Which option is the correct demo exam answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    }
+  },
+  "mig-item-webkit-230e0623": {
+    "title": {
+      "original": "Which option is the correct demo exam answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    }
+  },
+  "mig-item-webkit-82b24e6c": {
+    "title": {
+      "original": "Which option is the correct demo exam answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    }
+  },
+  "mig-item-webkit-978e846f": {
+    "title": {
+      "original": "Which option is the correct demo exam answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    }
+  },
+  "mig-item-webkit-ebfcbeb9": {
+    "title": {
+      "original": "Which option is the correct demo exam answer?",
+      "zh-CN": "演示题目：请选择示例答案",
+      "en": "Demo question: choose an example answer"
+    },
+    "content": {
+      "original": "[{\"value\":\"A\",\"option\":\"Correct demo option\"},{\"value\":\"B\",\"option\":\"Incorrect demo option\"}]",
+      "zh-CN": "[{\"value\": \"A\", \"option\": \"演示选项 A\"}, {\"value\": \"B\", \"option\": \"演示选项 B\"}]",
+      "en": "[{\"value\": \"A\", \"option\": \"Example option A\"}, {\"value\": \"B\", \"option\": \"Example option B\"}]"
+    }
+  }
+}

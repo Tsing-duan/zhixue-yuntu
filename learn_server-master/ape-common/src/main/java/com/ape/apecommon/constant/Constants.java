@@ -154,11 +154,11 @@ public class Constants {
     public static final int USER_TYPE_STUDENT = 2;
 
     /** 默认头像路径（后续迁移到 ape_param 参数表） */
-    public static final String DEFAULT_ADMIN_AVATAR = "/img/avatars/zhixue-admin-default.png";
-    public static final String DEFAULT_TEACHER_MALE_AVATAR = "/img/avatars/zhixue-teacher-default.png";
-    public static final String DEFAULT_TEACHER_FEMALE_AVATAR = "/img/avatars/zhixue-teacher-default.png";
-    public static final String DEFAULT_STUDENT_MALE_AVATAR = "/img/avatars/zhixue-student-default.png";
-    public static final String DEFAULT_STUDENT_FEMALE_AVATAR = "/img/avatars/zhixue-student-default.png";
+    public static final String DEFAULT_ADMIN_AVATAR = "/img/26001.jpeg";
+    public static final String DEFAULT_TEACHER_MALE_AVATAR = "/img/26001.jpeg";
+    public static final String DEFAULT_TEACHER_FEMALE_AVATAR = "/img/26003.jpeg";
+    public static final String DEFAULT_STUDENT_MALE_AVATAR = "/img/xiaoxi.jpeg";
+    public static final String DEFAULT_STUDENT_FEMALE_AVATAR = "/img/xiaoan.jpeg";
 
     /** 题型常量（与 ape_dict_data 题型字典对应） */
     public static final int QUESTION_TYPE_SINGLE = 0;

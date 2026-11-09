@@ -1,7 +1,7 @@
 <template>
-  <div id="app">
+  <el-config-provider :locale="$elementLocale"><div class="app-shell" :class="{ 'is-demo': $isDemo }"><DemoNotice />
     <router-view/>
-  </div>
+  </div></el-config-provider>
 </template>
 
 <style>
@@ -51,3 +51,7 @@
   }
  
 </style>
+
+<style>.app-shell { min-height: 100%; height: 100%; }</style>
+
+<style>.app-shell { --demo-banner-height: 0px; } .app-shell.is-demo { --demo-banner-height: 30px; } .demo-notice { min-height: 30px; box-sizing: border-box; }</style>

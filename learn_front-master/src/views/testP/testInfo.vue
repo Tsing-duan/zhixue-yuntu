@@ -5,29 +5,29 @@
       <!-- 考前须知卡片 -->
       <div class="test-page-desc">
         <div class="test-page-image">
-          <img src="../../assets/image/testP/Accent.png" alt="考试图标">
+          <img src="../../assets/image/testP/Accent.png" :alt="$t('考试图标')">
         </div>
         <div class="test-page-num" v-if="!flag">
-          <div class="test-page-num1">⏰ 剩余时间</div>
-          <div class="test-page-num2">{{hr}}小时 {{min}}分 {{sec}}秒</div>
+          <div class="test-page-num1">{{ $t("⏰ 剩余时间") }}</div>
+          <div class="test-page-num2">{{hr}}{{ $t("小时") }}{{min}}{{ $t("分") }}{{sec}}{{ $t("秒") }}</div>
         </div>
         <div class="test-page-font">
           <div class="test-page-font1">
-            <div>📋 考前须知：</div>
-            <div>1、请提前进行基础设备检测，包括鼠标、键盘、显示器或其他硬件设备；</div>
-            <div>2、请拔掉U盘、移动硬盘或其他与考试无关的外接设备；</div>
-            <div>3、如果您使用的是移动电脑，请确保电源连接正常；</div>
-            <div>4、请确保系统内未开启与考试无关的非必要软件；</div>
-            <div>5、请确保当前使用的是谷歌浏览器，且页面（浏览器）是最大化状态；</div>
-            <div>6、考试过程中，请勿执行任何会导致考试页面失焦的操作。</div>
+            <div>{{ $t("📋 考前须知：") }}</div>
+            <div>{{ $t("1、请提前进行基础设备检测，包括鼠标、键盘、显示器或其他硬件设备；") }}</div>
+            <div>{{ $t("2、请拔掉U盘、移动硬盘或其他与考试无关的外接设备；") }}</div>
+            <div>{{ $t("3、如果您使用的是移动电脑，请确保电源连接正常；") }}</div>
+            <div>{{ $t("4、请确保系统内未开启与考试无关的非必要软件；") }}</div>
+            <div>{{ $t("5、请确保当前使用的是谷歌浏览器，且页面（浏览器）是最大化状态；") }}</div>
+            <div>{{ $t("6、考试过程中，请勿执行任何会导致考试页面失焦的操作。") }}</div>
           </div>
           <div class="test-page-font2">
-            <div>⚠️ 注意事项：</div>
-            <div>7、考试过程中，请勿修改浏览器和页面的大小；</div>
-            <div>8、有些考试可能会禁用复制粘贴功能；</div>
-            <div>9、如有视频监控，请保持面部处于画面中心位置；</div>
-            <div>10、考试结束后，系统将自动提交试卷；</div>
-            <div>11、祝您考试顺利，取得好成绩！</div>
+            <div>{{ $t("⚠️ 注意事项：") }}</div>
+            <div>{{ $t("7、考试过程中，请勿修改浏览器和页面的大小；") }}</div>
+            <div>{{ $t("8、有些考试可能会禁用复制粘贴功能；") }}</div>
+            <div>{{ $t("9、如有视频监控，请保持面部处于画面中心位置；") }}</div>
+            <div>{{ $t("10、考试结束后，系统将自动提交试卷；") }}</div>
+            <div>{{ $t("11、祝您考试顺利，取得好成绩！") }}</div>
           </div>
         </div>
       </div>
@@ -38,9 +38,9 @@
           {{test.taskName}} - {{test.name}}
         </div>
         <div class="testInfo-state">
-          <span>📊 总分：{{total}}分</span>
-          <span v-if="flag">🏆 得分：{{defen}}分</span>
-          <span v-if="!flag">⏳ 考试进行中</span>
+          <span>{{ $t("📊 总分：") }}{{total}}{{ $t("分") }}</span>
+          <span v-if="flag">{{ $t("🏆 得分：") }}{{defen}}{{ $t("分") }}</span>
+          <span v-if="!flag">{{ $t("⏳ 考试进行中") }}</span>
         </div>
         
         <!-- 题目列表 -->
@@ -48,35 +48,32 @@
           <div class="testInfo-item" v-for="(item,index) in assign" :key="index">
             <div>
               {{index + 1}}.{{item.title}} 
-              <span>({{item.score}}分)</span>
-              <span v-if="item.type == 0">【单选题】</span>
-              <span v-if="item.type == 1">【多选题】</span>
-              <span v-if="item.type == 2">【填空题】</span>
-              <span v-if="item.type == 3">【判断题】</span>
-              <span v-if="item.type == 4">【简答题】</span>
-              <span v-if="item.type == 5">【论述题】</span>
+              <span>({{item.score}}{{ $t("分)") }}</span>
+              <span v-if="item.type == 0">{{ $t("【单选题】") }}</span>
+              <span v-if="item.type == 1">{{ $t("【多选题】") }}</span>
+              <span v-if="item.type == 2">{{ $t("【填空题】") }}</span>
+              <span v-if="item.type == 3">{{ $t("【判断题】") }}</span>
+              <span v-if="item.type == 4">{{ $t("【简答题】") }}</span>
+              <span v-if="item.type == 5">{{ $t("【论述题】") }}</span>
               <!-- 批改后显示正确答案 -->
-              <span v-if="flag && item.score != item.point" style="background: #fee2e2; color: #dc2626;">
-                正确答案：{{item.answer}}
+              <span v-if="flag && item.score != item.point" style="background: #fee2e2; color: #dc2626;">{{ $t("正确答案：") }}{{item.answer}}
               </span>
-              <span v-if="flag && item.score == item.point" style="background: #e8f5ed; color: #20B486;">
-                正确答案：{{item.answer}}
+              <span v-if="flag && item.score == item.point" style="background: #e8f5ed; color: #20B486;">{{ $t("正确答案：") }}{{item.answer}}
               </span>
-              <span v-if="flag" style="background: #e8f5ed; color: #20B486;">
-                得分：{{item.point}}
+              <span v-if="flag" style="background: #e8f5ed; color: #20B486;">{{ $t("得分：") }}{{item.point}}
               </span>
             </div>
             <div>
               <!-- 单选题 -->
               <el-radio-group v-model="item.solution" v-if="item.type == 0" :disabled="flag">
-                <el-radio v-for="(e,s) in item.content" :key="s" :label="e.value">
+                <el-radio v-for="(e,s) in item.content" :key="s" :value="e.value">
                   {{e.value}}.{{e.option}}
                 </el-radio>
               </el-radio-group>
               
               <!-- 多选题 -->
               <el-checkbox-group v-model="item.solution" v-if="item.type == 1" :disabled="flag">
-                <el-checkbox v-for="(e,s) in item.content" :key="s" :label="e.value">
+                <el-checkbox v-for="(e,s) in item.content" :key="s" :value="e.value">
                   {{e.value}}.{{e.option}}
                 </el-checkbox>
               </el-checkbox-group>
@@ -85,16 +82,16 @@
               <el-input 
                 v-model="item.solution" 
                 v-if="item.type == 2" 
-                size="mini" 
-                placeholder="请输入答案"
+                size="small"
+                :placeholder="$t('请输入答案')"
                 :disabled="flag"
                 clearable
               ></el-input>
               
               <!-- 判断题 -->
               <el-radio-group v-model="item.solution" v-if="item.type == 3" :disabled="flag">
-                <el-radio label="正确">✔️ 正确</el-radio>
-                <el-radio label="错误">✖️ 错误</el-radio>
+                <el-radio value="正确">{{ $t("✔️ 正确") }}</el-radio>
+                <el-radio value="错误">{{ $t("✖️ 错误") }}</el-radio>
               </el-radio-group>
               
               <!-- 简答题 -->
@@ -102,8 +99,8 @@
                 type="textarea" 
                 v-model="item.solution" 
                 v-if="item.type == 4" 
-                size="mini" 
-                placeholder="请输入答案"
+                size="small"
+                :placeholder="$t('请输入答案')"
                 :disabled="flag"
                 :rows="3"
               ></el-input>
@@ -113,8 +110,8 @@
                 type="textarea" 
                 v-model="item.solution" 
                 v-if="item.type == 5" 
-                size="mini" 
-                placeholder="请输入答案"
+                size="small"
+                :placeholder="$t('请输入答案')"
                 :disabled="flag"
                 :rows="5"
               ></el-input>
@@ -123,7 +120,7 @@
           
           <!-- 提交按钮 -->
           <div v-if="!flag">
-            <el-button @click="submit" size="mini" type="primary">📝 提交试卷</el-button>
+            <el-button @click="submit" size="small" type="primary">{{ $t("📝 提交试卷") }}</el-button>
           </div>
         </div>
       </div>
@@ -133,9 +130,11 @@
 </template>
 
 <script>
+import { t } from '@/i18n'
+
 import { getApeTestItemByTestId, saveApeTestStudent, getTestUserState } from '../../api/api' 
-import headerPage from "../../components/header/header"
-import bottomPage from "../../components/bottom/bottom"
+import headerPage from "../../components/header/header.vue"
+import bottomPage from "../../components/bottom/bottom.vue"
 
 export default {
   name: 'TestInfo',
@@ -167,7 +166,7 @@ export default {
       if (this.submitting) {
         return
       }
-      this.$confirm('确定要提交考试内容吗？提交后将无法修改！', '交卷提醒', {
+      this.$confirm(t("确定要提交考试内容吗？提交后将无法修改！"), t("交卷提醒"), {
         confirmButtonText: '确定提交',
         cancelButtonText: '继续答题',
         type: 'warning',
@@ -181,7 +180,7 @@ export default {
         return
       }
       this.$message({
-        message: '考试时间已到，系统自动提交试卷...',
+        get message() { return t("考试时间已到，系统自动提交试卷...") },
         type: 'warning',
         duration: 3000
       });
@@ -213,7 +212,7 @@ export default {
           if (!silent) {
             this.$message({
               type: 'success',
-              message: '交卷成功！'
+              get message() { return t("交卷成功！") }
             });
           }
           if (redirect) {
@@ -264,12 +263,12 @@ export default {
       const msec = this.end - now
 
       if(msec <= (10 * 60 * 1000) && !this.ten) {
-        this.$message({ message: '考试时间还剩十分钟', type: 'warning', duration: 5000 });
+        this.$message({ get message() { return t("考试时间还剩十分钟") }, type: 'warning', duration: 5000 });
         this.ten = true
       }
 
       if(msec <= (5 * 60 * 1000) && !this.five) {
-        this.$message({ message: '考试时间还剩五分钟', type: 'warning', duration: 5000 });
+        this.$message({ get message() { return t("考试时间还剩五分钟") }, type: 'warning', duration: 5000 });
         this.five = true
       }
 
@@ -322,7 +321,7 @@ export default {
           return
         }
         this.getTestUserState()
-      })
+      }).catch(() => { /* The request layer already reports failed or cancelled requests. */ })
     },
     getTestUserState() {
       getTestUserState({ id: this.id }).then(res => {
@@ -333,7 +332,7 @@ export default {
           this.countdown()
           this.flag = false
         }
-      })
+      }).catch(() => { /* The request layer already reports failed or cancelled requests. */ })
     }
   },
   mounted() {
@@ -351,11 +350,11 @@ export default {
       return
     }
     if (this.submitting) {
-      this.$message.warning('正在交卷，请稍候...')
+      this.$message.warning(t("正在交卷，请稍候..."))
       next(false)
       return
     }
-    this.$confirm('当前考试正在进行中，离开页面将自动交卷且无法继续修改，是否强制离开？', '关闭考试提醒', {
+    this.$confirm(t("当前考试正在进行中，离开页面将自动交卷且无法继续修改，是否强制离开？"), t("关闭考试提醒"), {
       confirmButtonText: '强制交卷并离开',
       cancelButtonText: '继续答题',
       type: 'warning',
@@ -372,7 +371,7 @@ export default {
       next(false)
     })
   },
-  beforeDestroy() {
+  beforeUnmount() {
     clearTimeout(this.timeOut)
     window.removeEventListener('beforeunload', this.handleBeforeUnload)
   }

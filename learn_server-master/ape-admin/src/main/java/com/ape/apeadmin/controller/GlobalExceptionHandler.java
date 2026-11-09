@@ -41,16 +41,26 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(RuntimeException.class)
     public Result handleRuntimeException(RuntimeException e) {
         logException("RuntimeException", e);
-        return Result.fail(e.getMessage());
+        return Result.fail(isAiRequest() ? "AI 请求未能处理，请检查输入或稍后再试。" : e.getMessage());
     }
 
     @ExceptionHandler(Exception.class)
     public Result handleException(Exception e) {
         logException("Exception", e);
-        return Result.fail(e.getMessage());
+        return Result.fail(isAiRequest() ? "AI 请求未能处理，请检查输入或稍后再试。" : e.getMessage());
+    }
+
+    private boolean isAiRequest() {
+        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        String uri = attributes == null ? "" : attributes.getRequest().getRequestURI();
+        return "/ai".equals(uri) || uri.startsWith("/ai/");
     }
 
     private void logException(String type, Exception e) {
+        if (isAiRequest()) {
+            log.error("AI 请求异常 -> type={}", e.getClass().getSimpleName());
+            return;
+        }
         try {
             ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
             HttpServletRequest request = attributes == null ? null : attributes.getRequest();

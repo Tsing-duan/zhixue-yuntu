@@ -4,51 +4,51 @@
         <div class="search">
             <el-row :gutter="10" style="padding:10px">
                 <el-col :xs="24" :sm="12" :md="5" :lg="5" :xl="5">
-                    <span class="search-title">用户昵称:</span>
+                    <span class="search-title">{{ $t("用户昵称:") }}</span>
                     <el-input
                     class="search-user-input"
                         style="margin-top:10px"
-                        size="mini"
-                        placeholder="请输入用户昵称"
+                        size="small"
+                        :placeholder="$t('请输入用户昵称')"
                         v-model="search.userName">
                     </el-input>
                 </el-col>
                 <el-col :xs="24" :sm="12" :md="5" :lg="5" :xl="5">
-                    <span class="search-title">提问内容:</span>
+                    <span class="search-title">{{ $t("提问内容:") }}</span>
                     <el-input
                         style="margin-top:10px"
-                        size="mini"
-                        placeholder="请输入提问内容"
+                        size="small"
+                        :placeholder="$t('请输入提问内容')"
                         v-model="search.content">
                     </el-input>
                 </el-col>
                 <el-col :xs="24" :sm="12" :md="5" :lg="5" :xl="5">
-                    <span class="search-title">回复:</span>
+                    <span class="search-title">{{ $t("回复:") }}</span>
                     <el-input
                         style="margin-top:10px"
-                        size="mini"
-                        placeholder="请输入回复"
+                        size="small"
+                        :placeholder="$t('请输入回复')"
                         v-model="search.answer">
                     </el-input>
                 </el-col>
                 <el-col :xs="24" :sm="12" :md="5" :lg="5" :xl="5">
-                    <span class="search-title">课程名称:</span>
+                    <span class="search-title">{{ $t("课程名称:") }}</span>
                     <el-input
                         style="margin-top:10px"
-                        size="mini"
-                        placeholder="请输入课程名称"
+                        size="small"
+                        :placeholder="$t('请输入课程名称')"
                         v-model="search.taskName">
                     </el-input>
                 </el-col>
                 <el-col class="search-action-col" :xs="24" :sm="12" :md="4" :lg="4" :xl="4">
-                  <el-button style="margin-top:10px" size="mini" icon="el-icon-search" type="primary" @click="searchPage">查询</el-button>
-                  <el-button style="margin-top:10px" size="mini" icon="el-icon-refresh" @click="refresh">重置</el-button>
+                  <el-button style="margin-top:10px" size="small"  type="primary" @click="searchPage"><template #icon><i class="el-icon-search" aria-hidden="true"></i></template>{{ $t("查询") }}</el-button>
+                  <el-button style="margin-top:10px" size="small"  @click="refresh"><template #icon><i class="el-icon-refresh" aria-hidden="true"></i></template>{{ $t("重置") }}</el-button>
                 </el-col>
             </el-row>
         </div>
         <div class="table">
           <el-row class="action-toolbar">
-            <el-button class="action-btn btn-delete" :disabled="update.length <= 0 ?true:false" size="mini" icon="el-icon-delete" @click="deleteDataBtn">删除</el-button>
+            <el-button class="action-btn btn-delete" :disabled="update.length <= 0 ?true:false" size="small"  @click="deleteDataBtn"><template #icon><i class="el-icon-delete" aria-hidden="true"></i></template>{{ $t("删除") }}</el-button>
             </el-row>
             <el-table
             v-loading="loading"
@@ -73,40 +73,40 @@
             </el-table-column>
             <el-table-column
               prop="userName"
-              label="用户昵称"
+              :label="$t('用户昵称')"
               >
             </el-table-column>
             <el-table-column
               prop="content"
-              label="提问内容"
+              :label="$t('提问内容')"
               >
             </el-table-column>
             <el-table-column
               prop="answer"
-              label="回复"
+              :label="$t('回复')"
               >
             </el-table-column>
             <el-table-column
               prop="taskName"
-              label="课程"
+              :label="$t('课程')"
               >
             </el-table-column>
             <el-table-column
-              label="操作"
+              :label="$t('操作')"
               width="180"
               >
-              <template slot-scope="scope">
-                <el-button class="row-action-btn row-edit-btn" size="mini" icon="el-icon-edit" @click="updateData(scope.row.id)">回复</el-button>
+              <template #default="scope">
+                <el-button class="row-action-btn row-edit-btn" size="small"  @click="updateData(scope.row.id)"><template #icon><i class="el-icon-edit" aria-hidden="true"></i></template>{{ $t("回复") }}</el-button>
                 <el-popconfirm
                   style="margin-left:5px"
                   confirm-button-text='确认'
                   cancel-button-text='取消'
-                  icon="el-icon-info"
+
                   icon-color="red"
-                  title="确认删除选中的数据？"
+                  :title="$t('确认删除选中的数据？')"
                   @confirm="deleteDate(scope.row.id)"
-                >
-                  <el-button class="row-action-btn row-delete-btn" size="mini" slot="reference" icon="el-icon-delete">删除</el-button>
+                ><template #icon><i class="el-icon-info" aria-hidden="true"></i></template>
+                  <template #reference><el-button class="row-action-btn row-delete-btn" size="small"  ><template #icon><i class="el-icon-delete" aria-hidden="true"></i></template>{{ $t("删除") }}</el-button></template>
                 </el-popconfirm>
               </template>
             </el-table-column>
@@ -115,8 +115,8 @@
             background
             layout="total, sizes, prev, pager, next, jumper"
             :page-sizes="[10, 20, 50, 100]"
-            :page-size="search.pageSize"
-            :current-page="search.pageNumber"
+            v-model:page-size="search.pageSize"
+            v-model:current-page="search.pageNumber"
             @size-change="handleSizeChange"
             @current-change="handleCurrentChange"
             :total="total">
@@ -125,12 +125,14 @@
         </div>
       <update @updateFalse="updateFalse" :updateId = "updateId" :updateVisible = "updateVisible"></update>
     </div>
-  </div>
+
 </template>
 
 <script>
+import { t } from '@/i18n'
+
   import {getApeQuestionPage,removeApeQuestion} from '../../../api/api' 
-  import update from '../../../components/system/question/updateQuestion'
+  import update from '../../../components/system/question/updateQuestion.vue'
   export default {
     data() {
       return{
@@ -171,11 +173,11 @@
             this.loading = false
           } else {
             this.$notify.error({
-              title: '错误',
+              get title() { return t("错误") },
               message: res.message
             });
           }
-        })
+        }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false })
       },
       refresh() {
         this.search.userName = ""
@@ -221,7 +223,7 @@
         this.updateData(this.update[0])
       },
       deleteDataBtn() {
-        this.$confirm('确定删除选中的'+ this.remove.length +'条数据?', '提示', {
+        this.$confirm(t("确定删除选中的")+ this.remove.length +t("条数据?"), t("提示"), {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
@@ -236,20 +238,20 @@
             if(res.code == 1000) {
               this.$message({
                 type: 'success',
-                message: '删除成功!'
+                get message() { return t("删除成功!") }
               });
               this.query()
             } else {
               this.$notify.error({
-                title: '错误',
+                get title() { return t("错误") },
                 message: res.message
               });
             }
-          })
+          }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false })
       },
     },
     mounted() {
-      this.user = JSON.parse(window.localStorage.getItem("user"))
+      this.user = this.$demo(JSON.parse(window.localStorage.getItem("user")))
       this.query()
     }
  }
@@ -281,18 +283,18 @@
   .el-table { padding: 10px; }
   .el-dialog__header { border-bottom: 1px solid #e8e8e5 !important; }
   .el-dialog { border-radius: 12px!important; }
-  ::v-deep .el-input__inner { border-radius: 10px; border-color: #dfdfda; color: #3f3f3c; background: #fff; }
-  ::v-deep .el-input__inner:focus { border-color: #bdbdb6; }
-  ::v-deep .el-table { background: transparent; }
-  ::v-deep .el-table th.el-table__cell { background: #f1f1ee !important; }
-  ::v-deep .el-table td.el-table__cell,::v-deep .el-table tr { background: transparent; }
-  ::v-deep .el-table--striped .el-table__body tr.el-table__row--striped td.el-table__cell { background: #f8f8f6; }
-  ::v-deep .el-button--primary { background: #2f3437; border-color: #2f3437; }
-  ::v-deep .el-button--primary:hover,::v-deep .el-button--primary:focus { background: #3a4044; border-color: #3a4044; }
-  ::v-deep .el-button--success { background: #f3f3f0; border-color: #d9d9d4; color: #3f3f3c; }
-  ::v-deep .el-button--success:hover,::v-deep .el-button--success:focus { background: #ebebe7; border-color: #cfcfc8; color: #2f2f2c; }
-  ::v-deep .el-button--danger { background: #fff5f5; border-color: #efc9c9; color: #b54747; }
-  ::v-deep .el-button--danger:hover,::v-deep .el-button--danger:focus { background: #ffefef; border-color: #e8b2b2; }
-  ::v-deep .el-pagination.is-background .el-pager li,::v-deep .el-pagination.is-background .btn-next,::v-deep .el-pagination.is-background .btn-prev { background: #f3f3f0; color: #585854; }
-  ::v-deep .el-pagination.is-background .el-pager li.active { background: #2f3437; color: #fff; }
+  :deep(.el-input__inner) { border-radius: 10px; border-color: #dfdfda; color: #3f3f3c; background: #fff; }
+  :deep(.el-input__inner:focus) { border-color: #bdbdb6; }
+  :deep(.el-table) { background: transparent; }
+  :deep(.el-table th.el-table__cell) { background: #f1f1ee !important; }
+  :deep(.el-table td.el-table__cell), :deep(.el-table tr) { background: transparent; }
+  :deep(.el-table--striped .el-table__body tr.el-table__row--striped td.el-table__cell) { background: #f8f8f6; }
+  :deep(.el-button--primary) { background: #2f3437; border-color: #2f3437; }
+  :deep(.el-button--primary:hover), :deep(.el-button--primary:focus) { background: #3a4044; border-color: #3a4044; }
+  :deep(.el-button--success) { background: #f3f3f0; border-color: #d9d9d4; color: #3f3f3c; }
+  :deep(.el-button--success:hover), :deep(.el-button--success:focus) { background: #ebebe7; border-color: #cfcfc8; color: #2f2f2c; }
+  :deep(.el-button--danger) { background: #fff5f5; border-color: #efc9c9; color: #b54747; }
+  :deep(.el-button--danger:hover), :deep(.el-button--danger:focus) { background: #ffefef; border-color: #e8b2b2; }
+  :deep(.el-pagination.is-background .el-pager li), :deep(.el-pagination.is-background .btn-next), :deep(.el-pagination.is-background .btn-prev) { background: #f3f3f0; color: #585854; }
+  :deep(.el-pagination.is-background .el-pager li.active) { background: #2f3437; color: #fff; }
 </style>

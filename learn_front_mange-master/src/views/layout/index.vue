@@ -2,7 +2,7 @@
   <div class="common-layout">
     <el-container v-show="lock == 0">
       <el-asside></el-asside>
-      <el-container>
+      <el-container direction="vertical" class="workspace-body">
         <el-header></el-header>
         <div class="main-menu">
           <div class="scroll-left" @click="leftScroll()">
@@ -19,7 +19,7 @@
               <span
                 :class="item.url == activeMenu ? 'active' : ''"
                 class="menu-name"
-                >{{ item.name }}</span
+                >{{ $t(item.name) }}</span
               >
               <i
                 v-if="item.url != '/index'"
@@ -41,12 +41,12 @@
         <div class="form">
           <div class="content">
             <el-input
-              prefix-icon="el-icon-star-off"
+
               type="password"
               v-model="pass"
-              size="mini"
-              placeholder="请输入密码"
-            ></el-input>
+              size="small"
+              :placeholder="$t('请输入密码')"
+            ><template #prefix><i class="el-icon-star-off" aria-hidden="true"></i></template></el-input>
             <div @click="unlock"><i class="el-icon-d-arrow-right"></i></div>
           </div>
         </div>
@@ -56,12 +56,15 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { t } from '@/i18n'
+
+import { mapState } from "pinia";
+import { useMenuStore, useSessionStore } from "@/store";
 import { getLock, setLock } from "@/utils/lock";
 import { verPassword } from "@/api/api";
-import elAsside from "../../components/layout/aside";
-import elMain from "../../components/layout/main";
-import elHeader from "../../components/layout/header";
+import elAsside from "../../components/layout/aside.vue";
+import elMain from "../../components/layout/main.vue";
+import elHeader from "../../components/layout/header.vue";
 
 export default {
   name: "index",
@@ -77,9 +80,9 @@ export default {
     elHeader,
   },
   computed: {
-    ...mapState({
-      activeMenuArrary: (state) => state.menu.activeMenuArrary,
-      activeMenu: (state) => state.menu.activeMenu,
+    ...mapState(useMenuStore, {
+      activeMenuArrary: (state) => state.activeMenuArrary,
+      activeMenu: (state) => state.activeMenu,
     }),
   },
   methods: {
@@ -98,7 +101,7 @@ export default {
         this.$router.push({
           path: url,
         });
-        this.$store.commit("menu/setActiveMenu", url);
+        this.$menus.setActiveMenu(url);
       } else {
         this.scrollCurrentViewToTop();
       }
@@ -123,29 +126,19 @@ export default {
       });
     },
     closeMenu(url) {
-      var index = this.activeMenuArrary.length - 1;
-      for (let i = 0; i < this.activeMenuArrary.length; i++) {
-        if (this.activeMenuArrary[i].url == url) {
-          index = i;
-          break;
-        }
+      const index = this.activeMenuArrary.findIndex(item => item.url === url);
+      if (index < 0 || this.activeMenuArrary.length <= 1) return;
+      if (this.activeMenu === url) {
+        const next = this.activeMenuArrary[index - 1] || this.activeMenuArrary[index + 1];
+        this.$menus.setActiveMenu(next.url);
+        this.$router.push(next.url);
       }
-      if (this.activeMenu == url) {
-        this.$router.push({
-          path: this.activeMenuArrary[index - 1].url,
-        });
-        this.$store.commit(
-          "menu/setActiveMenu",
-          this.activeMenuArrary[index - 1].url,
-        );
-      }
-      this.$store.commit("menu/reduceActiveMenu", index);
-      this.$bus.$emit("clearKeepAlive", url);
+      this.$menus.reduceActiveMenu(index);
     },
     unlock() {
       if (!this.pass) {
         this.$message({
-          message: "请输入密码验证",
+          get message() { return t("请输入密码验证") },
           type: "warning",
         });
         return;
@@ -153,7 +146,7 @@ export default {
       verPassword({ password: this.pass }).then((res) => {
         if (res.code == 1000) {
           this.$message({
-            message: "验证通过",
+            get message() { return t("验证通过") },
             type: "success",
           });
           this.pass = "";
@@ -164,7 +157,7 @@ export default {
             type: "error",
           });
         }
-      });
+      }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false });
     },
   },
   created() {},
@@ -182,7 +175,7 @@ export default {
 </script>
 
 <style scoped>
-.common-layout >>> .el-menu-item {
+.common-layout :deep(.el-menu-item) {
   min-width: 0;
 }
 .main-menu {
@@ -324,4 +317,8 @@ export default {
   font-size: 20px;
   cursor: pointer;
 }
+</style>
+
+<style scoped>
+.workspace-body { min-width: 0; }
 </style>

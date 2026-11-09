@@ -1,30 +1,30 @@
 <template>
   <div>
-    <el-dialog title="导入" width="40%" :destroy-on-close="true" :visible.sync="addGenVisible" :before-close="handleClose">
+    <el-dialog append-to-body :title="$t('导入')" width="40%" :destroy-on-close="true" :model-value="addGenVisible" :before-close="handleClose">
         <div class="search-table">
             <div class="search">
                 <el-row :gutter="10" style="padding:10px">
                     <el-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8">
-                        <span class="search-title">表名称:</span>
+                        <span class="search-title">{{ $t("表名称:") }}</span>
                         <el-input
                             style="margin-top:10px"
-                            size="mini"
-                            placeholder="请输入表名称"
+                            size="small"
+                            :placeholder="$t('请输入表名称')"
                             v-model="search.tableName">
                         </el-input>
                     </el-col>
                     <el-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8">
-                        <span class="search-title">表描述:</span>
+                        <span class="search-title">{{ $t("表描述:") }}</span>
                         <el-input
                             style="margin-top:10px"
-                            size="mini"
-                            placeholder="请输入表描述"
+                            size="small"
+                            :placeholder="$t('请输入表描述')"
                             v-model="search.tableComment">
                         </el-input>
                     </el-col>
                     <el-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8">
-                        <el-button style="margin-top:10px" size="mini" icon="el-icon-search" type="primary" @click="searchQuery()">查询</el-button>
-                        <el-button style="margin-top:10px" size="mini" icon="el-icon-refresh" @click="refresh">重置</el-button>
+                        <el-button style="margin-top:10px" size="small"  type="primary" @click="searchQuery()"><template #icon><i class="el-icon-search" aria-hidden="true"></i></template>{{ $t("查询") }}</el-button>
+                        <el-button style="margin-top:10px" size="small"  @click="refresh"><template #icon><i class="el-icon-refresh" aria-hidden="true"></i></template>{{ $t("重置") }}</el-button>
                     </el-col>
                 </el-row>
             </div>
@@ -52,12 +52,12 @@
                 </el-table-column>
                 <el-table-column
                 prop="tableName"
-                label="表名称"
+                :label="$t('表名称')"
                 >
                 </el-table-column>
                 <el-table-column
                 prop="tableComment"
-                label="表描述"
+                :label="$t('表描述')"
                 >
                 </el-table-column>
             </el-table>
@@ -65,23 +65,25 @@
                 background
                 layout="total, sizes, prev, pager, next, jumper"
                 :page-sizes="[10, 20, 50, 100]"
-                :page-size="search.pageSize"
-                :current-page="search.pageNumber"
+                v-model:page-size="search.pageSize"
+                v-model:current-page="search.pageNumber"
                 @size-change="handleSizeChange"
                 @current-change="handleCurrentChange"
                 :total="total">
             </el-pagination>
             </div>
         </div>
-        <div slot="footer" class="dialog-footer">
-            <el-button size="mini" type="primary" @click="submit">确 定</el-button>
-            <el-button size="mini" @click="handleClose">取 消</el-button>
-        </div>
+        <template #footer><div  class="dialog-footer">
+            <el-button size="small" type="primary" @click="submit">{{ $t("确 定") }}</el-button>
+            <el-button size="small" @click="handleClose">{{ $t("取 消") }}</el-button>
+        </div></template>
     </el-dialog>
   </div>
 </template>
 
 <script>
+import { t } from '@/i18n'
+
   import {getTables,saveGen} from '../../../api/api' 
   export default {
     data() {
@@ -112,11 +114,11 @@
                     this.loading = false
                 } else {
                     this.$notify.error({
-                        title: '错误',
+                        get title() { return t("错误") },
                         message: res.message
                     });
                 }
-            })
+            }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false })
         },
         refresh() {
             this.search.tableName = ""
@@ -141,25 +143,25 @@
         submit() {
             if(this.select.length <= 0) {
                 this.$notify.warning({
-                    title: '警告',
-                    message: "请选择最少一条数据!"
+                    get title() { return t("警告") },
+                    get message() { return t("请选择最少一条数据!") }
                 });
                 return;
             }
             saveGen({tables:this.select.join(",")}).then(res => {
                 if(res.code == 1000) {
                     this.$notify.success({
-                    title: '成功',
-                    message: "保存成功"
+                    get title() { return t("成功") },
+                    get message() { return t("保存成功") }
                     });
                     this.handleClose();
                 } else {
                     this.$notify.error({
-                    title: '错误',
+                    get title() { return t("错误") },
                     message: res.message
                     });
                 }
-            }) 
+            }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false })
         },
         handleClose() {
             this.search = {

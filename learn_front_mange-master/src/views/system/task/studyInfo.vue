@@ -4,17 +4,17 @@
         <div class="search">
             <el-row :gutter="10" style="padding:10px">
                 <el-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8">
-                    <span class="search-title">学生姓名:</span>
+                    <span class="search-title">{{ $t("学生姓名:") }}</span>
                     <el-input
                         style="margin-top:10px"
-                        size="mini"
-                        placeholder="请输入学生姓名"
+                        size="small"
+                        :placeholder="$t('请输入学生姓名')"
                         v-model="search.userName">
                     </el-input>
                 </el-col>
                 <el-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8">
-                    <el-button style="margin-top:10px" size="mini" icon="el-icon-search" type="primary" @click="searchPage">查询</el-button>
-                    <el-button style="margin-top:10px" size="mini" icon="el-icon-refresh" @click="refresh">重置</el-button>
+                    <el-button style="margin-top:10px" size="small"  type="primary" @click="searchPage"><template #icon><i class="el-icon-search" aria-hidden="true"></i></template>{{ $t("查询") }}</el-button>
+                    <el-button style="margin-top:10px" size="small"  @click="refresh"><template #icon><i class="el-icon-refresh" aria-hidden="true"></i></template>{{ $t("重置") }}</el-button>
                 </el-col>
             </el-row>
         </div>
@@ -43,38 +43,38 @@
             </el-table-column>
             <el-table-column
               prop="userName"
-              label="学生姓名"
+              :label="$t('学生姓名')"
               >
             </el-table-column>
             <el-table-column
               prop="taskName"
-              label="课程名称"
+              :label="$t('课程名称')"
               >
             </el-table-column>
             <el-table-column
               prop="totalScore"
-              label="考试总分"
+              :label="$t('考试总分')"
               >
             </el-table-column>
             <el-table-column
               prop="testScore"
-              label="考试得分"
+              :label="$t('考试得分')"
               >
             </el-table-column>
             <el-table-column
               prop="videoCount"
-              label="视频得分"
+              :label="$t('视频得分')"
               >
             </el-table-column>
             <el-table-column
               prop="assignCount"
-              label="作业得分"
+              :label="$t('作业得分')"
               >
             </el-table-column>
             <el-table-column
-              label="成绩"
+              :label="$t('成绩')"
               >
-              <template slot-scope="scope">
+              <template #default="scope">
                 {{getScore(scope.row)}}
               </template>
             </el-table-column>
@@ -83,8 +83,8 @@
             background
             layout="total, sizes, prev, pager, next, jumper"
             :page-sizes="[10, 20, 50, 100]"
-            :page-size="search.pageSize"
-            :current-page="search.pageNumber"
+            v-model:page-size="search.pageSize"
+            v-model:current-page="search.pageNumber"
             @size-change="handleSizeChange"
             @current-change="handleCurrentChange"
             :total="total">
@@ -92,10 +92,12 @@
           </div>
         </div>
     </div>
-  </div>
+
 </template>
 
 <script>
+import { t } from '@/i18n'
+
   import {getAdoptTaskStudent} from '../../../api/api' 
   export default {
     data() {
@@ -135,11 +137,11 @@
             this.loading = false
           } else {
             this.$notify.error({
-              title: '错误',
+              get title() { return t("错误") },
               message: res.message
             });
           }
-        })
+        }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false })
       },
       refresh() {
         this.search.userName = ""
@@ -210,44 +212,40 @@
   .el-dialog {
     border-radius: 12px!important;
   }
-  ::v-deep .el-input__inner {
+  :deep(.el-input__inner) {
     border-radius: 10px;
     border-color: #dfdfda;
     color: #3f3f3c;
     background: #ffffff;
   }
-  ::v-deep .el-input__inner:focus {
+  :deep(.el-input__inner:focus) {
     border-color: #bdbdb6;
   }
-  ::v-deep .el-table {
+  :deep(.el-table) {
     background: transparent;
   }
-  ::v-deep .el-table th.el-table__cell {
+  :deep(.el-table th.el-table__cell) {
     background: #f1f1ee !important;
   }
-  ::v-deep .el-table td.el-table__cell,
-  ::v-deep .el-table tr {
+  :deep(.el-table td.el-table__cell), :deep(.el-table tr) {
     background: transparent;
   }
-  ::v-deep .el-table--striped .el-table__body tr.el-table__row--striped td.el-table__cell {
+  :deep(.el-table--striped .el-table__body tr.el-table__row--striped td.el-table__cell) {
     background: #f8f8f6;
   }
-  ::v-deep .el-button--primary {
+  :deep(.el-button--primary) {
     background: #2f3437;
     border-color: #2f3437;
   }
-  ::v-deep .el-button--primary:hover,
-  ::v-deep .el-button--primary:focus {
+  :deep(.el-button--primary:hover), :deep(.el-button--primary:focus) {
     background: #3a4044;
     border-color: #3a4044;
   }
-  ::v-deep .el-pagination.is-background .el-pager li,
-  ::v-deep .el-pagination.is-background .btn-next,
-  ::v-deep .el-pagination.is-background .btn-prev {
+  :deep(.el-pagination.is-background .el-pager li), :deep(.el-pagination.is-background .btn-next), :deep(.el-pagination.is-background .btn-prev) {
     background: #f3f3f0;
     color: #585854;
   }
-  ::v-deep .el-pagination.is-background .el-pager li.active {
+  :deep(.el-pagination.is-background .el-pager li.active) {
     background: #2f3437;
     color: #ffffff;
   }

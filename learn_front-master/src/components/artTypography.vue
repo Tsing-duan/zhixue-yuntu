@@ -1,6 +1,6 @@
 <template>
   <div class="art-typography">
-    <h1 class="art-title-cn">
+    <h1 v-if="$locale === 'zh-CN'" class="art-title-cn">
       <span class="char">在</span>
       <span class="char">看</span>
       <span class="char">似</span>

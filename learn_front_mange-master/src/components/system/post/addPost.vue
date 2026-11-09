@@ -1,54 +1,52 @@
 <template>
 <div>
-  <el-dialog title="新增岗位" width="40%" :destroy-on-close="true" :visible.sync="addPostVisible" :before-close="handleClose">
+  <el-dialog append-to-body :title="$t('新增岗位')" width="40%" :destroy-on-close="true" :model-value="addPostVisible" :before-close="handleClose">
     <el-form :model="form" :rules="rules" ref="ruleForm">
       <el-row :gutter="10">
         <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-            <span class="search-title">
-                岗位名称:
-                </span>
+            <span class="search-title">{{ $t("岗位名称:") }}</span>
             <el-form-item prop="postName" style="margin-bottom:0">
-                <el-input v-model="form.postName" size="mini" placeholder="请输入岗位名称" autocomplete="off"></el-input>
+                <el-input v-model="form.postName" size="small" :placeholder="$t('请输入岗位名称')" autocomplete="off"></el-input>
             </el-form-item>
         </el-col>
          <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-            <span class="search-title">
-                岗位编码:
-                </span>
+            <span class="search-title">{{ $t("岗位编码:") }}</span>
             <el-form-item prop="postCode" style="margin-bottom:0">
-                <el-input v-model="form.postCode" size="mini" placeholder="请输入岗位编码" autocomplete="off"></el-input>
+                <el-input v-model="form.postCode" size="small" :placeholder="$t('请输入岗位编码')" autocomplete="off"></el-input>
             </el-form-item>
         </el-col>
         <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-            <span class="search-title">岗位顺序:</span>
+            <span class="search-title">{{ $t("岗位顺序:") }}</span>
             <el-form-item prop="postSort" style="margin-bottom:0">
-              <el-input-number size="mini" v-model="form.postSort" :min="1"  label="岗位顺序"></el-input-number>
+              <el-input-number size="small" v-model="form.postSort" :min="1"  :label="$t('岗位顺序')"></el-input-number>
             </el-form-item>
         </el-col>
         <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-            <span class="search-title">岗位状态:</span>
+            <span class="search-title">{{ $t("岗位状态:") }}</span>
              <el-form-item prop="status" style="margin-bottom:0">
                 <el-radio-group style="margin-top:1px;height:40px;display:flex;align-items: center" v-model="form.status">
-                  <el-radio label="0">正常</el-radio>
-                  <el-radio label="1">停用</el-radio>
+                  <el-radio value="0">{{ $t("正常") }}</el-radio>
+                  <el-radio value="1">{{ $t("停用") }}</el-radio>
                 </el-radio-group>
             </el-form-item>
         </el-col>
         <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
-            <span class="search-title">&nbsp;&nbsp;&nbsp;&nbsp;备注:</span>
+            <span class="search-title">{{ $t("备注:") }}</span>
             <el-input type="textarea" v-model="form.remark"></el-input>
         </el-col>
       </el-row>
     </el-form>
-    <div slot="footer" class="dialog-footer">
-      <el-button size="mini" type="primary" @click="submit">确 定</el-button>
-      <el-button size="mini" @click="handleClose">取 消</el-button>
-    </div>
+    <template #footer><div  class="dialog-footer">
+      <el-button size="small" type="primary" @click="submit">{{ $t("确 定") }}</el-button>
+      <el-button size="small" @click="handleClose">{{ $t("取 消") }}</el-button>
+    </div></template>
   </el-dialog>
 </div>
 </template>
 
 <script>
+import { t } from '@/i18n'
+
   import {savePost} from '../../../api/api'
   export default {
     data() {
@@ -63,10 +61,10 @@
         },
         rules: {
           postCode: [
-            { required: true, message: '请输入岗位编码', trigger: 'blur' },
+            { required: true, get message() { return t("请输入岗位编码") }, trigger: 'blur' },
           ],
           postName: [
-            { required: true, message: '请输入岗位名称', trigger: 'blur' },
+            { required: true, get message() { return t("请输入岗位名称") }, trigger: 'blur' },
           ],
         },
       }
@@ -79,17 +77,17 @@
             savePost(this.form).then(res => {
               if(res.code == 1000) {
                 this.$notify.success({
-                  title: '成功',
-                  message: "保存成功"
+                  get title() { return t("成功") },
+                  get message() { return t("保存成功") }
                 });
                 this.handleClose();
               } else {
                 this.$notify.error({
-                  title: '错误',
+                  get title() { return t("错误") },
                   message: res.message
                 });
               }
-            })
+            }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false })
           } else {
             return false;
           }

@@ -29,10 +29,10 @@
           </div>
           <div class="number">4</div>
         </div>
-        <div class="subtitle">哎呀。看来你拐错弯了。</div>
+        <div class="subtitle">{{ $t("哎呀。看来你拐错弯了。") }}</div>
         <div class="btn">
-          <button @click="goHome" style="margin-right: 30px">返回首页</button>
-          <button @click="goBack" style="margin-left: 20px">返回上一页</button>
+          <button @click="goHome" style="margin-right: 30px">{{ $t("返回首页") }}</button>
+          <button @click="goBack" style="margin-left: 20px">{{ $t("返回上一页") }}</button>
         </div>
       </div>
     </div>

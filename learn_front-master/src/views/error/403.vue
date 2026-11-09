@@ -1,0 +1,1 @@
+<template><main class="permission-error"><h1>403</h1><p>{{ $t("权限不足，无法访问该功能") }}</p><router-link to="/">{{ $t("返回首页") }}</router-link></main></template><style scoped>.permission-error { padding: 80px; text-align: center; }</style>

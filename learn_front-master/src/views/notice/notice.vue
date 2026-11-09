@@ -10,11 +10,7 @@
       
       <!-- 页面标题 -->
       <div class="notice-page-title">
-        <i class="title-icon el-icon-bell"></i>
-        公告列表
-        <span style="font-size: 14px; color: #94a3b8; margin-left: 12px; font-weight: normal;">
-          共 {{ total }} 条公告
-        </span>
+        <i class="title-icon el-icon-bell"></i>{{ $t("公告列表") }}<span style="font-size: 14px; color: #94a3b8; margin-left: 12px; font-weight: normal;">{{ $t("共") }}{{ total }}{{ $t("条公告") }}</span>
       </div>
       
       <!-- 公告列表 -->
@@ -40,7 +36,7 @@
       <div class="notice-page-fenye" v-if="total > 10">
         <el-pagination
           background
-          :page-size="pageSize"
+          v-model:page-size="pageSize"
           layout="prev, pager, next"
           @current-change="handleCurrentChange"
           :total="total">
@@ -57,10 +53,12 @@
 </template>
 
 <script>
+import { t } from '@/i18n'
+
 import DOMPurify from 'dompurify'
-import { getAccountPage } from '../../api/api'
-import headerPage from "../../components/header/header"
-import bottomPage from "../../components/bottom/bottom"
+import { getNoticePage } from '../../api/api'
+import headerPage from "../../components/header/header.vue"
+import bottomPage from "../../components/bottom/bottom.vue"
 
 export default {
   name: 'Notice',
@@ -79,7 +77,7 @@ export default {
   },
   computed: {
     sanitizedNoticeContent() {
-      return this.notice.content ? DOMPurify.sanitize(this.notice.content) : '请从右侧列表选择查看公告'
+      return this.notice.content ? DOMPurify.sanitize(this.notice.content) : (this.tableData.length ? t("请选择公告查看内容") : t("暂无已发布公告"))
     }
   },
   methods: {
@@ -91,7 +89,7 @@ export default {
         pageSize: this.pageSize,
         pageNumber: this.pageNumber,
       }
-      getAccountPage(param).then(res => {
+      getNoticePage(param).then(res => {
         if(res.code == 1000) {
           this.tableData = res.data.records
           this.total = res.data.total
@@ -100,13 +98,13 @@ export default {
           }
         } else {
           this.$notify.error({
-            title: '错误',
+            get title() { return t("错误") },
             message: res.message
           });
         }
       }).catch(() => {
         this.$notify.error({
-          title: '错误',
+          get title() { return t("错误") },
           message: '获取公告列表失败，请稍后重试'
         });
       })

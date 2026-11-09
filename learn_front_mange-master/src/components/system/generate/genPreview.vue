@@ -1,6 +1,6 @@
 <template>
   <div class="preview">
-    <el-dialog title="代码预览" width="60%" :destroy-on-close="true" :visible.sync="previewGenVisible" :before-close="handleClose">
+    <el-dialog append-to-body :title="$t('代码预览')" width="60%" :destroy-on-close="true" :model-value="previewGenVisible" :before-close="handleClose">
         <el-tabs v-model="activeName">
             <el-tab-pane label="domain.java" name="one"></el-tab-pane>
             <el-tab-pane label="mapper.java" name="two"></el-tab-pane>
@@ -19,108 +19,92 @@
                 
                 <div>{{data.domainName}}</div>
               </el-link>
-              <el-button type="primary" size="mini" plain  @click="copyName('domain')">
-                <i class="el-icon-document-copy" style="cursor: pointer;"></i>复制名称
-              </el-button>
-              <el-button type="primary" size="mini" plain  @click="copyCode('domain')">
-                <i class="el-icon-copy-document" style="cursor: pointer;"></i>复制代码
-              </el-button>
+              <el-button type="primary" size="small" plain  @click="copyName('domain')">
+                <i class="el-icon-document-copy" style="cursor: pointer;"></i>{{ $t("复制名称") }}</el-button>
+              <el-button type="primary" size="small" plain  @click="copyCode('domain')">
+                <i class="el-icon-copy-document" style="cursor: pointer;"></i>{{ $t("复制代码") }}</el-button>
               <div style="white-space: pre-wrap;" v-text="data.domain"></div>
             </div>
             <div v-show="activeName == 'two'">
               <el-link type="danger">
                 <div>{{data.mapperName}}</div>
               </el-link>
-              <el-button type="primary" size="mini" plain  @click="copyName('mapper')">
-                <i class="el-icon-document-copy" style="cursor: pointer;"></i>复制名称
-              </el-button>
-              <el-button type="primary" size="mini" plain  @click="copyCode('mapper')">
-                <i class="el-icon-copy-document" style="cursor: pointer;"></i>复制代码
-              </el-button>
+              <el-button type="primary" size="small" plain  @click="copyName('mapper')">
+                <i class="el-icon-document-copy" style="cursor: pointer;"></i>{{ $t("复制名称") }}</el-button>
+              <el-button type="primary" size="small" plain  @click="copyCode('mapper')">
+                <i class="el-icon-copy-document" style="cursor: pointer;"></i>{{ $t("复制代码") }}</el-button>
               <div style="white-space: pre-wrap;" v-text="data.mapper"></div>
             </div>
             <div v-show="activeName == 'three'">
               <el-link type="danger">
                 <div>{{data.serviceName}}</div>
               </el-link>
-              <el-button type="primary" size="mini" plain  @click="copyName('service')">
-                <i class="el-icon-document-copy" style="cursor: pointer;"></i>复制名称
-              </el-button>
-              <el-button type="primary" size="mini" plain  @click="copyCode('service')">
-                <i class="el-icon-copy-document" style="cursor: pointer;"></i>复制代码
-              </el-button>
+              <el-button type="primary" size="small" plain  @click="copyName('service')">
+                <i class="el-icon-document-copy" style="cursor: pointer;"></i>{{ $t("复制名称") }}</el-button>
+              <el-button type="primary" size="small" plain  @click="copyCode('service')">
+                <i class="el-icon-copy-document" style="cursor: pointer;"></i>{{ $t("复制代码") }}</el-button>
               <div style="white-space: pre-wrap;" v-text="data.service"></div>
             </div>
             <div v-show="activeName == 'four'">
               <el-link type="danger">
                 <div>{{data.serviceImplName}}</div>
               </el-link>
-              <el-button type="primary" size="mini" plain  @click="copyName('serviceImpl')">
-                <i class="el-icon-document-copy" style="cursor: pointer;"></i>复制名称
-              </el-button>
-              <el-button type="primary" size="mini" plain  @click="copyCode('serviceImpl')">
-                <i class="el-icon-copy-document" style="cursor: pointer;"></i>复制代码
-              </el-button>
+              <el-button type="primary" size="small" plain  @click="copyName('serviceImpl')">
+                <i class="el-icon-document-copy" style="cursor: pointer;"></i>{{ $t("复制名称") }}</el-button>
+              <el-button type="primary" size="small" plain  @click="copyCode('serviceImpl')">
+                <i class="el-icon-copy-document" style="cursor: pointer;"></i>{{ $t("复制代码") }}</el-button>
               <div style="white-space: pre-wrap;" v-text="data.serviceImpl"></div>
             </div>
             <div v-show="activeName == 'five'">
               <el-link type="danger">
                 <div>{{data.controllerName}}</div>
               </el-link>
-              <el-button type="primary" size="mini" plain  @click="copyName('controller')">
-                <i class="el-icon-document-copy" style="cursor: pointer;"></i>复制名称
-              </el-button>
-              <el-button type="primary" size="mini" plain  @click="copyCode('controller')">
-                <i class="el-icon-copy-document" style="cursor: pointer;"></i>复制代码
-              </el-button>
+              <el-button type="primary" size="small" plain  @click="copyName('controller')">
+                <i class="el-icon-document-copy" style="cursor: pointer;"></i>{{ $t("复制名称") }}</el-button>
+              <el-button type="primary" size="small" plain  @click="copyCode('controller')">
+                <i class="el-icon-copy-document" style="cursor: pointer;"></i>{{ $t("复制代码") }}</el-button>
               <div style="white-space: pre-wrap;" v-text="data.controller"></div>
             </div>
             <div v-show="activeName == 'six'">
               <el-link type="danger">
                 <div>{{data.mapperXmlName}}</div>
               </el-link>
-              <el-button type="primary" size="mini" plain  @click="copyName('mapperXml')">
-                <i class="el-icon-document-copy" style="cursor: pointer;"></i>复制名称
-              </el-button>
-              <el-button type="primary" size="mini" plain  @click="copyCode('mapperXml')">
-                <i class="el-icon-copy-document" style="cursor: pointer;"></i>复制代码
-              </el-button>
+              <el-button type="primary" size="small" plain  @click="copyName('mapperXml')">
+                <i class="el-icon-document-copy" style="cursor: pointer;"></i>{{ $t("复制名称") }}</el-button>
+              <el-button type="primary" size="small" plain  @click="copyCode('mapperXml')">
+                <i class="el-icon-copy-document" style="cursor: pointer;"></i>{{ $t("复制代码") }}</el-button>
               <div style="white-space: pre-wrap;" v-text="data.mapperXml"></div>
             </div>
             <div v-show="activeName == 'seven'">
               <el-link type="danger">
                 api
               </el-link>
-              <el-button type="primary" size="mini" plain  @click="copyCode('api')">
-                <i class="el-icon-copy-document" style="cursor: pointer;"></i>复制代码
-              </el-button>
+              <el-button type="primary" size="small" plain  @click="copyCode('api')">
+                <i class="el-icon-copy-document" style="cursor: pointer;"></i>{{ $t("复制代码") }}</el-button>
               <div style="white-space: pre-wrap;" v-text="data.api"></div>
             </div>
             <div v-show="activeName == 'eight'">
               <el-link type="danger">
                 index
               </el-link>
-              <el-button type="primary" size="mini" plain  @click="copyCode('index')">
-                <i class="el-icon-copy-document" style="cursor: pointer;"></i>复制代码
-              </el-button>
+              <el-button type="primary" size="small" plain  @click="copyCode('index')">
+                <i class="el-icon-copy-document" style="cursor: pointer;"></i>{{ $t("复制代码") }}</el-button>
               <div style="white-space: pre-wrap;" v-text="data.index"></div>
             </div>
             <div v-show="activeName == 'nine'">
               <el-link type="danger">
                 add
               </el-link>
-              <el-button type="primary" size="mini" plain  @click="copyCode('add')">
-                <i class="el-icon-copy-document" style="cursor: pointer;"></i>复制代码
-              </el-button>
+              <el-button type="primary" size="small" plain  @click="copyCode('add')">
+                <i class="el-icon-copy-document" style="cursor: pointer;"></i>{{ $t("复制代码") }}</el-button>
               <div style="white-space: pre-wrap;" v-text="data.add"></div>
             </div>
             <div v-show="activeName == 'ten'">
               <el-link type="danger">
                 update
               </el-link>
-              <el-button type="primary" size="mini" plain  @click="copyCode('update')">
-                <i class="el-icon-copy-document" style="cursor: pointer;"></i>复制代码
-              </el-button>
+              <el-button type="primary" size="small" plain  @click="copyCode('update')">
+                <i class="el-icon-copy-document" style="cursor: pointer;"></i>{{ $t("复制代码") }}</el-button>
               <div style="white-space: pre-wrap;" v-text="data.update"></div>
             </div>
         </div>
@@ -129,6 +113,8 @@
 </template>
 
 <script>
+import { t } from '@/i18n'
+
   import Clipboard from "clipboard";
   import {preview} from '../../../api/api'
   export default {
@@ -173,7 +159,7 @@
           text = this.data.mapperXmlName
         }
         navigator.clipboard.writeText(text).then(() => {
-            this.$message.success('复制成功')
+            this.$message.success(t("复制成功"))
         })
       },
       copyCode(name) {
@@ -200,7 +186,7 @@
           text = this.data.update
         }
         navigator.clipboard.writeText(text).then(() => {
-            this.$message.success('复制成功')
+            this.$message.success(t("复制成功"))
         })
       },
       handleClose() {
@@ -239,11 +225,11 @@
               this.data = res.data
             } else {
               this.$notify.error({
-                title: '错误',
+                get title() { return t("错误") },
                 message: res.message
               });
             }
-          })
+          }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false })
         }
         
       }

@@ -1,0 +1,14 @@
+/* Preserve the established page proportions while using Element Plus controls. */
+:root { --el-color-primary: #409eff; --el-border-radius-base: 4px; }
+.el-dialog { max-width: calc(100vw - 32px); }
+.el-select { min-width: 140px; }
+.el-button [class^="el-icon-"] { display: inline-block; }
+.el-input__wrapper { box-sizing: border-box; }
+.ql-editor img { max-width: 100%; }
+@media (max-width: 600px) { .el-dialog { width: calc(100vw - 32px) !important; } }
+
+@media (max-width: 600px) {
+  .el-dialog { margin-top: 16px !important; max-height: calc(100dvh - 32px); display: flex; flex-direction: column; }
+  .el-dialog__body { min-height: 0; overflow: auto; max-height: calc(100dvh - 180px); }
+  .el-dialog__header, .el-dialog__footer { flex-shrink: 0; }
+}

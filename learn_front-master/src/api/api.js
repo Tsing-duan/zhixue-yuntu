@@ -22,11 +22,11 @@ export const getApeTaskPage = (params) => post("/task/getApeTaskPage",params)
 //获取分类列表 
 export const getApeClassificationList = () => get("/classification/getApeClassificationList")
 //获取教师分页
-export const getUserPage = (params) => post("/user/getUserPage",params)
+export const getTeacherPage = (params) => post("/portal/teachers",params)
 //分页获取笔记
 export const getApeArticlePage = (params) => post("/article/getApeArticlePage",params)
 //分页获取公告
-export const getAccountPage = (params) => post("/account/getAccountPage",params)
+export const getNoticePage = (params) => post("/portal/notices",params)
 //分页获取留言
 export const getApeMessagePage = (params) => post("/message/getApeMessagePage",params)
 //保存留言
@@ -54,7 +54,7 @@ export const getApeTaskCommentListByTaskId = (params) => get("/comment/getApeTas
 //获取教师课程列表
 export const getApeTaskByTeacher = (params) => get("/task/getApeTaskByTeacher",params)
 //获取教师详情
-export const getUserById = (params) => get("/user/getUserById",params)
+export const getTeacherById = (params) => get("/portal/teachers/" + encodeURIComponent(params.id))
 //获取笔记详情
 export const getApeArticleById = (params) => get("/article/getApeArticleById",params)
 //保存笔记评论

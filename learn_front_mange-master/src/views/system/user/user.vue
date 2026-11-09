@@ -5,37 +5,37 @@
         <el-row :gutter="10" style="padding: 10px">
           <el-col :xs="24" :sm="12" :md="6" :lg="6" :xl="6">
             <span class="search-title" style="margin-left: 20px"
-              >用户名称:</span
+              >{{ $t("用户名称:") }}</span
             >
             <el-input
               style="margin-top: 10px; width: 250px; margin-left: 5px"
-              size="mini"
-              placeholder="请输入用户名称"
+              size="small"
+              :placeholder="$t('请输入用户名称')"
               v-model="search.userName"
             >
             </el-input>
           </el-col>
           <el-col :xs="24" :sm="12" :md="6" :lg="6" :xl="6">
-            <span class="search-title">手机号码:</span>
+            <span class="search-title">{{ $t("手机号码:") }}</span>
             <el-input
               style="margin-top: 10px; width: 250px; margin-left: 5px"
-              size="mini"
-              placeholder="请输入手机号码"
+              size="small"
+              :placeholder="$t('请输入手机号码')"
               v-model="search.tel"
             >
             </el-input>
           </el-col>
           <el-col :xs="24" :sm="12" :md="6" :lg="6" :xl="6">
-            <span class="search-title">状态:</span>
+            <span class="search-title">{{ $t("状态:") }}</span>
             <el-select
               clearable
               style="margin-top: 10px; margin-left: 5px"
-              size="mini"
+              size="small"
               v-model="search.status"
-              placeholder="请选择"
+              :placeholder="$t('请选择')"
             >
-              <el-option label="正常" value="0"> </el-option>
-              <el-option label="停用" value="1"> </el-option>
+              <el-option :label="$t('正常')" value="0"> </el-option>
+              <el-option :label="$t('停用')" value="1"> </el-option>
             </el-select>
           </el-col>
           <el-col
@@ -49,19 +49,19 @@
             <el-button
               class="search-query-btn"
               style="margin-top: 10px"
-              size="mini"
-              icon="el-icon-search"
+              size="small"
+
               type="primary"
               @click="searchPage"
-              >查询</el-button
+              ><template #icon><i class="el-icon-search" aria-hidden="true"></i></template>{{ $t("查询") }}</el-button
             >
             <el-button
               class="search-reset-btn"
               style="margin-top: 10px"
-              size="mini"
-              icon="el-icon-refresh"
+              size="small"
+
               @click="refresh"
-              >重置</el-button
+              ><template #icon><i class="el-icon-refresh" aria-hidden="true"></i></template>{{ $t("重置") }}</el-button
             >
           </el-col>
         </el-row>
@@ -70,10 +70,10 @@
         <el-row class="action-toolbar">
           <el-button
             class="action-btn btn-create"
-            size="mini"
-            icon="el-icon-plus"
+            size="small"
+
             @click="addUser()"
-            >新增</el-button
+            ><template #icon><i class="el-icon-plus" aria-hidden="true"></i></template>{{ $t("新增") }}</el-button
           >
           <el-button
             :class="[
@@ -82,10 +82,10 @@
               { 'btn-edit-active': update.length == 1 },
             ]"
             :disabled="update.length != 1 ? true : false"
-            size="mini"
-            icon="el-icon-edit"
+            size="small"
+
             @click="updateUserBtn"
-            >修改</el-button
+            ><template #icon><i class="el-icon-edit" aria-hidden="true"></i></template>{{ $t("修改") }}</el-button
           >
           <!-- <el-button type="warning" size="mini" icon="el-icon-download" plain>导出</el-button> -->
         </el-row>
@@ -107,8 +107,8 @@
           style="width: 100%"
         >
           <el-table-column type="selection" width="55"> </el-table-column>
-          <el-table-column label="用户名称" width="150">
-            <template slot-scope="scope">
+          <el-table-column :label="$t('用户名称')" width="150">
+            <template #default="scope">
               <div style="display: flex; align-items: center">
                 <img
                   style="width: 35px; height: 35px; border-radius: 50%"
@@ -119,45 +119,44 @@
               </div>
             </template>
           </el-table-column>
-          <el-table-column prop="loginAccount" label="登陆账号" width="150">
+          <el-table-column prop="loginAccount" :label="$t('登陆账号')" width="150">
           </el-table-column>
-          <el-table-column prop="deptName" label="部门" width="150">
+          <el-table-column prop="deptName" :label="$t('部门')" width="150">
           </el-table-column>
-          <el-table-column prop="tel" label="手机号" width="150">
+          <el-table-column prop="tel" :label="$t('手机号')" width="150">
           </el-table-column>
-          <el-table-column prop="status" label="状态" width="100">
-            <template slot-scope="scope">
-              <el-tag v-if="scope.row.status == 0" type="success">正常</el-tag>
-              <el-tag v-if="scope.row.status == 1" type="danger">停用</el-tag>
+          <el-table-column prop="status" :label="$t('状态')" width="100">
+            <template #default="scope">
+              <el-tag v-if="scope.row.status == 0" type="success">{{ $t("正常") }}</el-tag>
+              <el-tag v-if="scope.row.status == 1" type="danger">{{ $t("停用") }}</el-tag>
             </template>
           </el-table-column>
-          <el-table-column prop="createTime" label="创建时间">
+          <el-table-column prop="createTime" :label="$t('创建时间')">
           </el-table-column>
-          <el-table-column label="操作">
-            <template slot-scope="scope">
+          <el-table-column :label="$t('操作')">
+            <template #default="scope">
               <el-dropdown trigger="hover" @command="handleCommand">
-                <span class="operation-dropdown-trigger">
-                  操作<i class="el-icon-arrow-down el-icon--right"></i>
+                <span class="operation-dropdown-trigger">{{ $t("操作") }}<i class="el-icon-arrow-down el-icon--right"></i>
                 </span>
-                <el-dropdown-menu slot="dropdown">
+                <template #dropdown><el-dropdown-menu >
                   <el-dropdown-item
-                    icon="el-icon-edit"
+
                     :command="scope.row.id + '#edit'"
-                    >修改</el-dropdown-item
+                    ><template #icon><i class="el-icon-edit" aria-hidden="true"></i></template>{{ $t("修改") }}</el-dropdown-item
                   >
                   <el-dropdown-item
-                    icon="el-icon-check"
+
                     v-if="scope.row.userType != 0 && scope.row.loginAccount !== 'admin'"
                     :command="scope.row.id + '#pass#' + scope.row.userName + '#' + scope.row.loginAccount"
-                    >重置密码</el-dropdown-item
+                    ><template #icon><i class="el-icon-check" aria-hidden="true"></i></template>{{ $t("重置密码") }}</el-dropdown-item
                   >
                   <el-dropdown-item
-                    icon="el-icon-remove"
+
                     v-if="scope.row.userType != 0 && scope.row.loginAccount !== 'admin'"
                     :command="scope.row.id + '#remove'"
-                    >删除</el-dropdown-item
+                    ><template #icon><i class="el-icon-remove" aria-hidden="true"></i></template>{{ $t("删除") }}</el-dropdown-item
                   >
-                </el-dropdown-menu>
+                </el-dropdown-menu></template>
               </el-dropdown>
             </template>
           </el-table-column>
@@ -166,8 +165,8 @@
           background
           layout="total, prev, pager, next"
           :page-sizes="[20, 30, 50, 100]"
-          :page-size="search.pageSize"
-          :current-page="search.pageNumber"
+          v-model:page-size="search.pageSize"
+          v-model:current-page="search.pageNumber"
           @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
           :total="total"
@@ -190,39 +189,41 @@
       :role="role"
       :updateUserVisible="updateUserVisible"
     ></update-user>
-    <el-dialog
-      title="重置密码"
-      :visible.sync="passwordDialogVisible"
+    <el-dialog append-to-body
+      :title="$t('重置密码')"
+      :model-value="passwordDialogVisible"
       width="30%"
       :before-close="handlePasswordClose"
     >
-      <span>请输入{{ userName }}的新密码：</span>
+      <span>{{ $t("请输入") }}{{ userName }}{{ $t("的新密码：") }}</span>
       <el-input
         style="margin-top: 10px"
         show-password
         v-model="newPassword"
-        size="mini"
+        size="small"
         autocomplete="off"
       ></el-input>
-      <span>请再次输入{{ userName }}的新密码：</span>
+      <span>{{ $t("请再次输入") }}{{ userName }}{{ $t("的新密码：") }}</span>
       <el-input
         style="margin-top: 10px"
         show-password
         v-model="confirmPassword"
-        size="mini"
+        size="small"
         autocomplete="off"
       ></el-input>
-      <span slot="footer" class="dialog-footer">
-        <el-button size="mini" @click="handlePasswordClose">取 消</el-button>
-        <el-button size="mini" type="primary" @click="passwordSubmit"
-          >确 定</el-button
+      <template #footer><span  class="dialog-footer">
+        <el-button size="small" @click="handlePasswordClose">{{ $t("取 消") }}</el-button>
+        <el-button size="small" type="primary" @click="passwordSubmit"
+          >{{ $t("确 定") }}</el-button
         >
-      </span>
+      </span></template>
     </el-dialog>
   </div>
 </template>
 
 <script>
+import { t } from '@/i18n'
+
 import {
   getDeptList,
   getUserPage,
@@ -231,8 +232,8 @@ import {
   getRoleList,
   resetPassword,
 } from "../../../api/api";
-import addUser from "../../../components/system/user/addUser";
-import updateUser from "../../../components/system/user/updateUser";
+import addUser from "../../../components/system/user/addUser.vue";
+import updateUser from "../../../components/system/user/updateUser.vue";
 import { getPasswordError } from "../../../utils/accountPasswordRules";
 export default {
   data() {
@@ -296,11 +297,11 @@ export default {
           this.data = res.data;
         } else {
           this.$notify.error({
-            title: "错误",
+            get title() { return t("错误") },
             message: res.message,
           });
         }
-      });
+      }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false });
     },
     getPost() {
       getPostList().then((res) => {
@@ -308,11 +309,11 @@ export default {
           this.post = res.data;
         } else {
           this.$notify.error({
-            title: "错误",
+            get title() { return t("错误") },
             message: res.message,
           });
         }
-      });
+      }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false });
     },
     getRole() {
       getRoleList().then((res) => {
@@ -320,11 +321,11 @@ export default {
           this.role = res.data;
         } else {
           this.$notify.error({
-            title: "错误",
+            get title() { return t("错误") },
             message: res.message,
           });
         }
-      });
+      }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false });
     },
     filterNode(value, data) {
       if (!value) return true;
@@ -338,11 +339,11 @@ export default {
           this.loading = false;
         } else {
           this.$notify.error({
-            title: "错误",
+            get title() { return t("错误") },
             message: res.message,
           });
         }
-      });
+      }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false });
     },
     refresh() {
       this.search.userName = "";
@@ -401,7 +402,7 @@ export default {
         this.resetLoginAccount = data[3] || "";
         this.openPassword(data[0]);
       } else {
-        this.$confirm("确定删除选中的数据?", "提示", {
+        this.$confirm(t("确定删除选中的数据?"), t("提示"), {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
           type: "warning",
@@ -413,7 +414,7 @@ export default {
       }
     },
     deleteDateBtn() {
-      this.$confirm("确定删除选中的" + this.remove.length + "条数据?", "提示", {
+      this.$confirm(t("确定删除选中的") + this.remove.length + t("条数据?"), t("提示"), {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning",
@@ -428,17 +429,17 @@ export default {
         if (res.code == 1000) {
           this.$message({
             type: "success",
-            message: "删除成功!",
+            get message() { return t("删除成功!") },
           });
           this.pageNumber = 1;
           this.query();
         } else {
           this.$notify.error({
-            title: "错误",
+            get title() { return t("错误") },
             message: res.message,
           });
         }
-      });
+      }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false });
     },
     openPassword(id) {
       this.userId = id;
@@ -462,7 +463,7 @@ export default {
       }
       if (this.newPassword !== this.confirmPassword) {
         this.$message({
-          message: "两次输入的新密码不一致",
+          get message() { return t("两次输入的新密码不一致") },
           type: "warning",
         });
         return;
@@ -471,18 +472,18 @@ export default {
         (res) => {
           if (res.code == 1000) {
             this.$notify.success({
-              title: "成功",
-              message: "重置成功",
+              get title() { return t("成功") },
+              get message() { return t("重置成功") },
             });
             this.handlePasswordClose();
           } else {
             this.$notify.error({
-              title: "错误",
+              get title() { return t("错误") },
               message: res.message,
             });
           }
         },
-      );
+      ).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false });
     },
   },
   mounted() {
@@ -646,65 +647,57 @@ export default {
 .el-dialog {
   border-radius: 12px !important;
 }
-::v-deep .el-input__inner,
-::v-deep .el-select .el-input__inner {
+:deep(.el-input__inner), :deep(.el-select .el-input__inner) {
   border-radius: 10px;
   border-color: #dfdfda;
   color: #3f3f3c;
   background: #ffffff;
 }
-::v-deep .el-input__inner:focus,
-::v-deep .el-select .el-input__inner:focus {
+:deep(.el-input__inner:focus), :deep(.el-select .el-input__inner:focus) {
   border-color: #bdbdb6;
 }
-::v-deep .search-query-btn.el-button--primary {
+:deep(.search-query-btn.el-button--primary) {
   background: #2f3437;
   border-color: #2f3437;
 }
-::v-deep .search-query-btn.el-button--primary:hover,
-::v-deep .search-query-btn.el-button--primary:focus {
+:deep(.search-query-btn.el-button--primary:hover), :deep(.search-query-btn.el-button--primary:focus) {
   background: #3a4044;
   border-color: #3a4044;
 }
-::v-deep .el-table {
+:deep(.el-table) {
   background: transparent;
 }
-::v-deep .el-table th.el-table__cell {
+:deep(.el-table th.el-table__cell) {
   background: #f1f1ee !important;
 }
-::v-deep .el-table td.el-table__cell,
-::v-deep .el-table tr {
+:deep(.el-table td.el-table__cell), :deep(.el-table tr) {
   background: transparent;
 }
-::v-deep
-  .el-table--striped
+:deep(.el-table--striped
   .el-table__body
   tr.el-table__row--striped
-  td.el-table__cell {
+  td.el-table__cell) {
   background: #f8f8f6;
 }
-::v-deep .el-tag {
+:deep(.el-tag) {
   background: #f1f1ee;
   border-color: #d8d8d2;
   color: #5b5b56;
 }
-::v-deep .el-tag--warning {
+:deep(.el-tag--warning) {
   background: #fdf4e7;
   border-color: #e8c89c;
   color: #9a6428;
 }
-::v-deep .el-pagination.is-background .el-pager li,
-::v-deep .el-pagination.is-background .btn-next,
-::v-deep .el-pagination.is-background .btn-prev {
+:deep(.el-pagination.is-background .el-pager li), :deep(.el-pagination.is-background .btn-next), :deep(.el-pagination.is-background .btn-prev) {
   background: #f3f3f0;
   color: #585854;
 }
-::v-deep .el-pagination.is-background .el-pager li.active {
+:deep(.el-pagination.is-background .el-pager li.active) {
   background: #2f3437;
   color: #ffffff;
 }
-::v-deep .el-dropdown-menu__item:focus,
-::v-deep .el-dropdown-menu__item:not(.is-disabled):hover {
+:deep(.el-dropdown-menu__item:focus), :deep(.el-dropdown-menu__item:not(.is-disabled):hover) {
   background: #f1f1ee;
   color: #3f3f3c;
 }

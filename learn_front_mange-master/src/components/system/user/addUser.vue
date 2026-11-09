@@ -1,70 +1,70 @@
 <template>
 <div>
-  <el-dialog title="新增用户" width="40%" :destroy-on-close="true" :visible.sync="addUserVisible" :before-close="handleClose">
+  <el-dialog append-to-body :title="$t('新增用户')" width="40%" :destroy-on-close="true" :model-value="addUserVisible" :before-close="handleClose">
     <el-form :model="form" :rules="rules" ref="ruleForm">
       <el-row :gutter="10">
         <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-            <span class="search-title">用户昵称:</span>
+            <span class="search-title">{{ $t("用户昵称:") }}</span>
             <el-form-item prop="userName" style="margin-bottom:0">
-              <el-input v-model="form.userName" size="mini" placeholder="请输入用户昵称" autocomplete="off"></el-input>
+              <el-input v-model="form.userName" size="small" :placeholder="$t('请输入用户昵称')" autocomplete="off"></el-input>
             </el-form-item>
         </el-col>
         
         <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-            <span class="search-title">手机号码:</span>
+            <span class="search-title">{{ $t("手机号码:") }}</span>
             <el-form-item prop="tel" style="margin-bottom:0">
-              <el-input v-model="form.tel" size="mini" placeholder="请输入手机号码" autocomplete="off"></el-input>
+              <el-input v-model="form.tel" size="small" :placeholder="$t('请输入手机号码')" autocomplete="off"></el-input>
             </el-form-item>
         </el-col>
         <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-            <span class="search-title">&nbsp;&nbsp;&nbsp;&nbsp;邮箱:</span>
+            <span class="search-title">{{ $t("邮箱:") }}</span>
             <el-form-item prop="email" style="margin-bottom:0">
-              <el-input v-model="form.email" size="mini" placeholder="请输入邮箱" autocomplete="off"></el-input>
+              <el-input v-model="form.email" size="small" :placeholder="$t('请输入邮箱')" autocomplete="off"></el-input>
             </el-form-item>
         </el-col>
         <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-            <span class="search-title">登陆账号:</span>
+            <span class="search-title">{{ $t("登陆账号:") }}</span>
             <el-form-item prop="loginAccount" style="margin-bottom:0">
-              <el-input v-model="form.loginAccount" size="mini" placeholder="请输入登陆账号" autocomplete="off"></el-input>
+              <el-input v-model="form.loginAccount" size="small" :placeholder="$t('请输入登陆账号')" autocomplete="off"></el-input>
             </el-form-item>
         </el-col>
         <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-            <span class="search-title">用户密码:</span>
+            <span class="search-title">{{ $t("用户密码:") }}</span>
             <el-form-item prop="password" style="margin-bottom:0">
-              <el-input v-model="form.password" show-password size="mini" placeholder="请输入用户密码" autocomplete="off"></el-input>
+              <el-input v-model="form.password" show-password size="small" :placeholder="$t('请输入用户密码')" autocomplete="off"></el-input>
             </el-form-item>
         </el-col>
         <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-            <span class="search-title">用户性别:</span>
+            <span class="search-title">{{ $t("用户性别:") }}</span>
             <el-form-item prop="sex" style="margin-bottom:0">
-              <el-select size="mini" v-model="form.sex" placeholder="请选择用户性别">
-                <el-option label="男" value="0"></el-option>
-                <el-option label="女" value="1"></el-option>
+              <el-select size="small" v-model="form.sex" :placeholder="$t('请选择用户性别')">
+                <el-option :label="$t('男')" value="0"></el-option>
+                <el-option :label="$t('女')" value="1"></el-option>
               </el-select>
             </el-form-item>
         </el-col>
         <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-            <span class="search-title">岗位:</span>
+            <span class="search-title">{{ $t("岗位:") }}</span>
             <el-form-item prop="postId" style="margin-bottom:0">
-              <el-select clearable size="mini" v-model="form.postId" placeholder="请选择岗位">
+              <el-select clearable size="small" v-model="form.postId" :placeholder="$t('请选择岗位')">
                 <el-option v-for="(item,index) in post" :key="index" :label="item.postName" :value="item.id"></el-option>
               </el-select>
             </el-form-item>
         </el-col>
         <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-            <span class="search-title">角色:</span>
+            <span class="search-title">{{ $t("角色:") }}</span>
             <el-form-item prop="roleIds" style="margin-bottom:0">
-              <el-select size="mini" multiple  v-model="form.roleIds" placeholder="请选择角色">
+              <el-select size="small" multiple  v-model="form.roleIds" :placeholder="$t('请选择角色')">
                 <el-option v-for="(item,index) in role" :label="item.roleName" :value="item.id"></el-option>
               </el-select>
             </el-form-item>
         </el-col>
         <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-            <span class="search-title">归属部门:</span>
+            <span class="search-title">{{ $t("归属部门:") }}</span>
             <el-form-item prop="deptId" style="margin-bottom:0">
               <el-cascader
                     @change="handleChange"
-                    size="mini"
+                    size="small"
                     :options="data"
                     :props="{ checkStrictly: true,value:'id',label:'deptName',children:'children' }"
                     clearable>
@@ -72,29 +72,31 @@
             </el-form-item>
         </el-col>
         <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
-            <span class="search-title">状态:</span>
+            <span class="search-title">{{ $t("状态:") }}</span>
              <el-form-item prop="name" style="margin-bottom:0">
                 <el-radio-group style="margin-top:1px;height:40px;display:flex;align-items: center" v-model="form.status">
-                  <el-radio label="0">正常</el-radio>
-                  <el-radio label="1">停用</el-radio>
+                  <el-radio value="0">{{ $t("正常") }}</el-radio>
+                  <el-radio value="1">{{ $t("停用") }}</el-radio>
                 </el-radio-group>
             </el-form-item>
         </el-col>
         <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
-            <span class="search-title">&nbsp;&nbsp;&nbsp;&nbsp;备注:</span>
+            <span class="search-title">{{ $t("备注:") }}</span>
             <el-input type="textarea" v-model="form.remark"></el-input>
         </el-col>
       </el-row>
     </el-form>
-    <div slot="footer" class="dialog-footer">
-      <el-button size="mini" type="primary" @click="submit">确 定</el-button>
-      <el-button size="mini" @click="handleClose">取 消</el-button>
-    </div>
+    <template #footer><div  class="dialog-footer">
+      <el-button size="small" type="primary" @click="submit">{{ $t("确 定") }}</el-button>
+      <el-button size="small" @click="handleClose">{{ $t("取 消") }}</el-button>
+    </div></template>
   </el-dialog>
 </div>
 </template>
 
 <script>
+import { t } from '@/i18n'
+
   import {saveUser} from '../../../api/api'
   import {validateAccount, validatePassword} from '../../../utils/accountPasswordRules'
   export default {
@@ -140,7 +142,7 @@
         },
         rules: {
           userName: [
-            { required: true, message: '请输入用户昵称', trigger: 'blur' },
+            { required: true, get message() { return t("请输入用户昵称") }, trigger: 'blur' },
           ],
           loginAccount: [
             { validator: validateNonAdminAccount, trigger: 'blur' },
@@ -159,17 +161,17 @@
             saveUser(this.form).then(res => {
               if(res.code == 1000) {
                 this.$notify.success({
-                  title: '成功',
-                  message: "保存成功"
+                  get title() { return t("成功") },
+                  get message() { return t("保存成功") }
                 });
                 this.handleClose();
               } else {
                 this.$notify.error({
-                  title: '错误',
+                  get title() { return t("错误") },
                   message: res.message
                 });
               }
-            })
+            }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false })
           } else {
             return false;
           }

@@ -10,49 +10,49 @@
             ref="ruleForm"
             label-width="140px"
           >
-            <el-form-item label="登陆账号" prop="loginAccount">
+            <el-form-item :label="$t('登陆账号')" prop="loginAccount">
               <el-input
-                size="mini"
+                size="small"
                 disabled
                 v-model="user.loginAccount"
               ></el-input>
             </el-form-item>
-            <el-form-item label="用户名" prop="userName">
-              <el-input size="mini" v-model="user.userName"></el-input>
+            <el-form-item :label="$t('用户名')" prop="userName">
+              <el-input size="small" v-model="user.userName"></el-input>
             </el-form-item>
-            <el-form-item label="邮箱" prop="email">
-              <el-input size="mini" v-model="user.email"></el-input>
+            <el-form-item :label="$t('邮箱')" prop="email">
+              <el-input size="small" v-model="user.email"></el-input>
             </el-form-item>
-            <el-form-item label="联系电话" prop="tel">
-              <el-input size="mini" v-model="user.tel"></el-input>
+            <el-form-item :label="$t('联系电话')" prop="tel">
+              <el-input size="small" v-model="user.tel"></el-input>
             </el-form-item>
-            <el-form-item label="性别" prop="tel">
+            <el-form-item :label="$t('性别')" prop="tel">
               <el-radio-group v-model="user.sex">
-                <el-radio label="0">男</el-radio>
-                <el-radio label="1">女</el-radio>
+                <el-radio value="0">{{ $t("男") }}</el-radio>
+                <el-radio value="1">{{ $t("女") }}</el-radio>
               </el-radio-group>
             </el-form-item>
-            <el-form-item label="登陆IP" prop="loginIp">
-              <el-input size="mini" disabled v-model="user.loginIp"></el-input>
+            <el-form-item :label="$t('登陆IP')" prop="loginIp">
+              <el-input size="small" disabled v-model="user.loginIp"></el-input>
             </el-form-item>
-            <el-form-item label="登陆时间" prop="loginDate">
+            <el-form-item :label="$t('登陆时间')" prop="loginDate">
               <el-input
-                size="mini"
+                size="small"
                 disabled
                 v-model="user.loginDate"
               ></el-input>
             </el-form-item>
-            <el-form-item label="上次修改密码时间" prop="pwdUpdateDate">
+            <el-form-item :label="$t('上次修改密码时间')" prop="pwdUpdateDate">
               <el-input
-                size="mini"
+                size="small"
                 disabled
                 v-model="user.pwdUpdateDate"
               ></el-input>
             </el-form-item>
           </el-form>
           <div class="submit">
-            <el-button type="primary" plain size="mini" @click="submit"
-              >保存</el-button
+            <el-button type="primary" plain size="small" @click="submit"
+              >{{ $t("保存") }}</el-button
             >
           </div>
         </div>
@@ -73,7 +73,7 @@
           </div>
           <div class="btns">
             <div>
-              <el-upload
+              <el-upload :on-error="$uploadError"
                 ref="upload"
                 :action="uploadAvatarUrl() + '/' + this.user.id"
                 :headers="{ x_access_token: uploadToken }"
@@ -83,14 +83,14 @@
                 :on-success="handleAvatorSuccess"
                 accept="image/*"
               >
-                <el-button size="mini" icon="el-icon-picture-outline-round"
-                  >修改头像</el-button
+                <el-button size="small"
+                  ><template #icon><i class="el-icon-picture-outline-round" aria-hidden="true"></i></template>{{ $t("修改头像") }}</el-button
                 >
               </el-upload>
             </div>
             <div style="margin-top: 15px">
-              <el-button size="mini" icon="el-icon-key" @click="changePassword"
-                >修改密码</el-button
+              <el-button size="small"  @click="changePassword"
+                ><template #icon><i class="el-icon-key" aria-hidden="true"></i></template>{{ $t("修改密码") }}</el-button
               >
             </div>
           </div>
@@ -101,6 +101,8 @@
 </template>
 
 <script>
+import { t } from '@/i18n'
+
 import { mixin } from "../../../minix";
 import { getUser, setUserInfo, setUserAvatar } from "../../../api/api";
 export default {
@@ -113,13 +115,13 @@ export default {
   data() {
     var checkPhone = (rule, value, callback) => {
       if (!value) {
-        return callback(new Error("请输入联系电话"));
+        return callback(new Error(t("请输入联系电话")));
       } else {
         const reg = /^1[3-9]\d{9}$/;
         if (reg.test(value)) {
           callback();
         } else {
-          return callback(new Error("请输入正确的11位手机号码"));
+          return callback(new Error(t("请输入正确的11位手机号码")));
         }
       }
     };
@@ -133,17 +135,17 @@ export default {
       ],
       rules: {
         userName: [
-          { required: true, message: "请输入用户名", trigger: "blur" },
+          { required: true, get message() { return t("请输入用户名") }, trigger: "blur" },
         ],
         email: [
-          { required: true, message: "请输入邮箱地址", trigger: "blur" },
-          { type: "email", message: "请输入正确的邮箱地址", trigger: "blur" },
+          { required: true, get message() { return t("请输入邮箱地址") }, trigger: "blur" },
+          { type: "email", get message() { return t("请输入正确的邮箱地址") }, trigger: "blur" },
         ],
         tel: [
           {
             required: true,
             validator: checkPhone,
-            message: "请输入正确的联系电话",
+            get message() { return t("请输入正确的联系电话") },
             trigger: "blur",
           },
         ],
@@ -158,16 +160,16 @@ export default {
             if (res.code == 1000) {
               this.$message({
                 type: "success",
-                message: "保存成功!",
+                get message() { return t("保存成功!") },
               });
               this.getUserInfo();
             } else {
               this.$notify.error({
-                title: "错误",
+                get title() { return t("错误") },
                 message: res.message,
               });
             }
-          });
+          }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false });
         } else {
           return false;
         }
@@ -182,14 +184,14 @@ export default {
           this.setUser();
         } else {
           this.$notify.error({
-            title: "错误",
+            get title() { return t("错误") },
             message: res.message,
           });
         }
-      });
+      }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false });
     },
     setUser() {
-      this.$store.commit("user/setUser", JSON.stringify(this.user));
+      this.$session.setUser(JSON.stringify(this.user));
     },
     changePassword() {
       //修改密码
@@ -200,12 +202,12 @@ export default {
       if (res.code == 1000) {
         _this.$message({
           type: "success",
-          message: "上传成功!",
+          get message() { return t("上传成功!") },
         });
         this.getUserInfo();
       } else {
         _this.$notify.error({
-          title: "错误",
+          get title() { return t("错误") },
           message: res.message,
         });
       }
@@ -261,43 +263,41 @@ export default {
   flex-direction: column;
   align-items: center;
 }
-::v-deep .el-form-item__label {
+:deep(.el-form-item__label) {
   color: #585854;
 }
-::v-deep .el-input__inner {
+:deep(.el-input__inner) {
   border-radius: 10px;
   border-color: #dfdfda;
   color: #3f3f3c;
   background: #ffffff;
 }
-::v-deep .el-input__inner:focus {
+:deep(.el-input__inner:focus) {
   border-color: #bdbdb6;
 }
-::v-deep .el-radio__input.is-checked .el-radio__inner {
+:deep(.el-radio__input.is-checked .el-radio__inner) {
   border-color: #2f3437;
   background: #2f3437;
 }
-::v-deep .el-radio__input.is-checked + .el-radio__label {
+:deep(.el-radio__input.is-checked + .el-radio__label) {
   color: #2f3437;
 }
-::v-deep .el-button--primary {
+:deep(.el-button--primary) {
   background: #2f3437;
   border-color: #2f3437;
   color: #ffffff;
 }
-::v-deep .el-button--primary:hover,
-::v-deep .el-button--primary:focus {
+:deep(.el-button--primary:hover), :deep(.el-button--primary:focus) {
   background: #3a4044;
   border-color: #3a4044;
 }
-::v-deep .el-button {
+:deep(.el-button) {
   border-radius: 10px;
   border-color: #d9d9d4;
   background: #f5f5f2;
   color: #3f3f3c;
 }
-::v-deep .el-button:hover,
-::v-deep .el-button:focus {
+:deep(.el-button:hover), :deep(.el-button:focus) {
   background: #ededea;
   border-color: #cfcfc8;
   color: #2f2f2c;

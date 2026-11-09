@@ -1,10 +1,12 @@
 # 本地运行
 
+**简体中文** · [English](local-development.en.md)
+
 以下步骤用于在本机运行演示环境，命令都从仓库根目录执行。不要连接已有业务数据库。
 
 ## 准备环境
 
-已有运行记录使用 Java 17、Maven 3.9、MySQL 8.4、Redis、Node.js 26 和 npm 11。Node 版本尚未锁定，换版本后需要自行检查兼容性。
+已有运行记录使用 Java 17、Maven 3.9、MySQL 8.4、Redis、Node.js 26.12.0 和 npm 11.20.0，已通过版本文件和 engines 锁定；其他版本需重新验证。
 
 当前启动脚本按 macOS 配置，Java 路径固定为：
 
@@ -103,3 +105,9 @@ bash scripts/stop-demo.sh
 ```
 
 已有测试范围和遗留问题见[验证说明](verification-notes.md)。
+
+## 前端与国际化配置
+
+两端已迁移到 Vue 3 / Vite。各端 `.env.local` 可设置公开的 `VITE_API_BASE_URL`，学生端的 `VITE_ADMIN_PORT` 控制管理端链接端口。禁止在这些前端变量中放置密钥。`VITE_DEMO_CONTENT=true` 仅用于合成演示数据，默认关闭；详见 [国际化说明](internationalization.md)。
+
+模型接入的完整变量与边界见 [AI 配置](ai-model-setup.md)。运行 `npm test --prefix <前端目录>` 与 `npm run build --prefix <前端目录>` 验证前端，`mvn -f learn_server-master/pom.xml -pl ape-admin -am test` 验证后端（本机 HTTP mock，不产生模型费用）。浏览器脚本需要自行配置 `ZHIXUE_DEMO_PASSWORD` 为当前隔离演示账号的密码；环境变量只在本地提供，不提交到仓库。旧报告仅为历史记录。

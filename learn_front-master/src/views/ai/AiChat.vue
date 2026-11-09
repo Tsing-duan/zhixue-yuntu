@@ -7,8 +7,8 @@
         <div class="brand-block">
           <div class="brand-icon"><i class="el-icon-cpu"></i></div>
           <div>
-            <h2>智学云途 · 小智</h2>
-            <p>{{ isTeacher ? 'AI 教学 Agent 工作台' : 'AI 学习 Agent 工作台' }}</p>
+            <h2>{{ $t("智学云途 · 小智") }}</h2>
+            <p>{{ isTeacher ? $t("教学助手") : $t("学习助手") }}</p>
           </div>
         </div>
 
@@ -47,17 +47,13 @@
           </div>
 
           <div class="agent-body">
-            <aside class="agent-history-list">
+            <aside v-if="historyLoading || agentHistoryList.length" class="agent-history-list">
               <div class="history-list-head">
-                <strong>最近</strong>
-                <span v-if="historyLoading">加载中</span>
+                <strong>{{ $t("最近") }}</strong>
+                <span v-if="historyLoading">{{ $t("加载中") }}</span>
               </div>
-              <div v-if="historyLoading && agentHistoryList.length === 0" class="history-empty">
-                正在加载历史结果
-              </div>
-              <div v-else-if="agentHistoryList.length === 0" class="history-empty">
-                生成后会出现在这里
-              </div>
+              <div v-if="historyLoading && agentHistoryList.length === 0" class="history-empty">{{ $t("正在加载历史结果") }}</div>
+              <div v-else-if="agentHistoryList.length === 0" class="history-empty">{{ $t("生成后会出现在这里") }}</div>
               <div v-else class="history-list-scroll">
                 <div
                   v-for="record in agentHistoryList"
@@ -73,7 +69,7 @@
                   <button
                     type="button"
                     class="history-delete"
-                    title="删除"
+                    :title="$t('删除')"
                     @click.stop="confirmDeleteAgentHistory(record.id)"
                   >
                     <i class="el-icon-delete"></i>
@@ -85,11 +81,10 @@
             <div class="agent-content">
               <div v-if="agentHistoryId && !agentLoading" class="history-notice">
                 <span>
-                  <i class="el-icon-time"></i>
-                  生成于 {{ agentHistoryTime || '刚刚' }}
+                  <i class="el-icon-time"></i>{{ $t("生成于") }}{{ agentHistoryTime || $t("刚刚") }}
                 </span>
                 <el-button type="text" @click="showAgentForm = !showAgentForm">
-                  {{ showAgentForm ? '收起参数表单' : '调整参数生成' }}
+                  {{ showAgentForm ? $t("收起设置") : $t("调整后重新生成") }}
                 </el-button>
               </div>
 
@@ -98,8 +93,8 @@
                   <el-form label-position="top">
                     <el-row :gutter="16">
                       <el-col :md="10" :sm="24">
-                        <el-form-item label="关联课程">
-                          <el-select v-model="studyForm.taskId" placeholder="全部已报名课程" clearable filterable>
+                        <el-form-item :label="$t('关联课程')">
+                          <el-select v-model="studyForm.taskId" :placeholder="$t('全部已报名课程')" clearable filterable>
                             <el-option
                               v-for="course in courseOptions"
                               :key="course.id"
@@ -110,25 +105,25 @@
                         </el-form-item>
                       </el-col>
                       <el-col :md="7" :sm="12">
-                        <el-form-item label="计划周期">
+                        <el-form-item :label="$t('计划周期')">
                           <el-input-number v-model="studyForm.days" :min="3" :max="90"></el-input-number>
                         </el-form-item>
                       </el-col>
                       <el-col :md="7" :sm="12">
-                        <el-form-item label="每周小时">
+                        <el-form-item :label="$t('每周小时')">
                           <el-input-number v-model="studyForm.hours" :min="1" :max="40"></el-input-number>
                         </el-form-item>
                       </el-col>
                     </el-row>
-                    <el-form-item label="学习目标">
-                      <el-input v-model="studyForm.goal" placeholder="例如：两周内补齐 Java 基础并完成章节作业"></el-input>
+                    <el-form-item :label="$t('学习目标')">
+                      <el-input v-model="studyForm.goal" :placeholder="$t('例如：两周内补齐 Java 基础并完成章节作业')"></el-input>
                     </el-form-item>
-                    <el-form-item label="额外要求">
+                    <el-form-item :label="$t('额外要求')">
                       <el-input
                         v-model="studyForm.extra"
                         type="textarea"
                         :rows="3"
-                        placeholder="例如：每天最多 1 小时，周末可以安排复盘"
+                        :placeholder="$t('例如：每天最多 1 小时，周末可以安排复盘')"
                       ></el-input>
                     </el-form-item>
                   </el-form>
@@ -136,14 +131,14 @@
 
                 <template v-if="activeAgent === 'wrong'">
                   <el-form label-position="top">
-                    <el-form-item label="分析目标">
-                      <el-input v-model="wrongForm.target" placeholder="例如：找出最薄弱的知识点并安排订正"></el-input>
+                    <el-form-item :label="$t('分析目标')">
+                      <el-input v-model="wrongForm.target" :placeholder="$t('例如：找出最薄弱的知识点并安排订正')"></el-input>
                     </el-form-item>
                   </el-form>
                   <div class="wrong-toolbar" v-if="wrongItems.length > 0">
-                    <el-button size="mini" type="text" @click="selectAllWrong">全选</el-button>
-                    <el-button size="mini" type="text" @click="selectedIds = []">取消全选</el-button>
-                    <span class="selected-count">已选 {{ selectedIds.length }} / {{ wrongItems.length }} 道</span>
+                    <el-button size="small" type="text" @click="selectAllWrong">{{ $t("全选") }}</el-button>
+                    <el-button size="small" type="text" @click="selectedIds = []">{{ $t("取消全选") }}</el-button>
+                    <span class="selected-count">{{ $t("已选") }}{{ selectedIds.length }} / {{ wrongItems.length }}{{ $t("道") }}</span>
                   </div>
                   <div v-if="wrongItems.length > 0" class="wrong-checklist">
                     <div
@@ -157,25 +152,21 @@
                       <span class="wc-source">{{ item.source }}</span>
                       <span class="wc-course">{{ item.courseName }}</span>
                       <span class="wc-title">{{ item.title }}</span>
-                      <span class="wc-answer">答：{{ item.studentAnswer }} → 正确：{{ item.correctAnswer }}</span>
+                      <span class="wc-answer">{{ $t("答：") }}{{ item.studentAnswer }}{{ $t("→ 正确：") }}{{ item.correctAnswer }}</span>
                     </div>
                   </div>
                   <div v-else-if="wrongCount !== null" class="mini-stat">
-                    <i class="el-icon-warning-outline"></i>
-                    暂无错题记录，继续保持！
-                  </div>
+                    <i class="el-icon-warning-outline"></i>{{ $t("暂无错题记录，继续保持！") }}</div>
                   <div v-else class="mini-stat" style="background:#f0f4ff;border-color:#c5d5f0;color:#3b5bdb;">
-                    <i class="el-icon-loading"></i>
-                    加载错题列表中...
-                  </div>
+                    <i class="el-icon-loading"></i>{{ $t("加载错题列表中...") }}</div>
                 </template>
 
                 <template v-if="activeAgent === 'lesson'">
                   <el-form label-position="top">
                     <el-row :gutter="16">
                       <el-col :md="10" :sm="24">
-                        <el-form-item label="关联课程">
-                          <el-select v-model="lessonForm.taskId" placeholder="选择课程，可不选" clearable filterable>
+                        <el-form-item :label="$t('关联课程')">
+                          <el-select v-model="lessonForm.taskId" :placeholder="$t('选择课程，可不选')" clearable filterable>
                             <el-option
                               v-for="course in courseOptions"
                               :key="course.id"
@@ -186,25 +177,25 @@
                         </el-form-item>
                       </el-col>
                       <el-col :md="7" :sm="12">
-                        <el-form-item label="课时分钟">
+                        <el-form-item :label="$t('课时分钟')">
                           <el-input-number v-model="lessonForm.minutes" :min="20" :max="120"></el-input-number>
                         </el-form-item>
                       </el-col>
                       <el-col :md="7" :sm="12">
-                        <el-form-item label="授课对象">
-                          <el-input v-model="lessonForm.students" placeholder="例如：大一学生"></el-input>
+                        <el-form-item :label="$t('授课对象')">
+                          <el-input v-model="lessonForm.students" :placeholder="$t('例如：大一学生')"></el-input>
                         </el-form-item>
                       </el-col>
                     </el-row>
-                    <el-form-item label="备课主题">
-                      <el-input v-model="lessonForm.topic" placeholder="例如：面向对象封装与继承"></el-input>
+                    <el-form-item :label="$t('备课主题')">
+                      <el-input v-model="lessonForm.topic" :placeholder="$t('例如：面向对象封装与继承')"></el-input>
                     </el-form-item>
-                    <el-form-item label="教学目标">
+                    <el-form-item :label="$t('教学目标')">
                       <el-input
                         v-model="lessonForm.goal"
                         type="textarea"
                         :rows="3"
-                        placeholder="例如：学生能够解释核心概念，并独立完成基础练习"
+                        :placeholder="$t('例如：学生能够解释核心概念，并独立完成基础练习')"
                       ></el-input>
                     </el-form-item>
                   </el-form>
@@ -212,8 +203,8 @@
 
                 <template v-if="activeAgent === 'summary'">
                   <el-form label-position="top">
-                    <el-form-item label="关联课程">
-                      <el-select v-model="summaryForm.taskId" placeholder="全部相关课程" clearable filterable>
+                    <el-form-item :label="$t('关联课程')">
+                      <el-select v-model="summaryForm.taskId" :placeholder="$t('全部相关课程')" clearable filterable>
                         <el-option
                           v-for="course in courseOptions"
                           :key="course.id"
@@ -222,12 +213,12 @@
                         ></el-option>
                       </el-select>
                     </el-form-item>
-                    <el-form-item label="总结侧重点">
+                    <el-form-item :label="$t('总结侧重点')">
                       <el-input
                         v-model="summaryForm.focus"
                         type="textarea"
                         :rows="3"
-                        placeholder="例如：突出章节主线、重点难点和复习清单"
+                        :placeholder="$t('例如：突出章节主线、重点难点和复习清单')"
                       ></el-input>
                     </el-form-item>
                   </el-form>
@@ -235,23 +226,23 @@
               </div>
 
               <div v-if="agentError" class="agent-error">
-                <i class="el-icon-warning"></i>{{ agentError }}
+                <i class="el-icon-warning"></i>{{ $t(agentError) }}
               </div>
 
               <div v-if="agentReply || agentLoading" class="agent-result">
                 <div class="result-head">
-                  <span>{{ agentHistoryId ? '历史结果' : activeMeta.title + '结果' }}</span>
+                  <span>{{ agentHistoryId ? $t("历史结果") : activeMeta.title + $t("结果") }}</span>
                   <div class="result-actions">
-                    <el-button v-if="agentReply" size="mini" plain @click="copyAgentReply">复制</el-button>
+                    <el-button v-if="agentReply" size="small" plain @click="copyAgentReply">{{ $t("复制") }}</el-button>
                     <el-button
                       v-if="agentHistoryId"
-                      size="mini"
+                      size="small"
                       plain
                       type="danger"
-                      icon="el-icon-delete"
-                      title="删除"
+
+                      :title="$t('删除')"
                       @click="confirmDeleteAgentHistory(agentHistoryId)"
-                    ></el-button>
+                    ><template #icon><i class="el-icon-delete" aria-hidden="true"></i></template></el-button>
                   </div>
                 </div>
                 <div v-if="agentLoading" class="agent-loading">
@@ -266,11 +257,15 @@
         <section class="chat-panel">
           <div class="chat-head">
             <div>
-              <h3>自由追问</h3>
-              <p>继续围绕学习、错题、备课或课程内容提问</p>
+              <h3>{{ $t("学习问答") }}</h3>
+              <p>{{ $t("也可以直接提问；需要参考上方结果时，请把相关内容带入问题。") }}</p>
             </div>
+            <el-button text :aria-expanded="chatExpanded" aria-controls="learning-chat-content" @click="showChat = !chatExpanded">
+              {{ chatExpanded ? $t("收起问答") : $t("开始提问") }}
+            </el-button>
           </div>
 
+          <div v-show="chatExpanded" id="learning-chat-content">
           <div class="chat-messages" ref="msgContainer">
             <div class="chat-empty" v-if="messages.length === 0 && !loading && !chatHistoryLoading">
               <i class="el-icon-chat-line-round"></i>
@@ -299,7 +294,7 @@
                   <button
                     v-if="msg.role === 'ai' && msg.historyId"
                     class="chat-delete"
-                    title="删除"
+                    :title="$t('删除')"
                     @click="confirmDeleteChatHistory(msg.historyId)"
                   >
                     <i class="el-icon-delete"></i>
@@ -317,7 +312,7 @@
           </div>
 
           <div v-if="errorMsg" class="agent-error">
-            <i class="el-icon-warning"></i>{{ errorMsg }}
+            <i class="el-icon-warning"></i>{{ $t(errorMsg) }}
           </div>
 
           <div class="chat-input">
@@ -325,9 +320,9 @@
               v-model="inputText"
               type="textarea"
               :rows="2"
-              placeholder="输入问题，Enter 发送，Shift+Enter 换行"
+              :placeholder="$t('输入问题，Enter 发送，Shift+Enter 换行')"
               :disabled="loading"
-              @keyup.enter.native="handleEnter"
+              @keyup.enter="handleEnter"
             ></el-input>
             <el-button
               type="primary"
@@ -335,9 +330,8 @@
               :disabled="!canSend"
               :loading="loading"
               @click="sendMsg"
-            >
-              发送
-            </el-button>
+            >{{ $t("发送") }}</el-button>
+          </div>
           </div>
         </section>
       </main>
@@ -349,6 +343,8 @@
 </template>
 
 <script>
+import { t, localizeExamples, englishLabel } from '@/i18n'
+
 import {
   aiChat,
   aiStudyPlan,
@@ -361,8 +357,8 @@ import {
   getApeTaskByTeacherId,
   getWrongList
 } from '../../api/api'
-import headerPage from '../../components/header/header'
-import bottomPage from '../../components/bottom/bottom'
+import headerPage from '../../components/header/header.vue'
+import bottomPage from '../../components/bottom/bottom.vue'
 
 export default {
   name: 'AiChat',
@@ -405,6 +401,7 @@ export default {
         taskId: '',
         focus: '突出课程主线、章节知识图谱、重点难点和复习建议'
       },
+      showChat: null,
       inputText: '',
       messages: [],
       loading: false,
@@ -414,48 +411,51 @@ export default {
     }
   },
   computed: {
+    chatExpanded() {
+      return this.loading || Boolean(this.errorMsg) || (this.showChat === null ? this.messages.length > 0 : this.showChat)
+    },
     canSend() {
       return this.inputText.trim().length > 0 && !this.loading
     },
     agentPrimaryActionText() {
-      if (this.agentLoading) return '生成中'
-      if (this.agentHistoryId && !this.showAgentForm) return '新聊天'
-      return '生成方案'
+      if (this.agentLoading) return t("生成中")
+      if (this.agentHistoryId && !this.showAgentForm) return t("新建方案")
+      return t("生成方案")
     },
     agentModes() {
       const modes = [
         {
           key: 'study',
           icon: 'el-icon-guide',
-          title: 'AI 自动学习规划',
-          tag: 'Study Plan',
-          desc: '按课程进度安排学习节奏',
-          detail: '结合已报名课程、章节观看和作业完成情况，生成阶段目标与每日行动清单。'
+          get title() { return t("学习计划") },
+          get tag() { return t("AI 辅助学习") },
+          get desc() { return t("按课程进度安排学习节奏") },
+          get detail() { return t("结合已报名课程、章节观看和作业完成情况，生成阶段目标与每日行动清单。") }
         },
         {
           key: 'wrong',
           icon: 'el-icon-aim',
-          title: 'AI 错题 Agent',
-          tag: 'Wrong Agent',
-          desc: '分析错题原因并安排巩固',
-          detail: '读取错题集中的作业与考试错题，归纳薄弱点、错误类型和订正路径，教师可用于班级诊断。'
+          get title() { return t("错题分析") },
+          get tag() { return t("AI 辅助复习") },
+          get desc() { return t("分析错题原因并安排巩固") },
+          get detail() { return t("读取错题集中的作业与考试错题，归纳薄弱点、错误类型和订正路径，教师可用于班级诊断。") }
         },
         {
           key: 'lesson',
           icon: 'el-icon-notebook-2',
-          title: 'AI 教师备课助手',
-          tag: 'Lesson Prep',
-          desc: '生成课堂流程与教学设计',
-          detail: '基于课程章节、题目和教师输入，生成教学目标、课堂活动和课后作业建议。',
+          get title() { return t("备课助手") },
+          get tag() { return t("AI 辅助教学") },
+          get desc() { return t("生成课堂流程与教学设计") },
+          get detail() { return t("基于课程章节、题目和教师输入，生成教学目标、课堂活动和课后作业建议。") },
           teacherOnly: true
         },
         {
           key: 'summary',
           icon: 'el-icon-document-checked',
-          title: 'AI 自动总结课程',
-          tag: 'Course Summary',
-          desc: '提炼课程主线和复习重点',
-          detail: '把课程简介、章节和作业概况整理成可复盘的课程总结。'
+          get title() { return t("课程总结") },
+          get tag() { return t("AI 辅助整理") },
+          get desc() { return t("提炼课程主线和复习重点") },
+          get detail() { return t("把课程简介、章节和作业概况整理成可复盘的课程总结。") }
         }
       ]
       if (!this.isTeacher) {
@@ -468,14 +468,14 @@ export default {
     },
     welcomeMsg() {
       return this.isTeacher
-        ? '可以继续追问备课、教学活动、课程总结或学生问题。'
-        : '可以继续追问学习计划、课程内容、作业思路或错题订正。'
+        ? t("可以继续追问备课、教学活动、课程总结或学生问题。")
+        : t("可以继续追问学习计划、课程内容、作业思路或错题订正。")
     },
     quickQuestions() {
       if (this.isTeacher) {
-        return ['帮我把刚才的备课方案压缩成课堂流程表', '给这节课设计3个互动问题']
+        return [t("如何设计一节课的导入环节？"), t("怎样用提问检查学生是否理解？")]
       }
-      return ['把学习计划拆成今天要做的3件事', '根据错题结果给我一套复习顺序']
+      return [t("如何把学习目标拆成每天的小任务？"), t("整理错题时应该记录哪些内容？")]
     }
   },
   methods: {
@@ -569,12 +569,13 @@ export default {
     },
     getHistoryTitle(record) {
       const input = ((record && record.userInput) || '').replace(/\r/g, '').replace(/\\n/g, '\n').trim()
-      const fields = [
+      const originalFields = [
         { label: '学习目标：', stops: ['计划周期：', '每周可投入时间：', '额外要求：'] },
         { label: '学生希望：', stops: [] },
         { label: '备课主题：', stops: ['课时长度：', '授课对象：', '教学目标：'] },
         { label: '总结侧重点：', stops: [] }
       ]
+      const fields = [...originalFields, ...originalFields.map(field => ({ label: englishLabel(field.label), stops: field.stops.map(englishLabel) }))]
       for (const field of fields) {
         const value = this.extractHistoryField(input, field.label, field.stops)
         if (value) {
@@ -608,15 +609,15 @@ export default {
     },
     buildAgentHistoryInput(agentKey) {
       if (agentKey === 'study') {
-        return '学习目标：' + (this.studyForm.goal || this.activeMeta.title)
+        return t("学习目标：") + (this.studyForm.goal || this.activeMeta.title)
       }
       if (agentKey === 'wrong') {
-        return '学生希望：' + (this.wrongForm.target || this.activeMeta.title)
+        return t("学生希望：") + (this.wrongForm.target || this.activeMeta.title)
       }
       if (agentKey === 'lesson') {
-        return '备课主题：' + (this.lessonForm.topic || this.activeMeta.title)
+        return t("备课主题：") + (this.lessonForm.topic || this.activeMeta.title)
       }
-      return '总结侧重点：' + (this.summaryForm.focus || this.activeMeta.title)
+      return t("总结侧重点：") + (this.summaryForm.focus || this.activeMeta.title)
     },
     upsertAgentHistoryRecord(record) {
       if (!record || !record.id) return
@@ -744,7 +745,7 @@ export default {
             this.loadLatestAgentHistory()
           }
         } else {
-          this.agentError = res.message || 'AI Agent 生成失败'
+          this.agentError = res.message || '生成失败，请重试'
         }
       }).catch(() => {
         if (agentKey === this.activeAgent) {
@@ -759,9 +760,9 @@ export default {
     copyAgentReply() {
       if (!this.agentReply) return
       navigator.clipboard.writeText(this.agentReply).then(() => {
-        this.$message.success('已复制')
+        this.$message.success(t("已复制"))
       }).catch(() => {
-        this.$message.warning('复制失败，请手动选择文本')
+        this.$message.warning(t("复制失败，请手动选择文本"))
       })
     },
     handleEnter(e) {
@@ -850,7 +851,7 @@ export default {
       const historyId = id || this.agentHistoryId
       if (!historyId) return
       const selectedId = this.agentHistoryId
-      this.$confirm('确定删除这条 AI 结果吗？', '提示', {
+      this.$confirm(t("确定删除这条 AI 结果吗？"), t("提示"), {
         confirmButtonText: '删除',
         cancelButtonText: '取消',
         type: 'warning'
@@ -858,7 +859,7 @@ export default {
         return deleteAiHistory({ id: historyId })
       }).then(res => {
         if (res.code === 1000) {
-          this.$message.success('已删除')
+          this.$message.success(t("已删除"))
           this.agentHistoryList = this.agentHistoryList.filter(item => String(item.id) !== String(historyId))
           this.loadLatestAgentHistory(String(historyId) === String(selectedId) ? '' : selectedId)
         } else {
@@ -868,7 +869,7 @@ export default {
     },
     confirmDeleteChatHistory(historyId) {
       if (!historyId) return
-      this.$confirm('确定删除这条聊天记录吗？', '提示', {
+      this.$confirm(t("确定删除这条聊天记录吗？"), t("提示"), {
         confirmButtonText: '删除',
         cancelButtonText: '取消',
         type: 'warning'
@@ -877,7 +878,7 @@ export default {
       }).then(res => {
         if (res.code === 1000) {
           this.messages = this.messages.filter(item => item.historyId !== historyId)
-          this.$message.success('已删除')
+          this.$message.success(t("已删除"))
         } else {
           this.$message.error(res.message || '删除失败')
         }
@@ -910,6 +911,10 @@ export default {
   },
 
   created() {
+    localizeExamples(this.studyForm, ['goal', 'extra'])
+    localizeExamples(this.wrongForm, ['target'])
+    localizeExamples(this.lessonForm, ['topic', 'students', 'goal'])
+    localizeExamples(this.summaryForm, ['focus'])
     this.checkRole()
     this.loadCourses()
   },
@@ -935,7 +940,7 @@ export default {
 }
 
 .agent-sidebar {
-  width: 286px;
+  width: 240px;
   flex-shrink: 0;
   background: #ffffff;
   border: 1px solid #e7edf4;
@@ -1058,7 +1063,7 @@ export default {
 }
 
 .agent-history-list {
-  width: 272px;
+  width: 190px;
   flex-shrink: 0;
   padding: 18px 16px;
   border-right: 1px solid #edf2f7;
@@ -1313,6 +1318,10 @@ export default {
 }
 
 .chat-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
   padding: 18px 22px;
   border-bottom: 1px solid #edf2f7;
 }
@@ -1330,7 +1339,7 @@ export default {
 }
 
 .chat-messages {
-  min-height: 260px;
+  min-height: 120px;
   max-height: 430px;
   overflow-y: auto;
   padding: 20px 22px;
@@ -1338,7 +1347,7 @@ export default {
 }
 
 .chat-empty {
-  min-height: 220px;
+  min-height: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;

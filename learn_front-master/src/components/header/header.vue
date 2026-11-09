@@ -1,74 +1,81 @@
 <template>
-    <div class="header" :class="{ scrolled: isScrolled }">
-        <div class="system-title" @click="$router.push('/')">
+    <header class="header" :class="{ scrolled: isScrolled, 'navigation-open': navigationOpen, 'locale-en': $locale === 'en' }" @keydown.esc.stop.prevent="closeNavigation(true)" @focusout="handleFocusOut">
+        <router-link class="system-title" to="/" :aria-label="$t('智学云途主页')">
             <img class="system-mark" src="../../assets/image/brand/zhixue-mark.svg" alt="">
-            <span>智学云途</span>
-        </div>
-        <div class="menu-list">
-            <div
+            <span class="full-brand">{{ $t("智学云途") }}</span><span class="short-brand" aria-hidden="true">Zhixue</span>
+        </router-link>
+        <button ref="navigationToggle" class="navigation-toggle" type="button" aria-controls="student-primary-navigation" :aria-expanded="navigationOpen" :aria-label="navigationOpen ? $t('关闭导航菜单') : $t('打开导航菜单')" @click="toggleNavigation">
+            <i class="el-icon-menu" aria-hidden="true"></i><span>{{ $t("导航") }}</span>
+        </button>
+        <nav id="student-primary-navigation" class="menu-list" :aria-label="$t('主导航')" @click="closeNavigation()">
+            <router-link
                 v-for="item in menuItems"
                 :key="item.path"
-                @click="toPage(item.name)"
+                :to="item.path"
                 :class="{ 'menu_item': $route.path === item.path }"
             >
-                <i class="menu-icon" :class="item.icon"></i>
-                {{ item.title }}
-            </div>
-            <div
+                <i class="menu-icon" :class="item.icon" aria-hidden="true"></i>
+                {{ $t(item.title) }}
+            </router-link>
+            <router-link
                 class="ai-menu-item"
-                @click="$router.push('/ai')"
+                to="/ai"
                 :class="{ 'menu_item': $route.path === '/ai' }"
             >
-                <i class="el-icon-cpu"></i> {{ aiMenuTitle }}
-            </div>
-        </div>
+                <i class="el-icon-cpu" aria-hidden="true"></i> {{ $t(aiMenuTitle) }}
+            </router-link>
+        </nav>
+        <LanguageSwitch />
         <div class="center">
-            <el-dropdown @command="handleCommand" placement="bottom-end">
-                <span class="el-dropdown-link">
+            <el-dropdown ref="accountMenu" @command="handleCommand" placement="bottom-end" trigger="click">
+                <button type="button" class="el-dropdown-link" :aria-label="$t('账号菜单：') + (userInfo.userName || $t('个人中心'))" @click="closeNavigation()" @keydown.esc.stop.prevent="$refs.accountMenu.handleClose()">
                     <img
                         :src="$resolveAvatar(userInfo.avatar, '/img/avatars/zhixue-default.png')"
                         :alt="userInfo.userName"
                         @error="$avatarError($event, '/img/avatars/zhixue-default.png')">
-                </span>
-                <el-dropdown-menu slot="dropdown">
+                    <span class="username" :title="userInfo.userName">{{ userInfo.userName }}</span>
+                    <i class="el-icon-arrow-down" aria-hidden="true"></i>
+                </button>
+                <template #dropdown><el-dropdown-menu >
                     <el-dropdown-item command="a">
-                        <div class="drop-item"><i class="el-icon-user"></i>个人中心</div>
+                        <div class="drop-item"><i class="el-icon-user"></i>{{ $t("个人中心") }}</div>
                     </el-dropdown-item>
                     <el-dropdown-item command="b">
-                        <div class="drop-item"><i class="el-icon-s-management"></i>我的课程</div>
+                        <div class="drop-item"><i class="el-icon-s-management"></i>{{ $t("我的课程") }}</div>
                     </el-dropdown-item>
                     <el-dropdown-item command="i">
-                        <div class="drop-item"><i class="el-icon-star-off"></i>收藏课程</div>
+                        <div class="drop-item"><i class="el-icon-star-off"></i>{{ $t("收藏课程") }}</div>
                     </el-dropdown-item>
                     <el-dropdown-item command="c">
-                        <div class="drop-item"><i class="el-icon-edit"></i>记笔记</div>
+                        <div class="drop-item"><i class="el-icon-edit"></i>{{ $t("记笔记") }}</div>
                     </el-dropdown-item>
                     <el-dropdown-item command="d">
-                        <div class="drop-item"><i class="el-icon-reading"></i>我的作业</div>
+                        <div class="drop-item"><i class="el-icon-reading"></i>{{ $t("我的作业") }}</div>
                     </el-dropdown-item>
                     <el-dropdown-item command="e">
-                        <div class="drop-item"><i class="el-icon-notebook-1"></i>我的笔记</div>
+                        <div class="drop-item"><i class="el-icon-notebook-1"></i>{{ $t("我的笔记") }}</div>
                     </el-dropdown-item>
                     <el-dropdown-item command="f">
-                        <div class="drop-item"><i class="el-icon-star-off"></i>收藏笔记</div>
+                        <div class="drop-item"><i class="el-icon-star-off"></i>{{ $t("收藏笔记") }}</div>
                     </el-dropdown-item>
                     <el-dropdown-item command="g">
-                        <div class="drop-item"><i class="el-icon-circle-close"></i>错题集</div>
+                        <div class="drop-item"><i class="el-icon-circle-close"></i>{{ $t("错题集") }}</div>
                     </el-dropdown-item>
                     <el-dropdown-item command="j" divided>
-                        <div class="drop-item"><i class="el-icon-cpu"></i>{{ aiMenuTitle }}</div>
+                        <div class="drop-item"><i class="el-icon-cpu"></i>{{ $t(aiMenuTitle) }}</div>
                     </el-dropdown-item>
                     <el-dropdown-item command="h">
-                        <div class="drop-item"><i class="el-icon-back"></i>退出登陆</div>
+                        <div class="drop-item"><i class="el-icon-back"></i>{{ $t("退出登陆") }}</div>
                     </el-dropdown-item>
-                </el-dropdown-menu>
+                </el-dropdown-menu></template>
             </el-dropdown>
-            <span class="username">{{ userInfo.userName }}</span>
         </div>
-    </div>
+    </header>
 </template>
 
 <script>
+import { t, locale } from '@/i18n'
+
 import { getUserInfo } from '@/api/api'
 
 export default {
@@ -77,32 +84,60 @@ export default {
         return {
             userInfo: {},
             isScrolled: false,
+            navigationOpen: false,
             menuItems: [
-                { name: 'index', path: '/', title: '主页', icon: 'el-icon-house' },
-                { name: 'task', path: '/task', title: '课程', icon: 'el-icon-reading' },
-                { name: 'teacher', path: '/teacher', title: '教师', icon: 'el-icon-user' },
-                { name: 'test', path: '/test', title: '考试', icon: 'el-icon-edit-outline' },
-                { name: 'article', path: '/article', title: '笔记', icon: 'el-icon-notebook-2' },
-                { name: 'forum', path: '/forum', title: '讨论', icon: 'el-icon-chat-dot-round' },
-                { name: 'notice', path: '/notice', title: '公告', icon: 'el-icon-bell' },
-                { name: 'message', path: '/message', title: '留言', icon: 'el-icon-message' },
-                { name: 'about', path: '/about', title: '关于', icon: 'el-icon-info' }
+                { name: 'index', path: '/', get title() { return t("主页") }, icon: 'el-icon-house' },
+                { name: 'task', path: '/task', get title() { return t("课程") }, icon: 'el-icon-reading' },
+                { name: 'teacher', path: '/teacher', get title() { return t("教师") }, icon: 'el-icon-user' },
+                { name: 'test', path: '/test', get title() { return t("考试") }, icon: 'el-icon-edit-outline' },
+                { name: 'article', path: '/article', get title() { return t("笔记") }, icon: 'el-icon-notebook-2' },
+                { name: 'forum', path: '/forum', get title() { return t("讨论") }, icon: 'el-icon-chat-dot-round' },
+                { name: 'notice', path: '/notice', get title() { return t("公告") }, icon: 'el-icon-bell' },
+                { name: 'message', path: '/message', get title() { return t("留言") }, icon: 'el-icon-message' },
+                { name: 'about', path: '/about', get title() { return t("关于") }, icon: 'el-icon-info' }
             ]
         }
     },
     computed: {
+        interfaceLocale() { return locale.value },
         aiMenuTitle() {
             const info = window.localStorage.getItem('user_info')
             if (info) {
                 try {
                     const user = JSON.parse(info)
-                    return user.userType === 1 ? 'AI教学助手' : 'AI学习助手'
+                    return user.userType === 1 ? t("AI教学助手") : t("AI学习助手")
                 } catch (e) {}
             }
-            return 'AI学习助手'
+            return t("AI学习助手")
         }
     },
+    watch: {
+        '$route.fullPath'() { this.closeNavigation() },
+        interfaceLocale() { this.updateNavigationMedia() }
+    },
     methods: {
+        toggleNavigation() {
+            this.$refs.accountMenu.handleClose()
+            this.navigationOpen = !this.navigationOpen
+        },
+        closeNavigation(restoreFocus = false) {
+            const wasOpen = this.navigationOpen
+            this.navigationOpen = false
+            if (restoreFocus && wasOpen) this.$refs.navigationToggle?.focus()
+        },
+        handleOutsidePointer(event) {
+            if (!this.$el.contains(event.target)) this.closeNavigation()
+        },
+        handleFocusOut(event) {
+            if (event.relatedTarget && !this.$el.contains(event.relatedTarget)) this.closeNavigation()
+        },
+        handleNavigationResize() { this.closeNavigation() },
+        updateNavigationMedia() {
+            this.navigationMedia?.removeEventListener('change', this.handleNavigationResize)
+            this.navigationMedia = window.matchMedia(this.interfaceLocale === 'en' ? '(max-width: 1599px)' : '(max-width: 1199px)')
+            this.navigationMedia.addEventListener('change', this.handleNavigationResize)
+            this.closeNavigation()
+        },
         handleCommand(command) {
             const routes = {
                 a: '/center',
@@ -125,11 +160,11 @@ export default {
         },
         
         logout() {
-            this.$store.dispatch('logout').then(() => {
+            this.$session.logout().then(() => {
                 window.localStorage.removeItem('user_info');
                 window.localStorage.removeItem('user_token');
                 this.$message({
-                    message: '退出成功',
+                    get message() { return t("退出成功") },
                     type: 'success',
                     duration: 1500,
                     customClass: 'custom-message'
@@ -140,25 +175,6 @@ export default {
             });
         },
         
-        toPage(name) {
-            const routeMap = {
-                about: '/about',
-                index: '/',
-                task: '/task',
-                teacher: '/teacher',
-                message: '/message',
-                test: '/test',
-                article: '/article',
-                notice: '/notice',
-                forum: '/forum'
-            };
-            
-            const path = routeMap[name];
-            if (path) {
-                this.$router.push(path);
-            }
-        },
-        
         handleScroll() {
             this.isScrolled = window.scrollY > 10;
         },
@@ -166,7 +182,7 @@ export default {
         refreshUserInfo() {
             const userInfo = window.localStorage.getItem('user_info');
             if (userInfo) {
-                try { this.userInfo = JSON.parse(userInfo) } catch(e) { this.userInfo = {} }
+                try { this.userInfo = this.$demo(JSON.parse(userInfo)) } catch(e) { this.userInfo = {} }
             }
         },
 
@@ -188,29 +204,19 @@ export default {
 
         window.addEventListener('scroll', this.handleScroll);
         window.addEventListener('userInfoUpdated', this.refreshUserInfo);
+        document.addEventListener('pointerdown', this.handleOutsidePointer);
+        this.updateNavigationMedia();
     },
 
-    beforeDestroy() {
+    beforeUnmount() {
         window.removeEventListener('scroll', this.handleScroll);
         window.removeEventListener('userInfoUpdated', this.refreshUserInfo);
+        document.removeEventListener('pointerdown', this.handleOutsidePointer);
+        this.navigationMedia?.removeEventListener('change', this.handleNavigationResize);
     }
 }
 </script>
 
 <style scoped>
 @import url("../../assets/css/index/header.css");
-
-.ai-menu-item {
-    font-weight: 500;
-    color: #20B486 !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    white-space: nowrap;
-    max-width: 112px !important;
-}
-.ai-menu-item:hover {
-    color: #1a9d6f !important;
-}
 </style>

@@ -4,53 +4,53 @@
       <div class="search">
         <el-row :gutter="10" style="padding: 10px">
           <el-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8">
-            <span class="search-title">字典编码:</span>
+            <span class="search-title">{{ $t("字典编码:") }}</span>
             <el-input
               style="margin-top: 10px"
-              size="mini"
-              placeholder="请输入字典编码"
+              size="small"
+              :placeholder="$t('请输入字典编码')"
               v-model="search.dictCode"
             >
             </el-input>
           </el-col>
           <el-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8">
-            <span class="search-title">字典标签:</span>
+            <span class="search-title">{{ $t("字典标签:") }}</span>
             <el-input
               style="margin-top: 10px"
-              size="mini"
-              placeholder="请输入字典标签"
+              size="small"
+              :placeholder="$t('请输入字典标签')"
               v-model="search.dictLabel"
             >
             </el-input>
           </el-col>
           <el-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8">
-            <span class="search-title">状态:</span>
+            <span class="search-title">{{ $t("状态:") }}</span>
             <el-select
               clearable
               style="margin-top: 10px"
-              size="mini"
+              size="small"
               v-model="search.status"
-              placeholder="请选择"
+              :placeholder="$t('请选择')"
             >
-              <el-option label="正常" value="0"> </el-option>
-              <el-option label="停用" value="1"> </el-option>
+              <el-option :label="$t('正常')" value="0"> </el-option>
+              <el-option :label="$t('停用')" value="1"> </el-option>
             </el-select>
           </el-col>
           <el-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8">
             <el-button
               style="margin-top: 10px"
-              size="mini"
-              icon="el-icon-search"
+              size="small"
+
               type="primary"
               @click="searchPage"
-              >查询</el-button
+              ><template #icon><i class="el-icon-search" aria-hidden="true"></i></template>{{ $t("查询") }}</el-button
             >
             <el-button
               style="margin-top: 10px"
-              size="mini"
-              icon="el-icon-refresh"
+              size="small"
+
               @click="refresh"
-              >重置</el-button
+              ><template #icon><i class="el-icon-refresh" aria-hidden="true"></i></template>{{ $t("重置") }}</el-button
             >
           </el-col>
         </el-row>
@@ -59,10 +59,10 @@
         <el-row class="action-toolbar">
           <el-button
             class="action-btn btn-create"
-            size="mini"
-            icon="el-icon-plus"
+            size="small"
+
             @click="addDict"
-            >新增</el-button
+            ><template #icon><i class="el-icon-plus" aria-hidden="true"></i></template>{{ $t("新增") }}</el-button
           >
           <el-button
             :class="[
@@ -71,18 +71,18 @@
               { 'btn-edit-active': update.length == 1 },
             ]"
             :disabled="update.length != 1 ? true : false"
-            size="mini"
-            icon="el-icon-edit"
+            size="small"
+
             @click="updateDictBtn"
-            >修改</el-button
+            ><template #icon><i class="el-icon-edit" aria-hidden="true"></i></template>{{ $t("修改") }}</el-button
           >
           <el-button
             class="action-btn btn-delete"
             :disabled="update.length <= 0 ? true : false"
-            size="mini"
-            icon="el-icon-delete"
+            size="small"
+
             @click="deleteDateBtn"
-            >删除</el-button
+            ><template #icon><i class="el-icon-delete" aria-hidden="true"></i></template>{{ $t("删除") }}</el-button
           >
           <!-- <el-button type="warning" size="mini" icon="el-icon-download" plain>导出</el-button> -->
         </el-row>
@@ -105,47 +105,47 @@
           style="width: 100%"
         >
           <el-table-column type="selection" width="55"> </el-table-column>
-          <el-table-column prop="dictCode" label="字典编码" width="180">
+          <el-table-column prop="dictCode" :label="$t('字典编码')" width="180">
           </el-table-column>
-          <el-table-column prop="dictLabel" label="字典标签" width="180">
+          <el-table-column prop="dictLabel" :label="$t('字典标签')" width="180">
           </el-table-column>
-          <el-table-column prop="dictSort" label="字典排序" width="100">
+          <el-table-column prop="dictSort" :label="$t('字典排序')" width="100">
           </el-table-column>
-          <el-table-column prop="dictValue" label="字典键值" width="180">
+          <el-table-column prop="dictValue" :label="$t('字典键值')" width="180">
           </el-table-column>
-          <el-table-column prop="status" label="状态" width="180">
-            <template slot-scope="scope">
-              <el-tag v-if="scope.row.status == 0" type="success">正常</el-tag>
-              <el-tag v-if="scope.row.status == 1" type="danger">停用</el-tag>
+          <el-table-column prop="status" :label="$t('状态')" width="180">
+            <template #default="scope">
+              <el-tag v-if="scope.row.status == 0" type="success">{{ $t("正常") }}</el-tag>
+              <el-tag v-if="scope.row.status == 1" type="danger">{{ $t("停用") }}</el-tag>
             </template>
           </el-table-column>
-          <el-table-column prop="createTime" label="创建时间">
+          <el-table-column prop="createTime" :label="$t('创建时间')">
           </el-table-column>
-          <el-table-column label="操作" width="180">
-            <template slot-scope="scope">
+          <el-table-column :label="$t('操作')" width="180">
+            <template #default="scope">
               <el-button
                 class="row-action-btn row-edit-btn"
-                size="mini"
-                icon="el-icon-edit"
+                size="small"
+
                 @click="updateDict(scope.row.id)"
-                >修改</el-button
+                ><template #icon><i class="el-icon-edit" aria-hidden="true"></i></template>{{ $t("修改") }}</el-button
               >
               <el-popconfirm
                 style="margin-left: 5px"
-                confirm-button-text="确认"
-                cancel-button-text="取消"
-                icon="el-icon-info"
+                :confirm-button-text="$t('确认')"
+                :cancel-button-text="$t('取消')"
+
                 icon-color="red"
-                title="确认删除选中的数据？"
+                :title="$t('确认删除选中的数据？')"
                 @confirm="deleteDate(scope.row.id)"
-              >
-                <el-button
+              ><template #icon><i class="el-icon-info" aria-hidden="true"></i></template>
+                <template #reference><el-button
                   class="row-action-btn row-delete-btn"
-                  size="mini"
-                  slot="reference"
-                  icon="el-icon-delete"
-                  >删除</el-button
-                >
+                  size="small"
+
+
+                  ><template #icon><i class="el-icon-delete" aria-hidden="true"></i></template>{{ $t("删除") }}</el-button
+                ></template>
               </el-popconfirm>
             </template>
           </el-table-column>
@@ -154,8 +154,8 @@
           background
           layout="total, sizes, prev, pager, next, jumper"
           :page-sizes="[10, 20, 50, 100]"
-          :page-size="search.pageSize"
-          :current-page="search.pageNumber"
+          v-model:page-size="search.pageSize"
+          v-model:current-page="search.pageNumber"
           @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
           :total="total"
@@ -176,9 +176,11 @@
 </template>
 
 <script>
+import { t } from '@/i18n'
+
 import { getDictPage, removeDict } from "../../../api/api";
-import addDict from "../../../components/system/dict/addDict";
-import updateDict from "../../../components/system/dict/updateDict";
+import addDict from "../../../components/system/dict/addDict.vue";
+import updateDict from "../../../components/system/dict/updateDict.vue";
 export default {
   data() {
     return {
@@ -216,11 +218,11 @@ export default {
           this.loading = false;
         } else {
           this.$notify.error({
-            title: "错误",
+            get title() { return t("错误") },
             message: res.message,
           });
         }
-      });
+      }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false });
     },
     refresh() {
       this.search.dictCode = "";
@@ -265,7 +267,7 @@ export default {
       this.updateDict(this.update[0]);
     },
     deleteDateBtn() {
-      this.$confirm("确定删除选中的" + this.remove.length + "条数据?", "提示", {
+      this.$confirm(t("确定删除选中的") + this.remove.length + t("条数据?"), t("提示"), {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning",
@@ -280,17 +282,17 @@ export default {
         if (res.code == 1000) {
           this.$message({
             type: "success",
-            message: "删除成功!",
+            get message() { return t("删除成功!") },
           });
           this.pageNumber = 1;
           this.query();
         } else {
           this.$notify.error({
-            title: "错误",
+            get title() { return t("错误") },
             message: res.message,
           });
         }
-      });
+      }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false });
     },
   },
   mounted() {
@@ -445,72 +447,65 @@ export default {
 .el-dialog {
   border-radius: 12px !important;
 }
-::v-deep .el-input__inner {
+:deep(.el-input__inner) {
   border-radius: 10px;
   border-color: #dfdfda;
   color: #3f3f3c;
   background: #ffffff;
 }
-::v-deep .el-input__inner:focus {
+:deep(.el-input__inner:focus) {
   border-color: #bdbdb6;
 }
-::v-deep .el-select .el-input.is-focus .el-input__inner {
+:deep(.el-select .el-input.is-focus .el-input__inner) {
   border-color: #bdbdb6;
 }
-::v-deep .el-table {
+:deep(.el-table) {
   background: transparent;
 }
-::v-deep .el-table th.el-table__cell {
+:deep(.el-table th.el-table__cell) {
   background: #f1f1ee !important;
 }
-::v-deep .el-table td.el-table__cell,
-::v-deep .el-table tr {
+:deep(.el-table td.el-table__cell), :deep(.el-table tr) {
   background: transparent;
 }
-::v-deep
-  .el-table--striped
+:deep(.el-table--striped
   .el-table__body
   tr.el-table__row--striped
-  td.el-table__cell {
+  td.el-table__cell) {
   background: #f8f8f6;
 }
-::v-deep .el-button--primary {
+:deep(.el-button--primary) {
   background: #2f3437;
   border-color: #2f3437;
 }
-::v-deep .el-button--primary:hover,
-::v-deep .el-button--primary:focus {
+:deep(.el-button--primary:hover), :deep(.el-button--primary:focus) {
   background: #3a4044;
   border-color: #3a4044;
 }
-::v-deep .el-button--success {
+:deep(.el-button--success) {
   background: #f3f3f0;
   border-color: #d9d9d4;
   color: #3f3f3c;
 }
-::v-deep .el-button--success:hover,
-::v-deep .el-button--success:focus {
+:deep(.el-button--success:hover), :deep(.el-button--success:focus) {
   background: #ebebe7;
   border-color: #cfcfc8;
   color: #2f2f2c;
 }
-::v-deep .el-button--danger {
+:deep(.el-button--danger) {
   background: #fff5f5;
   border-color: #efc9c9;
   color: #b54747;
 }
-::v-deep .el-button--danger:hover,
-::v-deep .el-button--danger:focus {
+:deep(.el-button--danger:hover), :deep(.el-button--danger:focus) {
   background: #ffefef;
   border-color: #e8b2b2;
 }
-::v-deep .el-pagination.is-background .el-pager li,
-::v-deep .el-pagination.is-background .btn-next,
-::v-deep .el-pagination.is-background .btn-prev {
+:deep(.el-pagination.is-background .el-pager li), :deep(.el-pagination.is-background .btn-next), :deep(.el-pagination.is-background .btn-prev) {
   background: #f3f3f0;
   color: #585854;
 }
-::v-deep .el-pagination.is-background .el-pager li.active {
+:deep(.el-pagination.is-background .el-pager li.active) {
   background: #2f3437;
   color: #ffffff;
 }

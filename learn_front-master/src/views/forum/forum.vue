@@ -5,15 +5,9 @@
       <!-- 页面标题 -->
       <div class="notice-page-title">
         <div class="notice-page-title-text">
-          <i class="title-icon el-icon-chat-dot-round"></i>
-          讨论交流
-          <span class="notice-page-count">
-            共 {{ total }} 个话题
-          </span>
+          <i class="title-icon el-icon-chat-dot-round"></i>{{ $t("讨论交流") }}<span class="notice-page-count">{{ $t("共") }}{{ total }}{{ $t("个话题") }}</span>
         </div>
-        <el-button class="notice-page-add" icon="el-icon-plus" type="success" plain @click="openAddDialog">
-          发起讨论
-        </el-button>
+        <el-button class="notice-page-add"  type="success" plain @click="openAddDialog"><template #icon><i class="el-icon-plus" aria-hidden="true"></i></template>{{ $t("发起讨论") }}</el-button>
       </div>
       
       <!-- 讨论列表 -->
@@ -32,24 +26,24 @@
       <div class="notice-page-fenye" v-if="total > 10">
         <el-pagination
           background
-          :page-size="pageSize"
+          v-model:page-size="pageSize"
           layout="prev, pager, next"
           @current-change="handleCurrentChange"
           :total="total">
         </el-pagination>
       </div>
 
-      <el-dialog
-        title="发起讨论"
+      <el-dialog append-to-body
+        :title="$t('发起讨论')"
         width="520px"
-        :visible.sync="addVisible"
+        :model-value="addVisible"
         :before-close="closeAddDialog"
       >
         <el-form :model="addForm" :rules="rules" ref="forumForm" label-width="82px">
-          <el-form-item label="讨论标题" prop="name">
-            <el-input v-model="addForm.name" maxlength="80" show-word-limit placeholder="请输入讨论标题"></el-input>
+          <el-form-item :label="$t('讨论标题')" prop="name">
+            <el-input v-model="addForm.name" maxlength="80" show-word-limit :placeholder="$t('请输入讨论标题')"></el-input>
           </el-form-item>
-          <el-form-item label="讨论内容" prop="content">
+          <el-form-item :label="$t('讨论内容')" prop="content">
             <el-input
               type="textarea"
               v-model="addForm.content"
@@ -57,14 +51,14 @@
               show-word-limit
               resize="none"
               rows="5"
-              placeholder="把你的问题或观点写清楚，提交后等待管理员审核"
+              :placeholder="$t('把你的问题或观点写清楚，提交后等待管理员审核')"
             ></el-input>
           </el-form-item>
         </el-form>
-        <div slot="footer" class="dialog-footer">
-          <el-button size="mini" @click="closeAddDialog">取 消</el-button>
-          <el-button size="mini" type="success" @click="submitForum">提 交</el-button>
-        </div>
+        <template #footer><div  class="dialog-footer">
+          <el-button size="small" @click="closeAddDialog">{{ $t("取 消") }}</el-button>
+          <el-button size="small" type="success" @click="submitForum">{{ $t("提 交") }}</el-button>
+        </div></template>
       </el-dialog>
       
       <!-- 底部装饰 -->
@@ -77,9 +71,11 @@
 </template>
 
 <script>
+import { t } from '@/i18n'
+
 import { getApeForumPage, saveApeForum } from '../../api/api'
-import headerPage from "../../components/header/header"
-import bottomPage from "../../components/bottom/bottom"
+import headerPage from "../../components/header/header.vue"
+import bottomPage from "../../components/bottom/bottom.vue"
 
 export default {
   name: 'Forum',
@@ -96,12 +92,12 @@ export default {
       },
       rules: {
         name: [
-          { required: true, message: '请输入讨论标题', trigger: 'blur' },
-          { min: 2, max: 80, message: '标题长度在 2 到 80 个字符', trigger: 'blur' }
+          { required: true, get message() { return t("请输入讨论标题") }, trigger: 'blur' },
+          { min: 2, max: 80, get message() { return t("标题长度在 2 到 80 个字符") }, trigger: 'blur' }
         ],
         content: [
-          { required: true, message: '请输入讨论内容', trigger: 'blur' },
-          { min: 5, max: 800, message: '内容长度在 5 到 800 个字符', trigger: 'blur' }
+          { required: true, get message() { return t("请输入讨论内容") }, trigger: 'blur' },
+          { min: 5, max: 800, get message() { return t("内容长度在 5 到 800 个字符") }, trigger: 'blur' }
         ]
       }
     }
@@ -142,18 +138,18 @@ export default {
           if (res.code == 1000) {
             this.$message({
               type: 'success',
-              message: '提交成功，请等待管理员审核'
+              get message() { return t("提交成功，请等待管理员审核") }
             })
             this.closeAddDialog()
             this.query()
           } else {
             this.$notify.error({
-              title: '错误',
+              get title() { return t("错误") },
               message: res.message
             })
           }
         }).catch(() => {
-          this.$message.error('提交失败，请稍后重试')
+          this.$message.error(t("提交失败，请稍后重试"))
         })
       })
     },
@@ -169,13 +165,13 @@ export default {
           this.total = res.data.total
         } else {
           this.$notify.error({
-            title: '错误',
+            get title() { return t("错误") },
             message: res.message
           });
         }
       }).catch(() => {
         this.$notify.error({
-          title: '错误',
+          get title() { return t("错误") },
           message: '获取讨论列表失败，请稍后重试'
         });
       })

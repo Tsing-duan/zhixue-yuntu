@@ -4,43 +4,43 @@
       <div class="search">
         <el-row :gutter="10" style="padding: 10px">
           <el-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8">
-            <span class="search-title">菜单名称:</span>
+            <span class="search-title">{{ $t("菜单名称:") }}</span>
             <el-input
               style="margin-top: 10px"
-              size="mini"
-              placeholder="请输入菜单名称"
+              size="small"
+              :placeholder="$t('请输入菜单名称')"
               v-model="search.menuName"
             >
             </el-input>
           </el-col>
           <el-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8">
-            <span class="search-title">菜单状态:</span>
+            <span class="search-title">{{ $t("菜单状态:") }}</span>
             <el-select
               clearable
               style="margin-top: 10px"
-              size="mini"
+              size="small"
               v-model="search.status"
-              placeholder="请选择"
+              :placeholder="$t('请选择')"
             >
-              <el-option label="正常" value="0"> </el-option>
-              <el-option label="停用" value="1"> </el-option>
+              <el-option :label="$t('正常')" value="0"> </el-option>
+              <el-option :label="$t('停用')" value="1"> </el-option>
             </el-select>
           </el-col>
           <el-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8">
             <el-button
               style="margin-top: 10px"
-              size="mini"
-              icon="el-icon-search"
+              size="small"
+
               type="primary"
               @click="query()"
-              >查询</el-button
+              ><template #icon><i class="el-icon-search" aria-hidden="true"></i></template>{{ $t("查询") }}</el-button
             >
             <el-button
               style="margin-top: 10px"
-              size="mini"
-              icon="el-icon-refresh"
+              size="small"
+
               @click="refresh()"
-              >重置</el-button
+              ><template #icon><i class="el-icon-refresh" aria-hidden="true"></i></template>{{ $t("重置") }}</el-button
             >
           </el-col>
         </el-row>
@@ -49,17 +49,17 @@
         <el-row class="action-toolbar">
           <el-button
             class="action-btn btn-create"
-            size="mini"
-            icon="el-icon-plus"
+            size="small"
+
             @click="addMenu"
-            >新增</el-button
+            ><template #icon><i class="el-icon-plus" aria-hidden="true"></i></template>{{ $t("新增") }}</el-button
           >
           <el-button
             class="action-btn btn-edit"
-            size="mini"
-            icon="el-icon-sort"
+            size="small"
+
             @click="changeExpand"
-            >展开/折叠</el-button
+            ><template #icon><i class="el-icon-sort" aria-hidden="true"></i></template>{{ $t("展开/折叠") }}</el-button
           >
         </el-row>
 
@@ -83,48 +83,47 @@
           :default-expand-all="expand"
           :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
         >
-          <el-table-column prop="menuName" label="菜单名称" width="180">
+          <el-table-column prop="menuName" :label="$t('菜单名称')" width="180">
           </el-table-column>
-          <el-table-column prop="icon" label="图标" width="180">
-            <template slot-scope="scope">
+          <el-table-column prop="icon" :label="$t('图标')" width="180">
+            <template #default="scope">
               <i :class="scope.row.icon"></i>
             </template>
           </el-table-column>
-          <el-table-column prop="orderNum" label="排序"> </el-table-column>
-          <el-table-column prop="perms" label="权限标识"> </el-table-column>
-          <el-table-column prop="componentUrl" label="组件路径">
+          <el-table-column prop="orderNum" :label="$t('排序')"> </el-table-column>
+          <el-table-column prop="perms" :label="$t('权限标识')"> </el-table-column>
+          <el-table-column prop="componentUrl" :label="$t('组件路径')">
           </el-table-column>
-          <el-table-column prop="status" label="状态">
-            <template slot-scope="scope">
-              <el-tag v-if="scope.row.status == 0" type="success">正常</el-tag>
-              <el-tag v-if="scope.row.status == 1" type="danger">停用</el-tag>
+          <el-table-column prop="status" :label="$t('状态')">
+            <template #default="scope">
+              <el-tag v-if="scope.row.status == 0" type="success">{{ $t("正常") }}</el-tag>
+              <el-tag v-if="scope.row.status == 1" type="danger">{{ $t("停用") }}</el-tag>
             </template>
           </el-table-column>
-          <el-table-column prop="createTime" label="创建时间">
+          <el-table-column prop="createTime" :label="$t('创建时间')">
           </el-table-column>
-          <el-table-column label="操作">
-            <template slot-scope="scope">
+          <el-table-column :label="$t('操作')">
+            <template #default="scope">
               <el-dropdown trigger="hover" @command="handleCommand">
-                <span class="el-dropdown-link menu-action-link">
-                  操作<i class="el-icon-arrow-down el-icon--right"></i>
+                <span class="el-dropdown-link menu-action-link">{{ $t("操作") }}<i class="el-icon-arrow-down el-icon--right"></i>
                 </span>
-                <el-dropdown-menu slot="dropdown">
+                <template #dropdown><el-dropdown-menu >
                   <el-dropdown-item
-                    icon="el-icon-plus"
+
                     :command="scope.row.idArrary + '#add#' + scope.row.id"
-                    >新增</el-dropdown-item
+                    ><template #icon><i class="el-icon-plus" aria-hidden="true"></i></template>{{ $t("新增") }}</el-dropdown-item
                   >
                   <el-dropdown-item
-                    icon="el-icon-edit"
+
                     :command="scope.row.id + '#edit'"
-                    >修改</el-dropdown-item
+                    ><template #icon><i class="el-icon-edit" aria-hidden="true"></i></template>{{ $t("修改") }}</el-dropdown-item
                   >
                   <el-dropdown-item
-                    icon="el-icon-delete"
+
                     :command="scope.row.id + '#remove'"
-                    >删除</el-dropdown-item
+                    ><template #icon><i class="el-icon-delete" aria-hidden="true"></i></template>{{ $t("删除") }}</el-dropdown-item
                   >
-                </el-dropdown-menu>
+                </el-dropdown-menu></template>
               </el-dropdown>
             </template>
           </el-table-column>
@@ -148,9 +147,11 @@
 </template>
 
 <script>
+import { t } from '@/i18n'
+
 import { getMenuList, removeMenu } from "../../../api/api";
-import addMenu from "../../../components/system/menu/addMenu";
-import updateMenu from "../../../components/system/menu/updateMenu";
+import addMenu from "../../../components/system/menu/addMenu.vue";
+import updateMenu from "../../../components/system/menu/updateMenu.vue";
 export default {
   data() {
     return {
@@ -181,11 +182,11 @@ export default {
           this.loading = false;
         } else {
           this.$notify.error({
-            title: "错误",
+            get title() { return t("错误") },
             message: res.message,
           });
         }
-      });
+      }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false });
     },
     // 重置
     refresh() {
@@ -236,7 +237,7 @@ export default {
       }
     },
     deleteDate(id) {
-      this.$confirm("确定删除选中的数据?", "提示", {
+      this.$confirm(t("确定删除选中的数据?"), t("提示"), {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning",
@@ -246,16 +247,16 @@ export default {
             if (res.code == 1000) {
               this.$message({
                 type: "success",
-                message: "删除成功!",
+                get message() { return t("删除成功!") },
               });
               this.query();
             } else {
               this.$notify.error({
-                title: "错误",
+                get title() { return t("错误") },
                 message: res.message,
               });
             }
-          });
+          }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false });
         })
         .catch(() => {});
     },
@@ -362,49 +363,44 @@ export default {
 .el-dialog {
   border-radius: 12px !important;
 }
-::v-deep .el-input__inner,
-::v-deep .el-select .el-input__inner {
+:deep(.el-input__inner), :deep(.el-select .el-input__inner) {
   border-radius: 10px;
   border-color: #dfdfda;
   color: #3f3f3c;
   background: #ffffff;
 }
-::v-deep .el-input__inner:focus,
-::v-deep .el-select .el-input__inner:focus {
+:deep(.el-input__inner:focus), :deep(.el-select .el-input__inner:focus) {
   border-color: #bdbdb6;
 }
-::v-deep .el-table {
+:deep(.el-table) {
   background: transparent;
 }
-::v-deep .el-table th.el-table__cell {
+:deep(.el-table th.el-table__cell) {
   background: #f1f1ee !important;
 }
-::v-deep .el-table td.el-table__cell,
-::v-deep .el-table tr {
+:deep(.el-table td.el-table__cell), :deep(.el-table tr) {
   background: transparent;
 }
-::v-deep
-  .el-table--striped
+:deep(.el-table--striped
   .el-table__body
   tr.el-table__row--striped
-  td.el-table__cell {
+  td.el-table__cell) {
   background: #f8f8f6;
 }
-::v-deep .el-button--primary {
+:deep(.el-button--primary) {
   background: #2f3437;
   border-color: #2f3437;
 }
-::v-deep .el-button--primary:hover,
-::v-deep .el-button--primary:focus {
+:deep(.el-button--primary:hover), :deep(.el-button--primary:focus) {
   background: #3a4044;
   border-color: #3a4044;
 }
-::v-deep .el-tag--warning {
+:deep(.el-tag--warning) {
   background: #fdf4e7;
   border-color: #e8c89c;
   color: #9a6428;
 }
-::v-deep .el-tag--success {
+:deep(.el-tag--success) {
   background: #e9f6ee;
   border-color: #8ec9a2;
   color: #2f7d50;

@@ -2,27 +2,27 @@
   <div class="ai-data-page">
     <!-- 管理员：用量卡片 -->
     <div class="usage-cards" v-if="isAdmin">
-      <div class="usage-card"><div class="usage-icon prompt-icon"><i class="el-icon-reading"></i></div><div class="usage-info"><span class="usage-num">{{ fmtNum(usage.weekPromptTokens) }}</span><span class="usage-label">近7天输入 tokens</span></div></div>
-      <div class="usage-card"><div class="usage-icon completion-icon"><i class="el-icon-edit-outline"></i></div><div class="usage-info"><span class="usage-num">{{ fmtNum(usage.weekCompletionTokens) }}</span><span class="usage-label">近7天输出 tokens</span></div></div>
-      <div class="usage-card"><div class="usage-icon total-icon"><i class="el-icon-data-line"></i></div><div class="usage-info"><span class="usage-num">{{ fmtNum(usage.weekTotalTokens) }}</span><span class="usage-label">近7天总计 tokens</span></div></div>
-      <div class="usage-card"><div class="usage-icon call-icon"><i class="el-icon-phone-outline"></i></div><div class="usage-info"><span class="usage-num">{{ usage.weekCount || 0 }}</span><span class="usage-label">近7天成功生成次数</span></div></div>
-      <div class="usage-card cost-card"><div class="usage-icon cost-icon"><i class="el-icon-money"></i></div><div class="usage-info"><span class="usage-num cost-num">{{ costEstimateText }}</span><span class="usage-label">近7天预估费用</span></div></div>
+      <div class="usage-card"><div class="usage-icon prompt-icon"><i class="el-icon-reading"></i></div><div class="usage-info"><span class="usage-num">{{ fmtNum(usage.weekPromptTokens) }}</span><span class="usage-label">{{ $t("近7天输入 tokens") }}</span></div></div>
+      <div class="usage-card"><div class="usage-icon completion-icon"><i class="el-icon-edit-outline"></i></div><div class="usage-info"><span class="usage-num">{{ fmtNum(usage.weekCompletionTokens) }}</span><span class="usage-label">{{ $t("近7天输出 tokens") }}</span></div></div>
+      <div class="usage-card"><div class="usage-icon total-icon"><i class="el-icon-data-line"></i></div><div class="usage-info"><span class="usage-num">{{ fmtNum(usage.weekTotalTokens) }}</span><span class="usage-label">{{ $t("近7天总计 tokens") }}</span></div></div>
+      <div class="usage-card"><div class="usage-icon call-icon"><i class="el-icon-phone-outline"></i></div><div class="usage-info"><span class="usage-num">{{ usage.weekCount || 0 }}</span><span class="usage-label">{{ $t("近7天成功生成次数") }}</span></div></div>
+      <div class="usage-card cost-card"><div class="usage-icon cost-icon"><i class="el-icon-money"></i></div><div class="usage-info"><span class="usage-num cost-num">{{ costEstimateText }}</span><span class="usage-label">{{ $t("近7天预估费用") }}</span></div></div>
     </div>
 
     <!-- 教师：所选课程/考试数据卡片 -->
     <div class="usage-cards" v-if="!isAdmin && activeAgent === 'course-health' && courseStats">
-      <div class="usage-card"><div class="usage-icon prompt-icon"><i class="el-icon-user"></i></div><div class="usage-info"><span class="usage-num">{{ courseStats.enrolled || 0 }}</span><span class="usage-label">报名人数</span></div></div>
-      <div class="usage-card"><div class="usage-icon completion-icon"><i class="el-icon-notebook-2"></i></div><div class="usage-info"><span class="usage-num">{{ courseStats.chapterCount || 0 }}</span><span class="usage-label">章节数</span></div></div>
-      <div class="usage-card"><div class="usage-icon total-icon"><i class="el-icon-edit-outline"></i></div><div class="usage-info"><span class="usage-num">{{ courseStats.homeworkTotal || 0 }}</span><span class="usage-label">作业题目</span></div></div>
-      <div class="usage-card"><div class="usage-icon call-icon"><i class="el-icon-document-checked"></i></div><div class="usage-info"><span class="usage-num">{{ courseStats.homeworkSubmitted || 0 }}</span><span class="usage-label">已提交人次</span></div></div>
-      <div class="usage-card cost-card"><div class="usage-icon cost-icon"><i class="el-icon-s-check"></i></div><div class="usage-info"><span class="usage-num cost-num">{{ courseStats.examCount || 0 }}</span><span class="usage-label">考试数</span></div></div>
+      <div class="usage-card"><div class="usage-icon prompt-icon"><i class="el-icon-user"></i></div><div class="usage-info"><span class="usage-num">{{ courseStats.enrolled || 0 }}</span><span class="usage-label">{{ $t("报名人数") }}</span></div></div>
+      <div class="usage-card"><div class="usage-icon completion-icon"><i class="el-icon-notebook-2"></i></div><div class="usage-info"><span class="usage-num">{{ courseStats.chapterCount || 0 }}</span><span class="usage-label">{{ $t("章节数") }}</span></div></div>
+      <div class="usage-card"><div class="usage-icon total-icon"><i class="el-icon-edit-outline"></i></div><div class="usage-info"><span class="usage-num">{{ courseStats.homeworkTotal || 0 }}</span><span class="usage-label">{{ $t("作业题目") }}</span></div></div>
+      <div class="usage-card"><div class="usage-icon call-icon"><i class="el-icon-document-checked"></i></div><div class="usage-info"><span class="usage-num">{{ courseStats.homeworkSubmitted || 0 }}</span><span class="usage-label">{{ $t("已提交人次") }}</span></div></div>
+      <div class="usage-card cost-card"><div class="usage-icon cost-icon"><i class="el-icon-s-check"></i></div><div class="usage-info"><span class="usage-num cost-num">{{ courseStats.examCount || 0 }}</span><span class="usage-label">{{ $t("考试数") }}</span></div></div>
     </div>
     <div class="usage-cards" v-if="!isAdmin && activeAgent === 'exam-analysis' && examStats">
-      <div class="usage-card"><div class="usage-icon prompt-icon"><i class="el-icon-user"></i></div><div class="usage-info"><span class="usage-num">{{ examStats.studentCount || 0 }}</span><span class="usage-label">参与人数</span></div></div>
-      <div class="usage-card"><div class="usage-icon completion-icon"><i class="el-icon-data-line"></i></div><div class="usage-info"><span class="usage-num">{{ examStats.avgScore || 0 }}</span><span class="usage-label">平均分 / {{ examStats.totalScore }}</span></div></div>
-      <div class="usage-card"><div class="usage-icon total-icon"><i class="el-icon-s-flag"></i></div><div class="usage-info"><span class="usage-num">{{ examStats.passRate || 0 }}%</span><span class="usage-label">及格率（≥60%）</span></div></div>
-      <div class="usage-card"><div class="usage-icon call-icon"><i class="el-icon-circle-check"></i></div><div class="usage-info"><span class="usage-num">{{ examStats.passCount || 0 }}/{{ examStats.studentCount || 0 }}</span><span class="usage-label">及格/总人数</span></div></div>
-      <div class="usage-card cost-card"><div class="usage-icon cost-icon"><i class="el-icon-timer"></i></div><div class="usage-info"><span class="usage-num cost-num">{{ examStats.totalTime || 0 }}分钟</span><span class="usage-label">考试时长</span></div></div>
+      <div class="usage-card"><div class="usage-icon prompt-icon"><i class="el-icon-user"></i></div><div class="usage-info"><span class="usage-num">{{ examStats.studentCount || 0 }}</span><span class="usage-label">{{ $t("参与人数") }}</span></div></div>
+      <div class="usage-card"><div class="usage-icon completion-icon"><i class="el-icon-data-line"></i></div><div class="usage-info"><span class="usage-num">{{ examStats.avgScore || 0 }}</span><span class="usage-label">{{ $t("平均分 /") }}{{ examStats.totalScore }}</span></div></div>
+      <div class="usage-card"><div class="usage-icon total-icon"><i class="el-icon-s-flag"></i></div><div class="usage-info"><span class="usage-num">{{ examStats.passRate || 0 }}%</span><span class="usage-label">{{ $t("及格率（≥60%）") }}</span></div></div>
+      <div class="usage-card"><div class="usage-icon call-icon"><i class="el-icon-circle-check"></i></div><div class="usage-info"><span class="usage-num">{{ examStats.passCount || 0 }}/{{ examStats.studentCount || 0 }}</span><span class="usage-label">{{ $t("及格/总人数") }}</span></div></div>
+      <div class="usage-card cost-card"><div class="usage-icon cost-icon"><i class="el-icon-timer"></i></div><div class="usage-info"><span class="usage-num cost-num">{{ examStats.totalTime || 0 }}{{ $t("分钟") }}</span><span class="usage-label">{{ $t("考试时长") }}</span></div></div>
     </div>
 
     <!-- Agent 工具区（原侧边栏布局，不过滤管理员可见项） -->
@@ -47,22 +47,22 @@
         <!-- 平台运营周报 -->
         <template v-if="activeAgent === 'platform-report'">
           <div class="agent-header">
-            <h3>平台运营周报</h3>
-            <p>汇总用户、课程、考试、内容等全平台数据，AI 生成运营分析报告。</p>
-            <el-button type="primary" size="mini" :loading="agentLoading" @click="runPlatformReport">生成周报</el-button>
+            <h3>{{ $t("平台运营周报") }}</h3>
+            <p>{{ $t("汇总用户、课程、考试、内容等全平台数据，AI 生成运营分析报告。") }}</p>
+            <el-button type="primary" size="small" :loading="agentLoading" @click="runPlatformReport">{{ $t("生成周报") }}</el-button>
           </div>
         </template>
 
         <!-- 课程健康度诊断 -->
         <template v-if="activeAgent === 'course-health'">
           <div class="agent-header">
-            <h3>课程健康度诊断</h3>
-            <p>分析课程选课率、学习进度、作业完成度和考试表现。</p>
+            <h3>{{ $t("课程健康度诊断") }}</h3>
+            <p>{{ $t("分析课程选课率、学习进度、作业完成度和考试表现。") }}</p>
             <div class="agent-params">
-              <el-select v-model="courseHealthForm.taskId" placeholder="选择课程" clearable filterable size="mini" @change="onCourseChange">
+              <el-select v-model="courseHealthForm.taskId" :placeholder="$t('选择课程')" clearable filterable size="small" @change="onCourseChange">
                 <el-option v-for="c in courseOptions" :key="c.id" :label="c.name" :value="c.id"></el-option>
               </el-select>
-              <el-button type="primary" size="mini" :loading="agentLoading" :disabled="!courseHealthForm.taskId" @click="runCourseHealth">生成诊断</el-button>
+              <el-button type="primary" size="small" :loading="agentLoading" :disabled="!courseHealthForm.taskId" @click="runCourseHealth">{{ $t("生成诊断") }}</el-button>
             </div>
           </div>
         </template>
@@ -70,13 +70,13 @@
         <!-- 考试质量分析 -->
         <template v-if="activeAgent === 'exam-analysis'">
           <div class="agent-header">
-            <h3>考试质量分析</h3>
-            <p>分析考试成绩分布、题目难度、常见错误类型。</p>
+            <h3>{{ $t("考试质量分析") }}</h3>
+            <p>{{ $t("分析考试成绩分布、题目难度、常见错误类型。") }}</p>
             <div class="agent-params">
-              <el-select v-model="examAnalysisForm.testId" placeholder="选择考试" clearable filterable size="mini" @change="onExamChange">
+              <el-select v-model="examAnalysisForm.testId" :placeholder="$t('选择考试')" clearable filterable size="small" @change="onExamChange">
                 <el-option v-for="e in examOptions" :key="e.id" :label="e.name + '（' + e.taskName + '）'" :value="e.id"></el-option>
               </el-select>
-              <el-button type="primary" size="mini" :loading="agentLoading" :disabled="!examAnalysisForm.testId" @click="runExamAnalysis">生成分析</el-button>
+              <el-button type="primary" size="small" :loading="agentLoading" :disabled="!examAnalysisForm.testId" @click="runExamAnalysis">{{ $t("生成分析") }}</el-button>
             </div>
           </div>
         </template>
@@ -86,8 +86,8 @@
         <div v-if="agentLoading" class="agent-loading"><span></span><span></span><span></span></div>
         <div v-if="agentReply && !agentLoading" class="agent-result">
           <div class="result-toolbar">
-            <el-button size="mini" plain icon="el-icon-document-copy" @click="copyResult">复制</el-button>
-            <span v-if="selectedHistoryId" class="history-selected-tip">历史记录</span>
+            <el-button size="small" plain  @click="copyResult"><template #icon><i class="el-icon-document-copy" aria-hidden="true"></i></template>{{ $t("复制") }}</el-button>
+            <span v-if="selectedHistoryId" class="history-selected-tip">{{ $t("历史记录") }}</span>
           </div>
           <pre>{{ agentReply }}</pre>
         </div>
@@ -96,23 +96,19 @@
       <aside class="agent-history-panel">
         <div class="history-panel-head">
           <div>
-            <strong>历史记录</strong>
+            <strong>{{ $t("历史记录") }}</strong>
             <span>{{ activeModeTitle }}</span>
           </div>
           <el-button
-            size="mini"
+            size="small"
             plain
-            icon="el-icon-refresh"
+
             :loading="historyLoading"
             @click="loadHistory(selectedHistoryId)"
-          ></el-button>
+          ><template #icon><i class="el-icon-refresh" aria-hidden="true"></i></template></el-button>
         </div>
-        <div v-if="historyLoading && historyList.length === 0" class="history-empty">
-          正在加载历史
-        </div>
-        <div v-else-if="historyList.length === 0" class="history-empty">
-          暂无历史记录
-        </div>
+        <div v-if="historyLoading && historyList.length === 0" class="history-empty">{{ $t("正在加载历史") }}</div>
+        <div v-else-if="historyList.length === 0" class="history-empty">{{ $t("暂无历史记录") }}</div>
         <div v-else class="history-list">
           <button
             v-for="record in historyList"
@@ -139,7 +135,7 @@
       <!-- 平台周报 → Token 用量趋势 -->
       <template v-if="activeAgent === 'platform-report'">
         <div class="chart-panel">
-          <h4>近7天 Token 用量趋势</h4>
+          <h4>{{ $t("近7天 Token 用量趋势") }}</h4>
           <div ref="tokenChart" class="chart-box"></div>
         </div>
       </template>
@@ -147,50 +143,50 @@
       <!-- 课程健康度 → 环形图 + 指标卡片 -->
       <template v-if="activeAgent === 'course-health'">
         <div class="chart-panel" v-if="courseStats">
-          <h4>{{ courseStats.courseName }} — 健康度概览</h4>
+          <h4>{{ courseStats.courseName }}{{ $t("— 健康度概览") }}</h4>
           <el-row :gutter="14">
             <el-col :md="12"><div ref="coursePieChart" class="chart-box"></div></el-col>
             <el-col :md="12">
               <div class="stat-mini-cards">
-                <div class="stat-mini"><span class="sm-num">{{ courseStats.enrolled || 0 }}</span><span class="sm-label">报名人数</span></div>
-                <div class="stat-mini"><span class="sm-num">{{ courseStats.chapterCount || 0 }}</span><span class="sm-label">章节数</span></div>
-                <div class="stat-mini"><span class="sm-num">{{ courseStats.homeworkTotal || 0 }}</span><span class="sm-label">作业题目</span></div>
-                <div class="stat-mini"><span class="sm-num">{{ courseStats.homeworkSubmitted || 0 }}</span><span class="sm-label">已提交人次</span></div>
-                <div class="stat-mini"><span class="sm-num">{{ courseStats.examCount || 0 }}</span><span class="sm-label">考试数</span></div>
-                <div class="stat-mini"><span class="sm-num">{{ courseStats.examTotalScore || 0 }}</span><span class="sm-label">考试总分</span></div>
+                <div class="stat-mini"><span class="sm-num">{{ courseStats.enrolled || 0 }}</span><span class="sm-label">{{ $t("报名人数") }}</span></div>
+                <div class="stat-mini"><span class="sm-num">{{ courseStats.chapterCount || 0 }}</span><span class="sm-label">{{ $t("章节数") }}</span></div>
+                <div class="stat-mini"><span class="sm-num">{{ courseStats.homeworkTotal || 0 }}</span><span class="sm-label">{{ $t("作业题目") }}</span></div>
+                <div class="stat-mini"><span class="sm-num">{{ courseStats.homeworkSubmitted || 0 }}</span><span class="sm-label">{{ $t("已提交人次") }}</span></div>
+                <div class="stat-mini"><span class="sm-num">{{ courseStats.examCount || 0 }}</span><span class="sm-label">{{ $t("考试数") }}</span></div>
+                <div class="stat-mini"><span class="sm-num">{{ courseStats.examTotalScore || 0 }}</span><span class="sm-label">{{ $t("考试总分") }}</span></div>
               </div>
             </el-col>
           </el-row>
         </div>
         <div class="chart-panel chart-placeholder" v-else>
-          <i class="el-icon-pie-chart"></i> 选择课程后自动显示健康度图表
-        </div>
+          <i class="el-icon-pie-chart"></i>{{ $t("选择课程后自动显示健康度图表") }}</div>
       </template>
 
       <!-- 考试质量分析 → 成绩分布 + 正确率 -->
       <template v-if="activeAgent === 'exam-analysis'">
         <div class="chart-panel" v-if="examStats">
-          <h4>{{ examStats.testName }} — 成绩分析</h4>
+          <h4>{{ examStats.testName }}{{ $t("— 成绩分析") }}</h4>
           <el-row :gutter="14">
             <el-col :md="12"><div ref="scoreDistChart" class="chart-box"></div></el-col>
             <el-col :md="12"><div ref="qAccuracyChart" class="chart-box"></div></el-col>
           </el-row>
           <div class="stat-mini-cards" style="margin-top:10px">
-            <div class="stat-mini"><span class="sm-num">{{ examStats.studentCount || 0 }}</span><span class="sm-label">参与人数</span></div>
-            <div class="stat-mini"><span class="sm-num">{{ examStats.avgScore || 0 }}</span><span class="sm-label">平均分 / {{ examStats.totalScore }}</span></div>
-            <div class="stat-mini"><span class="sm-num">{{ examStats.passRate || 0 }}%</span><span class="sm-label">及格率（≥60%）</span></div>
-            <div class="stat-mini"><span class="sm-num">{{ examStats.passCount || 0 }}/{{ examStats.studentCount || 0 }}</span><span class="sm-label">及格/总人数</span></div>
+            <div class="stat-mini"><span class="sm-num">{{ examStats.studentCount || 0 }}</span><span class="sm-label">{{ $t("参与人数") }}</span></div>
+            <div class="stat-mini"><span class="sm-num">{{ examStats.avgScore || 0 }}</span><span class="sm-label">{{ $t("平均分 /") }}{{ examStats.totalScore }}</span></div>
+            <div class="stat-mini"><span class="sm-num">{{ examStats.passRate || 0 }}%</span><span class="sm-label">{{ $t("及格率（≥60%）") }}</span></div>
+            <div class="stat-mini"><span class="sm-num">{{ examStats.passCount || 0 }}/{{ examStats.studentCount || 0 }}</span><span class="sm-label">{{ $t("及格/总人数") }}</span></div>
           </div>
         </div>
         <div class="chart-panel chart-placeholder" v-else>
-          <i class="el-icon-pie-chart"></i> 选择考试后自动显示成绩图表
-        </div>
+          <i class="el-icon-pie-chart"></i>{{ $t("选择考试后自动显示成绩图表") }}</div>
       </template>
     </div>
   </div>
 </template>
 
 <script>
+import { t } from '@/i18n'
+
 import * as echarts from 'echarts'
 import {
   getApeTaskList, getApeTestPage, getApeTaskByTeacherId,
@@ -214,23 +210,24 @@ export default {
   computed: {
     costEstimateText() {
       if (this.usage.costEstimateStatus === 'UNCONFIGURED' || this.usage.estimatedCost == null) {
-        return '未配置估算'
+        return t("未配置估算")
       }
       return `¥${this.usage.estimatedCost}`
     },
     agentModes() {
       const modes = [
-        { key: 'platform-report', icon: 'el-icon-s-data', title: '平台运营周报', desc: '全平台数据概览与趋势分析', adminOnly: true },
-        { key: 'course-health', icon: 'el-icon-s-marketing', title: '课程健康度诊断', desc: '选课、进度、作业、考试表现', adminOnly: false },
-        { key: 'exam-analysis', icon: 'el-icon-s-check', title: '考试质量分析', desc: '成绩分布、题目难度、错误类型', adminOnly: false }
+        { key: 'platform-report', icon: 'el-icon-s-data', get title() { return t("平台运营周报") }, get desc() { return t("全平台数据概览与趋势分析") }, adminOnly: true },
+        { key: 'course-health', icon: 'el-icon-s-marketing', get title() { return t("课程健康度诊断") }, get desc() { return t("选课、进度、作业、考试表现") }, adminOnly: false },
+        { key: 'exam-analysis', icon: 'el-icon-s-check', get title() { return t("考试质量分析") }, get desc() { return t("成绩分布、题目难度、错误类型") }, adminOnly: false }
       ]
       return modes.filter(m => !m.adminOnly || this.isAdmin)
     },
     activeModeTitle() {
       const mode = this.agentModes.find(m => m.key === this.activeAgent)
-      return mode ? mode.title : 'AI 数据整理'
+      return mode ? mode.title : t("AI 数据整理")
     }
   },
+  watch: { '$locale'() { this.$nextTick(() => this.initCharts()) } },
   methods: {
     checkRole() {
       try { const u = JSON.parse(window.localStorage.getItem('user') || '{}'); this.isAdmin = u.userType === 0 } catch (e) { this.isAdmin = false }
@@ -284,7 +281,7 @@ export default {
         if (res.code !== 1000) this.agentError = res.message || '生成失败'
       } catch (e) { this.agentError = '请求失败' } finally { this.agentLoading = false }
     },
-    copyResult() { if (this.agentReply) navigator.clipboard.writeText(this.agentReply).then(() => this.$message.success('已复制')).catch(() => this.$message.warning('复制失败')) },
+    copyResult() { if (this.agentReply) navigator.clipboard.writeText(this.agentReply).then(() => this.$message.success(t("已复制"))).catch(() => this.$message.warning(t("复制失败"))) },
     loadHistory(selectedId) {
       this.historyLoading = true
       getAiHistory({ agentType: this.activeAgent, pageNumber: 1, pageSize: 20 }).then(res => {
@@ -311,7 +308,7 @@ export default {
     },
     confirmDeleteHistory(record) {
       if (!record || !record.id) return
-      this.$confirm('确定删除这条 AI 历史记录吗？', '删除确认', {
+      this.$confirm(t("确定删除这条 AI 历史记录吗？"), t("删除确认"), {
         confirmButtonText: '删除',
         cancelButtonText: '取消',
         type: 'warning'
@@ -325,11 +322,11 @@ export default {
               this.selectedHistoryId = ''
               this.agentReply = ''
             }
-            this.$message.success('已删除')
+            this.$message.success(t("已删除"))
           } else {
             this.$message.error(res.message || '删除失败')
           }
-        })
+        }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false })
       }).catch(() => {}).finally(() => { this.deletingHistoryId = '' })
     },
     historyTitle(record) {
@@ -342,52 +339,58 @@ export default {
       else if (this.activeAgent === 'course-health' && this.courseStats) this.initCourseChart()
       else if (this.activeAgent === 'exam-analysis' && this.examStats) this.initExamChart()
     },
+    chartFor(el) {
+      const existing = echarts.getInstanceByDom(el)
+      if (existing) return existing
+      const chart = echarts.init(el)
+      const observer = new ResizeObserver(() => { if (!chart.isDisposed()) chart.resize() })
+      observer.observe(el)
+      this.chartResources.push({ chart, observer })
+      return chart
+    },
     initTokenChart() {
-      const el = this.$refs.tokenChart; if (!el) return; const chart = echarts.init(el)
+      const el = this.$refs.tokenChart; if (!el) return; const chart = this.chartFor(el)
       const days = this.usage.dailyUsage || []
       chart.setOption({
         tooltip: { trigger: 'axis' },
-        legend: { data: ['输入', '输出'], top: 0, left: 'center' },
+        legend: { data: [t("输入"), t("输出")], top: 0, left: 'center' },
         grid: { left: 50, right: 20, top: 32, bottom: 24 },
         xAxis: { type: 'category', data: days.map(d => d.date.slice(5)), axisLabel: { margin: 8 } },
         yAxis: { type: 'value' },
         series: [
-          { name: '输入', type: 'bar', stack: 'total', data: days.map(d => d.promptTokens), itemStyle: { color: '#5b8deb' } },
-          { name: '输出', type: 'bar', stack: 'total', data: days.map(d => d.completionTokens), itemStyle: { color: '#3eb87a' } }
+          { name: t('输入'), type: 'bar', stack: 'total', data: days.map(d => d.promptTokens), itemStyle: { color: '#5b8deb' } },
+          { name: t('输出'), type: 'bar', stack: 'total', data: days.map(d => d.completionTokens), itemStyle: { color: '#3eb87a' } }
         ]
       })
-      new ResizeObserver(() => { try { chart.resize() } catch (e) {} }).observe(el)
     },
     initCourseChart() {
-      const el = this.$refs.coursePieChart; if (!el || !this.courseStats) return; const chart = echarts.init(el)
+      const el = this.$refs.coursePieChart; if (!el || !this.courseStats) return; const chart = this.chartFor(el)
       const s = this.courseStats
       chart.setOption({
         tooltip: { trigger: 'item' }, legend: { orient: 'vertical', right: 10 },
         series: [{
           type: 'pie', radius: ['45%', '72%'], center: ['45%', '50%'], label: { formatter: '{b}\n{c}' },
           data: [
-            { value: s.homeworkSubmitted || 0, name: '已提交作业', itemStyle: { color: '#3eb87a' } },
-            { value: Math.max(0, (s.homeworkTotal || 0) - (s.homeworkSubmitted || 0)), name: '未提交作业', itemStyle: { color: '#f0c060' } },
-            { value: s.enrolled || 0, name: '报名人数', itemStyle: { color: '#5b8deb' } },
-            { value: s.examCount || 0, name: '关联考试', itemStyle: { color: '#8b5cf6' } }
+            { value: s.homeworkSubmitted || 0, name: t('已提交作业'), itemStyle: { color: '#3eb87a' } },
+            { value: Math.max(0, (s.homeworkTotal || 0) - (s.homeworkSubmitted || 0)), name: t('未提交作业'), itemStyle: { color: '#f0c060' } },
+            { value: s.enrolled || 0, name: t('报名人数'), itemStyle: { color: '#5b8deb' } },
+            { value: s.examCount || 0, name: t('关联考试'), itemStyle: { color: '#8b5cf6' } }
           ]
         }]
       })
-      new ResizeObserver(() => { try { chart.resize() } catch (e) {} }).observe(el)
     },
     initExamChart() {
       const sel = this.$refs.scoreDistChart; const qel = this.$refs.qAccuracyChart
       if (!sel || !qel || !this.examStats) return; const stats = this.examStats
-      const sChart = echarts.init(sel)
+      const sChart = this.chartFor(sel)
       const dist = stats.scoreDistribution || []
       sChart.setOption({
         tooltip: { trigger: 'axis' }, grid: { left: 40, right: 20, top: 10, bottom: 30 },
         xAxis: { type: 'category', data: dist.map(d => d.label) }, yAxis: { type: 'value' },
         series: [{ type: 'bar', data: dist.map(d => d.count), itemStyle: { color: '#5b8deb' }, barWidth: '55%' }]
       })
-      new ResizeObserver(() => { try { sChart.resize() } catch (e) {} }).observe(sel)
 
-      const qChart = echarts.init(qel)
+      const qChart = this.chartFor(qel)
       const qa = stats.questionAccuracy || []
       qChart.setOption({
         tooltip: { trigger: 'axis' }, grid: { left: 100, right: 30, top: 10, bottom: 20 },
@@ -396,7 +399,6 @@ export default {
         series: [{ type: 'bar', data: qa.map(q => q.rate).reverse(), barWidth: '60%',
           itemStyle: { color: p => p.value >= 60 ? '#3eb87a' : '#ef6c6c' } }]
       })
-      new ResizeObserver(() => { try { qChart.resize() } catch (e) {} }).observe(qel)
     },
     loadCourses() {
       const map = {}; const done = () => { this.courseOptions = Object.values(map) }
@@ -414,6 +416,8 @@ export default {
     },
     fmtNum(n) { if (n == null || n === 0) return '0'; if (n >= 10000) return (n / 10000).toFixed(1) + 'w'; if (n >= 1000) return (n / 1000).toFixed(1) + 'k'; return String(n) }
   },
+  created() { this.chartResources = [] },
+  beforeUnmount() { this.chartResources.forEach(({chart, observer}) => { observer.disconnect(); chart.dispose() }); this.chartResources = [] },
   mounted() {
     this.checkRole()
     if (!this.isAdmin) this.activeAgent = 'course-health'
@@ -479,8 +483,8 @@ export default {
 .stat-mini-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 10px; }
 .stat-mini { background: #f8f8f6; border: 1px solid #ededeb; border-radius: 8px; padding: 10px 12px; text-align: center; } .sm-num { display: block; font-size: 20px; font-weight: 700; color: #2f2f2c; } .sm-label { display: block; font-size: 11px; color: #8c8c86; margin-top: 3px; }
 
-::v-deep .el-select .el-input__inner { border-radius: 8px; border-color: #d9d9d4; background: #fff; }
-::v-deep .el-button--primary { background: #2f3437; border-color: #2f3437; border-radius: 8px; } ::v-deep .el-button--primary:hover { background: #3a4044; border-color: #3a4044; }
+:deep(.el-select .el-input__inner) { border-radius: 8px; border-color: #d9d9d4; background: #fff; }
+:deep(.el-button--primary) { background: #2f3437; border-color: #2f3437; border-radius: 8px; } :deep(.el-button--primary:hover) { background: #3a4044; border-color: #3a4044; }
 
 @media (max-width: 1100px) {
   .agent-section { flex-wrap: wrap; }

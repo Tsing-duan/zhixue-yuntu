@@ -216,6 +216,23 @@ class DeepSeekClientContractTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void disabledWithCredentialStillMakesNoNetworkRequest() {
+        respond(200, successBody("final", "推理", 4, 2, 6, "stop"));
+        DeepSeekClient client = client(1000);
+        org.springframework.test.util.ReflectionTestUtils.setField(client, "enabled", false);
+        assertThat(client.generate("system", "question").getErrorType()).isEqualTo(AiGenerationResult.ErrorType.NOT_CONFIGURED);
+        assertThat(attempts.get()).isZero();
+    }
+
+    @Test
+    void oversizedOutputAndUnboundedTimeoutAreRejected() {
+        assertThatThrownBy(() -> new DeepSeekClient(TEST_KEY, baseUrl(), "deepseek-v4-flash", "high", 8193, 5000, 1000, "test"))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new DeepSeekClient(TEST_KEY, baseUrl(), "deepseek-v4-flash", "high", 4096, 5000, 180001, "test"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     private DeepSeekClient client(int readTimeoutMs) {
         return new DeepSeekClient(TEST_KEY, baseUrl(), "deepseek-v4-flash", "high", 4096, 5000, readTimeoutMs, "test");
     }

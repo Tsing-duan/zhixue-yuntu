@@ -4,20 +4,18 @@
     <div class="addArticle-content">
       <div class="addArticle-form">
         <!-- 页面标题 -->
-        <div class="addArticle-title">
-          编辑笔记
-        </div>
+        <div class="addArticle-title">{{ $t("编辑笔记") }}</div>
         
         <!-- 表单容器 -->
         <div class="addArticle-list">
           <!-- 标题 -->
           <div class="addArticle-item">
-            <div>标题</div>
+            <div>{{ $t("标题") }}</div>
             <div>
               <el-input 
-                size="mini" 
+                size="small"
                 v-model="form.title" 
-                placeholder="请输入笔记标题"
+                :placeholder="$t('请输入笔记标题')"
                 clearable
               ></el-input>
             </div>
@@ -25,14 +23,14 @@
           
           <!-- 摘要 -->
           <div class="addArticle-item">
-            <div>摘要</div>
+            <div>{{ $t("摘要") }}</div>
             <div>
               <el-input 
                 type="textarea" 
                 :rows="4" 
                 v-model="form.desc" 
-                size="mini" 
-                placeholder="请输入笔记摘要"
+                size="small"
+                :placeholder="$t('请输入笔记摘要')"
                 maxlength="200"
                 show-word-limit
               ></el-input>
@@ -41,14 +39,14 @@
           
           <!-- 内容（富文本编辑器） -->
           <div class="addArticle-item">
-            <div>内容</div>
+            <div>{{ $t("内容") }}</div>
             <div>
               <quill-editor 
                 ref="myQuillEditor" 
                 :options="editorOption"
                 v-model="form.content"
               />
-              <el-upload 
+              <el-upload :on-error="$uploadError"
                 class="Quill-uploader" 
                 :show-file-list="false" 
                 accept="image/*" 
@@ -65,7 +63,7 @@
           
           <!-- 提交按钮 -->
           <div style="display: flex; justify-content: center; margin-top: 16px;">
-            <el-button @click="submit" size="mini" type="primary">✏️ 保存修改</el-button>
+            <el-button @click="submit" size="small" type="primary">{{ $t("✏️ 保存修改") }}</el-button>
           </div>
         </div>
       </div>
@@ -75,10 +73,12 @@
 </template>
 
 <script>
+import { t } from '@/i18n'
+
 import { getApeArticleById, updateApeArticle } from '../../api/api' 
 import { mixin } from '../../minix/index';
-import headerPage from "../../components/header/header"
-import bottomPage from "../../components/bottom/bottom"
+import headerPage from "../../components/header/header.vue"
+import bottomPage from "../../components/bottom/bottom.vue"
 
 export default {
   name: 'EditArticle',
@@ -92,7 +92,7 @@ export default {
         title: ""
       },
       editorOption: {
-        placeholder: "在这里编辑你的笔记内容...",
+        get placeholder() { return t("在这里编辑你的笔记内容...") },
         modules: { 
           toolbar: {
             container: [
@@ -132,15 +132,15 @@ export default {
   methods: {
     submit() {
       if (!this.form.title) {
-        this.$message({ message: '请输入笔记标题', type: 'warning' })
+        this.$message({ get message() { return t("请输入笔记标题") }, type: 'warning' })
         return
       }
       if (!this.form.content) {
-        this.$message({ message: '请输入笔记内容', type: 'warning' })
+        this.$message({ get message() { return t("请输入笔记内容") }, type: 'warning' })
         return
       }
       if (!this.form.desc) {
-        this.$message({ message: '请输入笔记摘要', type: 'warning' })
+        this.$message({ get message() { return t("请输入笔记摘要") }, type: 'warning' })
         return
       }
       
@@ -154,7 +154,7 @@ export default {
       updateApeArticle(param).then(res => {
         if(res.code == 1000) {
           this.$message({
-            message: '修改成功，请等待管理员审核',
+            get message() { return t("修改成功，请等待管理员审核") },
             type: 'success'
           })
           setTimeout(() => {
@@ -168,7 +168,7 @@ export default {
         }
       }).catch(() => {
         this.$message({
-          message: '修改失败，请稍后重试',
+          get message() { return t("修改失败，请稍后重试") },
           type: 'error'
         })
       })
@@ -176,12 +176,12 @@ export default {
     handleQillSuccess(res) {
       if(res.code == 1000){
         this.$notify({
-          title: '上传成功',
+          get title() { return t("上传成功") },
           type: 'success'
         });
-        let imgurl = this.$store.state.HOST + res.message
+        let imgurl = this.$config.HOST + res.message
         let quill = this.$refs.myQuillEditor.quill
-        let position = quill.getSelection().index
+        let position = (quill.getSelection(true)?.index ?? Math.max(0, quill.getLength() - 1))
         quill.insertEmbed(position, 'image', imgurl)
         quill.setSelection(position + 1)
       } else {
@@ -200,7 +200,7 @@ export default {
         }
       }).catch(() => {
         this.$message({
-          message: '获取笔记信息失败',
+          get message() { return t("获取笔记信息失败") },
           type: 'error'
         })
       })
@@ -214,7 +214,7 @@ export default {
       this.getApeArticleById()
     } else {
       this.$message({
-        message: '参数错误',
+        get message() { return t("参数错误") },
         type: 'error'
       })
       this.$router.push("/article")

@@ -155,11 +155,11 @@ start_frontend() {
   rm -f "$RUN_DIR/$label.pid"
   if can_use_detached_screen; then
     start_detached_in_directory "$SCREEN_PREFIX-$label" "$RUN_DIR/$label.log" "$directory" \
-      "$(command -v npm)" run serve -- --no-open
+      "$(command -v npm)" run serve
   else
     (
       cd "$directory"
-      nohup npm run serve -- --no-open </dev/null >"$RUN_DIR/$label.log" 2>&1 &
+      nohup npm run serve </dev/null >"$RUN_DIR/$label.log" 2>&1 &
       local pid="$!"
       echo "$pid" >"$RUN_DIR/$label.pid"
       disown "$pid" 2>/dev/null || true

@@ -29,16 +29,18 @@
           </div>
           <div class="number">3</div>
         </div>
-        <div class="subtitle">哎呀。你没有访问权限。</div>
+        <div class="subtitle">{{ $t("哎呀。你没有访问权限。") }}</div>
         <div class="btn">
-          <button @click="goLogin" style="margin-right: 30px">返回登陆页</button>
-          <button @click="goBack" style="margin-left: 20px">返回上一页</button>
+          <button @click="goLogin" style="margin-right: 30px">{{ $t("返回登陆页") }}</button>
+          <button @click="goBack" style="margin-left: 20px">{{ $t("返回上一页") }}</button>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
+import { t } from '@/i18n'
+
 import { logout } from '@/api/api'
 export default {
   name:"error-page",
@@ -57,15 +59,15 @@ export default {
     goLogin() {
         logout().then(res => {
         if(res.code == 1000) {
-            this.$store.commit('user/setToken', "")
-            this.$store.commit('user/setUser', "")
-            this.$store.commit('menu/setMenus', [])
-            this.$store.commit('menu/setRoutes', [])
-            this.$store.commit('menu/setDisplayMenus', [])
-            this.$store.commit('menu/setBtnMenus', [])
+            this.$session.setToken("")
+            this.$session.setUser("")
+            this.$menus.setMenus([])
+            this.$menus.setRoutes([])
+            this.$menus.setDisplayMenus([])
+            this.$menus.setBtnMenus([])
             this.$router.push("/login")
             this.$message({
-                message: "退出登陆",
+                get message() { return t("退出登陆") },
                 type: 'success'
             });
         } else {
@@ -74,7 +76,7 @@ export default {
                 type: 'warning'
             });
         }
-        })
+        }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false })
     }
   }
 };

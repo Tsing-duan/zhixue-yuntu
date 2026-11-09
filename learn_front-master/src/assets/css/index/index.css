@@ -513,7 +513,7 @@ html {
   width: 100%;
 }
 
-.searchKey >>> .el-input__inner {
+.searchKey :deep(.el-input__inner) {
   height: 52px;
   border-radius: 52px;
   border: 1px solid #e0e8f0;
@@ -524,12 +524,12 @@ html {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
 }
 
-.searchKey >>> .el-input__inner:focus {
+.searchKey :deep(.el-input__inner:focus) {
   border-color: #20B486;
   box-shadow: 0 0 0 4px rgba(32, 180, 134, 0.1);
 }
 
-.searchKey >>> .el-input__suffix {
+.searchKey :deep(.el-input__suffix) {
   font-size: 18px;
   color: #20B486;
 }

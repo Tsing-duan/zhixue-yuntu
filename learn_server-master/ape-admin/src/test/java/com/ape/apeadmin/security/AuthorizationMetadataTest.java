@@ -68,7 +68,7 @@ class AuthorizationMetadataTest {
         assertExactRoles(AiController.class.getMethod("wrongList"), "student");
         assertExactRoles(AiController.class.getMethod("wrongAgent", JSONObject.class), "student");
         assertAnyRole(AiController.class.getMethod("lessonPrepare", JSONObject.class), "admin", "teacher");
-        assertAnyRole(AiController.class.getMethod("courseSummary", JSONObject.class), "admin", "teacher");
+        assertAnyRole(AiController.class.getMethod("courseSummary", JSONObject.class), "admin", "teacher", "student");
         assertAnyRole(AiController.class.getMethod("dataAgent", JSONObject.class), "admin", "teacher");
         assertAnyRole(AiController.class.getMethod("courseStats", String.class), "admin", "teacher");
         assertAnyRole(AiController.class.getMethod("examStats", String.class), "admin", "teacher");

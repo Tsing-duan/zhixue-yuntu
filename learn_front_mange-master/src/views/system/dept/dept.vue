@@ -4,43 +4,43 @@
       <div class="search">
         <el-row :gutter="10" style="padding: 10px">
           <el-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8">
-            <span class="search-title">部门名称:</span>
+            <span class="search-title">{{ $t("部门名称:") }}</span>
             <el-input
               style="margin-top: 10px"
-              size="mini"
-              placeholder="请输入部门名称"
+              size="small"
+              :placeholder="$t('请输入部门名称')"
               v-model="search.deptName"
             >
             </el-input>
           </el-col>
           <el-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8">
-            <span class="search-title">部门状态:</span>
+            <span class="search-title">{{ $t("部门状态:") }}</span>
             <el-select
               clearable
               style="margin-top: 10px"
-              size="mini"
+              size="small"
               v-model="search.status"
-              placeholder="请选择"
+              :placeholder="$t('请选择')"
             >
-              <el-option label="正常" value="0"> </el-option>
-              <el-option label="停用" value="1"> </el-option>
+              <el-option :label="$t('正常')" value="0"> </el-option>
+              <el-option :label="$t('停用')" value="1"> </el-option>
             </el-select>
           </el-col>
           <el-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8">
             <el-button
               style="margin-top: 10px"
-              size="mini"
-              icon="el-icon-search"
+              size="small"
+
               type="primary"
               @click="searchPage"
-              >查询</el-button
+              ><template #icon><i class="el-icon-search" aria-hidden="true"></i></template>{{ $t("查询") }}</el-button
             >
             <el-button
               style="margin-top: 10px"
-              size="mini"
-              icon="el-icon-refresh"
+              size="small"
+
               @click="refresh"
-              >重置</el-button
+              ><template #icon><i class="el-icon-refresh" aria-hidden="true"></i></template>{{ $t("重置") }}</el-button
             >
           </el-col>
         </el-row>
@@ -49,17 +49,17 @@
         <el-row class="action-toolbar">
           <el-button
             class="action-btn btn-create"
-            size="mini"
-            icon="el-icon-plus"
+            size="small"
+
             @click="addDept"
-            >新增</el-button
+            ><template #icon><i class="el-icon-plus" aria-hidden="true"></i></template>{{ $t("新增") }}</el-button
           >
           <el-button
             class="action-btn btn-edit"
-            size="mini"
-            icon="el-icon-sort"
+            size="small"
+
             @click="changeExpand"
-            >展开/折叠</el-button
+            ><template #icon><i class="el-icon-sort" aria-hidden="true"></i></template>{{ $t("展开/折叠") }}</el-button
           >
         </el-row>
         <el-table
@@ -82,56 +82,56 @@
           :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
           style="width: 100%"
         >
-          <el-table-column prop="deptName" label="部门名称" min-width="180">
+          <el-table-column prop="deptName" :label="$t('部门名称')" min-width="180">
           </el-table-column>
-          <el-table-column prop="orderNum" label="排序" width="90">
+          <el-table-column prop="orderNum" :label="$t('排序')" width="90">
           </el-table-column>
-          <el-table-column prop="leader" label="负责人" width="140">
+          <el-table-column prop="leader" :label="$t('负责人')" width="140">
           </el-table-column>
-          <el-table-column prop="phone" label="联系电话" width="150">
+          <el-table-column prop="phone" :label="$t('联系电话')" width="150">
           </el-table-column>
-          <el-table-column prop="email" label="邮箱" min-width="180">
+          <el-table-column prop="email" :label="$t('邮箱')" min-width="180">
           </el-table-column>
-          <el-table-column prop="status" label="状态" width="100">
-            <template slot-scope="scope">
-              <el-tag v-if="scope.row.status == 0" type="success">正常</el-tag>
-              <el-tag v-if="scope.row.status == 1" type="danger">停用</el-tag>
+          <el-table-column prop="status" :label="$t('状态')" width="100">
+            <template #default="scope">
+              <el-tag v-if="scope.row.status == 0" type="success">{{ $t("正常") }}</el-tag>
+              <el-tag v-if="scope.row.status == 1" type="danger">{{ $t("停用") }}</el-tag>
             </template>
           </el-table-column>
-          <el-table-column prop="createTime" label="创建时间" width="170">
+          <el-table-column prop="createTime" :label="$t('创建时间')" width="170">
           </el-table-column>
-          <el-table-column label="操作" width="260">
-            <template slot-scope="scope">
+          <el-table-column :label="$t('操作')" width="260">
+            <template #default="scope">
               <el-button
                 class="row-action-btn row-add-btn"
-                size="mini"
-                icon="el-icon-plus"
+                size="small"
+
                 @click="addChildDept(scope.row)"
-                >新增</el-button
+                ><template #icon><i class="el-icon-plus" aria-hidden="true"></i></template>{{ $t("新增") }}</el-button
               >
               <el-button
                 class="row-action-btn row-edit-btn"
-                size="mini"
-                icon="el-icon-edit"
+                size="small"
+
                 @click="updateDept(scope.row.id)"
-                >修改</el-button
+                ><template #icon><i class="el-icon-edit" aria-hidden="true"></i></template>{{ $t("修改") }}</el-button
               >
               <el-popconfirm
                 style="margin-left: 5px"
-                confirm-button-text="确认"
-                cancel-button-text="取消"
-                icon="el-icon-info"
+                :confirm-button-text="$t('确认')"
+                :cancel-button-text="$t('取消')"
+
                 icon-color="red"
-                title="确认删除选中的数据？"
+                :title="$t('确认删除选中的数据？')"
                 @confirm="deleteDate(scope.row.id)"
-              >
-                <el-button
+              ><template #icon><i class="el-icon-info" aria-hidden="true"></i></template>
+                <template #reference><el-button
                   class="row-action-btn row-delete-btn"
-                  size="mini"
-                  slot="reference"
-                  icon="el-icon-delete"
-                  >删除</el-button
-                >
+                  size="small"
+
+
+                  ><template #icon><i class="el-icon-delete" aria-hidden="true"></i></template>{{ $t("删除") }}</el-button
+                ></template>
               </el-popconfirm>
             </template>
           </el-table-column>
@@ -155,9 +155,11 @@
 </template>
 
 <script>
+import { t } from '@/i18n'
+
 import { getDeptList, removeDept } from "../../../api/api";
-import addDept from "../../../components/system/dept/addDept";
-import updateDept from "../../../components/system/dept/updateDept";
+import addDept from "../../../components/system/dept/addDept.vue";
+import updateDept from "../../../components/system/dept/updateDept.vue";
 
 export default {
   data() {
@@ -194,11 +196,11 @@ export default {
         } else {
           this.loading = false;
           this.$notify.error({
-            title: "错误",
+            get title() { return t("错误") },
             message: res.message,
           });
         }
-      });
+      }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false });
     },
     refresh() {
       this.search.deptName = "";
@@ -247,16 +249,16 @@ export default {
         if (res.code == 1000) {
           this.$message({
             type: "success",
-            message: "删除成功!",
+            get message() { return t("删除成功!") },
           });
           this.query();
         } else {
           this.$notify.error({
-            title: "错误",
+            get title() { return t("错误") },
             message: res.message,
           });
         }
-      });
+      }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false });
     },
   },
   mounted() {
@@ -387,33 +389,29 @@ export default {
 .el-table {
   padding: 10px;
 }
-::v-deep .el-input__inner,
-::v-deep .el-select .el-input__inner {
+:deep(.el-input__inner), :deep(.el-select .el-input__inner) {
   border-radius: 10px;
   border-color: #dfdfda;
   color: #3f3f3c;
   background: #ffffff;
 }
-::v-deep .el-input__inner:focus,
-::v-deep .el-select .el-input__inner:focus {
+:deep(.el-input__inner:focus), :deep(.el-select .el-input__inner:focus) {
   border-color: #bdbdb6;
 }
-::v-deep .el-table {
+:deep(.el-table) {
   background: transparent;
 }
-::v-deep .el-table th.el-table__cell {
+:deep(.el-table th.el-table__cell) {
   background: #f1f1ee !important;
 }
-::v-deep .el-table td.el-table__cell,
-::v-deep .el-table tr {
+:deep(.el-table td.el-table__cell), :deep(.el-table tr) {
   background: transparent;
 }
-::v-deep .el-button--primary {
+:deep(.el-button--primary) {
   background: #2f3437;
   border-color: #2f3437;
 }
-::v-deep .el-button--primary:hover,
-::v-deep .el-button--primary:focus {
+:deep(.el-button--primary:hover), :deep(.el-button--primary:focus) {
   background: #3a4044;
   border-color: #3a4044;
 }

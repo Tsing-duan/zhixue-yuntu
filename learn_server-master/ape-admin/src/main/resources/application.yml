@@ -50,6 +50,7 @@ mybatis-plus:
   configLocation: classpath:mybatis/mybatis-config.xml
 # DeepSeek AI 配置。API Key 缺失时，仅生成型 AI 请求明确失败，其他功能可正常启动。
 deepseek:
+  enabled: ${DEEPSEEK_ENABLED:true}
   api-key: ${DEEPSEEK_API_KEY:}
   base-url: ${DEEPSEEK_BASE_URL:https://api.deepseek.com}
   model: ${DEEPSEEK_MODEL:deepseek-v4-flash}

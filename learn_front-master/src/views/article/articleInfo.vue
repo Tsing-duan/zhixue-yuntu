@@ -13,41 +13,40 @@
             v-if="article.favor == 1"
             type="warning"
             @click="removeFavor"
-            icon="el-icon-star-off"
+
             circle
             :loading="favorLoading"
             :disabled="favorLoading"
-          ></el-button>
+          ><template #icon><i class="el-icon-star-off" aria-hidden="true"></i></template></el-button>
           <el-button
             v-if="article.favor == 0"
             type="success"
             @click="addFavor"
-            icon="el-icon-star-on"
+
             circle
             :loading="favorLoading"
             :disabled="favorLoading"
-          ></el-button>
+          ><template #icon><i class="el-icon-star-on" aria-hidden="true"></i></template></el-button>
           <span style="font-size: 14px; color: #64748b; white-space: nowrap;">
-            <i class="el-icon-star-off"></i> {{ favorCount }} 收藏
-          </span>
+            <i class="el-icon-star-off"></i> {{ favorCount }}{{ $t("收藏") }}</span>
           <el-button
             v-if="article.createBy == user.userName"
             @click="editArticle(article.id)"
             type="primary"
-            icon="el-icon-edit"
+
             circle
-          ></el-button>
+          ><template #icon><i class="el-icon-edit" aria-hidden="true"></i></template></el-button>
         </div>
       </div>
       
       <!-- 笔记内容卡片 -->
       <div class="articleInfo-desc">
         <div class="articleInfo-desc1">
-          <span>摘要</span>
+          <span>{{ $t("摘要") }}</span>
           {{article.articleDesc}}
         </div>
         <div class="articleInfo-desc2">
-          <span>正文</span>
+          <span>{{ $t("正文") }}</span>
           <div v-html="sanitizedContent"></div>
         </div>
       </div>
@@ -56,17 +55,17 @@
     <!-- 发表评论区域 -->
     <div class="articleInfo-bottom">
       <div class="articleInfo-comment">
-        <div class="articleInfo-comment-font">发表评论</div>
+        <div class="articleInfo-comment-font">{{ $t("发表评论") }}</div>
         <div class="articleInfo-comment-content">
           <el-input 
             type="textarea" 
             resize="none" 
             rows="5" 
             v-model="content" 
-            placeholder="分享你的想法或见解..."
+            :placeholder="$t('分享你的想法或见解...')"
           ></el-input>
           <div class="articleInfo-comment-btn">
-            <el-button @click="saveApeArticleComment" size="mini" type="success" plain>提交评论</el-button>
+            <el-button @click="saveApeArticleComment" size="small" type="success" plain>{{ $t("提交评论") }}</el-button>
           </div>
         </div>
       </div>
@@ -75,9 +74,9 @@
     <!-- 评论列表区域 -->
     <div class="articleInfo-bottom">
       <div class="articleInfo-comment">
-        <div class="articleInfo-comment-font">学员评论</div>
+        <div class="articleInfo-comment-font">{{ $t("学员评论") }}</div>
         <div v-if="commentList.length <= 0" class="articleInfo-comment-empty">
-          <el-empty description="还没有评论，快来发表第一条评论吧！"></el-empty>
+          <el-empty :description="$t('还没有评论，快来发表第一条评论吧！')"></el-empty>
         </div>
         <div v-if="commentList.length > 0" class="articleInfo-comment-list">
           <div v-for="(item,index) in commentList" :key="index">
@@ -127,6 +126,8 @@
 </template>
 
 <script>
+import { t } from '@/i18n'
+
 import DOMPurify from 'dompurify'
 import {
   saveApeArticleFavor,
@@ -135,8 +136,8 @@ import {
   saveApeArticleComment,
   getApeArticleCommentByArticleId
 } from '../../api/api'
-import headerPage from "../../components/header/header"
-import bottomPage from "../../components/bottom/bottom"
+import headerPage from "../../components/header/header.vue"
+import bottomPage from "../../components/bottom/bottom.vue"
 
 export default {
   name: 'ArticleInfo',
@@ -169,7 +170,7 @@ export default {
       }
       removeApeArticleFavor(param).then(res => {
         if(res.code == 1000) {
-          this.$message({ type: 'success', message: '取消收藏成功!' });
+          this.$message({ type: 'success', get message() { return t("取消收藏成功!") } });
           // 以后端返回的最新数据为准
           if (res.data) {
             this.favorCount = res.data.favorCount || 0
@@ -180,7 +181,7 @@ export default {
         }
       }).finally(() => {
         this.favorLoading = false
-      })
+      }).catch(() => { /* The request layer already reports failed or cancelled requests. */ })
     },
     addFavor() {
       this.favorLoading = true
@@ -190,7 +191,7 @@ export default {
       }
       saveApeArticleFavor(param).then(res => {
         if(res.code == 1000) {
-          this.$message({ type: 'success', message: '收藏成功!' });
+          this.$message({ type: 'success', get message() { return t("收藏成功!") } });
           // 以后端返回的最新数据为准
           if (res.data) {
             this.favorCount = res.data.favorCount || 0
@@ -201,14 +202,14 @@ export default {
         }
       }).finally(() => {
         this.favorLoading = false
-      })
+      }).catch(() => { /* The request layer already reports failed or cancelled requests. */ })
     },
     editArticle() {
       this.$router.push("/editArticle?id=" + this.articleId)
     },
     saveApeArticleComment() {
       if (!this.content.trim()) {
-        this.$message({ type: 'warning', message: '请输入评论内容' });
+        this.$message({ type: 'warning', get message() { return t("请输入评论内容") } });
         return
       }
       var param = {
@@ -217,18 +218,18 @@ export default {
       }
       saveApeArticleComment(param).then(res => {
         if (res.code == 1000) {
-          this.$message({ type: 'success', message: '评论成功!' });
+          this.$message({ type: 'success', get message() { return t("评论成功!") } });
           this.content = ""
           this.getApeArticleCommentByArticleId()
         }
-      })
+      }).catch(() => { /* The request layer already reports failed or cancelled requests. */ })
     },
     getApeArticleCommentByArticleId() {
       getApeArticleCommentByArticleId({ id: this.articleId }).then(res => {
         if (res.code == 1000) {
           this.commentList = res.data
         }
-      })
+      }).catch(() => { /* The request layer already reports failed or cancelled requests. */ })
     },
     getApeArticleById() {
       getApeArticleById({ id: this.articleId }).then(res => {
@@ -239,7 +240,7 @@ export default {
             this.favorCount = res.data.favorCount
           }
         }
-      })
+      }).catch(() => { /* The request layer already reports failed or cancelled requests. */ })
     },
     resolveAvatar(avatar) {
       return this.$resolveAvatar(avatar, "/img/avatars/zhixue-default.png")
@@ -253,7 +254,7 @@ export default {
     }
     this.getApeArticleById()
     this.getApeArticleCommentByArticleId()
-    try { this.user = JSON.parse(window.localStorage.getItem("user_info")) } catch(e) { this.user = {} }
+    try { this.user = this.$demo(JSON.parse(window.localStorage.getItem("user_info"))) } catch(e) { this.user = {} }
   }
 }
 </script>
@@ -262,22 +263,22 @@ export default {
 @import url("../../assets/css/article/articleInfo.css");
 
 /* 富文本内容样式覆盖 */
-::v-deep img {
+:deep(img) {
   max-width: 100% !important;
   border-radius: 16px;
 }
 
-::v-deep p {
+:deep(p) {
   margin-bottom: 16px;
   line-height: 1.8;
 }
 
-::v-deep h1, ::v-deep h2, ::v-deep h3 {
+:deep(h1), :deep(h2), :deep(h3) {
   margin: 24px 0 16px 0;
   color: #0f172a;
 }
 
-::v-deep code {
+:deep(code) {
   background: #f1f5f9;
   padding: 2px 8px;
   border-radius: 8px;
@@ -285,7 +286,7 @@ export default {
   font-size: 13px;
 }
 
-::v-deep pre {
+:deep(pre) {
   background: #1e293b;
   color: #e2e8f0;
   padding: 16px;
@@ -294,7 +295,7 @@ export default {
   margin: 16px 0;
 }
 
-::v-deep blockquote {
+:deep(blockquote) {
   border-left: 4px solid #20B486;
   padding-left: 20px;
   margin: 16px 0;

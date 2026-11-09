@@ -2,16 +2,16 @@ export const mixin = {
     methods:{
         // 上传地址
         uploadImageUrl(){
-            return this.$store.state.HOST + "/common/uploadImg"
+            return this.$config.HOST + "/common/uploadImg"
         },
         uploadAvatarUrl(){
-            return this.$store.state.HOST + "/user/setUserAvatar"
+            return this.$config.HOST + "/user/setUserAvatar"
         },
         uploadFileUrl(){
-            return this.$store.state.HOST + "/common/uploadFile"
+            return this.$config.HOST + "/common/uploadFile"
         },
         uploadVideoUrl(){
-            return this.$store.state.HOST + "/common/uploadVideo"
+            return this.$config.HOST + "/common/uploadVideo"
         },
         uploadHeaders(){
             return { x_access_token: window.localStorage.getItem("user_token") }

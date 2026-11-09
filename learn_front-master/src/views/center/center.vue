@@ -7,38 +7,38 @@
           <!-- 左侧表单 -->
           <div class="master">
             <el-form :model="user" :rules="rules" ref="ruleForm" label-width="110px">
-              <el-form-item label="登陆账号" prop="loginAccount">
-                <el-input size="mini" disabled v-model="user.loginAccount"></el-input>
+              <el-form-item :label="$t('登陆账号')" prop="loginAccount">
+                <el-input size="small" disabled v-model="user.loginAccount"></el-input>
               </el-form-item>
-              <el-form-item label="用户名" prop="userName" required>
-                <el-input size="mini" v-model="user.userName" placeholder="请输入用户名"></el-input>
+              <el-form-item :label="$t('用户名')" prop="userName" required>
+                <el-input size="small" v-model="user.userName" :placeholder="$t('请输入用户名')"></el-input>
               </el-form-item>
-              <el-form-item label="邮箱" prop="email" required>
-                <el-input size="mini" v-model="user.email" placeholder="请输入邮箱地址"></el-input>
+              <el-form-item :label="$t('邮箱')" prop="email" required>
+                <el-input size="small" v-model="user.email" :placeholder="$t('请输入邮箱地址')"></el-input>
               </el-form-item>
-              <el-form-item label="联系电话" prop="tel" required>
-                <el-input size="mini" v-model="user.tel" placeholder="请输入手机号码"></el-input>
+              <el-form-item :label="$t('联系电话')" prop="tel" required>
+                <el-input size="small" v-model="user.tel" :placeholder="$t('请输入手机号码')"></el-input>
               </el-form-item>
-              <el-form-item label="性别" prop="sex" required>
+              <el-form-item :label="$t('性别')" prop="sex" required>
                 <el-radio-group v-model="user.sex">
-                  <el-radio label="0">男</el-radio>
-                  <el-radio label="1">女</el-radio>
+                  <el-radio value="0">{{ $t("男") }}</el-radio>
+                  <el-radio value="1">{{ $t("女") }}</el-radio>
                 </el-radio-group>
               </el-form-item>
-              <el-form-item label="院校" prop="school" required>
-                <el-autocomplete size="mini" v-model="user.school" placeholder="请选择或输入院校"
+              <el-form-item :label="$t('院校')" prop="school" required>
+                <el-autocomplete size="small" v-model="user.school" :placeholder="$t('请选择或输入院校')"
                   :fetch-suggestions="querySchool" clearable></el-autocomplete>
               </el-form-item>
-              <el-form-item label="专业" prop="major" required>
-                <el-autocomplete size="mini" v-model="user.major" placeholder="请选择或输入专业"
+              <el-form-item :label="$t('专业')" prop="major" required>
+                <el-autocomplete size="small" v-model="user.major" :placeholder="$t('请选择或输入专业')"
                   :fetch-suggestions="queryMajor" clearable></el-autocomplete>
               </el-form-item>
-              <el-form-item label="上次修改密码" prop="pwdUpdateDate" class="pwd-time-item">
-                <el-input size="mini" disabled v-model="user.pwdUpdateDate"></el-input>
+              <el-form-item :label="$t('上次修改密码')" prop="pwdUpdateDate" class="pwd-time-item">
+                <el-input size="small" disabled v-model="user.pwdUpdateDate"></el-input>
               </el-form-item>
             </el-form>
             <div class="submit">
-              <el-button type="primary" plain size="mini" @click="submit" icon="el-icon-check">保存修改</el-button>
+              <el-button type="primary" plain size="small" @click="submit" ><template #icon><i class="el-icon-check" aria-hidden="true"></i></template>{{ $t("保存修改") }}</el-button>
             </div>
           </div>
           
@@ -49,13 +49,13 @@
                 class="avatar-img"
                 :src="$resolveAvatar(user.avatar, '/img/avatars/zhixue-default.png')"
                 :preview-src-list="avatar">
-                <div slot="error" class="image-slot">
+                <template #error><div  class="image-slot">
                   <i class="el-icon-picture-outline"></i>
-                </div>
+                </div></template>
               </el-image>
             </div>
             <div class="btns">
-              <el-upload
+              <el-upload :on-error="$uploadError"
                 ref="upload"
                 :action="uploadAvatarUrl() + '/' + this.user.id"
                 :headers="{ x_access_token: uploadToken }"
@@ -64,9 +64,9 @@
                 :on-success="handleAvatorSuccess"
                 accept="image/*"
               >
-                <el-button size="mini" icon="el-icon-upload" type="primary" plain class="uniform-btn">更换头像</el-button>
+                <el-button size="small"  type="primary" plain class="uniform-btn"><template #icon><i class="el-icon-upload" aria-hidden="true"></i></template>{{ $t("更换头像") }}</el-button>
               </el-upload>
-              <el-button size="mini" icon="el-icon-key" @click="changePassword" type="warning" plain class="uniform-btn">修改密码</el-button>
+              <el-button size="small"  @click="changePassword" type="warning" plain class="uniform-btn"><template #icon><i class="el-icon-key" aria-hidden="true"></i></template>{{ $t("修改密码") }}</el-button>
             </div>
           </div>
         </div>
@@ -74,31 +74,31 @@
     </div>
     
     <!-- 修改密码弹窗 -->
-    <el-dialog
-      title="修改密码"
-      :visible.sync="passwordDialogVisible"
+    <el-dialog append-to-body
+      :title="$t('修改密码')"
+      :model-value="passwordDialogVisible"
       width="420px"
       center
       :before-close="handlePasswordClose"
     >
       <div class="password-dialog">
         <div class="dialog-item">
-          <span class="dialog-label">旧密码</span>
-          <el-input show-password v-model="oldPassword" placeholder="请输入旧密码" clearable></el-input>
+          <span class="dialog-label">{{ $t("旧密码") }}</span>
+          <el-input show-password v-model="oldPassword" :placeholder="$t('请输入旧密码')" clearable></el-input>
         </div>
         <div class="dialog-item">
-          <span class="dialog-label">新密码</span>
-          <el-input show-password v-model="newPassword" placeholder="请输入新密码" clearable></el-input>
+          <span class="dialog-label">{{ $t("新密码") }}</span>
+          <el-input show-password v-model="newPassword" :placeholder="$t('请输入新密码')" clearable></el-input>
         </div>
         <div class="dialog-item">
-          <span class="dialog-label">确认密码</span>
-          <el-input show-password v-model="confirmPassword" placeholder="请再次输入新密码" clearable></el-input>
+          <span class="dialog-label">{{ $t("确认密码") }}</span>
+          <el-input show-password v-model="confirmPassword" :placeholder="$t('请再次输入新密码')" clearable></el-input>
         </div>
       </div>
-      <span slot="footer" class="dialog-footer">
-        <el-button size="mini" @click="handlePasswordClose">取 消</el-button>
-        <el-button size="mini" type="primary" @click="passwordSubmit">确 定</el-button>
-      </span>
+      <template #footer><span  class="dialog-footer">
+        <el-button size="small" @click="handlePasswordClose">{{ $t("取 消") }}</el-button>
+        <el-button size="small" type="primary" @click="passwordSubmit">{{ $t("确 定") }}</el-button>
+      </span></template>
     </el-dialog>
     
     <bottomPage></bottomPage>
@@ -106,9 +106,11 @@
 </template>
 
 <script>
+import { t } from '@/i18n'
+
 import { mixin } from "../../minix";
-import headerPage from "../../components/header/header"
-import bottomPage from "../../components/bottom/bottom"
+import headerPage from "../../components/header/header.vue"
+import bottomPage from "../../components/bottom/bottom.vue"
 import { getUserInfo, setUserInfo, setUserAvatar, changePassword, getApeSchoolList, getApeMajorList } from '../../api/api'
 import { getPasswordError } from '../../utils/accountPasswordRules'
 
@@ -139,24 +141,24 @@ export default {
       passwordDialogVisible: false,
       rules: {
         userName: [
-          { required: true, message: '请输入用户名', trigger: 'blur' },
-          { min: 2, max: 20, message: '长度在 2 到 20 个字符', trigger: 'blur' }
+          { required: true, get message() { return t("请输入用户名") }, trigger: 'blur' },
+          { min: 2, max: 20, get message() { return t("长度在 2 到 20 个字符") }, trigger: 'blur' }
         ],
         email: [
-          { required: true, message: '请输入邮箱地址', trigger: 'blur' },
-          { type: 'email', message: '请输入正确的邮箱地址', trigger: 'blur' }
+          { required: true, get message() { return t("请输入邮箱地址") }, trigger: 'blur' },
+          { type: 'email', get message() { return t("请输入正确的邮箱地址") }, trigger: 'blur' }
         ],
         tel: [
           { required: true, validator: checkPhone, trigger: 'blur' },
         ],
         sex: [
-          { required: true, message: '请选择性别', trigger: 'change' },
+          { required: true, get message() { return t("请选择性别") }, trigger: 'change' },
         ],
         school: [
-          { required: true, message: '请选择院校', trigger: 'change' },
+          { required: true, get message() { return t("请选择院校") }, trigger: 'change' },
         ],
         major: [
-          { required: true, message: '请选择专业', trigger: 'change' },
+          { required: true, get message() { return t("请选择专业") }, trigger: 'change' },
         ],
       },
     }
@@ -176,10 +178,10 @@ export default {
         if (res.code == 1000) {
           this.school = res.data
         } else {
-          this.$notify.error({ title: '错误', message: res.message });
+          this.$notify.error({ get title() { return t("错误") }, message: res.message });
         }
       }).catch(() => {
-        this.$notify.error({ title: '错误', message: '获取院校列表失败' });
+        this.$notify.error({ get title() { return t("错误") }, get message() { return t("获取院校列表失败") } });
       })
     },
     getApeMajorList() {
@@ -187,10 +189,10 @@ export default {
         if (res.code == 1000) {
           this.major = res.data
         } else {
-          this.$notify.error({ title: '错误', message: res.message });
+          this.$notify.error({ get title() { return t("错误") }, message: res.message });
         }
       }).catch(() => {
-        this.$notify.error({ title: '错误', message: '获取专业列表失败' });
+        this.$notify.error({ get title() { return t("错误") }, get message() { return t("获取专业列表失败") } });
       })
     },
     handlePasswordClose() {
@@ -201,11 +203,11 @@ export default {
     },
     passwordSubmit() {
       if (!this.oldPassword) {
-        this.$message.warning('请输入旧密码')
+        this.$message.warning(t("请输入旧密码"))
         return
       }
       if (!this.newPassword) {
-        this.$message.warning('请输入新密码')
+        this.$message.warning(t("请输入新密码"))
         return
       }
       const passwordMessage = getPasswordError(this.newPassword)
@@ -214,7 +216,7 @@ export default {
         return
       }
       if (this.newPassword !== this.confirmPassword) {
-        this.$message.warning('两次输入的新密码不一致')
+        this.$message.warning(t("两次输入的新密码不一致"))
         return
       }
       var param = {
@@ -224,17 +226,17 @@ export default {
       }
       changePassword(param).then(res => {
         if (res.code == 1000) {
-          this.$notify.success({ title: '成功', message: "密码修改成功，请重新登录" });
+          this.$notify.success({ get title() { return t("成功") }, get message() { return t("密码修改成功，请重新登录") } });
           this.handlePasswordClose()
           setTimeout(() => {
-            this.$store.dispatch('logout')
+            this.$session.logout()
             this.$router.push('/')
           }, 1500)
         } else {
-          this.$notify.error({ title: '错误', message: res.message });
+          this.$notify.error({ get title() { return t("错误") }, message: res.message });
         }
       }).catch(() => {
-        this.$notify.error({ title: '错误', message: '密码修改失败' });
+        this.$notify.error({ get title() { return t("错误") }, message: '密码修改失败' });
       })
     },
     submit() {
@@ -242,13 +244,13 @@ export default {
         if (valid) {
           setUserInfo(this.user).then(res => {
             if (res.code == 1000) {
-              this.$message({ type: 'success', message: '保存成功!' });
+              this.$message({ type: 'success', get message() { return t("保存成功!") } });
               this.getUserInfo()
             } else {
-              this.$notify.error({ title: '错误', message: res.message });
+              this.$notify.error({ get title() { return t("错误") }, message: res.message });
             }
           }).catch(() => {
-            this.$notify.error({ title: '错误', message: '保存失败' });
+            this.$notify.error({ get title() { return t("错误") }, get message() { return t("保存失败") } });
           })
         } else {
           return false;
@@ -266,10 +268,10 @@ export default {
           // 通知 header 刷新
           window.dispatchEvent(new Event("userInfoUpdated"))
         } else {
-          this.$notify.error({ title: '错误', message: res.message });
+          this.$notify.error({ get title() { return t("错误") }, message: res.message });
         }
       }).catch(() => {
-        this.$notify.error({ title: '错误', message: '获取用户信息失败' });
+        this.$notify.error({ get title() { return t("错误") }, get message() { return t("获取用户信息失败") } });
       })
     },
     querySchool(queryString, cb) {
@@ -291,10 +293,10 @@ export default {
     },
     handleAvatorSuccess(res) {
       if (res.code == 1000) {
-        this.$message({ type: 'success', message: '头像上传成功!' });
+        this.$message({ type: 'success', get message() { return t("头像上传成功!") } });
         this.getUserInfo()
       } else {
-        this.$notify.error({ title: '错误', message: res.message });
+        this.$notify.error({ get title() { return t("错误") }, message: res.message });
       }
     },
   },
@@ -332,7 +334,7 @@ export default {
   overflow: hidden;
 }
 
-.box-card >>> .el-card__body {
+.box-card :deep(.el-card__body) {
   padding: 32px;
 }
 
@@ -571,7 +573,7 @@ export default {
     padding: 0 16px;
   }
   
-  .box-card >>> .el-card__body {
+  .box-card :deep(.el-card__body) {
     padding: 24px;
   }
   

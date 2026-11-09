@@ -1,5 +1,6 @@
 <template>
   <div class="login-page">
+    <div class="login-language"><LanguageSwitch /></div>
     <div class="paper-noise"></div>
 
     <div class="login-shell">
@@ -7,46 +8,46 @@
         <img
           class="brand-logo"
           src="../../../assets/image/zhixue-mark.svg"
-          alt="智学云途"
+          :alt="$t('智学云途')"
         />
         <div class="brand-text">
-          <h1>智学云途 · 管理端</h1>
-          <p>一站式在线教育管理平台</p>
+          <h1>{{ $t("智学云途 · 管理端") }}</h1>
+          <p>{{ $t("一站式在线教育管理平台") }}</p>
         </div>
       </div>
 
       <div class="login-card">
         <div class="login-form">
           <div class="login-title">
-            <h2>登录</h2>
+            <h2>{{ $t("登录") }}</h2>
             <span></span>
           </div>
 
           <div class="login-input">
             <div class="input-item">
-              <label>用户名</label>
+              <label>{{ $t("用户名") }}</label>
               <el-input
-                prefix-icon="el-icon-user"
+
                 v-model="username"
-                placeholder="请输入用户名"
-                @keyup.enter.native="login"
-              ></el-input>
+                :placeholder="$t('请输入用户名')"
+                @keyup.enter="login"
+              ><template #prefix><i class="el-icon-user" aria-hidden="true"></i></template></el-input>
             </div>
             <div class="input-item">
-              <label>密码</label>
+              <label>{{ $t("密码") }}</label>
               <el-input
-                prefix-icon="el-icon-lock"
-                placeholder="请输入密码"
+
+                :placeholder="$t('请输入密码')"
                 v-model="password"
                 show-password
-                @keyup.enter.native="login"
-              ></el-input>
+                @keyup.enter="login"
+              ><template #prefix><i class="el-icon-lock" aria-hidden="true"></i></template></el-input>
             </div>
           </div>
 
           <el-button class="login-btn" type="primary" @click="login()"
             :loading="loading" :disabled="loading"
-            >{{ loading ? '登录中...' : '登录' }}</el-button
+            >{{ loading ? $t("登录中...") : $t("登录") }}</el-button
           >
         </div>
       </div>
@@ -55,6 +56,8 @@
 </template>
 
 <script>
+import { t } from '@/i18n'
+
 import { login, getUser } from "../../../api/api";
 import { setLock } from "@/utils/lock";
 export default {
@@ -68,11 +71,11 @@ export default {
   methods: {
     login() {
       if (!this.username) {
-        this.$message({ message: "请输入用户名", type: "warning" });
+        this.$message({ get message() { return t("请输入用户名") }, type: "warning" });
         return;
       }
       if (!this.password) {
-        this.$message({ message: "请输入密码", type: "warning" });
+        this.$message({ get message() { return t("请输入密码") }, type: "warning" });
         return;
       }
       if (this.loading) return;
@@ -84,13 +87,13 @@ export default {
       login(params).then((res) => {
         if (res.code == 1000) {
           this.$message({
-            message: "登陆成功",
+            get message() { return t("登陆成功") },
             type: "success",
             duration: 1200,
             showClose: true,
           });
           var token = res.data.token;
-          this.$store.commit("user/setToken", token);
+          this.$session.setToken(token);
           setLock(false);
           this.getUserInfo()
             .then(() => {
@@ -104,16 +107,16 @@ export default {
           this.loading = false;
         }
       }).catch(() => {
-        this.$message.error("登录失败，请检查网络连接");
+        this.$message.error(t("登录失败，请检查网络连接"));
         this.loading = false;
       });
     },
     getUserInfo() {
       return getUser().then((res) => {
         if (res.code == 1000) {
-          this.$store.commit("user/setUser", JSON.stringify(res.data));
+          this.$session.setUser(JSON.stringify(res.data));
         }
-      });
+      }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false });
     },
   },
   created() {},
@@ -268,10 +271,10 @@ export default {
   color: #4f4f4f;
   font-weight: 600;
 }
-.input-item ::v-deep .el-input {
+.input-item :deep(.el-input) {
   width: 100%;
 }
-.input-item ::v-deep .el-input__inner {
+.input-item :deep(.el-input__inner) {
   border-radius: 10px;
   background: #fbfbfa;
   border: 1px solid var(--line-strong);
@@ -280,12 +283,12 @@ export default {
   font-weight: 500;
   transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
-.input-item ::v-deep .el-input__inner:focus {
+.input-item :deep(.el-input__inner:focus) {
   border-color: #8c8c8c;
   box-shadow: 0 0 0 3px rgba(23, 23, 23, 0.08);
   background: #fff;
 }
-.input-item ::v-deep .el-input__prefix i {
+.input-item :deep(.el-input__prefix i) {
   color: #9a9a9a;
 }
 
@@ -338,3 +341,5 @@ export default {
   }
 }
 </style>
+
+<style scoped>.login-language{position:absolute;right:20px;top:16px;z-index:10}</style>

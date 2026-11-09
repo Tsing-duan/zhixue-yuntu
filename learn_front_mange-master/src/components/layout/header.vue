@@ -1,30 +1,31 @@
 <template>
   <el-header class="notion-header">
     <div class="header-left">
-      <div class="icon-div action-btn" @click="changeCollapse">
+      <button type="button" class="icon-div action-btn" :aria-label="$t('切换侧栏')" :aria-expanded="!collapse" @click="changeCollapse">
         <i
           class="icon"
           :class="collapse ? 'el-icon-s-unfold' : 'el-icon-s-fold'"
         ></i>
-      </div>
+      </button>
       <div class="workspace-chip">
         <img
           class="chip-logo"
           src="../../assets/image/zhixue-mark.svg"
           alt=""
         />
-        <span class="chip-text">智学云途 · 管理端</span>
+        <span class="chip-text">{{ $t("智学云途 · 管理端") }}</span>
       </div>
     </div>
 
     <div class="header-right">
+      <LanguageSwitch />
       <div class="search-input">
         <el-input
           v-model="search"
-          size="mini"
-          placeholder="搜索菜单或内容"
-          suffix-icon="el-icon-search"
-        ></el-input>
+          size="small"
+          :placeholder="$t('搜索菜单或内容')"
+
+        ><template #suffix><i class="el-icon-search" aria-hidden="true"></i></template></el-input>
       </div>
       <div class="icon-div action-btn" @click="full">
         <i class="icon el-icon-full-screen"></i>
@@ -39,12 +40,12 @@
             <span class="notice-dot"></span>
             <i class="icon el-icon-bell"></i>
           </span>
-          <el-dropdown-menu
-            slot="dropdown"
+          <template #dropdown><el-dropdown-menu
+
             class="profile-dropdown notion-dropdown"
           >
             <el-dropdown-item disabled class="notion-menu-title"
-              >消息中心</el-dropdown-item
+              >{{ $t("消息中心") }}</el-dropdown-item
             >
             <el-dropdown-item command="unread">
               <i class="el-icon-message"></i>{{ unreadLabel }}（{{
@@ -52,9 +53,8 @@
               }}）
             </el-dropdown-item>
             <el-dropdown-item command="announcement">
-              <i class="el-icon-notebook-2"></i>系统公告
-            </el-dropdown-item>
-          </el-dropdown-menu>
+              <i class="el-icon-notebook-2"></i>{{ $t("系统公告") }}</el-dropdown-item>
+          </el-dropdown-menu></template>
         </el-dropdown>
       </div>
       <div class="icon-div avatar-wrap">
@@ -66,23 +66,23 @@
                 :src="avatarSrc"
                 @error="$avatarError($event, '/img/avatars/zhixue-admin-default.png')" />
             </span>
-            <el-dropdown-menu
-              slot="dropdown"
+            <template #dropdown><el-dropdown-menu
+
               class="profile-dropdown notion-dropdown"
             >
               <el-dropdown-item disabled class="notion-menu-title"
-                >账号中心</el-dropdown-item
+                >{{ $t("账号中心") }}</el-dropdown-item
               >
               <el-dropdown-item command="password"
-                ><i class="el-icon-ship"></i>修改密码</el-dropdown-item
+                ><i class="el-icon-ship"></i>{{ $t("修改密码") }}</el-dropdown-item
               >
               <el-dropdown-item command="lock"
-                ><i class="el-icon-lock"></i>锁屏</el-dropdown-item
+                ><i class="el-icon-lock"></i>{{ $t("锁屏") }}</el-dropdown-item
               >
               <el-dropdown-item divided class="logout-item" command="logout"
-                ><i class="el-icon-umbrella"></i>退出</el-dropdown-item
+                ><i class="el-icon-umbrella"></i>{{ $t("退出") }}</el-dropdown-item
               >
-            </el-dropdown-menu>
+            </el-dropdown-menu></template>
           </el-dropdown>
         </div>
       </div>
@@ -94,8 +94,11 @@
 </template>
 
 <script>
+import { t } from '@/i18n'
+
 import { removeToken } from "@/utils/token";
-import { mapState, mapGetters } from "vuex";
+import { mapState } from "pinia";
+import { useMenuStore, useSessionStore } from "@/store";
 import {
   logout,
   getUser,
@@ -110,20 +113,20 @@ export default {
       user: {},
       unreadCount: 3,
       search: "",
-      collapse: false,
+      collapse: window.innerWidth < 768,
     };
   },
   computed: {
-    ...mapState({
-      displayMenus: (state) => state.menu.displayMenus,
-      activeMenuArrary: (state) => state.menu.activeMenuArrary,
+    ...mapState(useMenuStore, {
+      displayMenus: (state) => state.displayMenus,
+      activeMenuArrary: (state) => state.activeMenuArrary,
     }),
-    ...mapGetters("user", ["getUser"]),
+    ...mapState(useSessionStore, ["getUser"]),
     isTeacherUser() {
       return Number(this.user && this.user.userType) === 1;
     },
     unreadLabel() {
-      return this.isTeacherUser ? "待回复答疑" : "未读消息";
+      return this.isTeacherUser ? t("待回复答疑") : t("未读消息");
     },
     avatarSrc() {
       return this.resolveAvatar(this.user && this.user.avatar);
@@ -147,7 +150,7 @@ export default {
         return;
       }
       try {
-        this.user = JSON.parse(value) || {};
+        this.user = this.$demo(JSON.parse(value) || {});
       } catch (e) {
         this.user = {};
       }
@@ -157,7 +160,7 @@ export default {
         .then((res) => {
           if (res.code == 1000 && res.data) {
             this.user = res.data;
-            this.$store.commit("user/setUser", JSON.stringify(res.data));
+            this.$session.setUser(JSON.stringify(res.data));
           }
         })
         .catch(() => {});
@@ -181,19 +184,19 @@ export default {
         if (this.isTeacherUser) {
           this.goByMenuKeywords(["答疑", "question"], "/question", "答疑管理");
           this.$message({
-            message: `当前有 ${this.unreadCount} 条待回复答疑`,
+            message: this.unreadCount + ' ' + t('条待回复答疑'),
             type: "info",
           });
           return;
         }
         this.goByMenuKeywords(["消息", "message"], "/message", "消息管理");
         this.$message({
-          message: `当前有 ${this.unreadCount} 条未读消息`,
+          message: this.unreadCount + ' ' + t('条未读消息'),
           type: "info",
         });
       } else if (command == "announcement") {
         this.goByMenuKeywords(["公告", "notice"], "/notice", "公告管理");
-        this.$message({ message: "已为你打开公告列表", type: "info" });
+        this.$message({ get message() { return t("已为你打开公告列表") }, type: "info" });
       }
     },
     async loadUnreadCount() {
@@ -289,13 +292,13 @@ export default {
       this.$router.push({
         path: url,
       });
-      this.$store.commit("menu/setActiveMenu", url);
+      this.$menus.setActiveMenu(url);
       for (let i = 0; i < this.activeMenuArrary.length; i++) {
         if (this.activeMenuArrary[i].url == url) {
           return;
         }
       }
-      this.$store.commit("menu/addActiveMenu", {
+      this.$menus.addActiveMenu({
         name,
         url,
       });
@@ -332,39 +335,19 @@ export default {
       } else if (command == "lock") {
         this.$bus.$emit("lock", 1);
       } else if (command == "logout") {
-        //退出登陆
-        logout().then((res) => {
-          if (res.code == 1000) {
-            this.$store.commit("user/setToken", "");
-            this.$store.commit("user/setUser", "");
-            this.$store.commit("menu/setMenus", []);
-            this.$store.commit("menu/setRoutes", []);
-            this.$store.commit("menu/setDisplayMenus", []);
-            this.$store.commit("menu/setBtnMenus", []);
-            this.$store.commit("menu/setFlag", false);
-            this.$store.commit("menu/setActiveMenuArrary", []);
-            this.$store.commit("menu/setActiveMenu", "/index");
-            removeToken();
-            this.$router.push("/login");
-            this.$message({
-              message: "退出登陆",
-              type: "success",
-            });
-            setTimeout(function () {
-              window.location.reload();
-            }, 1000);
-          } else {
-            this.$message({
-              message: res.message,
-              type: "warning",
-            });
-          }
+        this.$session.logout().then(() => {
+          this.$router.replace('/login');
+          this.$message.success(t("退出登陆"));
         });
       }
     },
   },
   created() {},
+  beforeUnmount() { this.compactMedia?.removeEventListener('change', this.onCompactChange); },
   mounted() {
+    this.compactMedia = window.matchMedia('(max-width: 767px)');
+    this.onCompactChange = (event) => { this.collapse = event.matches; this.$bus.$emit('collapse', this.collapse); };
+    this.compactMedia.addEventListener('change', this.onCompactChange);
     this.applyUserFromStore(this.getUser);
     this.refreshCurrentUser().finally(() => {
       this.loadUnreadCount().catch(() => {
@@ -636,3 +619,5 @@ export default {
   }
 }
 </style>
+
+<style scoped>button.action-btn { border: 0; background: transparent; padding: 0; }</style>

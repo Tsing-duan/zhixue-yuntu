@@ -4,11 +4,11 @@
       <div class="search">
         <el-row :gutter="10" style="padding: 10px">
           <el-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8">
-            <span class="search-title">学生姓名:</span>
+            <span class="search-title">{{ $t("学生姓名:") }}</span>
             <el-input
               style="margin-top: 10px"
-              size="mini"
-              placeholder="请输入学生姓名"
+              size="small"
+              :placeholder="$t('请输入学生姓名')"
               v-model="search.userName"
             >
             </el-input>
@@ -16,18 +16,18 @@
           <el-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8">
             <el-button
               style="margin-top: 10px"
-              size="mini"
-              icon="el-icon-search"
+              size="small"
+
               type="primary"
               @click="searchPage"
-              >查询</el-button
+              ><template #icon><i class="el-icon-search" aria-hidden="true"></i></template>{{ $t("查询") }}</el-button
             >
             <el-button
               style="margin-top: 10px"
-              size="mini"
-              icon="el-icon-refresh"
+              size="small"
+
               @click="refresh"
-              >重置</el-button
+              ><template #icon><i class="el-icon-refresh" aria-hidden="true"></i></template>{{ $t("重置") }}</el-button
             >
           </el-col>
         </el-row>
@@ -52,41 +52,41 @@
           style="width: 100%"
         >
           <el-table-column type="selection" width="55"> </el-table-column>
-          <el-table-column prop="createBy" label="学生姓名"> </el-table-column>
-          <el-table-column prop="testName" label="考试名称"> </el-table-column>
-          <el-table-column prop="totalScore" label="总分"> </el-table-column>
-          <el-table-column prop="totalGetScore" label="得分"> </el-table-column>
-          <el-table-column label="状态">
-            <template slot-scope="scope">
-              {{ scope.row.remark === 'RETAKE_GRANT' ? '已授权补考' : '已交卷' }}
+          <el-table-column prop="createBy" :label="$t('学生姓名')"> </el-table-column>
+          <el-table-column prop="testName" :label="$t('考试名称')"> </el-table-column>
+          <el-table-column prop="totalScore" :label="$t('总分')"> </el-table-column>
+          <el-table-column prop="totalGetScore" :label="$t('得分')"> </el-table-column>
+          <el-table-column :label="$t('状态')">
+            <template #default="scope">
+              {{ scope.row.remark === 'RETAKE_GRANT' ? $t("已授权补考") : $t("已交卷") }}
             </template>
           </el-table-column>
-          <el-table-column label="操作">
-            <template slot-scope="scope">
+          <el-table-column :label="$t('操作')">
+            <template #default="scope">
               <el-button
                 class="row-action-btn row-warning-btn"
-                size="mini"
-                icon="el-icon-edit-outline"
+                size="small"
+
                 :disabled="scope.row.remark === 'RETAKE_GRANT'"
                 @click="yuejuan(scope.row.userId)"
-                >阅卷</el-button
+                ><template #icon><i class="el-icon-edit-outline" aria-hidden="true"></i></template>{{ $t("阅卷") }}</el-button
               >
               <el-popconfirm
                 style="margin-left: 5px"
-                confirm-button-text="确认重置"
-                cancel-button-text="取消"
-                icon="el-icon-info"
+                :confirm-button-text="$t('确认重置')"
+                :cancel-button-text="$t('取消')"
+
                 icon-color="red"
-                title="确定要重置该学生的考试吗？此操作将清空该学生的所有答卷，不可恢复。"
+                :title="$t('确定要重置该学生的考试吗？此操作将清空该学生的所有答卷，不可恢复。')"
                 @confirm="resetStudentTest(scope.row.userId)"
-              >
-                <el-button
+              ><template #icon><i class="el-icon-info" aria-hidden="true"></i></template>
+                <template #reference><el-button
                   class="row-action-btn row-delete-btn"
-                  size="mini"
-                  slot="reference"
-                  icon="el-icon-refresh"
-                  >重置</el-button
-                >
+                  size="small"
+
+
+                  ><template #icon><i class="el-icon-refresh" aria-hidden="true"></i></template>{{ $t("重置") }}</el-button
+                ></template>
               </el-popconfirm>
             </template>
           </el-table-column>
@@ -95,8 +95,8 @@
           background
           layout="total, sizes, prev, pager, next, jumper"
           :page-sizes="[10, 20, 50, 100]"
-          :page-size="search.pageSize"
-          :current-page="search.pageNumber"
+          v-model:page-size="search.pageSize"
+          v-model:current-page="search.pageNumber"
           @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
           :total="total"
@@ -104,22 +104,22 @@
         </el-pagination>
       </div>
     </div>
-    <el-dialog
-      title="阅卷"
-      :visible.sync="dialogVisible"
+    <el-dialog append-to-body
+      :title="$t('阅卷')"
+      v-model="dialogVisible"
       width="60%"
       :before-close="handleClose"
     >
       <div class="testInfo-item" v-for="(item, index) in assign" :key="index">
         <div style="margin-top: 10px; margin-left: 10px">
           {{ index + 1 }}.{{ item.title }}
-          <span style="color: red">正确答案：{{ item.answer }}</span>
+          <span style="color: red">{{ $t("正确答案：") }}{{ item.answer }}</span>
           <span style="color: green; margin-left: 10px; width: 50px"
-            >得分：<el-input
+            >{{ $t("得分：") }}<el-input
               style="width: 100px"
               type="number"
               v-model="item.point"
-              size="mini"
+              size="small"
             ></el-input
           ></span>
         </div>
@@ -129,7 +129,7 @@
             v-model="item.solution"
             v-if="item.type == 0"
           >
-            <el-radio v-for="(e, s) in item.content" :key="s" :label="e.value"
+            <el-radio v-for="(e, s) in item.content" :key="s" :value="e.value"
               >{{ e.value }}.{{ e.option }}</el-radio
             >
           </el-radio-group>
@@ -141,7 +141,7 @@
             <el-checkbox
               v-for="(e, s) in item.content"
               :key="s"
-              :label="e.value"
+              :value="e.value"
               >{{ e.value }}.{{ e.option }}</el-checkbox
             >
           </el-checkbox-group>
@@ -149,44 +149,46 @@
             disabled
             v-model="item.solution"
             v-if="item.type == 2"
-            size="mini"
-            placeholder="请输入答案"
+            size="small"
+            :placeholder="$t('请输入答案')"
           ></el-input>
           <el-radio-group
             disabled
             v-model="item.solution"
             v-if="item.type == 3"
           >
-            <el-radio label="正确">正确</el-radio>
-            <el-radio label="错误">错误</el-radio>
+            <el-radio value="正确">{{ $t("正确") }}</el-radio>
+            <el-radio value="错误">{{ $t("错误") }}</el-radio>
           </el-radio-group>
           <el-input
             type="textarea"
             disabled
             v-model="item.solution"
             v-if="item.type == 4"
-            size="mini"
-            placeholder="请输入答案"
+            size="small"
+            :placeholder="$t('请输入答案')"
           ></el-input>
           <el-input
             type="textarea"
             disabled
             v-model="item.solution"
             v-if="item.type == 5"
-            size="mini"
-            placeholder="请输入答案"
+            size="small"
+            :placeholder="$t('请输入答案')"
           ></el-input>
         </div>
       </div>
-      <span slot="footer" class="dialog-footer">
-        <el-button size="mini" @click="handleClose">取 消</el-button>
-        <el-button size="mini" type="primary" @click="submit">确 定</el-button>
-      </span>
+      <template #footer><span  class="dialog-footer">
+        <el-button size="small" @click="handleClose">{{ $t("取 消") }}</el-button>
+        <el-button size="small" type="primary" @click="submit">{{ $t("确 定") }}</el-button>
+      </span></template>
     </el-dialog>
   </div>
 </template>
 
 <script>
+import { t } from '@/i18n'
+
 import {
   getTestStudent,
   getTestStudentItem,
@@ -227,13 +229,13 @@ export default {
       editApeTestStudent(param).then((res) => {
         if (res.code == 1000) {
           this.$notify.success({
-            title: "成功",
-            message: "阅卷成功",
+            get title() { return t("成功") },
+            get message() { return t("阅卷成功") },
           });
           this.handleClose();
           this.query();
         }
-      });
+      }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false });
     },
     query() {
       getTestStudent(this.search).then((res) => {
@@ -243,11 +245,11 @@ export default {
           this.loading = false;
         } else {
           this.$notify.error({
-            title: "错误",
+            get title() { return t("错误") },
             message: res.message,
           });
         }
-      });
+      }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false });
     },
     yuejuan(userId) {
       getTestStudentItem({ testId: this.search.testId, userId: userId }).then(
@@ -271,7 +273,7 @@ export default {
             }
           }
         },
-      );
+      ).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false });
       this.dialogVisible = true;
     },
     resetStudentTest(userId) {
@@ -279,18 +281,18 @@ export default {
         (res) => {
           if (res.code == 1000) {
             this.$notify.success({
-              title: "成功",
+              get title() { return t("成功") },
               message: res.message || "考试已重置，已授权补考",
             });
             this.query();
           } else {
             this.$notify.error({
-              title: "错误",
+              get title() { return t("错误") },
               message: res.message,
             });
           }
         }
-      );
+      ).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false });
     },
     handleClose() {
       this.dialogVisible = false;
@@ -395,39 +397,35 @@ export default {
 .el-dialog {
   border-radius: 12px !important;
 }
-::v-deep .el-input__inner {
+:deep(.el-input__inner) {
   border-radius: 10px;
   border-color: #dfdfda;
   color: #3f3f3c;
   background: #ffffff;
 }
-::v-deep .el-input__inner:focus {
+:deep(.el-input__inner:focus) {
   border-color: #bdbdb6;
 }
-::v-deep .el-table {
+:deep(.el-table) {
   background: transparent;
 }
-::v-deep .el-table th.el-table__cell {
+:deep(.el-table th.el-table__cell) {
   background: #f1f1ee !important;
 }
-::v-deep .el-table td.el-table__cell,
-::v-deep .el-table tr {
+:deep(.el-table td.el-table__cell), :deep(.el-table tr) {
   background: transparent;
 }
-::v-deep
-  .el-table--striped
+:deep(.el-table--striped
   .el-table__body
   tr.el-table__row--striped
-  td.el-table__cell {
+  td.el-table__cell) {
   background: #f8f8f6;
 }
-::v-deep .el-pagination.is-background .el-pager li,
-::v-deep .el-pagination.is-background .btn-next,
-::v-deep .el-pagination.is-background .btn-prev {
+:deep(.el-pagination.is-background .el-pager li), :deep(.el-pagination.is-background .btn-next), :deep(.el-pagination.is-background .btn-prev) {
   background: #f3f3f0;
   color: #585854;
 }
-::v-deep .el-pagination.is-background .el-pager li.active {
+:deep(.el-pagination.is-background .el-pager li.active) {
   background: #2f3437;
   color: #ffffff;
 }

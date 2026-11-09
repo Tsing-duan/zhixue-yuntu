@@ -12,18 +12,14 @@
                 style="width: 110px"
               />
               <div class="item-01-top-center">
-                <div style="color: #3f3f3c; font-size: 20px; font-weight: bold">
-                  用户数量
-                </div>
+                <div style="color: #3f3f3c; font-size: 20px; font-weight: bold">{{ $t("用户数量") }}</div>
                 <div style="color: #2f2f2c; font-size: 30px; font-weight: bold">
-                  {{ top.userNum }}人
+                  {{ top.userNum }}{{ $t("人") }}
                 </div>
               </div>
             </div>
             <div class="item-01-under" @click="toUser()">
-              <div style="color: #585854; font-size: 14px; font-weight: bold">
-                查看用户列表
-              </div>
+              <div style="color: #585854; font-size: 14px; font-weight: bold">{{ $t("查看用户列表") }}</div>
               <i
                 class="el-icon-right"
                 style="color: #585854; font-size: 14px; font-weight: bold"
@@ -41,18 +37,14 @@
                 style="width: 110px"
               />
               <div class="item-01-top-center">
-                <div style="color: #000000; font-size: 20px; font-weight: bold">
-                  学生数量
-                </div>
+                <div style="color: #000000; font-size: 20px; font-weight: bold">{{ $t("学生数量") }}</div>
                 <div style="color: #000000; font-size: 30px; font-weight: bold">
-                  {{ top.studentNum }}人
+                  {{ top.studentNum }}{{ $t("人") }}
                 </div>
               </div>
             </div>
             <div class="item-01-under" @click="toStudent()">
-              <div style="color: #585854; font-size: 14px; font-weight: bold">
-                查看全部
-              </div>
+              <div style="color: #585854; font-size: 14px; font-weight: bold">{{ $t("查看全部") }}</div>
               <i
                 class="el-icon-right"
                 style="color: #585854; font-size: 14px; font-weight: bold"
@@ -70,18 +62,14 @@
                 style="width: 110px"
               />
               <div class="item-01-top-center">
-                <div style="color: #3f3f3c; font-size: 20px; font-weight: bold">
-                  教师数量
-                </div>
+                <div style="color: #3f3f3c; font-size: 20px; font-weight: bold">{{ $t("教师数量") }}</div>
                 <div style="color: #2f2f2c; font-size: 30px; font-weight: bold">
-                  {{ top.teacherNum }}人
+                  {{ top.teacherNum }}{{ $t("人") }}
                 </div>
               </div>
             </div>
             <div class="item-01-under" @click="toTeacher()">
-              <div style="color: #585854; font-size: 14px; font-weight: bold">
-                查看全部
-              </div>
+              <div style="color: #585854; font-size: 14px; font-weight: bold">{{ $t("查看全部") }}</div>
               <i
                 class="el-icon-right"
                 style="color: #585854; font-size: 14px; font-weight: bold"
@@ -128,7 +116,7 @@
                     overflow: hidden;
                   "
                 >
-                  {{ userInfo.userName || "用户名" }}
+                  {{ userInfo.userName || $t("用户名") }}
                 </div>
                 <div
                   style="
@@ -139,7 +127,7 @@
                     overflow: hidden;
                   "
                 >
-                  tel:{{ userInfo.tel || userInfo.phone || "联系方式" }}
+                  tel:{{ userInfo.tel || userInfo.phone || $t("联系方式") }}
                 </div>
                 <div
                   style="
@@ -150,14 +138,12 @@
                     overflow: hidden;
                   "
                 >
-                  {{ userInfo.email || "邮箱" }}
+                  {{ userInfo.email || $t("邮箱") }}
                 </div>
               </div>
             </div>
             <div class="item-01-under" @click="toUserInfo()">
-              <div style="color: #585854; font-size: 14px; font-weight: bold">
-                查看详情
-              </div>
+              <div style="color: #585854; font-size: 14px; font-weight: bold">{{ $t("查看详情") }}</div>
               <i
                 class="el-icon-right"
                 style="color: #585854; font-size: 14px; font-weight: bold"
@@ -198,9 +184,9 @@
             stripe
             style="width: 100%; background: transparent"
           >
-            <el-table-column prop="name" label="课程名称"> </el-table-column>
-            <el-table-column prop="teacherName" label="教师">
-              <template slot-scope="scope">
+            <el-table-column prop="name" :label="$t('课程名称')"> </el-table-column>
+            <el-table-column prop="teacherName" :label="$t('教师')">
+              <template #default="scope">
                 <div style="display: flex; align-items: center">
                   <img
                     style="
@@ -218,20 +204,20 @@
                 </div>
               </template>
             </el-table-column>
-            <el-table-column prop="major" label="专业">
-              <template slot-scope="scope">
-                <el-button size="mini">{{ scope.row.major }}</el-button>
+            <el-table-column prop="major" :label="$t('专业')">
+              <template #default="scope">
+                <el-button size="small">{{ scope.row.major }}</el-button>
               </template>
             </el-table-column>
-            <el-table-column prop="classification" label="课程分类">
-              <template slot-scope="scope">
-                <el-button size="mini">{{
+            <el-table-column prop="classification" :label="$t('课程分类')">
+              <template #default="scope">
+                <el-button size="small">{{
                   scope.row.classification
                 }}</el-button>
               </template>
             </el-table-column>
-            <el-table-column prop="num" label="学生数量"> </el-table-column>
-            <el-table-column prop="createTime" label="创建时间">
+            <el-table-column prop="num" :label="$t('学生数量')"> </el-table-column>
+            <el-table-column prop="createTime" :label="$t('创建时间')">
             </el-table-column>
           </el-table>
         </el-card>
@@ -252,14 +238,14 @@
               font-weight: 600;
             "
           >
-            <span>课程 列表</span>
+            <span>{{ $t("课程 列表") }}</span>
             <el-button
               class="view-all-btn"
               style="height: 35px"
-              size="mini"
+              size="small"
               type="primary"
               @click="toTask()"
-              >查看全部</el-button
+              >{{ $t("查看全部") }}</el-button
             >
           </div>
           <div style="width: 100%; height: 260px">
@@ -270,8 +256,8 @@
                 v-for="(item, index) in taskCard"
                 :key="index"
               >
-                <img
-                  :src="$store.state.configure.HOST + item.image"
+                <img v-if="item.image"
+                  :src="$config.HOST + item.image"
                   style="border-radius: 20px; width: 90%"
                 />
                 <div>{{ item.name }}</div>
@@ -293,7 +279,7 @@
                   >
                     <span>{{ item.createTime }}</span>
                   </div>
-                  <el-button size="mini" style="height: 30px">{{
+                  <el-button size="small" style="height: 30px">{{
                     item.teacherName
                   }}</el-button>
                 </div>
@@ -312,6 +298,8 @@
 </template>
 
 <script>
+import { t } from '@/i18n'
+
 import {
   getIndexData,
   getIndexSexData,
@@ -321,6 +309,7 @@ import {
   getUser,
 } from "../../../api/api";
 import * as echarts from "echarts";
+import { markRaw } from "vue";
 export default {
   data() {
     return {
@@ -338,20 +327,21 @@ export default {
       userInfo: {},
     };
   },
+  watch: { '$locale'() { this.$nextTick(() => { this.renderBarLineChart(); this.renderPieChart(); }) } },
   methods: {
     initCharts() {
       if (this.$refs.chartRef && !this.myChart) {
-        this.myChart = echarts.init(this.$refs.chartRef);
+        this.myChart = markRaw(echarts.init(this.$refs.chartRef));
       }
       if (this.$refs.pieChartRef && !this.pieChart) {
-        this.pieChart = echarts.init(this.$refs.pieChartRef);
+        this.pieChart = markRaw(echarts.init(this.$refs.pieChartRef));
       }
     },
     renderBarLineChart() {
       if (!this.myChart) return;
       var option = {
         title: {
-          text: "课程学生数量统计",
+          get text() { return t("课程学生数量统计") },
           left: "center",
           top: 10,
           textStyle: {
@@ -364,7 +354,7 @@ export default {
           trigger: "axis",
         },
         legend: {
-          data: ["学生数量"],
+          data: [t("学生数量")],
           top: 40,
           textStyle: {
             color: "#585854",
@@ -428,7 +418,7 @@ export default {
             type: "bar",
             data: this.nums,
             barWidth: "15px",
-            name: "学生数量",
+            name: t("学生数量"),
             itemStyle: {
               normal: {
                 color: function (params) {
@@ -475,7 +465,7 @@ export default {
       if (!this.pieChart) return;
       var optionPie = {
         title: {
-          text: "学生性别占比",
+          get text() { return t("学生性别占比") },
           left: "center",
           top: 10,
           textStyle: {
@@ -496,10 +486,10 @@ export default {
         },
         series: [
           {
-            name: "学生性别分析",
+            name: t("学生性别分析"),
             type: "pie",
             radius: "50%",
-            data: this.sex,
+            data: this.sex.map(item => ({ ...item, name: t(item.name) })),
             label: {
               color: "#585854",
               formatter: "{b}: {d}%",
@@ -529,7 +519,7 @@ export default {
       }
     },
     loadCurrentUser() {
-      const userStr = this.$store.getters["user/getUser"];
+      const userStr = this.$session.getUser;
       if (userStr) {
         try {
           this.userInfo = JSON.parse(userStr) || {};
@@ -540,9 +530,9 @@ export default {
       getUser().then((res) => {
         if (res.code == 1000 && res.data) {
           this.userInfo = res.data;
-          this.$store.commit("user/setUser", JSON.stringify(res.data));
+          this.$session.setUser(JSON.stringify(res.data));
         }
-      });
+      }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false });
     },
     resolveAvatar(row) {
       const avatar = row && (row.avatar || row.teacherAvatar);
@@ -580,7 +570,7 @@ export default {
     },
     getMenuRouteByNames(names) {
       const menus =
-        (this.$store.state.menu && this.$store.state.menu.menus) || [];
+        (this.$menus && this.$menus.menus) || [];
       for (let i = 0; i < menus.length; i++) {
         const item = menus[i];
         if (
@@ -613,7 +603,7 @@ export default {
       let target = this.normalizePath(paths[0]);
       for (let i = 0; i < paths.length; i++) {
         const current = this.normalizePath(paths[i]);
-        const matched = this.$router.match(current);
+        const matched = this.$router.resolve(current);
         if (matched && matched.matched && matched.matched.length > 0) {
           target = current;
           break;
@@ -623,9 +613,9 @@ export default {
         name: name,
         url: target,
       };
-      this.$store.commit("menu/addActiveMenu", param);
+      this.$menus.addActiveMenu(param);
       this.$router.push(target);
-      this.$store.commit("menu/setActiveMenu", target);
+      this.$menus.setActiveMenu(target);
     },
     toUser() {
       const menuRoute = this.getMenuRouteByNames(["用户管理", "用户列表"]);
@@ -659,7 +649,7 @@ export default {
       if (res.code == 1000) {
         this.top = res.data;
       }
-    });
+    }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false });
     getIndexSexData({ type: 0 }).then((res) => {
       if (res.code == 1000) {
         this.sex = Array.isArray(res.data) ? res.data : [];
@@ -668,7 +658,7 @@ export default {
           this.renderPieChart();
         });
       }
-    });
+    }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false });
     getTaskChart({ type: 0 }).then((res) => {
       if (res.code == 1000) {
         this.tasks =
@@ -680,7 +670,7 @@ export default {
           this.renderBarLineChart();
         });
       }
-    });
+    }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false });
     Promise.all([
       getTaskIndexList({ type: 0 }),
       this.loadTeacherAvatarMap(),
@@ -692,10 +682,9 @@ export default {
             item && item.teacherId != null
               ? avatarMap[String(item.teacherId)] || ""
               : "";
-          return {
-            ...item,
-            avatar: item.avatar || item.teacherAvatar || mappedAvatar || "",
-          };
+          // Preserve reactive display getters on synthetic demo fields.
+          item.avatar = item.avatar || item.teacherAvatar || mappedAvatar || "";
+          return item;
         });
         this.taskList = normalizedList.slice(0, 5);
         this.taskCard = normalizedList.slice(0, 3);
@@ -711,7 +700,7 @@ export default {
     };
     window.addEventListener("resize", this.resizeHandler);
   },
-  beforeDestroy() {
+  beforeUnmount() {
     if (this.resizeHandler) {
       window.removeEventListener("resize", this.resizeHandler);
     }
@@ -901,28 +890,28 @@ export default {
 .view-all-btn:focus {
   color: #ffffff;
 }
-/deep/ .el-calendar {
+:deep(.el-calendar) {
   background: #ffffff;
   border: 1px solid #e6eaf0;
   border-radius: 12px;
 }
-/deep/ .el-calendar__header {
+:deep(.el-calendar__header) {
   padding: 12px 16px;
   border-bottom: 1px solid #e6eaf0;
   background: #f8fafc;
 }
-/deep/ .el-calendar__title {
+:deep(.el-calendar__title) {
   color: #243145;
   font-weight: 700;
 }
-/deep/ .el-calendar-table thead th {
+:deep(.el-calendar-table thead th) {
   color: #667085;
   font-weight: 600;
 }
-/deep/ .el-calendar-table td {
+:deep(.el-calendar-table td) {
   border: 1px solid #eef2f7;
 }
-/deep/ .el-calendar-day {
+:deep(.el-calendar-day) {
   height: 45px !important;
   border: none;
   border-radius: 8px;
@@ -930,29 +919,53 @@ export default {
   color: #344054;
   transition: all 0.2s ease;
 }
-/deep/ .el-calendar-day:hover {
+:deep(.el-calendar-day:hover) {
   background: #eff6ff;
 }
-/deep/
-  .el-calendar-table
+:deep(.el-calendar-table
   tr
   td:nth-child(-n + 5):not(.is-selected)
-  .el-calendar-day {
+  .el-calendar-day) {
   color: #243145;
 }
-/deep/
-  .el-calendar-table
+:deep(.el-calendar-table
   tr
   td:nth-child(n + 6):not(.is-selected)
-  .el-calendar-day {
+  .el-calendar-day) {
   color: #98a2b3;
 }
-/deep/ .el-calendar-table td.is-today:not(.is-selected) .el-calendar-day {
+:deep(.el-calendar-table td.is-today:not(.is-selected) .el-calendar-day) {
   box-shadow: inset 0 0 0 1px #2563eb;
   background: #eff6ff;
 }
-/deep/ .el-calendar-table td.is-selected .el-calendar-day {
+:deep(.el-calendar-table td.is-selected .el-calendar-day) {
   color: #ffffff;
   background: #2563eb;
 }
+</style>
+
+<style scoped>
+@media (max-width: 1199px) {
+  .index-top { height: auto; row-gap: 14px; }
+  .index-top > .el-col { flex: 0 0 50%; max-width: 50%; }
+  .index-center, .index-under { height: auto; row-gap: 14px; }
+  .index-center > .el-col, .index-under > .el-col { flex: 0 0 100%; max-width: 100%; }
+  .item-01-top img { width: 64px !important; }
+  .item-10 { height: auto; }
+  .item-10 > :deep(.el-card__body) > div:last-child { height: auto !important; }
+  .item-10-item { flex: 0 0 calc(100% - 20px); max-width: calc(100% - 20px); min-height: 120px; margin-bottom: 10px; padding: 12px; }
+  .item-10-item > div { overflow-wrap: anywhere; }
+}
+@media (max-width: 599px) {
+  .index-top > .el-col { flex: 0 0 100%; max-width: 100%; }
+  .item-01-top { gap: 12px; }
+  .item-01-top-center { overflow-wrap: anywhere; }
+}
+</style>
+<style scoped>
+.index-top { height: auto; min-height: 172px; }
+.item-06 { height: auto; min-height: 154px; }
+.item-06 .item-01-top { height: auto; min-height: 92px; padding-bottom: 12px; }
+.item-06 .item-01-top-center { height: auto; margin-left: 0 !important; }
+.item-06 .item-01-top-center > div { overflow: visible !important; overflow-wrap: anywhere; flex-shrink: 0; }
 </style>

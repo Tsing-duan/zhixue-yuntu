@@ -16,53 +16,53 @@
             <img
               class="brand-logo"
               src="../../assets/image/brand/zhixue-mark.svg"
-              alt="智学云途"
+              :alt="$t('智学云途')"
             />
-            <h2>智学云途</h2>
-            <p class="slogan-text">仅面向学生注册，教师请由管理端进入</p>
+            <h2>{{ $t("智学云途") }}</h2>
+            <p class="slogan-text">{{ $t("仅面向学生注册，教师请由管理端进入") }}</p>
           </div>
 
           <div class="login-input">
             <el-form-item prop="userName">
               <div class="input-row">
-                <label>用户名</label>
+                <label>{{ $t("用户名") }}</label>
                 <el-input
-                  prefix-icon="el-icon-user"
+
                   v-model="userInfo.userName"
-                  placeholder="请输入用户名"
-                ></el-input>
+                  :placeholder="$t('请输入用户名')"
+                ><template #prefix><i class="el-icon-user" aria-hidden="true"></i></template></el-input>
               </div>
             </el-form-item>
             <el-form-item prop="loginAccount">
               <div class="input-row">
-                <label>账号</label>
+                <label>{{ $t("账号") }}</label>
                 <el-input
-                  prefix-icon="el-icon-user"
+
                   v-model="userInfo.loginAccount"
-                  placeholder="请输入用户账号"
-                ></el-input>
+                  :placeholder="$t('请输入用户账号')"
+                ><template #prefix><i class="el-icon-user" aria-hidden="true"></i></template></el-input>
               </div>
             </el-form-item>
             <el-form-item prop="password">
               <div class="input-row">
-                <label>密码</label>
+                <label>{{ $t("密码") }}</label>
                 <el-input
-                  prefix-icon="el-icon-lock"
-                  placeholder="请输入密码"
+
+                  :placeholder="$t('请输入密码')"
                   v-model="userInfo.password"
                   show-password
-                ></el-input>
+                ><template #prefix><i class="el-icon-lock" aria-hidden="true"></i></template></el-input>
               </div>
             </el-form-item>
             <el-form-item prop="passwordNew">
               <div class="input-row">
-                <label>确认密码</label>
+                <label>{{ $t("确认密码") }}</label>
                 <el-input
-                  prefix-icon="el-icon-lock"
-                  placeholder="请输入确认密码"
+
+                  :placeholder="$t('请输入确认密码')"
                   v-model="userInfo.passwordNew"
                   show-password
-                ></el-input>
+                ><template #prefix><i class="el-icon-lock" aria-hidden="true"></i></template></el-input>
               </div>
             </el-form-item>
           </div>
@@ -70,17 +70,15 @@
           <el-form-item>
             <div class="button-row">
               <el-button class="register-btn" type="primary" @click="toRegister()"
-                ><i class="el-icon-user"></i>注册学生账号</el-button
+                ><i class="el-icon-user"></i>{{ $t("注册学生账号") }}</el-button
               >
               <el-button class="login-btn" type="info" @click="toLogin()"
-                ><i class="el-icon-back"></i>返回登录</el-button
+                ><i class="el-icon-back"></i>{{ $t("返回登录") }}</el-button
               >
             </div>
           </el-form-item>
           <a class="manager-entry" :href="managerLoginUrl" target="_blank" rel="noopener">
-            <img src="../../assets/image/brand/zhixue-mark.svg" alt="" />
-            管理端 / 教师入口
-          </a>
+            <img src="../../assets/image/brand/zhixue-mark.svg" alt="" />{{ $t("管理端 / 教师入口") }}</a>
         </el-form>
       </div>
     </div>
@@ -88,6 +86,8 @@
 </template>
 
 <script>
+import { t } from '@/i18n'
+
   import {register} from '../../api/api'
   import {validateAccount, validatePassword} from '../../utils/accountPasswordRules'
   export default {
@@ -113,7 +113,7 @@
 		},
 		rules: {
           userName: [
-            { required: true, message: '请输入名', trigger: 'blur' },
+            { required: true, get message() { return t("请输入名") }, trigger: 'blur' },
           ],
           password: [
             { validator: validatePassword, trigger: 'blur' }
@@ -131,7 +131,7 @@
     },
 	computed: {
 		managerLoginUrl() {
-			const adminPort = process.env.VUE_APP_ADMIN_PORT || '3000'
+			const adminPort = import.meta.env.VITE_ADMIN_PORT || '3000'
 				return `${window.location.protocol}//${window.location.hostname}:${adminPort}/`
 		}
 	},
@@ -146,7 +146,7 @@
 					register(this.userInfo).then(res => {
 						if(res.code == 1000) {
 							this.$message({
-								message: '注册成功',
+								get message() { return t("注册成功") },
 								type: 'success'
 							});
 							var that = this
@@ -156,7 +156,7 @@
 						} else {
 							this.$message.error(res.message);
 						}
-					})
+					}).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false })
 				} else {
 					return false;
 				}
@@ -325,10 +325,10 @@
 .login-input .el-form-item:last-of-type {
   margin-bottom: 0; /* No margin for the last input item */
 }
-.login-input ::v-deep .el-input {
+.login-input :deep(.el-input) {
   width: 100%;
 }
-.login-input ::v-deep .el-input__inner {
+.login-input :deep(.el-input__inner) {
   border-radius: 10px;
   background: #fbfbfa;
   border: 1px solid var(--line-strong);
@@ -337,12 +337,12 @@
   font-weight: 500;
   transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
-.login-input ::v-deep .el-input__inner:focus {
+.login-input :deep(.el-input__inner:focus) {
   border-color: #8c8c8c;
   box-shadow: 0 0 0 3px rgba(23, 23, 23, 0.08);
   background: #fff;
 }
-.login-input ::v-deep .el-input__prefix i {
+.login-input :deep(.el-input__prefix i) {
   color: #9a9a9a;
 }
 

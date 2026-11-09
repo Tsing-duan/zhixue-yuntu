@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <div class="teacherInfo-video">
-                    <div class="teacherInfo-title2">课程列表：</div>
+                    <div class="teacherInfo-title2">{{ $t("课程列表：") }}</div>
                     <div @click="toTask(item.id)" class="teacherInfo-video-item" v-for="(item,index) in task" :key="index">
                         <div :title="item.name" class="teacherInfo-video-item1">{{item.name}}</div>
                         <div class="teacherInfo-video-item2"><i class="el-icon-arrow-right"></i></div>
@@ -36,9 +36,9 @@
 </template>
 
 <script>
-  import {getUserById,getApeTaskByTeacher} from '../../api/api' 
-  import headerPage from "../../components/header/header"
-  import bottomPage from "../../components/bottom/bottom"
+  import {getTeacherById,getApeTaskByTeacher} from '../../api/api'
+  import headerPage from "../../components/header/header.vue"
+  import bottomPage from "../../components/bottom/bottom.vue"
   export default {
     data() {
       return{
@@ -74,16 +74,16 @@
       if (teacherId) {
         this.teacherId = teacherId
       }
-      getUserById({id:this.teacherId}).then(res => {
+      getTeacherById({id:this.teacherId}).then(res => {
         if (res.code == 1000) {
           this.teacher = res.data
         }
-      })
+      }).catch(() => { /* Request layer reports permission/network failure. */ })
       getApeTaskByTeacher({id:this.teacherId}).then(res => {
         if (res.code == 1000) {
           this.task = res.data
         }
-      })
+      }).catch(() => { /* Request layer reports permission/network failure. */ })
     }
  }
 </script>

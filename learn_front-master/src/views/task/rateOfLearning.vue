@@ -17,7 +17,7 @@
             </div>
             <div class="stats-info">
               <div class="stats-number">{{wancheng}}/{{video}}</div>
-              <div class="stats-label">视频进度</div>
+              <div class="stats-label">{{ $t("视频进度") }}</div>
             </div>
           </div>
           <div class="stats-card">
@@ -26,7 +26,7 @@
             </div>
             <div class="stats-info">
               <div class="stats-number">{{wancheng1}}/{{home}}</div>
-              <div class="stats-label">作业进度</div>
+              <div class="stats-label">{{ $t("作业进度") }}</div>
             </div>
           </div>
           <div class="stats-card">
@@ -34,8 +34,8 @@
               <i class="el-icon-medal"></i>
             </div>
             <div class="stats-info">
-              <div class="stats-number">{{getScore()}}分</div>
-              <div class="stats-label">综合得分</div>
+              <div class="stats-number">{{getScore()}}{{ $t("分") }}</div>
+              <div class="stats-label">{{ $t("综合得分") }}</div>
             </div>
           </div>
           <div class="stats-card">
@@ -44,7 +44,7 @@
             </div>
             <div class="stats-info">
               <div class="stats-number grade-text" :class="getGradeClass()">{{getAgree()}}</div>
-              <div class="stats-label">学习评级</div>
+              <div class="stats-label">{{ $t("学习评级") }}</div>
             </div>
           </div>
         </div>
@@ -52,9 +52,9 @@
         <!-- 章节进度列表 -->
         <div class="learning-list">
           <div class="learning-list-header">
-            <span>章节名称</span>
-            <span>视频状态</span>
-            <span>作业状态</span>
+            <span>{{ $t("章节名称") }}</span>
+            <span>{{ $t("视频状态") }}</span>
+            <span>{{ $t("作业状态") }}</span>
           </div>
           <div class="learning-list-body">
             <div v-for="(item,index) in chapter" :key="index" class="learning-item">
@@ -71,7 +71,7 @@
               <div class="chapter-status">
                 <span class="status-badge" :class="item.home == '已完成' ? 'status-completed' : 'status-pending'">
                   <i :class="item.home == '已完成' ? 'el-icon-check' : 'el-icon-time'"></i>
-                  {{item.home == '已完成' ? '已完成' : (item.homework == 1 ? '未完成' : '无作业')}}
+                  {{item.home == '已完成' ? $t("已完成") : (item.homework == 1 ? $t("未完成") : $t("无作业"))}}
                 </span>
               </div>
             </div>
@@ -84,9 +84,11 @@
 </template>
 
 <script>
+import { t } from '@/i18n'
+
 import { getApeTaskById, getTaskChapterStudy } from "../../api/api"
-import headerPage from "../../components/header/header"
-import bottomPage from "../../components/bottom/bottom"
+import headerPage from "../../components/header/header.vue"
+import bottomPage from "../../components/bottom/bottom.vue"
 
 export default {
   name: 'RateOfLearning',
@@ -116,13 +118,13 @@ export default {
     getAgree() {
       var total = this.video + this.home
       var wan = this.wancheng1 + this.wancheng
-      if (total === 0) return '未开始'
+      if (total === 0) return t("未开始")
       var score = (wan / total * this.task.proportion).toFixed(2)
-      if (score < 60) return '不及格'
-      if (score >= 60 && score < 75) return '及格'
-      if (score >= 75 && score < 90) return '良好'
-      if (score >= 90) return '优秀'
-      return '未开始'
+      if (score < 60) return t("不及格")
+      if (score >= 60 && score < 75) return t("及格")
+      if (score >= 75 && score < 90) return t("良好")
+      if (score >= 90) return t("优秀")
+      return t("未开始")
     },
     getScore() {
       var total = this.video + this.home
@@ -136,7 +138,7 @@ export default {
           this.task = res.data
         }
       }).catch(() => {
-        this.$message.error('获取课程信息失败')
+        this.$message.error(t("获取课程信息失败"))
       })
     },
     getTaskChapterStudy() {
@@ -161,7 +163,7 @@ export default {
           }
         }
       }).catch(() => {
-        this.$message.error('获取学习进度失败')
+        this.$message.error(t("获取学习进度失败"))
       })
     }
   },

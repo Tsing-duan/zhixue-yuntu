@@ -20,6 +20,11 @@ import com.ape.apesystem.domain.ApeTestItem;
 import com.ape.apesystem.domain.ApeTestStudent;
 import com.ape.apesystem.domain.ApeUser;
 import com.ape.apesystem.service.AiService;
+import com.ape.apeadmin.security.AiQuotaGuard;
+import java.util.function.Supplier;
+import java.text.Normalizer;
+import java.util.Locale;
+import org.springframework.beans.factory.annotation.Value;
 import com.ape.apesystem.service.ApeAiHistoryService;
 import com.ape.apesystem.service.ai.AiGenerationResult;
 import com.ape.apesystem.service.ApeArticleService;
@@ -101,7 +106,7 @@ public class AiController {
     private static final List<String> STUDENT_AI_TOPIC_KEYWORDS = Arrays.asList(
             "课程", "学习", "作业", "考试", "错题", "章节", "题目", "答案", "知识点", "复习",
             "计划", "老师", "教师", "笔记", "报名", "成绩", "分数", "课件", "视频", "平台",
-            "智学云途", "专业", "学校", "登录", "course", "study", "homework", "exam", "review"
+            "智学云途", "专业", "学校", "登录", "算法", "函数", "求导", "数学", "英语", "物理", "化学", "编程", "二分查找", "复杂度", "course", "study", "homework", "exam", "review"
     );
     private static final List<String> STUDENT_AI_OFF_TOPIC_KEYWORDS = Arrays.asList(
             "无关", "情诗", "恋爱", "表白", "股票", "彩票", "游戏", "段子", "笑话", "小说",
@@ -116,6 +121,10 @@ public class AiController {
 
     @Autowired
     private AiService aiService;
+    @Autowired
+    private AiQuotaGuard aiQuotaGuard;
+    @Value("${deepseek.max-tokens:4096}")
+    private int outputTokenLimit = 4096;
     @Autowired
     private ApeAiHistoryService apeAiHistoryService;
     @Autowired
@@ -146,7 +155,7 @@ public class AiController {
     private ApeForumService apeForumService;
 
 
-    @Log(name = "AI聊天", type = BusinessType.OTHER)
+    @Log(name = "AI聊天", type = BusinessType.OTHER, isSaveRequestData = false)
     @PostMapping("/chat")
     public Result chat(@RequestBody JSONObject jsonObject) {
         ApeUser user = ShiroUtils.getUserInfo();
@@ -165,7 +174,7 @@ public class AiController {
             return abuseCheck;
         }
         String role = getRole(user);
-        AiGenerationResult aiResult = aiService.chat(role, userInput);
+        AiGenerationResult aiResult = generate(user, userInput, () -> aiService.chat(role, userInput));
         Result providerFailure = providerFailure(aiResult);
         if (providerFailure != null) {
             return providerFailure;
@@ -176,7 +185,7 @@ public class AiController {
         return Result.success(replyData(reply, history));
     }
 
-    @Log(name = "AI自动学习规划", type = BusinessType.OTHER)
+    @Log(name = "AI自动学习规划", type = BusinessType.OTHER, isSaveRequestData = false)
     @PostMapping("/study-plan")
     @RequiresRoles("student")
     public Result studyPlan(@RequestBody JSONObject jsonObject) {
@@ -195,17 +204,20 @@ public class AiController {
             }
         }
 
+        if (!validInteger(jsonObject, "days", 1, 90) || !validInteger(jsonObject, "hours", 1, 60)) {
+            return Result.fail("计划周期需为 1–90 天，每周投入需为 1–60 小时的整数。");
+        }
         String context = buildStudyContext(user, taskId);
         String task = "请生成一份自动学习规划，要求包含阶段目标、每日/每周安排、复习节奏、错题巩固策略和可执行清单。"
                 + "\n学习目标：" + text(jsonObject, "goal", "根据当前课程进度稳步提升")
-                + "\n计划周期：" + text(jsonObject, "days", "14") + " 天"
-                + "\n每周可投入时间：" + text(jsonObject, "hours", "6") + " 小时"
+                + "\n计划周期：" + intParam(jsonObject, "days", 14, 1, 90) + " 天"
+                + "\n每周可投入时间：" + intParam(jsonObject, "hours", 6, 1, 60) + " 小时"
                 + "\n额外要求：" + text(jsonObject, "extra", "安排要现实可执行，方便学生照着做");
         Result abuseCheck = validateAiRequest(user, AGENT_TYPE_STUDY_PLAN, task, task + "\n" + context, false);
         if (abuseCheck != null) {
             return abuseCheck;
         }
-        AiGenerationResult aiResult = aiService.runAgent(getRole(user), "AI 自动学习规划", task, context);
+        AiGenerationResult aiResult = generate(user, task + "\n" + context, () -> aiService.runAgent(getRole(user), "AI 自动学习规划", task, context));
         Result providerFailure = providerFailure(aiResult);
         if (providerFailure != null) {
             return providerFailure;
@@ -217,7 +229,7 @@ public class AiController {
     }
 
     /** 获取错题列表（供前端勾选） */
-    @Log(name = "获取错题列表", type = BusinessType.OTHER)
+    @Log(name = "获取错题列表", type = BusinessType.OTHER, isSaveRequestData = false)
     @GetMapping("/wrong-list")
     @RequiresRoles("student")
     public Result wrongList() {
@@ -271,7 +283,7 @@ public class AiController {
         return Result.success(list);
     }
 
-    @Log(name = "AI错题Agent", type = BusinessType.OTHER)
+    @Log(name = "AI错题Agent", type = BusinessType.OTHER, isSaveRequestData = false)
     @PostMapping("/wrong-agent")
     @RequiresRoles("student")
     public Result wrongAgent(@RequestBody JSONObject jsonObject) {
@@ -283,13 +295,22 @@ public class AiController {
             return Result.fail("错题分析仅限学生使用");
         }
 
+        if (jsonObject.get("itemIds") != null && !(jsonObject.get("itemIds") instanceof List)) {
+            return Result.fail("错题选择无效，请重新选择。");
+        }
         JSONArray itemIds = jsonObject.getJSONArray("itemIds");
+        if (!validInteger(jsonObject, "limit", 1, 20) || (itemIds != null && itemIds.size() > 20)) {
+            return Result.fail("一次最多分析 20 道错题，请分批选择。");
+        }
+        if (itemIds != null && itemIds.stream().anyMatch(id -> !(id instanceof String) || ((String) id).length() > 128)) {
+            return Result.fail("错题选择无效，请重新选择。");
+        }
         int maxCount;
         if (itemIds != null && !itemIds.isEmpty()) {
             maxCount = itemIds.size();
         } else {
             Integer limit = jsonObject.getInteger("limit");
-            maxCount = limit == null ? 12 : Math.max(3, Math.min(limit, 20));
+            maxCount = limit == null ? 12 : Math.max(1, Math.min(limit, 20));
         }
         WrongContext wrongContext = buildWrongContext(user, maxCount, itemIds);
         String task = "请分析这些错题，输出：薄弱知识点、错误原因、订正思路、同类题练习建议、下一步复习安排。"
@@ -298,7 +319,7 @@ public class AiController {
         if (abuseCheck != null) {
             return abuseCheck;
         }
-        AiGenerationResult aiResult = aiService.runAgent(getRole(user), "AI 错题 Agent", task, wrongContext.content);
+        AiGenerationResult aiResult = generate(user, task + "\n" + wrongContext.content, () -> aiService.runAgent(getRole(user), "AI 错题 Agent", task, wrongContext.content));
         Result providerFailure = providerFailure(aiResult);
         if (providerFailure != null) {
             return providerFailure;
@@ -312,7 +333,7 @@ public class AiController {
         return Result.success(data);
     }
 
-    @Log(name = "AI教师备课助手", type = BusinessType.OTHER)
+    @Log(name = "AI教师备课助手", type = BusinessType.OTHER, isSaveRequestData = false)
     @PostMapping("/lesson-prepare")
     @RequiresRoles(value = {"admin", "teacher"}, logical = Logical.OR)
     public Result lessonPrepare(@RequestBody JSONObject jsonObject) {
@@ -324,20 +345,21 @@ public class AiController {
             return Result.fail("备课助手仅限管理员和教师使用，学生请使用其他 AI 功能");
         }
 
+        if (!validInteger(jsonObject, "minutes", 10, 240)) return Result.fail("课时长度需为 10–240 分钟的整数。");
         String context = buildTeachingContext(user, jsonObject.getString("taskId"));
         if (context == null) {
             return Result.fail("课程不存在或无权访问");
         }
         String task = "请生成一份教师备课方案，要求包含教学目标、重难点、课堂流程、互动问题、板书/课件结构、课后作业建议。"
                 + "\n备课主题：" + text(jsonObject, "topic", "结合课程章节进行备课")
-                + "\n课时长度：" + text(jsonObject, "minutes", "45") + " 分钟"
+                + "\n课时长度：" + intParam(jsonObject, "minutes", 45, 10, 240) + " 分钟"
                 + "\n授课对象：" + text(jsonObject, "students", "平台课程学生")
                 + "\n教学目标：" + text(jsonObject, "goal", "帮助学生理解核心知识并能完成基础练习");
         Result abuseCheck = validateAiRequest(user, AGENT_TYPE_LESSON_PREPARE, task, task + "\n" + context, false);
         if (abuseCheck != null) {
             return abuseCheck;
         }
-        AiGenerationResult aiResult = aiService.runAgent(getRole(user), "AI 教师备课助手", task, context);
+        AiGenerationResult aiResult = generate(user, task + "\n" + context, () -> aiService.runAgent(getRole(user), "AI 教师备课助手", task, context));
         Result providerFailure = providerFailure(aiResult);
         if (providerFailure != null) {
             return providerFailure;
@@ -348,9 +370,9 @@ public class AiController {
         return Result.success(replyData(reply, history));
     }
 
-    @Log(name = "AI自动总结课程", type = BusinessType.OTHER)
+    @Log(name = "AI自动总结课程", type = BusinessType.OTHER, isSaveRequestData = false)
     @PostMapping("/course-summary")
-    @RequiresRoles(value = {"admin", "teacher"}, logical = Logical.OR)
+    @RequiresRoles(value = {"admin", "teacher", "student"}, logical = Logical.OR)
     public Result courseSummary(@RequestBody JSONObject jsonObject) {
         ApeUser user = ShiroUtils.getUserInfo();
         if (user == null) {
@@ -361,13 +383,13 @@ public class AiController {
         if (context == null) {
             return Result.fail("课程不存在或无权访问");
         }
-        String task = "请自动总结课程，输出：课程主线、章节知识图谱、重点难点、学习成果、复习建议和可用于期末/答辩的概括。"
+        String task = "请依据现有资料总结课程主线、章节关联、重点与复习清单，附三道自检问题；资料仅有目录时明确标注，不推测视频内容或学习成果。"
                 + "\n总结侧重点：" + text(jsonObject, "focus", "帮助学生快速复盘课程重点");
         Result abuseCheck = validateAiRequest(user, AGENT_TYPE_COURSE_SUMMARY, task, task + "\n" + context, false);
         if (abuseCheck != null) {
             return abuseCheck;
         }
-        AiGenerationResult aiResult = aiService.runAgent(getRole(user), "AI 自动总结课程", task, context);
+        AiGenerationResult aiResult = generate(user, task + "\n" + context, () -> aiService.runAgent(getRole(user), "AI 自动总结课程", task, context));
         Result providerFailure = providerFailure(aiResult);
         if (providerFailure != null) {
             return providerFailure;
@@ -379,7 +401,7 @@ public class AiController {
     }
 
     /** 数据整理 Agent */
-    @Log(name = "AI数据整理", type = BusinessType.OTHER)
+    @Log(name = "AI数据整理", type = BusinessType.OTHER, isSaveRequestData = false)
     @PostMapping("/data-agent")
     @RequiresRoles(value = {"admin", "teacher"}, logical = Logical.OR)
     public Result dataAgent(@RequestBody JSONObject jsonObject) {
@@ -437,9 +459,9 @@ public class AiController {
         if (abuseCheck != null) {
             return abuseCheck;
         }
-        AiGenerationResult aiResult = aiService.runAgent(
+        AiGenerationResult aiResult = generate(user, task + "\n" + context, () -> aiService.runAgent(
                 getRole(user),
-                "AI 数据整理 — " + agentType, task, context);
+                "AI 数据整理 — " + agentType, task, context));
         Result providerFailure = providerFailure(aiResult);
         if (providerFailure != null) {
             return providerFailure;
@@ -633,7 +655,7 @@ public class AiController {
     }
 
     /** 课程统计图表数据 */
-    @Log(name = "课程统计数据", type = BusinessType.OTHER)
+    @Log(name = "课程统计数据", type = BusinessType.OTHER, isSaveRequestData = false)
     @GetMapping("/course-stats")
     @RequiresRoles(value = {"admin", "teacher"}, logical = Logical.OR)
     public Result courseStats(@RequestParam("taskId") String taskId) {
@@ -684,7 +706,7 @@ public class AiController {
     }
 
     /** 考试统计图表数据 */
-    @Log(name = "考试统计数据", type = BusinessType.OTHER)
+    @Log(name = "考试统计数据", type = BusinessType.OTHER, isSaveRequestData = false)
     @GetMapping("/exam-stats")
     @RequiresRoles(value = {"admin", "teacher"}, logical = Logical.OR)
     public Result examStats(@RequestParam("testId") String testId) {
@@ -765,7 +787,7 @@ public class AiController {
         return Result.success(data);
     }
 
-    @Log(name = "AI历史查询", type = BusinessType.OTHER)
+    @Log(name = "AI历史查询", type = BusinessType.OTHER, isSaveRequestData = false)
     @PostMapping("/history")
     public Result history(@RequestBody JSONObject jsonObject) {
         ApeUser user = ShiroUtils.getUserInfo();
@@ -785,7 +807,7 @@ public class AiController {
         return Result.success(apeAiHistoryService.page(page, wrapper));
     }
 
-    @Log(name = "AI历史删除", type = BusinessType.DELETE)
+    @Log(name = "AI历史删除", type = BusinessType.DELETE, isSaveRequestData = false)
     @PostMapping("/history/delete")
     public Result deleteHistory(@RequestBody JSONObject jsonObject) {
         ApeUser user = ShiroUtils.getUserInfo();
@@ -816,6 +838,7 @@ public class AiController {
 
     private Result validateAiRequest(ApeUser user, String agentType, String userInput,
                                      String budgetText, boolean requirePlatformTopic) {
+        if (StringUtils.length(budgetText) > 16000) return Result.fail("参考资料过多，请选择更少的课程或错题后重试。");
         AiLimitPolicy policy = getAiLimitPolicy(user);
         if (policy == null) {
             return Result.fail("当前账号角色暂不支持 AI 功能");
@@ -902,6 +925,7 @@ public class AiController {
                 long waitSeconds = Math.max(1, (cooldownMillis - (now - lastRequestTime) + 999) / 1000);
                 return Result.fail("AI 请求过于频繁，请 " + waitSeconds + " 秒后再试。");
             }
+            AI_REQUEST_GUARD.entrySet().removeIf(entry -> now - entry.getValue() > 60000);
             AI_REQUEST_GUARD.put(key, now);
         }
         return null;
@@ -923,7 +947,8 @@ public class AiController {
         if (StringUtils.isBlank(input)) {
             return false;
         }
-        String normalized = input.toLowerCase();
+        String normalized = Normalizer.normalize(input, Normalizer.Form.NFKC)
+                .replaceAll("[\\u200B-\\u200D\\uFEFF]", "").toLowerCase(Locale.ROOT);
         for (String keyword : AI_PROMPT_ATTACK_KEYWORDS) {
             if (normalized.contains(keyword.toLowerCase())) {
                 return true;
@@ -936,18 +961,15 @@ public class AiController {
         if (StringUtils.isBlank(input)) {
             return false;
         }
-        String normalized = input.toLowerCase();
-        for (String keyword : STUDENT_AI_OFF_TOPIC_KEYWORDS) {
-            if (normalized.contains(keyword.toLowerCase())) {
-                return false;
-            }
-        }
+        String normalized = Normalizer.normalize(input, Normalizer.Form.NFKC)
+                .replaceAll("[\\u200B-\\u200D\\uFEFF]", "").toLowerCase(Locale.ROOT);
         for (String keyword : STUDENT_AI_TOPIC_KEYWORDS) {
-            if (normalized.contains(keyword.toLowerCase())) {
-                return true;
-            }
+            if (normalized.contains(keyword.toLowerCase(Locale.ROOT))) return true;
         }
-        return false;
+        for (String keyword : STUDENT_AI_OFF_TOPIC_KEYWORDS) {
+            if (normalized.contains(keyword.toLowerCase(Locale.ROOT))) return false;
+        }
+        return true;
     }
 
     private AiLimitPolicy getAiLimitPolicy(ApeUser user) {
@@ -1068,6 +1090,27 @@ public class AiController {
         return history;
     }
 
+    private boolean validInteger(JSONObject object, String key, int min, int max) {
+        Object raw = object.get(key);
+        if (raw == null) return true;
+        String value = String.valueOf(raw);
+        if (!value.matches("[0-9]{1,4}")) return false;
+        int number = Integer.parseInt(value);
+        return number >= min && number <= max;
+    }
+
+    private AiGenerationResult generate(ApeUser user, String budgetText, Supplier<AiGenerationResult> provider) {
+        AiLimitPolicy policy = getAiLimitPolicy(user);
+        AiUsage usage = getTodayAiUsage(user.getId());
+        int reserve = estimateTokens(budgetText) + outputTokenLimit + 1600;
+        AiQuotaGuard.Ticket ticket = aiQuotaGuard.acquire(user.getId(), policy.dailyCallLimit,
+                policy.dailyTokenLimit, policy.cooldownSeconds, reserve, usage.callCount, usage.totalTokens);
+        if (ticket.getError() != null) return AiGenerationResult.failure(AiGenerationResult.ErrorType.RATE_LIMITED, ticket.getError());
+        AiGenerationResult result = null;
+        try { result = provider.get(); return result; }
+        finally { aiQuotaGuard.finish(ticket, result); }
+    }
+
     private int intParam(JSONObject jsonObject, String key, int defaultValue, int min, int max) {
         Integer value = jsonObject.getInteger(key);
         if (value == null) {
@@ -1139,7 +1182,8 @@ public class AiController {
             if (!canAccessTask(user, task)) {
                 return null;
             }
-            appendTaskOutline(sb, task.getId(), true);
+            if (isStudent(user)) appendTaskProgress(sb, task.getId(), user.getId());
+            else appendTaskOutline(sb, task.getId(), true);
             return sb.toString();
         }
 
@@ -1420,7 +1464,7 @@ public class AiController {
     }
 
     /** 查询 AI 用量摘要 */
-    @Log(name = "AI用量查询", type = BusinessType.OTHER)
+    @Log(name = "AI用量查询", type = BusinessType.OTHER, isSaveRequestData = false)
     @GetMapping("/usage")
     @RequiresRoles("admin")
     public Result getAiUsage() {

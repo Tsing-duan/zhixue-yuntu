@@ -5,30 +5,26 @@
       <!-- 留言输入卡片 -->
       <div class="message-page-add">
         <div>
-          <div>发布留言</div>
+          <div>{{ $t("发布留言") }}</div>
           <el-input 
             type="textarea" 
             resize="none" 
             :rows="8" 
             v-model="content" 
-            placeholder="写下你想说的话，我们会尽快回复..."
+            :placeholder="$t('写下你想说的话，我们会尽快回复...')"
             maxlength="500"
             show-word-limit
           ></el-input>
           <div class="message-page-btns">
-            <el-button size="mini" icon="el-icon-message" type="primary" plain @click="add">发布留言</el-button>
-            <el-button size="mini" icon="el-icon-refresh" type="warning" plain @click="refresh">清空内容</el-button>
+            <el-button size="small"  type="primary" plain @click="add"><template #icon><i class="el-icon-message" aria-hidden="true"></i></template>{{ $t("发布留言") }}</el-button>
+            <el-button size="small"  type="warning" plain @click="refresh"><template #icon><i class="el-icon-refresh" aria-hidden="true"></i></template>{{ $t("清空内容") }}</el-button>
           </div>
         </div>
       </div>
       
       <!-- 页面标题 -->
       <div class="message-page-title">
-        <i class="title-icon el-icon-chat-dot-round"></i>
-        我的留言
-        <span style="font-size: 14px; color: #94a3b8; margin-left: 12px; font-weight: normal;">
-          共 {{ total }} 条留言
-        </span>
+        <i class="title-icon el-icon-chat-dot-round"></i>{{ $t("我的留言") }}<span style="font-size: 14px; color: #94a3b8; margin-left: 12px; font-weight: normal;">{{ $t("共") }}{{ total }}{{ $t("条留言") }}</span>
       </div>
       
       <!-- 留言列表 -->
@@ -44,15 +40,13 @@
             </div>
           </div>
           <div class="messsage-page-huifu">
-            <span>回复内容</span>
+            <span>{{ $t("回复内容") }}</span>
             <div v-if="item.answer" class="has-reply">
               <i class="el-icon-chat-line-round" style="margin-right: 6px;"></i>
               {{item.answer}}
             </div>
             <div v-else class="no-reply">
-              <i class="el-icon-time"></i>
-              暂无回复，请耐心等待
-            </div>
+              <i class="el-icon-time"></i>{{ $t("暂无回复，请耐心等待") }}</div>
           </div>
         </div>
       </div>
@@ -61,7 +55,7 @@
       <div class="message-page-fenye" v-if="total > 10">
         <el-pagination
           background
-          :page-size="pageSize"
+          v-model:page-size="pageSize"
           layout="prev, pager, next"
           @current-change="handleCurrentChange"
           :total="total">
@@ -78,9 +72,11 @@
 </template>
 
 <script>
+import { t } from '@/i18n'
+
 import { getApeMessagePage, saveApeMessage } from '../../api/api' 
-import headerPage from "../../components/header/header"
-import bottomPage from "../../components/bottom/bottom"
+import headerPage from "../../components/header/header.vue"
+import bottomPage from "../../components/bottom/bottom.vue"
 
 export default {
   name: 'Message',
@@ -101,7 +97,7 @@ export default {
     add() {
       if (!this.content.trim()) {
         this.$message({
-          message: '请输入留言内容',
+          get message() { return t("请输入留言内容") },
           type: 'warning'
         });
         return
@@ -112,21 +108,21 @@ export default {
       saveApeMessage(param).then(res => {
         if(res.code == 1000) {
           this.$message({
-            message: '留言成功，请等待回复',
+            get message() { return t("留言成功，请等待回复") },
             type: 'success'
           });
           this.refresh()
           this.query()
         } else {
           this.$notify.error({
-            title: '错误',
+            get title() { return t("错误") },
             message: res.message
           });
         }
       }).catch(() => {
         this.$notify.error({
-          title: '错误',
-          message: '留言失败，请稍后重试'
+          get title() { return t("错误") },
+          get message() { return t("留言失败，请稍后重试") }
         });
       })
     },
@@ -150,13 +146,13 @@ export default {
           this.total = res.data.total
         } else {
           this.$notify.error({
-            title: '错误',
+            get title() { return t("错误") },
             message: res.message
           });
         }
       }).catch(() => {
         this.$notify.error({
-          title: '错误',
+          get title() { return t("错误") },
           message: '获取留言列表失败，请稍后重试'
         });
       })

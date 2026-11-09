@@ -2,11 +2,11 @@
   <div class="task">
     <headerPage></headerPage>
     <div class="task-page-content">
-      <div class="task-font"><i class="title-icon el-icon-star-off"></i>收藏课程</div>
+      <div class="task-font"><i class="title-icon el-icon-star-off"></i>{{ $t("收藏课程") }}</div>
       <div class="task-page-list">
         <div @click="toTaskInfo(item.taskId)" v-for="(item,index) in tableData" :key="index" class="task-page-item">
           <div class="task-page-image">
-            <img style="width:100%;height:100%" :src="$store.state.HOST + item.taskImage">
+            <img v-if="item.taskImage" style="width:100%;height:100%" :src="$config.HOST + item.taskImage">
           </div>
           <div class="task-page-name">
             <div class="task-page-name-one">{{item.taskName}}</div>
@@ -17,7 +17,7 @@
       <div class="task-page-fenye">
         <el-pagination
           background
-          :page-size="search.pageSize"
+          v-model:page-size="search.pageSize"
           layout="prev, pager, next"
           @current-change="handleCurrentChange"
           :total="total">
@@ -33,8 +33,8 @@
 
 <script> 
   import {getApeTaskFavorPage} from '../../api/api' 
-  import headerPage from "../../components/header/header"
-  import bottomPage from "../../components/bottom/bottom"
+  import headerPage from "../../components/header/header.vue"
+  import bottomPage from "../../components/bottom/bottom.vue"
   export default {
     data() {
       return{
@@ -57,7 +57,7 @@
             this.tableData = res.data.records
             this.total = res.data.total
           }
-        })
+        }).catch(() => { /* Feedback is provided by the request layer. */ if ("loading" in this) this.loading = false })
       },
       handleCurrentChange(val) {
         this.search.pageNumber = val

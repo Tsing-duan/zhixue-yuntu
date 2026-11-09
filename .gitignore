@@ -61,3 +61,14 @@ test-summary-report/
 # 原仓库审计与历史材料不复制到新基线
 PORTFOLIO_AUDIT.md
 PORTFOLIO_P0_PUBLIC_SAFETY_REPORT.md
+
+# Local verification and private working material are not publication artifacts
+output/
+.run/
+scripts/__pycache__/
+PRIVATE_ONLY.md
+PORTFOLIO_BASELINE_REPORT.md
+**/.env.*.local
+**/.vite/
+
+**/node_modules
